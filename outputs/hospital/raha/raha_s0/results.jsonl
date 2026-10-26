@@ -1,0 +1,1 @@
+{"dataset": "hospital", "method": "raha_s0", "precision": 1.0, "recall": 0.061, "f1": 0.115, "tp": 50, "fp": 0, "fn": 770, "erros_reais": 820}

@@ -1,0 +1,33 @@
+model:
+  api_use: true
+  pre_func_use: true
+  related_attrs: true
+  distri_analysis: true
+  guide_use: true
+  func_use: true
+  n_method: 5%
+  err_gen_use: true
+  rel_top: 2
+  run_info: pipeline
+read:
+  pre_func: false
+  distri_analysis: false
+  related_attrs: false
+  cluster: false
+  guide: false
+  error_checking: false
+  func: false
+  err_gen: false
+  read_in_batch: false
+  start_time: 01-01-00:00
+  end_time: 01-01-00:00
+data:
+  base_dir: .
+  err_rate_list:
+  - '01'
+  all_set_num: 1
+  datasets:
+  - hospital
+  err_check_val_num_per_query: 20
+  result_dir: pipeline
+read_paths: {}
