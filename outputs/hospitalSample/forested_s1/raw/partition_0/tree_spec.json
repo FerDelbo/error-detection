@@ -1,0 +1,62 @@
+[
+  {
+    "node_id": "root",
+    "kind": "rule",
+    "name": "check_provider_domain",
+    "code": "def rule_fn(row, col) -> bool:\n    if col != 'ProviderNumber':\n        return False\n    domain = {'10018','10019','1xx19','10001','10005','x0005','10006','1000x','10007','10008','10009','10010','10011'}\n    val = str(row.get(col, '')).strip()\n    return val not in domain",
+    "params": null,
+    "true_child": "gnn_fd_provider_hospital",
+    "false_child": "gnn_fd_provider_hospital",
+    "leaf_value": null
+  },
+  {
+    "node_id": "gnn_fd_provider_hospital",
+    "kind": "gnn",
+    "name": "gnn_fd_provider_hospital",
+    "code": null,
+    "params": null,
+    "true_child": "check_provider_hospital_consistency",
+    "false_child": "check_score_not_empty",
+    "leaf_value": null
+  },
+  {
+    "node_id": "check_provider_hospital_consistency",
+    "kind": "rule",
+    "name": "check_provider_hospital_consistency",
+    "code": "def rule_fn(row, col) -> bool:\n    if col not in ('ProviderNumber','HospitalName'):\n        return False\n    mapping = {\n        '10007': 'mizell memorial hospital',\n        '10011': 'st vincents east',\n        '10018': 'callahan eye foundation hospital',\n        '10006': 'eliza coffee memorial hospital',\n        '10005': 'marshall medical center south'\n    }\n    p = str(row.get('ProviderNumber','')).strip()\n    h = str(row.get('HospitalName','')).strip()\n    if p in mapping:\n        return mapping[p] != h\n    return False",
+    "params": null,
+    "true_child": "leaf_error",
+    "false_child": "leaf_ok",
+    "leaf_value": null
+  },
+  {
+    "node_id": "check_score_not_empty",
+    "kind": "rule",
+    "name": "check_score_not_empty",
+    "code": "def rule_fn(row, col) -> bool:\n    if col != 'Score':\n        return False\n    score = str(row.get('Score','')).strip()\n    if score == '' or score.lower() == 'empty' or not score.endswith('%'):\n        return True\n    return False",
+    "params": null,
+    "true_child": "leaf_error",
+    "false_child": "leaf_ok",
+    "leaf_value": null
+  },
+  {
+    "node_id": "leaf_ok",
+    "kind": "leaf",
+    "name": "",
+    "code": null,
+    "params": null,
+    "true_child": null,
+    "false_child": null,
+    "leaf_value": false
+  },
+  {
+    "node_id": "leaf_error",
+    "kind": "leaf",
+    "name": "",
+    "code": null,
+    "params": null,
+    "true_child": null,
+    "false_child": null,
+    "leaf_value": true
+  }
+]

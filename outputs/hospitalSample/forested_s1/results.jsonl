@@ -1,0 +1,1 @@
+{"dataset": "hospitalSample", "method": "forested_s1", "precision": 1.0, "recall": 0.23, "f1": 0.374, "tp": 34, "fp": 0, "fn": 114, "erros_reais": 148}

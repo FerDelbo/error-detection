@@ -1,0 +1,1906 @@
+{
+  "nodes": [
+    {
+      "node_id": "root",
+      "kind": "rule",
+      "name": "check_provider_domain",
+      "code": "def rule_fn(row, col) -> bool:\n    if col != 'ProviderNumber':\n        return False\n    domain = {'10018','10019','1xx19','10001','10005','x0005','10006','1000x','10007','10008','10009','10010','10011'}\n    val = str(row.get(col, '')).strip()\n    return val not in domain",
+      "true_child": "gnn_fd_provider_hospital",
+      "false_child": "gnn_fd_provider_hospital"
+    },
+    {
+      "node_id": "gnn_fd_provider_hospital",
+      "kind": "gnn",
+      "name": "gnn_fd_provider_hospital",
+      "true_child": "check_provider_hospital_consistency",
+      "false_child": "check_score_not_empty"
+    },
+    {
+      "node_id": "check_provider_hospital_consistency",
+      "kind": "rule",
+      "name": "check_provider_hospital_consistency",
+      "code": "def rule_fn(row, col) -> bool:\n    if col not in ('ProviderNumber','HospitalName'):\n        return False\n    mapping = {\n        '10007': 'mizell memorial hospital',\n        '10011': 'st vincents east',\n        '10018': 'callahan eye foundation hospital',\n        '10006': 'eliza coffee memorial hospital',\n        '10005': 'marshall medical center south'\n    }\n    p = str(row.get('ProviderNumber','')).strip()\n    h = str(row.get('HospitalName','')).strip()\n    if p in mapping:\n        return mapping[p] != h\n    return False",
+      "true_child": "leaf_error",
+      "false_child": "leaf_ok"
+    },
+    {
+      "node_id": "check_score_not_empty",
+      "kind": "rule",
+      "name": "check_score_not_empty",
+      "code": "def rule_fn(row, col) -> bool:\n    if col != 'Score':\n        return False\n    score = str(row.get('Score','')).strip()\n    if score == '' or score.lower() == 'empty' or not score.endswith('%'):\n        return True\n    return False",
+      "true_child": "leaf_error",
+      "false_child": "leaf_ok"
+    },
+    {
+      "node_id": "leaf_ok",
+      "kind": "leaf",
+      "leaf_value": false
+    },
+    {
+      "node_id": "leaf_error",
+      "kind": "leaf",
+      "leaf_value": true
+    }
+  ],
+  "sample_labels": [
+    {
+      "row_id": 0,
+      "column": "ProviderNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "HospitalName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "Address",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "City",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "State",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "ZipCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "CountyName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "PhoneNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "HospitalType",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "HospitalOwner",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "EmergencyService",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "Condition",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "MeasureCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "MeasureName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "Score",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "Sample",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 0,
+      "column": "Stateavg",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "ProviderNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "HospitalName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "Address",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "City",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "State",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "ZipCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "CountyName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "PhoneNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "HospitalType",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "HospitalOwner",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "EmergencyService",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "Condition",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "MeasureCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "MeasureName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "Score",
+      "is_error": true,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_error"
+      ]
+    },
+    {
+      "row_id": 1,
+      "column": "Sample",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "ProviderNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "HospitalName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "Address",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "City",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "State",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "ZipCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "CountyName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "PhoneNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "HospitalType",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "HospitalOwner",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "EmergencyService",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "Condition",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "MeasureCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "MeasureName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "Score",
+      "is_error": true,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_error"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "Sample",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 2,
+      "column": "Stateavg",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "ProviderNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "HospitalName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "Address",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "City",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "State",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "ZipCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "CountyName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "PhoneNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "HospitalType",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "HospitalOwner",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "EmergencyService",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "Condition",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "MeasureCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "MeasureName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "Score",
+      "is_error": true,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_error"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "Sample",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 3,
+      "column": "Stateavg",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "ProviderNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "HospitalName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "Address",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "City",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "State",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "ZipCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "CountyName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "PhoneNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "HospitalType",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "HospitalOwner",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "EmergencyService",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "Condition",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "MeasureCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "MeasureName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "Score",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "Sample",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 4,
+      "column": "Stateavg",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "ProviderNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "HospitalName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "Address",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "City",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "State",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "ZipCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "CountyName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "PhoneNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "HospitalType",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "HospitalOwner",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "EmergencyService",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "Condition",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "MeasureCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "MeasureName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "Score",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "Sample",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 5,
+      "column": "Stateavg",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "ProviderNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "HospitalName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "Address",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "City",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "State",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "ZipCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "CountyName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "PhoneNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "HospitalType",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "HospitalOwner",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "EmergencyService",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "Condition",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "MeasureCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "MeasureName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "Score",
+      "is_error": true,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_error"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "Sample",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 6,
+      "column": "Stateavg",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "ProviderNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "HospitalName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "Address",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "City",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "State",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "ZipCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "CountyName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "PhoneNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "HospitalType",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "HospitalOwner",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "EmergencyService",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "Condition",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "MeasureCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "MeasureName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "Score",
+      "is_error": true,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_error"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "Sample",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 7,
+      "column": "Stateavg",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "ProviderNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "HospitalName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "Address",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "City",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "State",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "ZipCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "CountyName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "PhoneNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "HospitalType",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "HospitalOwner",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "EmergencyService",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "Condition",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "MeasureCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "MeasureName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "Score",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "Sample",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 8,
+      "column": "Stateavg",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "ProviderNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "HospitalName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "Address",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "City",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "State",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "ZipCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "CountyName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "PhoneNumber",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "HospitalType",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "HospitalOwner",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "EmergencyService",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "Condition",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "MeasureCode",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "MeasureName",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "Score",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "Sample",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    },
+    {
+      "row_id": 9,
+      "column": "Stateavg",
+      "is_error": false,
+      "path": [
+        "root",
+        "gnn_fd_provider_hospital",
+        "check_score_not_empty",
+        "leaf_ok"
+      ]
+    }
+  ]
+}

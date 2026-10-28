@@ -1,0 +1,161 @@
+================================================================================
+LLM INPUT LOG - Partition 0
+================================================================================
+
+Model: gpt-5-nano
+Timestamp: 2026-10-28 17:45:12.397227
+
+================================================================================
+SYSTEM PROMPT:
+================================================================================
+You are a precise data quality expert.
+
+================================================================================
+USER PROMPT:
+================================================================================
+
+You are to design a **shallow decision tree** for detecting erroneous CELLS in a table.  
+Each node must have **clear responsibilities** and avoid combining all rules in one node.  
+
+### Design Constraints:
+1. **Input**: (row, col)  
+2. **Node Types**:  
+   - "rule": must provide *executable Python code* for a function:
+     ```python
+     def rule_fn(row, col) -> bool:
+        import ...
+         # return True if the cell is erroneous, False otherwise
+     ```
+     Each rule node should handle **only one type of check** (e.g., numeric range, format, or cross-column consistency).
+     Imports should be written inside the function, not globally. 
+   - "gnn": for **complex relational checks** (e.g., functional dependencies, conditional FDs, denial constraints).  
+     The node name must reflect the purpose (e.g., "gnn_fd_check", "gnn_cfd_check").  
+   - "leaf": must have a `leaf_value` of `true` or `false`.  
+
+3. The decision tree should be **shallow** (4-8 levels).  
+   - Each node should be specialized, not overloaded with many unrelated checks.  
+   - There should be at least one gnn node whose children are not leaf nodes. 
+
+
+### Labeling Requirements:
+- For every sampled row and every column, you must output one entry in `sample_labels`.  
+- Each entry must include the **row_id, column name, is_error (bool), and the full path of node_ids from root to leaf**.  
+- Flag entries with repeated tokens as errors.
+- Generate only confident valiation rules: for categorical columns, restrict to valid categories from the catalog; for non-categorical columns, infer format rules from the samples. Don't generate rules that you are not confident. 
+- Detect errors in the data, including empty values, invalid characters (non-English letters except common symbols), suspicious formats (e.g., email-like strings in names), typos or misspellings.
+- Sentences must have exactly one space between words and after periods; multiple or missing spaces are errors.
+- You must strictly enforce the following error rules:
+    Invalid formats: Rate must be a decimal without trailing zeros (invalid formats: "7.0", "07"); ounces format must be 12.0 oz;
+    Invalid values: Negative numbers (e.g., ounces = -5) or illegal characters.
+    Domain violations: Values outside allowed categories (e.g., gender not in categories).
+
+
+### Output Format:
+Your response must be a single JSON object with two fields:  
+- `"nodes"`: list of NodeSpec objects.  
+- `"sample_labels"`: list of objects with `row_id`, `column`, `is_error`, and `path`.  
+
+#### Example Output
+
+### Example Output Format
+```json
+{
+  "nodes": [
+    {
+      "node_id": "root",
+      "kind": "rule",
+      "name": "check_gpa_range",
+      "code": "def rule_fn(row, col):
+    if col != 'GPA': return False
+    try:
+        gpa = float(row.get(col, -1))
+    except:
+        return True
+    return gpa < 0.0 or gpa > 4.0",
+      "true_child": "leaf_error",
+      "false_child": "gnn_student_check"
+    },
+    {
+      "node_id": "gnn_student_check",
+      "kind": "gnn",
+      "name": "gnn_student_check",
+      "true_child": "check_major_validity",
+      "false_child": "check_graduation_year"
+    },
+    {
+      "node_id": "check_major_validity",
+      "kind": "rule",
+      "name": "check_major_validity",
+      "code": "def rule_fn(row, col):
+    if col != 'Major': return False
+    valid = {'Computer Science','Mathematics','Biology','History'}
+    return str(row.get(col,'')).strip() not in valid",
+      "true_child": "leaf_error",
+      "false_child": "leaf_ok"
+    },
+    {
+      "node_id": "check_graduation_year",
+      "kind": "rule",
+      "name": "check_graduation_year",
+      "code": "def rule_fn(row, col):
+    if col != 'GraduationYear': return False
+    try:
+        year = int(row.get(col,0))
+    except:
+        return True
+    return year < 2000 or year > 2030",
+      "true_child": "leaf_error",
+      "false_child": "leaf_ok"
+    },
+    {
+      "node_id": "leaf_error",
+      "kind": "leaf",
+      "leaf_value": true
+    },
+    {
+      "node_id": "leaf_ok",
+      "kind": "leaf",
+      "leaf_value": false
+    }
+  ],
+  "sample_labels": [
+    {
+      "row_id": 0,
+      "column": "GPA",
+      "is_error": true,
+      "path": ["root","leaf_error"]
+    },
+    {
+      "row_id": 1,
+      "column": "Major",
+      "is_error": false,
+      "path": ["root","gnn_student_check","check_major_validity","leaf_ok"]
+    },
+    {
+      "row_id": 2,
+      "column": "GraduationYear",
+      "is_error": true,
+      "path": ["root","gnn_student_check","check_graduation_year","leaf_error"]
+    }
+  ]
+}
+
+
+Task
+Generate such a decision tree and labels for the following data (Partition 0):
+
+Full data catalog:
+{"ProviderNumber": {"name": "ProviderNumber", "inferred_type": "category", "domain": ["10018", "10019", "1xx19", "10001", "10005", "x0005", "10006", "1000x", "10007", "10008", "10009", "10010", "10011"], "min_val": null, "max_val": null, "regex_hint": null}, "HospitalName": {"name": "HospitalName", "inferred_type": "category", "domain": ["callahan eye foundation hospital", "helen keller memorial hospital", "southeast alabama medical center", "southeast alabama medxcal center", "marshall medical center south", "eliza coffee memorial hospital", "mizell memorial hospital", "crenshaw community hospital", "crenshaw cxmmunity hxspital", "hartselle medical center", "marshall medical center north", "marshall medical cenxer norxh", "st vincents east"], "min_val": null, "max_val": null, "regex_hint": null}, "Address": {"name": "Address", "inferred_type": "category", "domain": ["1720 university blvd", "1300 south montgomery avenue", "1108 ross clark circle", "2505 u s highway 431 north", "2505xuxsxhighwayx431xnorth", "205 marengo street", "702xnxmainxst", "702 n main st", "702 x maix st", "101 hospital circle", "201 pine street northwest", "201 pine sxreex norxhwesx", "8000 alabama highway 69", "8000 alabama xigxway 69", "50 medical park east drive"], "min_val": null, "max_val": null, "regex_hint": null}, "City": {"name": "City", "inferred_type": "category", "domain": ["birmingham", "birminghxm", "birmingxam", "sheffield", "sheffxeld", "dothan", "boaz", "boxz", "florence", "fxorence", "florxncx", "flxrence", "opp", "luverne", "hartselle", "guntersville", "guntxrsvillx"], "min_val": null, "max_val": null, "regex_hint": null}, "State": {"name": "State", "inferred_type": "category", "domain": ["al", "xl", "ax"], "min_val": null, "max_val": null, "regex_hint": null}, "ZipCode": {"name": "ZipCode", "inferred_type": "category", "domain": ["35233", "35660", "36302", "x5957", "35957", "3595x", "35631", "3563x", "36467", "36049", "36x49", "360x9", "35640", "3x640", "35976", "35235", "3x23x"], "min_val": null, "max_val": null, "regex_hint": null}, "CountyName": {"name": "CountyName", "inferred_type": "category", "domain": ["jefferson", "houston", "marshall", "mxrshxll", "lauderdale", "laudxrdalx", "laudexdale", "covington", "crenshaw", "crxnshaw", "morgan"], "min_val": null, "max_val": null, "regex_hint": null}, "PhoneNumber": {"name": "PhoneNumber", "inferred_type": "category", "domain": ["2053258100", "2563864556", "3347938701", "334793870x", "xx479x8701", "2565938310", "2x6x938310", "2565x38310", "2567688400", "3344933541", "3344x33541", "3343353374", "2567736511", "2565718000", "2058383122"], "min_val": null, "max_val": null, "regex_hint": null}, "HospitalType": {"name": "HospitalType", "inferred_type": "category", "domain": ["acute care hospitals", "acuxe care hospixals", "acxte care hospitals", "acute care hosxitals"], "min_val": null, "max_val": null, "regex_hint": null}, "HospitalOwner": {"name": "HospitalOwner", "inferred_type": "category", "domain": ["voluntary non-profit - private", "government - hospital district or authority", "government - hospxtal dxstrxct or authorxty", "government - hospital xistrict or authority", "governmenx - hospixal disxricx or auxhorixy", "gxvernment - hxspital district xr authxrity", "voluntary non-profit - other", "volunxary non-profix - privaxe", "government - federal", "proprietary", "pxopxietaxy", "proxrietary", "xroprietary"], "min_val": null, "max_val": null, "regex_hint": null}, "EmergencyService": {"name": "EmergencyService", "inferred_type": "category", "domain": ["yes", "yxs", "yex", "no"], "min_val": null, "max_val": null, "regex_hint": null}, "Condition": {"name": "Condition", "inferred_type": "category", "domain": ["surgical infection prevention", "heart attack", "heart failure", "heart attaxk", "hearx axxack", "pneumonia", "heaxt failuxe", "heaxt attack"], "min_val": null, "max_val": null, "regex_hint": null}, "MeasureCode": {"name": "MeasureCode", "inferred_type": "text", "domain": null, "min_val": null, "max_val": null, "regex_hint": null}, "MeasureName": {"name": "MeasureName", "inferred_type": "text", "domain": null, "min_val": null, "max_val": null, "regex_hint": null}, "Score": {"name": "Score", "inferred_type": "text", "domain": null, "min_val": null, "max_val": null, "regex_hint": null}, "Sample": {"name": "Sample", "inferred_type": "text", "domain": null, "min_val": null, "max_val": null, "regex_hint": null}, "Stateavg": {"name": "Stateavg", "inferred_type": "text", "domain": null, "min_val": null, "max_val": null, "regex_hint": null}}
+
+Sample rows:
+[{"ProviderNumber": "10007", "HospitalName": "mizell memorial hospital", "Address": "702 n main st", "City": "opp", "State": "xl", "ZipCode": "36467", "CountyName": "covington", "PhoneNumber": "3344933541", "HospitalType": "acute care hosxitals", "HospitalOwner": "voluntary non-profit - private", "EmergencyService": "no", "Condition": "heart attack", "MeasureCode": "ami-5", "MeasureName": "heart attack patients given beta blocker at discharge", "Score": "100%", "Sample": "2 patients", "Stateavg": "al_ami-5"}, {"ProviderNumber": "10011", "HospitalName": "st vincents east", "Address": "50 medical park east drive", "City": "birmingham", "State": "al", "ZipCode": "35235", "CountyName": "jefferson", "PhoneNumber": "2058383122", "HospitalType": "acute care hosxitals", "HospitalOwner": "voluntary non-profit - private", "EmergencyService": "yes", "Condition": "heaxt attack", "MeasureCode": "ami-7a", "MeasureName": "heart attack patients given fibrinolytic medication within 30 minutes of arrival", "Score": "empty", "Sample": "0 patients", "Stateavg": "al_ami-7a"}, {"ProviderNumber": "10007", "HospitalName": "mizell memorial hospital", "Address": "702 n main st", "City": "opp", "State": "al", "ZipCode": "36467", "CountyName": "covington", "PhoneNumber": "3344933541", "HospitalType": "acute care hospitals", "HospitalOwner": "voluntary non-profit - private", "EmergencyService": "no", "Condition": "heart attack", "MeasureCode": "ami-7a", "MeasureName": "heart attack patients given fibrinolytic medication within 30 minutes of arrival", "Score": "empty", "Sample": "0 patients", "Stateavg": "al_ami-7a"}, {"ProviderNumber": "10007", "HospitalName": "mizell memorial hospital", "Address": "702 n main st", "City": "opp", "State": "al", "ZipCode": "36467", "CountyName": "covington", "PhoneNumber": "3344933541", "HospitalType": "acute care hospitals", "HospitalOwner": "voluntary non-profit - private", "EmergencyService": "no", "Condition": "heart attack", "MeasureCode": "ami-3", "MeasureName": "heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)", "Score": "empty", "Sample": "0 patients", "Stateavg": "al_ami-3"}, {"ProviderNumber": "10007", "HospitalName": "mizell memorial hospital", "Address": "702 n main st", "City": "opp", "State": "al", "ZipCode": "36467", "CountyName": "covington", "PhoneNumber": "3344933541", "HospitalType": "acute care hospitals", "HospitalOwner": "voluntary non-profit - private", "EmergencyService": "no", "Condition": "heart failure", "MeasureCode": "hf-4", "MeasureName": "heart failure patients given smoking cessation advice/counseling", "Score": "100%", "Sample": "8 patients", "Stateavg": "al_hf-4"}, {"ProviderNumber": "10007", "HospitalName": "mizell memorial hospital", "Address": "702 n main st", "City": "opp", "State": "al", "ZipCode": "36467", "CountyName": "covington", "PhoneNumber": "3344933541", "HospitalType": "acute care hospitals", "HospitalOwner": "voluntary non-profit - private", "EmergencyService": "no", "Condition": "heart attack", "MeasureCode": "ami-8a", "MeasureName": "heart attack patients given pci within 90 minutes of arrival", "Score": "empty", "Sample": "0 patients", "Stateavg": "al_ami-8a"}, {"ProviderNumber": "10018", "HospitalName": "callahan eye foundation hospital", "Address": "1720 university blvd", "City": "birmingham", "State": "al", "ZipCode": "35233", "CountyName": "jefferson", "PhoneNumber": "2053258100", "HospitalType": "acute care hospitals", "HospitalOwner": "voluntary non-profit - private", "EmergencyService": "yes", "Condition": "surgical infection prevention", "MeasureCode": "scip-vte-1", "MeasureName": "surgery patients whose doctors ordered treatments to prevent blood clots after certain types of surgeries", "Score": "empty", "Sample": "empty", "Stateavg": "al_scip-vte-1"}, {"ProviderNumber": "10007", "HospitalName": "mizell memorial hospital", "Address": "702 n main st", "City": "opp", "State": "al", "ZipCode": "36467", "CountyName": "covington", "PhoneNumber": "3344933541", "HospitalType": "acute care hospitals", "HospitalOwner": "voluntary non-profit - private", "EmergencyService": "no", "Condition": "heart failure", "MeasureCode": "hf-3", "MeasureName": "heart failure patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)", "Score": "64%", "Sample": "14 patients", "Stateavg": "al_hf-3"}, {"ProviderNumber": "10006", "HospitalName": "eliza coffee memorial hospital", "Address": "205 marengo street", "City": "florence", "State": "al", "ZipCode": "35631", "CountyName": "lauderdale", "PhoneNumber": "2567688400", "HospitalType": "acute care hospitals", "HospitalOwner": "voluntary non-profit - other", "EmergencyService": "yes", "Condition": "heart attack", "MeasureCode": "ami-7a", "MeasureName": "heart attack patients given fibrinolytic medication within 30 minutes of arrival", "Score": "empty", "Sample": "0 patients", "Stateavg": "al_ami-7a"}, {"ProviderNumber": "10005", "HospitalName": "marshall medical center south", "Address": "2505 u s highway 431 north", "City": "boaz", "State": "xl", "ZipCode": "35957", "CountyName": "marshall", "PhoneNumber": "2565938310", "HospitalType": "acute care hospitals", "HospitalOwner": "government - hospital district or authority", "EmergencyService": "yes", "Condition": "heart attack", "MeasureCode": "ami-3", "MeasureName": "heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)", "Score": "100%", "Sample": "2 patients", "Stateavg": "al_ami-3"}]
+
+Important:
+
+Keep rules focused and modular.
+
+Ensure at least one GNN node with a meaningful name and responsibility.
+
+Return ONLY the JSON (no explanations).
+
+================================================================================

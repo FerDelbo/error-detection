@@ -1,0 +1,138 @@
+{
+  "overall": {
+    "accuracy": 0.9664705882352941,
+    "precision": 1.0,
+    "recall": 0.22972972972972974,
+    "f1": 0.37362637362637363
+  },
+  "per_column": {
+    "ProviderNumber": {
+      "accuracy": 0.985,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "HospitalName": {
+      "accuracy": 0.985,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "Address": {
+      "accuracy": 0.975,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "City": {
+      "accuracy": 0.96,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "State": {
+      "accuracy": 0.955,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "ZipCode": {
+      "accuracy": 0.955,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "CountyName": {
+      "accuracy": 0.98,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "PhoneNumber": {
+      "accuracy": 0.97,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "HospitalType": {
+      "accuracy": 0.98,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "HospitalOwner": {
+      "accuracy": 0.955,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "EmergencyService": {
+      "accuracy": 0.98,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "Condition": {
+      "accuracy": 0.975,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "MeasureCode": {
+      "accuracy": 0.97,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "MeasureName": {
+      "accuracy": 0.935,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "Score": {
+      "accuracy": 0.985,
+      "precision": 1.0,
+      "recall": 0.918918918918919,
+      "f1": 0.9577464788732394
+    },
+    "Sample": {
+      "accuracy": 0.9,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "Stateavg": {
+      "accuracy": 0.985,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "llm_usage": {
+    "per_partition": [
+      {
+        "partition_id": 0,
+        "tokens": {
+          "prompt": 4308,
+          "completion": 29836,
+          "total": 34144
+        },
+        "llm_time": 232.09514808654785,
+        "gnn_time": 0.5546238422393799
+      }
+    ],
+    "total_tokens": 34144,
+    "total_prompt": 4308,
+    "total_completion": 29836,
+    "total_time_sec": 232.09514808654785
+  },
+  "gnn_usage": {
+    "total_time_sec": 0.5546238422393799
+  },
+  "consensus_usage": {
+    "strategy": "dawid_skene",
+    "time_sec": 0.03811931610107422
+  },
+  "metrics_computation_time_sec": 0.5173749923706055
+}
