@@ -119,9 +119,9 @@ def get_ans_from_llm(prompt, api_use=True):  # PATCH
             except Exception as e:
                 print(e)
     elif api_use:
-        model_type = os.environ.get('ZEROED_MODEL', 'qwen2.5-7b-instruct')  # PATCH
+        model_type = os.environ.get('OPENAI_MODEL')  # PATCH
         role_descr="You are a world-class data engineer, proficient in cleaning dirty data."
-        api_key_list = [os.environ.get('ZEROED_API_KEY', '')]  # PATCH
+        api_key_list = [os.environ.get('OPENAI_API_KEY', '')]  # PATCH
         # Exponential backoff parameters
         base_sleep = 0.2
         max_retries = 200
@@ -132,7 +132,7 @@ def get_ans_from_llm(prompt, api_use=True):  # PATCH
             try:
                 client = OpenAI(
                     api_key=api_key_list[key_idx],
-                    base_url=os.environ.get('ZEROED_BASE_URL', 'https://api.openai.com/v1')  # PATCH
+                    base_url=os.environ.get('OPENAI_BASE_URL', 'https://api.openai.com/v1')  # PATCH
                 )
                 completion_res = client.chat.completions.create(
                     model=model_type,

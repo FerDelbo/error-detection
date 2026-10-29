@@ -219,3 +219,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Modelos binários grandes do ZeroER
+/methods/zeroed/cc.en.17.bin
+/methods/zeroed/cc.en.300.bin
+/methods/zeroed/cc.en.300.bin.gz

@@ -27,7 +27,7 @@ data:
   - '01'
   all_set_num: 1
   datasets:
-  - hospital
+  - hospitalSample
   err_check_val_num_per_query: 20
   result_dir: pipeline
 read_paths: {}

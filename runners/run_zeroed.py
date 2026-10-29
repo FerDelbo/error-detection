@@ -137,8 +137,13 @@ def apply_patches():
         crlf = "\r\n" in src
         text = src.replace("\r\n", "\n")
         for old, new in reps:
-            if new in text:
-                continue
+            # assinatura = a linha com "# PATCH"; tolera diferenças de espaço e indentação
+            sig = next((l.strip() for l in new.splitlines() if "# PATCH" in l), None)
+            if new in text or (sig and sig in text):
+                continue  # já aplicado        
+	#for old, new in reps:
+         #   if new in text:
+          #      continue
             if old not in text:
                 sys.exit(f"ERRO: trecho não encontrado em {fname}; o repositório mudou?\n---\n{old}")
             text = text.replace(old, new, 1)

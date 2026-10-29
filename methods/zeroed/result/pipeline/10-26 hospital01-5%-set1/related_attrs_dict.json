@@ -1,0 +1,70 @@
+{
+    "ProviderNumber": {
+        "HospitalName": 0.6739030079982785,
+        "Address": 0.6717413625647772
+    },
+    "HospitalName": {
+        "Address": 0.6739554899674617,
+        "ProviderNumber": 0.6739030079982785
+    },
+    "Address": {
+        "HospitalName": 0.6739554899674617,
+        "ProviderNumber": 0.6717413625647772
+    },
+    "City": {
+        "ZipCode": 0.6548189661097283,
+        "HospitalName": 0.6543982364620088
+    },
+    "State": {
+        "Stateavg": 0.04866217771442105,
+        "PhoneNumber": 0.04853928780675959
+    },
+    "ZipCode": {
+        "HospitalName": 0.6712114497333774,
+        "ProviderNumber": 0.6689572658465852
+    },
+    "CountyName": {
+        "City": 0.6472648173671194,
+        "ZipCode": 0.6331238846908906
+    },
+    "PhoneNumber": {
+        "HospitalName": 0.6728614963658669,
+        "Address": 0.6715170551542378
+    },
+    "HospitalType": {
+        "MeasureName": 0.03202903759757654,
+        "Sample": 0.03199881572483861
+    },
+    "HospitalOwner": {
+        "HospitalName": 0.44671355595095613,
+        "PhoneNumber": 0.44624559122946716
+    },
+    "EmergencyService": {
+        "CountyName": 0.151458821874825,
+        "City": 0.14590577613209132
+    },
+    "Condition": {
+        "MeasureCode": 0.40387415527194187,
+        "MeasureName": 0.40232535339663755
+    },
+    "MeasureCode": {
+        "MeasureName": 0.663582537984728,
+        "Stateavg": 0.6594211795995059
+    },
+    "MeasureName": {
+        "MeasureCode": 0.663582537984728,
+        "Stateavg": 0.6569811781946414
+    },
+    "Score": {
+        "Sample": 0.3929122842396774,
+        "PhoneNumber": 0.19937111108031152
+    },
+    "Sample": {
+        "Score": 0.3929122842396774,
+        "PhoneNumber": 0.3781640321369355
+    },
+    "Stateavg": {
+        "MeasureCode": 0.6594211795995059,
+        "MeasureName": 0.6569811781946414
+    }
+}
