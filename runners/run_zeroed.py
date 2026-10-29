@@ -228,7 +228,7 @@ def prepare(a):
     }
     with open(os.path.join(ZDIR, "config_pipeline.yaml"), "w") as f:
         yaml.safe_dump(cfg, f, sort_keys=False)
-    apply_patches()
+    pass  # patches desativados (os arquivos já estão patchados)
     print(f"config gerada: {ZDIR}/config_pipeline.yaml ({a.runs} execução(ões) de '{tag}', "
           f"fastText {ft_dim_of(a)}d)")
 
