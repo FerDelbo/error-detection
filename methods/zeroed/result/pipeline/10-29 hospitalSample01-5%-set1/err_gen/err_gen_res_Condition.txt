@@ -1,0 +1,10 @@
+{"Condition": "Heart Failure", "Stateavg": "al_hf-2", "MeasureName": "heart failure patients given an evaluation of left ventricular systolic (lvs) function"}
+{"Condition": "heart-failure", "Stateavg": "al_hf-4", "MeasureName": "heart failure patients given smoking cessation advice/counseling"}
+{"Condition": "heart  failure", "Stateavg": "al_hf-2", "MeasureName": "heart failure patients given an evaluation of left ventricular systolic (lvs) function"}
+{"Condition": "heart faillure", "Stateavg": "al_hf-2", "MeasureName": "heart failure patients given beta blocker at discharge"}
+{"Condition": "", "Stateavg": "al_hf-2", "MeasureName": "heart failure patients given an evaluation of left ventricular systolic (lvs) function"}
+{"Condition": "Unknown", "Stateavg": "al_pn-4", "MeasureName": "pneumonia patients given smoking cessation advice/counseling"}
+{"Condition": "stroke", "Stateavg": "al_ami-5", "MeasureName": "heart attack patients given beta blocker at discharge"}
+{"Condition": "myocardial infarction", "Stateavg": "al_ami-3", "MeasureName": "heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)"}
+{"Condition": "pneumoniae", "Stateavg": "al_pn-4", "MeasureName": "pneumonia patients given smoking cessation advice/counseling"}
+{"Condition": "surgical infection prevent", "Stateavg": "al_scip-inf-6", "MeasureName": "surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)"}

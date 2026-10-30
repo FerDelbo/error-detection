@@ -1,0 +1,42 @@
+As a data quality expert, please first analyze attribute relations and analyze the 'Sample' attribute values for potential errors. Ignore case sensitivity
+Provide your analysis on `Sample` values in JSON format as follows, **do not care problems in other attributes**:
+
+
+```json
+{"column_name": "Sample",
+  "entries": [
+    {
+"value_row": "{'Sample': 'Sample_example_val_1', 'Score': 'Score_example_val_1', 'MeasureName': 'MeasureName_example_val_1'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_Sample_value": true/false,
+    },
+    {
+"value_row": "{'Sample': 'Sample_example_val_2', 'Score': 'Score_example_val_2', 'MeasureName': 'MeasureName_example_val_2'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_Sample_value": true/false,
+    }
+  ]
+}
+```
+
+
+If unsure, do not indicate an error.
+- Please ignore the case sensitivity issues.
+
+-----------------------------------------------
+
+Here are the given inputs:
+Values of column 'Sample' along with related attribute values:
+'{"Sample":"empty","Score":"empty","MeasureName":"surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)"}
+{"Sample":"41 patients","Score":"100%","MeasureName":"heart failure patients given smoking cessation advice/counseling"}
+{"Sample":"80 patients","Score":"84%","MeasureName":"heart failure patients given an evaluation of left ventricular systolic (lvs) function"}
+{"Sample":"6xpatients","Score":"100%","MeasureName":"heart attack patients given aspirin at discharge"}
+{"Sample":"42 patients","Score":"98%","MeasureName":"heart failure patients given an evaluation of left ventricular systolic (lvs) function"}
+{"Sample":"14 patients","Score":"86%","MeasureName":"heart attack patients given beta blocker at discharge"}
+{"Sample":"65 patients","Score":"94%","MeasureName":"pneumonia patients given smoking cessation advice/counseling"}
+{"Sample":"1 patients","Score":"100%","MeasureName":"heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)"}
+{"Sample":"2 patients","Score":"100%","MeasureName":"heart attack patients given beta blocker at discharge"}
+{"Sample":"28 patients","Score":"100%","MeasureName":"pneumonia patients given smoking cessation advice/counseling"}'
+Provide your analysis on `Sample` values in the required JSON format, **do not care problems in other attributes**:
+
+

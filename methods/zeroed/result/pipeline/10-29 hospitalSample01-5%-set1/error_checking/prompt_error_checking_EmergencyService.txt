@@ -1,0 +1,42 @@
+As a data quality expert, please first analyze attribute relations and analyze the 'EmergencyService' attribute values for potential errors. Ignore case sensitivity
+Provide your analysis on `EmergencyService` values in JSON format as follows, **do not care problems in other attributes**:
+
+
+```json
+{"column_name": "EmergencyService",
+  "entries": [
+    {
+"value_row": "{'EmergencyService': 'EmergencyService_example_val_1', 'CountyName': 'CountyName_example_val_1', 'PhoneNumber': 'PhoneNumber_example_val_1'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_EmergencyService_value": true/false,
+    },
+    {
+"value_row": "{'EmergencyService': 'EmergencyService_example_val_2', 'CountyName': 'CountyName_example_val_2', 'PhoneNumber': 'PhoneNumber_example_val_2'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_EmergencyService_value": true/false,
+    }
+  ]
+}
+```
+
+
+If unsure, do not indicate an error.
+- Please ignore the case sensitivity issues.
+
+-----------------------------------------------
+
+Here are the given inputs:
+Values of column 'EmergencyService' along with related attribute values:
+'{"EmergencyService":"yes","CountyName":"marshall","PhoneNumber":"2565718000"}
+{"EmergencyService":"yes","CountyName":"jefferson","PhoneNumber":"2053258100"}
+{"EmergencyService":"no","CountyName":"covington","PhoneNumber":"3344933541"}
+{"EmergencyService":"yes","CountyName":"morgan","PhoneNumber":"2567736511"}
+{"EmergencyService":"yes","CountyName":"jefferson","PhoneNumber":"2563864556"}
+{"EmergencyService":"yes","CountyName":"marshall","PhoneNumber":"2565718000"}
+{"EmergencyService":"yes","CountyName":"marshall","PhoneNumber":"2565718000"}
+{"EmergencyService":"yes","CountyName":"morgan","PhoneNumber":"2567736511"}
+{"EmergencyService":"no","CountyName":"covington","PhoneNumber":"3344933541"}
+{"EmergencyService":"yes","CountyName":"jefferson","PhoneNumber":"2563864556"}'
+Provide your analysis on `EmergencyService` values in the required JSON format, **do not care problems in other attributes**:
+
+

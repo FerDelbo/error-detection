@@ -1,0 +1,10 @@
+{"HospitalOwner": "goverment - hospital district or authority", "CountyName": "marshall", "ProviderNumber": "10010"}
+{"HospitalOwner": "", "CountyName": "jefferson", "ProviderNumber": "10019"}
+{"HospitalOwner": "government - hospital distric or autthority", "CountyName": "covington", "ProviderNumber": "10007"}
+{"HospitalOwner": "federal-government", "CountyName": "morgan", "ProviderNumber": "10009"}
+{"HospitalOwner": "volunary non-profit - private", "CountyName": "jefferson", "ProviderNumber": "10018"}
+{"HospitalOwner": "private for-profit", "CountyName": "covington", "ProviderNumber": "10007"}
+{"HospitalOwner": "N/A", "CountyName": "jefferson", "ProviderNumber": "10019"}
+{"HospitalOwner": "   ", "CountyName": "covington", "ProviderNumber": "10007"}
+{"HospitalOwner": "voluntary nonprofit - private", "CountyName": "marshall", "ProviderNumber": "10010"}
+{"HospitalOwner": "VOLUNTARY NON-PROFIT - PRIVATE", "CountyName": "jefferson", "ProviderNumber": "10019"}

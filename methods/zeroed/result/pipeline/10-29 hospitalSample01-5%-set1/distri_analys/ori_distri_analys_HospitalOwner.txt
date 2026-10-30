@@ -1,0 +1,50 @@
+Analysis Results for HospitalOwner
+==================================================
+
+
+=== Data Distribution Analysis Function 1 ===
+def _is_missing(val):
+    if val is None:
+        return True
+    if isinstance(val, float) and np.isnan(val):
+        return True
+    s = str(val).strip()
+    if s == "":
+        return True
+    if s.lower() in {"null", "na", "nan", "empty", "missing"}:
+        return True
+    return False
+
+**Running Results:**
+Error executing function: _is_missing() takes 1 positional argument but 2 were given
+
+=== Data Distribution Analysis Function 5 ===
+def is_phone_like(s):
+        digits = re.sub(r'\D', '', s)
+        return len(digits) in (10, 11)
+
+**Running Results:**
+Error executing function: is_phone_like() takes 1 positional argument but 2 were given
+
+=== Data Distribution Analysis Function 6 ===
+def is_zip_like(s):
+        digits = re.sub(r'\D', '', s)
+        return len(digits) in (5, 9)
+
+**Running Results:**
+Error executing function: is_zip_like() takes 1 positional argument but 2 were given
+
+=== Data Distribution Analysis Function 7 ===
+def is_percent_like(s):
+        t = s.strip()
+        return bool(re.fullmatch(r'\d+%', t))
+
+**Running Results:**
+Error executing function: is_percent_like() takes 1 positional argument but 2 were given
+
+=== Data Distribution Analysis Function 8 ===
+def pct(n):
+        return f"{n/total_non_missing:.1%}"
+
+**Running Results:**
+Error executing function: pct() takes 1 positional argument but 2 were given

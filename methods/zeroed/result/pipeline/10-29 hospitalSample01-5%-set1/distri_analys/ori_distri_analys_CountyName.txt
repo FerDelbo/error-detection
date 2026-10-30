@@ -1,0 +1,49 @@
+Analysis Results for CountyName
+==================================================
+
+
+=== Data Distribution Analysis Function 4 ===
+def top3_within(subseries):
+            vc = subseries.value_counts(dropna=True)
+            top3 = vc.head(3)
+            return top3.to_dict()
+
+**Running Results:**
+Error executing function: top3_within() takes 1 positional argument but 2 were given
+
+=== Data Distribution Analysis Function 6 ===
+def safe_float(val):
+        if val is None:
+            return None
+        t = str(val).strip()
+        if t == '':
+            return None
+        # Remove common non-numeric noise
+        t = t.replace(',', '')
+        if t.endswith('%'):
+            t = t[:-1]
+        t = re.sub(r'[^0-9\.\-\+eE]', '', t)  # keep numeric parts and exponent
+        if t in {'', '.', '+', '-', 'NaN', 'nan'}:
+            return None
+        try:
+            return float(t)
+        except:
+            return None
+
+**Running Results:**
+Error executing function: safe_float() takes 1 positional argument but 2 were given
+
+=== Data Distribution Analysis Function 8 ===
+def parse_percent(val):
+        t = str(val).strip()
+        t = t.replace(',', '')
+        if t.endswith('%'):
+            t = t[:-1]
+        t = re.sub(r'[^0-9\.\-eE]', '', t)
+        try:
+            return float(t)
+        except:
+            return None
+
+**Running Results:**
+Error executing function: parse_percent() takes 1 positional argument but 2 were given

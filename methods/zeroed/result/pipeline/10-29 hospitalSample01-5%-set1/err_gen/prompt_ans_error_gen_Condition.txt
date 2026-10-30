@@ -1,0 +1,58 @@
+******************** prompt ********************
+
+You are a data quality analyst with extensive experience in identifying and generating realistic data errors. Your task is to analyze a given dataset and generate plausible errors for a specific attribute, simulating real-world data quality issues.
+
+I will provide you with a sample of **possible** clean and dirty values in a tabular format for various attributes. Your objectives are to:
+
+1. Analyze the data to identify patterns, relationships, and constraints between attributes.
+2. Focus on the attribute named `Condition` and generate realistic errors that could occur in real-world scenarios.
+3. Ensure the errors you generate are diverse and cover multiple error types.
+
+Your task is to analyze the data and identify inner relationships. Based on this analysis, generate errors specifically for the attribute `attribute_name` as they might occur in real-world scenarios. 
+The types of errors include the following ones
+1. Pattern Violations: Values that don't match the expected format
+2. Explicit/Implicit Missing Values: Null values or placeholders for missing data
+3. Constraints Violations: Values that conflict with other columns or violate business rules
+4. Out-of-domain values: Values outside the expected range or set
+5. Typos: Spelling or data entry errors
+6. Violate common knowledge: Values that contradict widely known facts
+For the attribute `Condition`, here are the given **possible** clean tuples:
+{'Condition': 'heart failure', 'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}
+{'Condition': 'heart attack', 'Stateavg': 'al_ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge'}
+{'Condition': 'heart failure', 'Stateavg': 'al_hf-4', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling'}
+{'Condition': 'pneumonia', 'Stateavg': 'al_pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling'}
+{'Condition': 'surgical infection prevention', 'Stateavg': 'al_scip-inf-6', 'MeasureName': 'surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)'}
+{'Condition': 'pneumonia', 'Stateavg': 'al_pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling'}
+{'Condition': 'heart attack', 'Stateavg': 'al_ami-3', 'MeasureName': 'heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)'}
+{'Condition': 'heart failure', 'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}
+{'Condition': 'heart attack', 'Stateavg': 'al_ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge'}
+{'Condition': 'heart attack', 'Stateavg': 'al_ami-2', 'MeasureName': 'heart attack patients given aspirin at discharge'}
+There are also some **possible** wrong tuples for reference:
+
+
+Please analyze the error pattern and generate 10 realistic errors specifically for the attribute `Condition`:
+
+The output should be in the following strict format:
+['Condition', error_value_1, Reason: 'Error type1: Specific reason', {'Condition': 'error_value_1', 'Stateavg': 'Stateavg_val_1', 'MeasureName': 'MeasureName_val_1'}]
+['Condition', error_value_2, Reason: 'Error type2: Specific reason', {'Condition': 'error_value_2', 'Stateavg': 'Stateavg_val_2', 'MeasureName': 'MeasureName_val_2'}]
+...
+Please ensure that the reasons for each error are clearly specified.
+Do not be the same as the reference values.
+--------------------------------------------------------------------------
+
+******************** answer ********************
+['Condition', 'Heart Failure', Reason: 'Error type1: Pattern Violation - Incorrect capitalization/formatting of a known category', {'Condition': 'Heart Failure', 'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}]
+['Condition', 'heart-failure', Reason: 'Error type2: Pattern Violation - Uses hyphen instead of space in a known category', {'Condition': 'heart-failure', 'Stateavg': 'al_hf-4', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling'}]
+['Condition', 'heart  failure', Reason: 'Error type1: Pattern Violation - Double space between words', {'Condition': 'heart  failure', 'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}]
+['Condition', 'heart faillure', Reason: 'Error type5: Typos - Common misspelling', {'Condition': 'heart faillure', 'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given beta blocker at discharge'}]
+['Condition', '', Reason: 'Error type2: Explicit Missing Value - Empty string indicates missing data', {'Condition': '', 'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}]
+['Condition', 'Unknown', Reason: 'Error type2: Explicit Missing Value - Placeholder for missing data', {'Condition': 'Unknown', 'Stateavg': 'al_pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling'}]
+['Condition', 'stroke', Reason: 'Error type4: Out-of-domain values - Not among the recognized Condition categories', {'Condition': 'stroke', 'Stateavg': 'al_ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge'}]
+['Condition', 'myocardial infarction', Reason: 'Error type4: Out-of-domain values - Uses a different terminology not in the defined set', {'Condition': 'myocardial infarction', 'Stateavg': 'al_ami-3', 'MeasureName': 'heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)'}]
+['Condition', 'pneumoniae', Reason: 'Error type5: Typos - Extra character makes it an invalid category', {'Condition': 'pneumoniae', 'Stateavg': 'al_pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling'}]
+['Condition', 'surgical infection prevent', Reason: 'Error type1: Pattern Violation - Incomplete phrase or truncation of known category', {'Condition': 'surgical infection prevent', 'Stateavg': 'al_scip-inf-6', 'MeasureName': 'surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)'}]
+
+
+
+
+

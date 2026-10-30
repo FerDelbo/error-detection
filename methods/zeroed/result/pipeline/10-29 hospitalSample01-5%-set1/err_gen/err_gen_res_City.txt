@@ -1,0 +1,9 @@
+{"City": "guntersvile", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}
+{"City": "GUNTERSVILLE", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}
+{"City": "", "ProviderNumber": "10007", "HospitalName": "mizell memorial hospital"}
+{"City": "los angeles", "ProviderNumber": "10018", "HospitalName": "callahan eye foundation hospital"}
+{"City": "krypton", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}
+{"City": "birminghamm", "ProviderNumber": "10018", "HospitalName": "callahan eye foundation hospital"}
+{"City": "guntersville ", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}
+{"City": "gunters ville", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}
+{"City": "hartsellee", "ProviderNumber": "10009", "HospitalName": "hartselle medical center"}

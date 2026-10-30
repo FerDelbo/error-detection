@@ -1,0 +1,31 @@
+def is_clean_unit_spelling(row, attr):
+    value = (row.get(attr) or '').strip()
+    m = re.match(r'^\d+\s+([A-Za-z]+)$', value)
+    if not m:
+        return False
+    return m.group(1).lower() == 'patients'
+
+def is_clean_no_empty_value(row, attr):
+    value = (row.get(attr) or '').strip().lower()
+    return value not in ('empty', '')
+
+def is_clean_no_pxtients_typo(row, attr):
+    value = (row.get(attr) or '')
+    return 'pxtients' not in value.lower()
+
+def is_clean_singular_grammar(row, attr):
+    value = (row.get(attr) or '').strip()
+    m = re.match(r'^(\d+)\s+([A-Za-z]+)$', value)
+    if not m:
+        return False
+    if int(m.group(1)) == 1 and m.group(2).lower() == 'patients':
+        return False
+    return True
+
+def is_clean_format_digits_patients(row, attr):
+    value = (row.get(attr) or '').strip()
+    return bool(re.fullmatch(r'\d+\s+patients', value))
+
+def is_clean_no_extra_whitespace(row, attr):
+    value = (row.get(attr) or '')
+    return value == value.strip() and '  ' not in value

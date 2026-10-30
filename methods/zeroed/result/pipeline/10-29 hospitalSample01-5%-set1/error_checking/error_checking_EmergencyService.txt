@@ -1,0 +1,55 @@
+{
+  "column_name": "EmergencyService",
+  "entries": [
+    {
+      "value_row": "{'EmergencyService': 'yes', 'CountyName': 'marshall', 'PhoneNumber': '2565718000'}",
+      "error_analysis": "Value is 'yes' which is canonical; after normalization to lowercase, valid. No error detected.",
+      "has_error_in_EmergencyService_value": false
+    },
+    {
+      "value_row": "{'EmergencyService': 'yes', 'CountyName': 'jefferson', 'PhoneNumber': '2053258100'}",
+      "error_analysis": "Value is 'yes' which is canonical; after normalization to lowercase, valid. No error detected.",
+      "has_error_in_EmergencyService_value": false
+    },
+    {
+      "value_row": "{'EmergencyService': 'no', 'CountyName': 'covington', 'PhoneNumber': '3344933541'}",
+      "error_analysis": "Value is 'no' which is canonical; after normalization to lowercase, valid. No error detected.",
+      "has_error_in_EmergencyService_value": false
+    },
+    {
+      "value_row": "{'EmergencyService': 'yes', 'CountyName': 'morgan', 'PhoneNumber': '2567736511'}",
+      "error_analysis": "Value is 'yes' which is canonical; after normalization to lowercase, valid. No error detected.",
+      "has_error_in_EmergencyService_value": false
+    },
+    {
+      "value_row": "{'EmergencyService': 'yes', 'CountyName': 'jefferson', 'PhoneNumber': '2563864556'}",
+      "error_analysis": "Value is 'yes' which is canonical; after normalization to lowercase, valid. No error detected.",
+      "has_error_in_EmergencyService_value": false
+    },
+    {
+      "value_row": "{'EmergencyService': 'yes', 'CountyName': 'marshall', 'PhoneNumber': '2565718000'}",
+      "error_analysis": "Value is 'yes' which is canonical; after normalization to lowercase, valid. No error detected.",
+      "has_error_in_EmergencyService_value": false
+    },
+    {
+      "value_row": "{'EmergencyService': 'yes', 'CountyName': 'marshall', 'PhoneNumber': '2565718000'}",
+      "error_analysis": "Value is 'yes' which is canonical; after normalization to lowercase, valid. No error detected.",
+      "has_error_in_EmergencyService_value": false
+    },
+    {
+      "value_row": "{'EmergencyService': 'yes', 'CountyName': 'morgan', 'PhoneNumber': '2567736511'}",
+      "error_analysis": "Value is 'yes' which is canonical; after normalization to lowercase, valid. No error detected.",
+      "has_error_in_EmergencyService_value": false
+    },
+    {
+      "value_row": "{'EmergencyService': 'no', 'CountyName': 'covington', 'PhoneNumber': '3344933541'}",
+      "error_analysis": "Value is 'no' which is canonical; after normalization to lowercase, valid. No error detected.",
+      "has_error_in_EmergencyService_value": false
+    },
+    {
+      "value_row": "{'EmergencyService': 'yes', 'CountyName': 'jefferson', 'PhoneNumber': '2563864556'}",
+      "error_analysis": "Value is 'yes' which is canonical; after normalization to lowercase, valid. No error detected.",
+      "has_error_in_EmergencyService_value": false
+    }
+  ]
+}

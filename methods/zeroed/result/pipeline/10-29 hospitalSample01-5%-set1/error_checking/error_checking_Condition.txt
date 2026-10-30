@@ -1,0 +1,55 @@
+{
+  "column_name": "Condition",
+  "entries": [
+    {
+      "value_row": "{'Condition': 'heart attack', 'Stateavg': 'al_ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge'}",
+      "error_analysis": "No error detected: Condition value ('heart attack') aligns with the related MeasureCode ('al_ami-5') and MeasureName. Lowercase and spacing are consistent; cross-field context is coherent.",
+      "has_error_in_Condition_value": false
+    },
+    {
+      "value_row": "{'Condition': 'heart attack', 'Stateavg': 'al_ami-3', 'MeasureName': 'heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)'}",
+      "error_analysis": "No error detected: Condition matches the related MeasureCode ('al_ami-3') and semantically aligns with the MeasureName describing AMI care (LV dysfunction management).",
+      "has_error_in_Condition_value": false
+    },
+    {
+      "value_row": "{'Condition': 'pneumonia', 'Stateavg': 'al_pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling'}",
+      "error_analysis": "No error detected: Condition 'pneumonia' aligns with the corresponding measure code and smoking cessation counseling name.",
+      "has_error_in_Condition_value": false
+    },
+    {
+      "value_row": "{'Condition': 'heart attack', 'Stateavg': 'al_ami-2', 'MeasureName': 'heart attack patients given aspirin at discharge'}",
+      "error_analysis": "No error detected: Condition corresponds to AMI-related measures; aspirin at discharge is a typical MI care measure.",
+      "has_error_in_Condition_value": false
+    },
+    {
+      "value_row": "{'Condition': 'surgical infection prevention', 'Stateavg': 'al_scip-inf-6', 'MeasureName': 'surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)'}",
+      "error_analysis": "No error detected: Condition matches a SCIP/ infection-prevention category; acceptable within a broader measure taxonomy. Governance note: if only disease-state conditions are allowed, this may be out-of-scope.",
+      "has_error_in_Condition_value": false
+    },
+    {
+      "value_row": "{'Condition': 'heart failure', 'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}",
+      "error_analysis": "No error detected: Condition aligns with HF-2 measure regarding LV function evaluation.",
+      "has_error_in_Condition_value": false
+    },
+    {
+      "value_row": "{'Condition': 'heart failure', 'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}",
+      "error_analysis": "No error detected: duplicate row; Condition remains consistent with mapping.",
+      "has_error_in_Condition_value": false
+    },
+    {
+      "value_row": "{'Condition': 'pneumonia', 'Stateavg': 'al_pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling'}",
+      "error_analysis": "No error detected: Consistent with pneumonia mapping to smoking cessation counseling.",
+      "has_error_in_Condition_value": false
+    },
+    {
+      "value_row": "{'Condition': 'heart failure', 'Stateavg': 'al_hf-4', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling'}",
+      "error_analysis": "No error detected: Condition maps to HF-4 with associated cessation counseling; semantically coherent.",
+      "has_error_in_Condition_value": false
+    },
+    {
+      "value_row": "{'Condition': 'heart attack', 'Stateavg': 'al_ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge'}",
+      "error_analysis": "No error detected: Condition matches AMI-related measure; beta blocker at discharge is a standard post-MI intervention.",
+      "has_error_in_Condition_value": false
+    }
+  ]
+}

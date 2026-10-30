@@ -1,0 +1,56 @@
+******************** prompt ********************
+
+You are a data quality analyst with extensive experience in identifying and generating realistic data errors. Your task is to analyze a given dataset and generate plausible errors for a specific attribute, simulating real-world data quality issues.
+
+I will provide you with a sample of **possible** clean and dirty values in a tabular format for various attributes. Your objectives are to:
+
+1. Analyze the data to identify patterns, relationships, and constraints between attributes.
+2. Focus on the attribute named `HospitalType` and generate realistic errors that could occur in real-world scenarios.
+3. Ensure the errors you generate are diverse and cover multiple error types.
+
+Your task is to analyze the data and identify inner relationships. Based on this analysis, generate errors specifically for the attribute `attribute_name` as they might occur in real-world scenarios. 
+The types of errors include the following ones
+1. Pattern Violations: Values that don't match the expected format
+2. Explicit/Implicit Missing Values: Null values or placeholders for missing data
+3. Constraints Violations: Values that conflict with other columns or violate business rules
+4. Out-of-domain values: Values outside the expected range or set
+5. Typos: Spelling or data entry errors
+6. Violate common knowledge: Values that contradict widely known facts
+For the attribute `HospitalType`, here are the given **possible** clean tuples:
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart failure'}
+{'HospitalType': 'acute care hospitals', 'State': 'xl', 'Condition': 'pneumonia'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart attack'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart failure'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'pneumonia'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart attack'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart failure'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart attack'}
+{'HospitalType': 'acute care hosxitals', 'State': 'xl', 'Condition': 'heart attack'}
+There are also some **possible** wrong tuples for reference:
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'surgical infection prevention'}
+
+Please analyze the error pattern and generate 9 realistic errors specifically for the attribute `HospitalType`:
+
+The output should be in the following strict format:
+['HospitalType', error_value_1, Reason: 'Error type1: Specific reason', {'HospitalType': 'error_value_1', 'State': 'State_val_1', 'Condition': 'Condition_val_1'}]
+['HospitalType', error_value_2, Reason: 'Error type2: Specific reason', {'HospitalType': 'error_value_2', 'State': 'State_val_2', 'Condition': 'Condition_val_2'}]
+...
+Please ensure that the reasons for each error are clearly specified.
+Do not be the same as the reference values.
+--------------------------------------------------------------------------
+
+******************** answer ********************
+['HospitalType', 'acute care hospitls', Reason: 'Error type: Typo - missing "a" in "hospitals"', {'HospitalType': 'acute care hospitls', 'State': 'al', 'Condition': 'heart failure'}]
+['HospitalType', 'Acute Care Hospitals', Reason: 'Error type: Pattern Violation - capitalization does not match expected lowercase format', {'HospitalType': 'Acute Care Hospitals', 'State': 'xl', 'Condition': 'pneumonia'}]
+['HospitalType', 'acute-care hospitals', Reason: 'Error type: Pattern Violation - hyphenated form not expected', {'HospitalType': 'acute-care hospitals', 'State': 'al', 'Condition': 'heart attack'}]
+['HospitalType', 'acute care hospitals ', Reason: 'Error type: Pattern Violation - trailing whitespace', {'HospitalType': 'acute care hospitals ', 'State': 'al', 'Condition': 'heart failure'}]
+['HospitalType', '', Reason: 'Error type: Explicit Missing Value - empty string used to represent missing data', {'HospitalType': '', 'State': 'al', 'Condition': 'pneumonia'}]
+['HospitalType', 'N/A', Reason: 'Error type: Explicit Missing Value - placeholder "N/A" used for missing data', {'HospitalType': 'N/A', 'State': 'xl', 'Condition': 'heart attack'}]
+['HospitalType', 'teaching hospital', Reason: 'Error type: Out-of-domain Value - not a standard hospital type in dataset', {'HospitalType': 'teaching hospital', 'State': 'al', 'Condition': 'pneumonia'}]
+['HospitalType', 'clinic hospital', Reason: 'Error type: Out-of-domain Value - ambiguous hospital classification', {'HospitalType': 'clinic hospital', 'State': 'xl', 'Condition': 'heart failure'}]
+['HospitalType', 'funeral home', Reason: 'Error type: Violate common knowledge - not a hospital type for patient care', {'HospitalType': 'funeral home', 'State': 'al', 'Condition': 'heart attack'}]
+
+
+
+
+

@@ -1,0 +1,19 @@
+def is_clean_no_leading_zero(row, attr):
+    value = row[attr]
+    return isinstance(value, str) and len(value) == 10 and value.isdigit() and value[0] != '0'
+
+def is_clean_no_letters_or_symbols(row, attr):
+    value = row[attr]
+    return isinstance(value, str) and value.isdigit()
+
+def is_clean_nanp_compliant(row, attr):
+    value = row[attr]
+    return isinstance(value, str) and len(value) == 10 and value.isdigit() and value[0] in '23456789'
+
+def is_clean_length10_digits(row, attr):
+    value = row[attr]
+    return isinstance(value, str) and len(value) == 10 and value.isdigit()
+
+def is_clean_digits_only(row, attr):
+    value = row[attr]
+    return isinstance(value, str) and value.isdigit()

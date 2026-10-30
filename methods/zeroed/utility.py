@@ -136,7 +136,7 @@ def get_ans_from_llm(prompt, api_use=True):  # PATCH
                 )
                 completion_res = client.chat.completions.create(
                     model=model_type,
-                    temperature=0,
+                    temperature=float(os.environ.get('ZEROED_TEMPERATURE', '0')),  # PATCH
                     messages=[
                         {"role": "system",
                         "content": role_descr},

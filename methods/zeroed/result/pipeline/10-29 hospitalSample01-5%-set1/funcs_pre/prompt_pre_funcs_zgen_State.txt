@@ -1,0 +1,40 @@
+You are a Data Cleaning Specialist tasked with distinguishing between clean and dirty cells in the `State`.
+
+Here are examples for the 'State' column:
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'surgery patients whose doctors ordered treatments to prevent blood clots after certain types of surgeries'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'pneumonia patients assessed and given pneumococcal vaccination'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'surgery patients whose preventive antibiotics were stopped at the right time (within 24 hours after surgery)'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart attack patients given aspirin at discharge'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'pneumonia patients assessed and given pneumococcal vaccination'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart attack patients given aspirin at arrival'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'pneumonia patients given initial antibiotic(s) within 6 hours after arrival'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart failure patients given discharge instructions'}
+{'State': 'xl', 'HospitalType': 'acute care hosxitals', 'MeasureName': 'heart attack patients given beta blocker at discharge'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart failure patients given discharge instructions'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'pneumonia patients assessed and given pneumococcal vaccination'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart failure patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart attack patients given fibrinolytic medication within 30 minutes of arrival'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart attack patients given beta blocker at discharge'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart attack patients given fibrinolytic medication within 30 minutes of arrival'}
+{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'surgery patients who were given an antibiotic at the right time (within one hour before surgery) to help prevent infection'}
+
+Your task:
+1. Analyze the `State` column values.
+2. Create precise judge functions in Python that:
+- Receive the row content of the `State` column
+- Return True for clean values, False for dirty values
+- Use the naming convention 'is_clean_[judgment]'
+- Cover different perspectives of cleanliness as possible
+- Do not contain blank lines inner functions
+
+Example function code snippet:
+```python def is_clean_[judgment](row, attr):
+    # Value of `State` is row[attr]
+    # Your logic here
+    return True  # or False
+```
+Provide your functions below:

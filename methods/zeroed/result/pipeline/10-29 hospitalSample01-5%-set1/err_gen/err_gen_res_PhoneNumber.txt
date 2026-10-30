@@ -1,0 +1,10 @@
+{"PhoneNumber": "256571800", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}
+{"PhoneNumber": "25657180000", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}
+{"PhoneNumber": "25657a8000", "ProviderNumber": "10007", "HospitalName": "mizell memorial hospital"}
+{"PhoneNumber": "256-571-8000", "ProviderNumber": "10007", "HospitalName": "mizell memorial hospital"}
+{"PhoneNumber": "+1 2565718000", "ProviderNumber": "10007", "HospitalName": "mizell memorial hospital"}
+{"PhoneNumber": "", "ProviderNumber": "10019", "HospitalName": "helen keller memorial hospital"}
+{"PhoneNumber": "NULL", "ProviderNumber": "10019", "HospitalName": "helen keller memorial hospital"}
+{"PhoneNumber": "5555555555", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}
+{"PhoneNumber": "0000000000", "ProviderNumber": "10009", "HospitalName": "hartselle medical center"}
+{"PhoneNumber": "2565718002", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}

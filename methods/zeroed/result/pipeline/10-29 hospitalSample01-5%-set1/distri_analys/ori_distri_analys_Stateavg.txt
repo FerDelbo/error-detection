@@ -1,0 +1,199 @@
+Analysis Results for Stateavg
+==================================================
+
+
+=== Data Distribution Analysis Function 2 ===
+def distr_analysis_pattern_match(dirty_csv, attr_name):
+    if attr_name not in dirty_csv.columns:
+        return f"Attribute '{attr_name}' not found in dataframe columns: {list(dirty_csv.columns)}"
+    
+    series = dirty_csv[attr_name]
+    values = []
+    for v in series:
+        if pd.isna(v) or (isinstance(v, str) and v.strip() == ''):
+            values.append('')
+        else:
+            values.append(str(v).strip())
+    
+    total_non_empty = len([v for v in values if v != ''])
+    non_empty_vals = [v for v in values if v != '']
+    
+    patterns = [
+        ('two_letters_code', re.compile(r'^[A-Za-z]{2}_[A-Za-z0-9\-]+$')),
+        ('digits_only',       re.compile(r'^\d+$')),
+        ('percent',           re.compile(r'^\d+%$')),
+        ('alpha_space',         re.compile(r'^[A-Za-z]+(?: [A-Za-z]+)*$')),
+    ]
+    
+    counts = Counter()
+    by_pattern = {}
+    for v in non_empty_vals:
+        matched = None
+        for name, regex in patterns:
+            if regex.match(v):
+                matched = name
+                break
+        if matched is None:
+            matched = 'unmatched'
+        counts[matched] += 1
+        by_pattern.setdefault(matched, []).append(v)
+    
+    top_patterns = counts.most_common(3)
+    lines = [
+        f"Attribute: {attr_name}",
+        f"Total non-empty values: {total_non_empty}",
+        "Pattern distribution (top patterns):"
+    ]
+    for name, c in top_patterns:
+        samples = by_pattern.get(name, [])[:3]
+        lines.append(f"  - {name}: {c} occurrences; examples: {samples}")
+    
+    unmatched = counts.get('unmatched', 0)
+    lines.append(f"Unmatched (no pattern): {unmatched} values")
+    return "\n".join(lines)
+
+**Running Results:**
+Attribute: Stateavg
+Total non-empty values: 200
+Pattern distribution (top patterns):
+  - two_letters_code: 200 occurrences; examples: ['al_scip-card-2', 'al_scip-inf-1', 'al_scip-inf-2']
+Unmatched (no pattern): 0 values
+
+=== Data Distribution Analysis Function 3 ===
+def distr_analysis_length_stats(dirty_csv, attr_name):
+    if attr_name not in dirty_csv.columns:
+        return f"Attribute '{attr_name}' not found in dataframe columns: {list(dirty_csv.columns)}"
+    
+    series = dirty_csv[attr_name]
+    values = []
+    for v in series:
+        if pd.isna(v) or (isinstance(v, str) and v.strip() == ''):
+            continue
+        values.append(str(v).strip())
+    
+    if not values:
+        return f"Attribute '{attr_name}' has no non-empty string values to analyze length."
+    
+    lengths = [len(s) for s in values]
+    min_len = min(lengths)
+    max_len = max(lengths)
+    mean_len = float(np.mean(lengths))
+    median_len = float(np.median(lengths))
+    q1 = float(np.percentile(lengths, 25))
+    q3 = float(np.percentile(lengths, 75))
+    
+    # Samples for min, median, max
+    min_sample = next((s for s in values if len(s) == min_len), '')
+    sorted_by_len = sorted(values, key=lambda s: len(s))
+    median_sample = sorted_by_len[len(sorted_by_len)//2] if sorted_by_len else ''
+    max_sample = next((s for s in reversed(sorted_by_len) if len(s) == max_len), '')
+    
+    lines = [
+        f"Attribute: {attr_name}",
+        f"Non-empty value count: {len(values)}",
+        f"Length min: {min_len} (sample: '{min_sample}')",
+        f"Q1 (25th percentile): {q1}",
+        f"Median length: {median_len} (sample: '{median_sample}')",
+        f"Q3 (75th percentile): {q3}",
+        f"Length max: {max_len} (sample: '{max_sample}')",
+        f"Mean length: {mean_len:.2f}"
+    ]
+    return "\n".join(lines)
+
+**Running Results:**
+Attribute: Stateavg
+Non-empty value count: 200
+Length min: 7 (sample: 'al_hf-1')
+Q1 (25th percentile): 7.0
+Median length: 8.0 (sample: 'al_ami-1')
+Q3 (75th percentile): 13.0
+Length max: 14 (sample: 'al_scip-card-2')
+Mean length: 9.43
+
+=== Data Distribution Analysis Function 4 ===
+def distr_analysis_numeric_extraction(dirty_csv, attr_name):
+    if attr_name not in dirty_csv.columns:
+        return f"Attribute '{attr_name}' not found in dataframe columns: {list(dirty_csv.columns)}"
+    
+    series = dirty_csv[attr_name]
+    values = []
+    for v in series:
+        if pd.isna(v) or (isinstance(v, str) and v.strip() == ''):
+            values.append('')
+        else:
+            values.append(str(v).strip())
+    
+    # Extract numbers from each value; collect first numeric token per value for summary
+    numbers = []
+    for s in values:
+        if s == '':
+            continue
+        found = re.findall(r'-?\d+\.?\d*', s)
+        if found:
+            numbers.append(float(found[0]))
+    
+    total = len([v for v in values if v != ''])
+    if not numbers:
+        return f"No numeric values found in attribute '{attr_name}' across rows."
+    
+    min_num = min(numbers)
+    max_num = max(numbers)
+    mean_num = float(np.mean(numbers))
+    median_num = float(np.median(np.array(numbers)))
+    samples = numbers[:5]
+    
+    lines = [
+        f"Attribute: {attr_name}",
+        f"Rows with non-empty values: {total}",
+        f"Extracted numbers (first per value):",
+        f"  Min: {min_num}, Max: {max_num}, Mean: {mean_num:.2f}, Median: {median_num}",
+        f"  Samples: {', '.join(str(n) for n in samples)}"
+    ]
+    return "\n".join(lines)
+
+**Running Results:**
+Attribute: Stateavg
+Rows with non-empty values: 200
+Extracted numbers (first per value):
+  Min: -8.0, Max: -1.0, Mean: -3.50, Median: -3.0
+  Samples: -2.0, -1.0, -2.0, -3.0, -4.0
+
+=== Data Distribution Analysis Function 5 ===
+def distr_analysis_missingness_and_consistency(dirty_csv, attr_name):
+    if attr_name not in dirty_csv.columns:
+        return f"Attribute '{attr_name}' not found in dataframe columns: {list(dirty_csv.columns)}"
+    
+    series = dirty_csv[attr_name]
+    values = []
+    for v in series:
+        if pd.isna(v):
+            values.append('')
+        else:
+            values.append(str(v).strip())
+    
+    total = len(values)
+    blank_count = sum(1 for v in values if v == '')
+    whitespace_only_count = sum(1 for v in values if v != '' and v.strip() == '')
+    leading_trailing_count = sum(1 for v in values if v != '' and v != v.strip())
+    
+    lines = [
+        f"Attribute: {attr_name}",
+        f"Total rows: {total}",
+        f"Empty/blank values: {blank_count} ({blank_count/total*100:.2f}%)",
+        f"Whitespace-only entries: {whitespace_only_count}",
+        f"Leading/trailing whitespace occurrences: {leading_trailing_count}"
+    ]
+    
+    # Provide a concrete example if any
+    samples = [v for v in values if v != '' and v != v.strip()]
+    if samples:
+        lines.append(f"Example of a value with whitespace issue: '{samples[0]}'")
+    
+    return "\n".join(lines)
+
+**Running Results:**
+Attribute: Stateavg
+Total rows: 200
+Empty/blank values: 0 (0.00%)
+Whitespace-only entries: 0
+Leading/trailing whitespace occurrences: 0

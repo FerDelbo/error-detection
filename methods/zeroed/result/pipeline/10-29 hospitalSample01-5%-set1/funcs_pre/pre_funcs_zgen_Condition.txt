@@ -1,0 +1,29 @@
+def is_clean_chars_only_lowercase(row, attr):
+    value = str(row.get(attr, "")).strip().lower()
+    return bool(re.fullmatch(r"[a-z]+(?: [a-z]+)*", value))
+
+def is_clean_length_range(row, attr):
+    value = str(row.get(attr, "")).strip()
+    l = len(value)
+    return 3 <= l <= 60
+
+def is_clean_word_count_limit(row, attr):
+    value = str(row.get(attr, "")).strip()
+    if not value:
+        return False
+    return 1 <= len(value.split()) <= 3
+
+def is_clean_token_based(row, attr):
+    value = str(row.get(attr, "")).strip().lower()
+    if not value:
+        return False
+    allowed_tokens = {'pneumonia', 'heart', 'failure', 'attack', 'surgical', 'infection', 'prevention'}
+    for tok in value.split():
+        if tok not in allowed_tokens:
+            return False
+    return True
+
+def is_clean_strict_match(row, attr):
+    value = str(row.get(attr, "")).strip().lower()
+    allowed = {'pneumonia', 'heart failure', 'heart attack', 'surgical infection prevention'}
+    return value in allowed

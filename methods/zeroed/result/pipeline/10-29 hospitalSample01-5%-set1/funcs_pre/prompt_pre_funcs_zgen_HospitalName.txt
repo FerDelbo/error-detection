@@ -1,0 +1,40 @@
+You are a Data Cleaning Specialist tasked with distinguishing between clean and dirty cells in the `HospitalName`.
+
+Here are examples for the 'HospitalName' column:
+{'HospitalName': 'marshall medical center north', 'ProviderNumber': '10010', 'Address': '8000 alabama highway 69'}
+{'HospitalName': 'crenshaw community hospital', 'ProviderNumber': '10008', 'Address': '101 hospital circle'}
+{'HospitalName': 'southeast alabama medical center', 'ProviderNumber': '10001', 'Address': '1108 ross clark circle'}
+{'HospitalName': 'southeast alabama medical center', 'ProviderNumber': '10001', 'Address': '1108 ross clark circle'}
+{'HospitalName': 'marshall medical center north', 'ProviderNumber': '10010', 'Address': '8000 alabama highway 69'}
+{'HospitalName': 'hartselle medical center', 'ProviderNumber': '10009', 'Address': '201 pine street northwest'}
+{'HospitalName': 'hartselle medical center', 'ProviderNumber': '10009', 'Address': '201 pine street northwest'}
+{'HospitalName': 'crenshaw community hospital', 'ProviderNumber': '10008', 'Address': '101 hospital circle'}
+{'HospitalName': 'crenshaw community hospital', 'ProviderNumber': '10008', 'Address': '101 hospital circle'}
+{'HospitalName': 'crenshaw community hospital', 'ProviderNumber': '10008', 'Address': '101 hospital circle'}
+{'HospitalName': 'marshall medical center north', 'ProviderNumber': '10010', 'Address': '8000 alabama highway 69'}
+{'HospitalName': 'crenshaw community hospital', 'ProviderNumber': '10008', 'Address': '101 hospital circle'}
+{'HospitalName': 'hartselle medical center', 'ProviderNumber': '10009', 'Address': '201 pine street northwest'}
+{'HospitalName': 'hartselle medical center', 'ProviderNumber': '10009', 'Address': '201 pine street northwest'}
+{'HospitalName': 'hartselle medical center', 'ProviderNumber': '10009', 'Address': '201 pine street northwest'}
+{'HospitalName': 'hartselle medical center', 'ProviderNumber': '10009', 'Address': '201 pine street northwest'}
+{'HospitalName': 'crenshaw community hospital', 'ProviderNumber': '10008', 'Address': '101 hospital circle'}
+{'HospitalName': 'eliza coffee memorial hospital', 'ProviderNumber': '10006', 'Address': '205 marengo street'}
+{'HospitalName': 'hartselle medical center', 'ProviderNumber': '10009', 'Address': '201 pine street northwest'}
+{'HospitalName': 'marshall medical center south', 'ProviderNumber': '10005', 'Address': '2505 u s highway 431 north'}
+
+Your task:
+1. Analyze the `HospitalName` column values.
+2. Create precise judge functions in Python that:
+- Receive the row content of the `HospitalName` column
+- Return True for clean values, False for dirty values
+- Use the naming convention 'is_clean_[judgment]'
+- Cover different perspectives of cleanliness as possible
+- Do not contain blank lines inner functions
+
+Example function code snippet:
+```python def is_clean_[judgment](row, attr):
+    # Value of `HospitalName` is row[attr]
+    # Your logic here
+    return True  # or False
+```
+Provide your functions below:

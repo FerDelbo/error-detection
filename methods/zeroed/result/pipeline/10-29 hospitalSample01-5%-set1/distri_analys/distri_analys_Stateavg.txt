@@ -1,0 +1,36 @@
+
+
+=== Data Distribution Analysis 2 ===
+
+Attribute: Stateavg
+Total non-empty values: 200
+Pattern distribution (top patterns):
+  - two_letters_code: 200 occurrences; examples: ['al_scip-card-2', 'al_scip-inf-1', 'al_scip-inf-2']
+Unmatched (no pattern): 0 values
+
+=== Data Distribution Analysis 3 ===
+
+Attribute: Stateavg
+Non-empty value count: 200
+Length min: 7 (sample: 'al_hf-1')
+Q1 (25th percentile): 7.0
+Median length: 8.0 (sample: 'al_ami-1')
+Q3 (75th percentile): 13.0
+Length max: 14 (sample: 'al_scip-card-2')
+Mean length: 9.43
+
+=== Data Distribution Analysis 4 ===
+
+Attribute: Stateavg
+Rows with non-empty values: 200
+Extracted numbers (first per value):
+  Min: -8.0, Max: -1.0, Mean: -3.50, Median: -3.0
+  Samples: -2.0, -1.0, -2.0, -3.0, -4.0
+
+=== Data Distribution Analysis 5 ===
+
+Attribute: Stateavg
+Total rows: 200
+Empty/blank values: 0 (0.00%)
+Whitespace-only entries: 0
+Leading/trailing whitespace occurrences: 0

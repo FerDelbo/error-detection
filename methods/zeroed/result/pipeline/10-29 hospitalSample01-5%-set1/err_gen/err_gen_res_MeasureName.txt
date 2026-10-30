@@ -1,0 +1,9 @@
+{"MeasureName": "heartattack patients given beta blocker at discharge", "Stateavg": "al_ami-5", "MeasureCode": "ami-5"}
+{"MeasureName": "N/A", "Stateavg": "al_pn-4", "MeasureCode": "pn-4"}
+{"MeasureName": "", "Stateavg": "al_hf-2", "MeasureCode": "hf-2"}
+{"MeasureName": "pneumonia patients given aspirin at discharge", "Stateavg": "al_pn-4", "MeasureCode": "ami-3"}
+{"MeasureName": "stroke patients given statin therapy at discharge", "Stateavg": "al_stroke-1", "MeasureCode": "st-1"}
+{"MeasureName": "heart failre patients given an evaluation of left ventricular systolic (lvs) function", "Stateavg": "al_hf-2", "MeasureCode": "hf-2"}
+{"MeasureName": "heart attack patients given insulin at discharge", "Stateavg": "al_ami-2", "MeasureCode": "ami-2"}
+{"MeasureName": "pneumonia patients given an evaluation of left ventricular systolic (lvs) function", "Stateavg": "al_pn-4", "MeasureCode": "pn-4"}
+{"MeasureName": "heartattack patients given aspirin at discharve", "Stateavg": "al_ami-2", "MeasureCode": "ami-2"}

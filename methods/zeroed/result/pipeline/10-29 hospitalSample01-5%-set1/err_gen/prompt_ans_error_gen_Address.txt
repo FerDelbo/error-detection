@@ -1,0 +1,58 @@
+******************** prompt ********************
+
+You are a data quality analyst with extensive experience in identifying and generating realistic data errors. Your task is to analyze a given dataset and generate plausible errors for a specific attribute, simulating real-world data quality issues.
+
+I will provide you with a sample of **possible** clean and dirty values in a tabular format for various attributes. Your objectives are to:
+
+1. Analyze the data to identify patterns, relationships, and constraints between attributes.
+2. Focus on the attribute named `Address` and generate realistic errors that could occur in real-world scenarios.
+3. Ensure the errors you generate are diverse and cover multiple error types.
+
+Your task is to analyze the data and identify inner relationships. Based on this analysis, generate errors specifically for the attribute `attribute_name` as they might occur in real-world scenarios. 
+The types of errors include the following ones
+1. Pattern Violations: Values that don't match the expected format
+2. Explicit/Implicit Missing Values: Null values or placeholders for missing data
+3. Constraints Violations: Values that conflict with other columns or violate business rules
+4. Out-of-domain values: Values outside the expected range or set
+5. Typos: Spelling or data entry errors
+6. Violate common knowledge: Values that contradict widely known facts
+For the attribute `Address`, here are the given **possible** clean tuples:
+{'Address': '1300 south montgomery avenue', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}
+{'Address': '201 pine street northwest', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}
+{'Address': '702 n main st', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}
+{'Address': '1720 university blvd', 'ProviderNumber': '10018', 'HospitalName': 'callahan eye foundation hospital'}
+{'Address': '201 pine street northwest', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}
+{'Address': '8000 alabama highway 69', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}
+{'Address': '8000 alabama highway 69', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}
+{'Address': '702 n main st', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}
+{'Address': '8000 alabama highway 69', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}
+{'Address': '1300 south montgomery avenue', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}
+There are also some **possible** wrong tuples for reference:
+
+
+Please analyze the error pattern and generate 10 realistic errors specifically for the attribute `Address`:
+
+The output should be in the following strict format:
+['Address', error_value_1, Reason: 'Error type1: Specific reason', {'Address': 'error_value_1', 'ProviderNumber': 'ProviderNumber_val_1', 'HospitalName': 'HospitalName_val_1'}]
+['Address', error_value_2, Reason: 'Error type2: Specific reason', {'Address': 'error_value_2', 'ProviderNumber': 'ProviderNumber_val_2', 'HospitalName': 'HospitalName_val_2'}]
+...
+Please ensure that the reasons for each error are clearly specified.
+Do not be the same as the reference values.
+--------------------------------------------------------------------------
+
+******************** answer ********************
+['Address', '1300 south montgomery avnue', Reason: 'Pattern Violation: Misspelled street type; "avenue" misspelled as "avnue".', {'Address': '1300 south montgomery avnue', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}]
+['Address', '', Reason: 'Explicit Missing Value: Address is empty', {'Address': '', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}]
+['Address', 'one thousand three hundred south montgomery avenue', Reason: 'Pattern Violation: Street number is not in numeric format; should be digits', {'Address': 'one thousand three hundred south montgomery avenue', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}]
+['Address', '8000 alabama hwy 69', Reason: 'Typos/Abbreviation: Use of abbreviated highway "hwy" instead of "highway"; common street name abbreviation discrepancy', {'Address': '8000 alabama hwy 69', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}]
+['Address', '99999 nowhere street', Reason: 'Out-of-domain value: Street number far outside typical range; improbable address', {'Address': '99999 nowhere street', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}]
+['Address', 'N/A', Reason: 'Explicit Missing Value: Placeholder used instead of a real address', {'Address': 'N/A', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}]
+['Address', '1300 SOUTH MONTGOMERY AVENUE', Reason: 'Pattern Violation: Unusual capitalization; addresses are typically lowercase', {'Address': '1300 SOUTH MONTGOMERY AVENUE', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}]
+['Address', '201 pine street northeast', Reason: 'Constraint Violation: Directional suffix inconsistent with hospital mapping; potential cross-entity mismatch', {'Address': '201 pine street northeast', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}]
+['Address', '201 pine strret northwest', Reason: 'Typos: Misspelled "street" as "strret"', {'Address': '201 pine strret northwest', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}]
+['Address', '-100 pine street northwest', Reason: 'Out-of-domain: Negative street number', {'Address': '-100 pine street northwest', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}]
+
+
+
+
+

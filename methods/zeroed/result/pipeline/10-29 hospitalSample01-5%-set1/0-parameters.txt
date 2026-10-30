@@ -1,0 +1,49 @@
+executing File: /home/a2482126/error-detection/methods/zeroed/main.py
+read_path: 
+resp_path: ./result/pipeline/10-29 hospitalSample01-5%-set1
+dirty_path: ./data/hospitalSample_error-01.csv
+clean_path: ./data/hospitalSample_clean.csv
+Config:
+
+Model:
+  api_use: True
+  pre_func_use: True
+  related_attrs: True
+  distri_analysis: True
+  guide_use: True
+  func_use: True
+  n_method: 5%
+  err_gen_use: True
+  rel_top: 2
+  run_info: pipeline
+
+Read:
+  pre_func: False
+  distri_analysis: False
+  related_attrs: False
+  cluster: False
+  guide: False
+  error_checking: False
+  func: False
+  err_gen: False
+  read_in_batch: False
+  start_time: 01-01-00:00
+  end_time: 01-01-00:00
+
+Data:
+  base_dir: .
+  err_rate_list: ['01']
+  all_set_num: 1
+  datasets: ['hospitalSample']
+  err_check_val_num_per_query: 20
+  result_dir: pipeline
+
+LLM labeled value number: 187
+State func_num:5
+MeasureName func_num:6
+Sample func_num:4
+MeasureCode func_num:6
+Score func_num:0
+HospitalType func_num:0
+ori_func_num:21
+after_right_val:8

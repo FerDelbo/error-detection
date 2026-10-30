@@ -1,0 +1,26 @@
+You are a Data Cleaning Specialist tasked with identifying and distinguishing between clean and dirty cells in the `HospitalType` column.
+
+Clean examples for the 'HospitalType' column:
+{'HospitalType': 'acute care hosxitals', 'State': 'xl', 'Condition': 'heart attack'}
+
+Error examples for the 'HospitalType' column:
+
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'surgical infection prevention'}
+
+Your task:
+1. Analyze the `HospitalType` column values.
+2. Compare the differences between clean and dirty values.
+3. Create precise judge functions in Python that:
+- Receive the row content of the `HospitalType` column
+- Return True for clean values, False for dirty values
+- Use the naming convention 'is_clean_[judgment]'
+- Cover different perspectives of cleanliness as possible
+- Do not contain blank lines inner functions
+
+Example function code snippet:
+```python def is_clean_[judgment](row, attr):
+    # Value of `HospitalType` is row[attr]
+    # Your logic here
+    return True  # or False
+```
+Provide your functions below:

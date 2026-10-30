@@ -1,0 +1,40 @@
+You are a Data Cleaning Specialist tasked with distinguishing between clean and dirty cells in the `HospitalOwner`.
+
+Here are examples for the 'HospitalOwner' column:
+{'HospitalOwner': 'voluntary non-profit - private', 'CountyName': 'covington', 'ProviderNumber': '10007'}
+{'HospitalOwner': 'voluntary non-profit - other', 'CountyName': 'lauderdale', 'ProviderNumber': '10006'}
+{'HospitalOwner': 'voluntary non-profit - private', 'CountyName': 'covington', 'ProviderNumber': '10007'}
+{'HospitalOwner': 'voluntary non-profit - other', 'CountyName': 'lauderdale', 'ProviderNumber': '10006'}
+{'HospitalOwner': 'voluntary non-profit - other', 'CountyName': 'lauderdale', 'ProviderNumber': '10006'}
+{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'marshall', 'ProviderNumber': '10010'}
+{'HospitalOwner': 'voluntary non-profit - private', 'CountyName': 'jefferson', 'ProviderNumber': '10018'}
+{'HospitalOwner': 'proprietary', 'CountyName': 'morgan', 'ProviderNumber': '10009'}
+{'HospitalOwner': 'proprietary', 'CountyName': 'morgan', 'ProviderNumber': '10009'}
+{'HospitalOwner': 'government - federal', 'CountyName': 'crenshaw', 'ProviderNumber': '10008'}
+{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'jefferson', 'ProviderNumber': '10019'}
+{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'marshall', 'ProviderNumber': '10010'}
+{'HospitalOwner': 'voluntary non-profit - other', 'CountyName': 'lauderdale', 'ProviderNumber': '10006'}
+{'HospitalOwner': 'voluntary non-profit - other', 'CountyName': 'lauderdale', 'ProviderNumber': '10006'}
+{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'houston', 'ProviderNumber': '10001'}
+{'HospitalOwner': 'proprietary', 'CountyName': 'morgan', 'ProviderNumber': '10009'}
+{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'marshall', 'ProviderNumber': '10010'}
+{'HospitalOwner': 'government - federal', 'CountyName': 'crenshaw', 'ProviderNumber': '10008'}
+{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'marshall', 'ProviderNumber': '10010'}
+{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'houston', 'ProviderNumber': '10001'}
+
+Your task:
+1. Analyze the `HospitalOwner` column values.
+2. Create precise judge functions in Python that:
+- Receive the row content of the `HospitalOwner` column
+- Return True for clean values, False for dirty values
+- Use the naming convention 'is_clean_[judgment]'
+- Cover different perspectives of cleanliness as possible
+- Do not contain blank lines inner functions
+
+Example function code snippet:
+```python def is_clean_[judgment](row, attr):
+    # Value of `HospitalOwner` is row[attr]
+    # Your logic here
+    return True  # or False
+```
+Provide your functions below:

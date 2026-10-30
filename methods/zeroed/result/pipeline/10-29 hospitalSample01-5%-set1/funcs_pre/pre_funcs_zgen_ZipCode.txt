@@ -1,0 +1,43 @@
+def is_clean_regex5digits(row, attr):
+    import re
+    val = row[attr]
+    s = str(val).strip()
+    return bool(re.fullmatch(r'\d{5}', s))
+
+def is_clean_string_len5_isdigit(row, attr):
+    val = row[attr]
+    return isinstance(val, str) and val.strip().isdigit() and len(val.strip()) == 5
+
+def is_clean_zip_in_range_and_len5(row, attr):
+    val = row[attr]
+    s = str(val).strip()
+    if not s.isdigit():
+        return False
+    if len(s) != 5:
+        return False
+    n = int(s)
+    return 0 <= n <= 99999
+
+def is_clean_isdigit_length5(row, attr):
+    val = row[attr]
+    s = str(val).strip()
+    return s.isdigit() and len(s) == 5
+
+def is_clean_no_internal_spaces(row, attr):
+    val = row[attr]
+    s = str(val)
+    if len(s.strip()) != 5:
+        return False
+    return ' ' not in s and '\t' not in s
+
+def is_clean_no_blank(row, attr):
+    val = row[attr]
+    if val is None:
+        return False
+    s = str(val)
+    return s.strip() != ''
+
+def is_clean_no_leading_trailing_space(row, attr):
+    val = row[attr]
+    s = str(val)
+    return s == s.strip()

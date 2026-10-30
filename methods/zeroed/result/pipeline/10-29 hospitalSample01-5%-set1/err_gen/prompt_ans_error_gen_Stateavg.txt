@@ -1,0 +1,58 @@
+******************** prompt ********************
+
+You are a data quality analyst with extensive experience in identifying and generating realistic data errors. Your task is to analyze a given dataset and generate plausible errors for a specific attribute, simulating real-world data quality issues.
+
+I will provide you with a sample of **possible** clean and dirty values in a tabular format for various attributes. Your objectives are to:
+
+1. Analyze the data to identify patterns, relationships, and constraints between attributes.
+2. Focus on the attribute named `Stateavg` and generate realistic errors that could occur in real-world scenarios.
+3. Ensure the errors you generate are diverse and cover multiple error types.
+
+Your task is to analyze the data and identify inner relationships. Based on this analysis, generate errors specifically for the attribute `attribute_name` as they might occur in real-world scenarios. 
+The types of errors include the following ones
+1. Pattern Violations: Values that don't match the expected format
+2. Explicit/Implicit Missing Values: Null values or placeholders for missing data
+3. Constraints Violations: Values that conflict with other columns or violate business rules
+4. Out-of-domain values: Values outside the expected range or set
+5. Typos: Spelling or data entry errors
+6. Violate common knowledge: Values that contradict widely known facts
+For the attribute `Stateavg`, here are the given **possible** clean tuples:
+{'Stateavg': 'al_hf-4', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling', 'MeasureCode': 'hf-4'}
+{'Stateavg': 'al_ami-2', 'MeasureName': 'heart attack patients given aspirin at discharge', 'MeasureCode': 'ami-2'}
+{'Stateavg': 'al_ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge', 'MeasureCode': 'ami-5'}
+{'Stateavg': 'al_pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling', 'MeasureCode': 'pn-4'}
+{'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function', 'MeasureCode': 'hf-x'}
+{'Stateavg': 'al_scip-inf-6', 'MeasureName': 'surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)', 'MeasureCode': 'scip-inf-6'}
+{'Stateavg': 'al_pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling', 'MeasureCode': 'pn-4'}
+{'Stateavg': 'al_ami-3', 'MeasureName': 'heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)', 'MeasureCode': 'ami-3'}
+{'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function', 'MeasureCode': 'hf-2'}
+{'Stateavg': 'al_ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge', 'MeasureCode': 'ami-5'}
+There are also some **possible** wrong tuples for reference:
+
+
+Please analyze the error pattern and generate 10 realistic errors specifically for the attribute `Stateavg`:
+
+The output should be in the following strict format:
+['Stateavg', error_value_1, Reason: 'Error type1: Specific reason', {'Stateavg': 'error_value_1', 'MeasureName': 'MeasureName_val_1', 'MeasureCode': 'MeasureCode_val_1'}]
+['Stateavg', error_value_2, Reason: 'Error type2: Specific reason', {'Stateavg': 'error_value_2', 'MeasureName': 'MeasureName_val_2', 'MeasureCode': 'MeasureCode_val_2'}]
+...
+Please ensure that the reasons for each error are clearly specified.
+Do not be the same as the reference values.
+--------------------------------------------------------------------------
+
+******************** answer ********************
+['Stateavg', 'al-hf-4', Reason: 'Pattern Violation: Expected format "al_<code>-<num>" with an underscore separator between the state and the code. Found a hyphen instead of the underscore.', {'Stateavg': 'al-hf-4', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling', 'MeasureCode': 'hf-4'}]
+['Stateavg', 'NULL', Reason: 'Explicit Missing Value: Null placeholder detected in Stateavg', {'Stateavg': 'NULL', 'MeasureName': 'heart attack patients given aspirin at discharge', 'MeasureCode': 'ami-2'}]
+['Stateavg', 'al_ami-9', Reason: 'Constraints Violation: Stateavg contains a non-existent numeric suffix for the given MeasureCode (ami-9 does not exist in the reference set)', {'Stateavg': 'al_ami-9', 'MeasureName': 'heart attack patients given aspirin at discharge', 'MeasureCode': 'ami-2'}]
+['Stateavg', 'al_pn-999', Reason: 'Out-of-domain Value: Numeric suffix 999 is outside the expected 1-6 range', {'Stateavg': 'al_pn-999', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling', 'MeasureCode': 'pn-4'}]
+['Stateavg', 'al_amm-2', Reason: 'Typos: The MeasureCode portion contains a typo (amm instead of ami)', {'Stateavg': 'al_amm-2', 'MeasureName': 'heart attack patients given aspirin at discharge', 'MeasureCode': 'ami-2'}]
+['Stateavg', 'AL_hf-2', Reason: 'Pattern Violation: Uppercase state prefix violates the expected lowercase "al" convention', {'Stateavg': 'AL_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function', 'MeasureCode': 'hf-2'}]
+['Stateavg', 'al_hf-04', Reason: 'Out-of-domain Value: Numeric suffix uses leading zero which is not used in the reference set', {'Stateavg': 'al_hf-04', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function', 'MeasureCode': 'hf-2'}]
+['Stateavg', 'al_hf-4 ', Reason: 'Pattern Violation: Trailing whitespace detected in Stateavg', {'Stateavg': 'al_hf-4 ', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling', 'MeasureCode': 'hf-4'}]
+['Stateavg', 'al_ami-2   ', Reason: 'Pattern Violation: Trailing whitespace in Stateavg; trim before comparison', {'Stateavg': 'al_ami-2   ', 'MeasureName': 'heart attack patients given aspirin at discharge', 'MeasureCode': 'ami-2'}]
+['Stateavg', 'ca_hf-4', Reason: 'Wrong-domain: State prefix not equal to the allowed domain (al); indicates data from a different state', {'Stateavg': 'ca_hf-4', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling', 'MeasureCode': 'hf-4'}]
+
+
+
+
+

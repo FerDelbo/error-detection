@@ -1,0 +1,34 @@
+def is_clean_not_treatment_terms(row, attr):
+    val = (row.get(attr) or "").lower()
+    dirty_terms = ("beta blocker", "discharge", "at discharge", "heart attack")
+    for dt in dirty_terms:
+        if dt in val:
+            return False
+    return True
+
+def is_clean_counseling_term(row, attr):
+    val = (row.get(attr) or "").lower()
+    for w in ("counseling", "advice", "education", "guidance"):
+        if w in val:
+            return True
+    return False
+
+def is_clean_pneumonia_related(row, attr):
+    val = (row.get(attr) or "").lower()
+    return "pneumonia" in val
+
+def is_clean_pneumonia_and_counseling(row, attr):
+    val = (row.get(attr) or "").lower()
+    return "pneumonia" in val and any(k in val for k in ("counseling", "advice", "education", "guidance"))
+
+def is_clean_smoking_cessation(row, attr):
+    val = (row.get(attr) or "").lower()
+    return "smoking cessation" in val
+
+def is_clean_general_focus_on_counseling_and_pneumonia(row, attr):
+    val = (row.get(attr) or "").lower()
+    if "pneumonia" in val and any(k in val for k in ("counseling", "advice", "education", "guidance")):
+        return True
+    if "pneumonia" in val:
+        return True
+    return False

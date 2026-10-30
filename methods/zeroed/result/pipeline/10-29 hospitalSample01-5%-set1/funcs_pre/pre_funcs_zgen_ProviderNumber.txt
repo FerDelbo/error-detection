@@ -1,0 +1,39 @@
+def is_clean_in_known_range(row, attr):
+    val = row.get(attr)
+    if val is None:
+        return False
+    try:
+        n = int(val)
+    except (ValueError, TypeError):
+        return False
+    return 10001 <= n <= 10019
+
+def is_clean_present_and_string(row, attr):
+    val = row.get(attr)
+    return isinstance(val, str) and len(val.strip()) > 0
+
+def is_clean_all_digits_any_length(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str):
+        return False
+    return val.isdigit()
+
+def is_clean_only_digits_5(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str):
+        return False
+    if len(val) != 5:
+        return False
+    return val.isdigit()
+
+def is_clean_length_5_or_6(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str):
+        return False
+    return len(val) in (5, 6) and val.isdigit()
+
+def is_clean_no_whitespace(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str):
+        return False
+    return val == val.strip()

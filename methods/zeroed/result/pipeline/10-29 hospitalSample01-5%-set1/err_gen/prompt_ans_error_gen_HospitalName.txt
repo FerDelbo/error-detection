@@ -1,0 +1,58 @@
+******************** prompt ********************
+
+You are a data quality analyst with extensive experience in identifying and generating realistic data errors. Your task is to analyze a given dataset and generate plausible errors for a specific attribute, simulating real-world data quality issues.
+
+I will provide you with a sample of **possible** clean and dirty values in a tabular format for various attributes. Your objectives are to:
+
+1. Analyze the data to identify patterns, relationships, and constraints between attributes.
+2. Focus on the attribute named `HospitalName` and generate realistic errors that could occur in real-world scenarios.
+3. Ensure the errors you generate are diverse and cover multiple error types.
+
+Your task is to analyze the data and identify inner relationships. Based on this analysis, generate errors specifically for the attribute `attribute_name` as they might occur in real-world scenarios. 
+The types of errors include the following ones
+1. Pattern Violations: Values that don't match the expected format
+2. Explicit/Implicit Missing Values: Null values or placeholders for missing data
+3. Constraints Violations: Values that conflict with other columns or violate business rules
+4. Out-of-domain values: Values outside the expected range or set
+5. Typos: Spelling or data entry errors
+6. Violate common knowledge: Values that contradict widely known facts
+For the attribute `HospitalName`, here are the given **possible** clean tuples:
+{'HospitalName': 'mizell memorial hospital', 'ProviderNumber': '10007', 'Address': '702 n main st'}
+{'HospitalName': 'marshall medical center north', 'ProviderNumber': '10010', 'Address': '8000 alabama highway 69'}
+{'HospitalName': 'marshall medical center north', 'ProviderNumber': '10010', 'Address': '8000 alabama highway 69'}
+{'HospitalName': 'hartselle medical center', 'ProviderNumber': '10009', 'Address': '201 pine street northwest'}
+{'HospitalName': 'helen keller memorial hospital', 'ProviderNumber': '10019', 'Address': '1300 south montgomery avenue'}
+{'HospitalName': 'callahan eye foundation hospital', 'ProviderNumber': '10018', 'Address': '1720 university blvd'}
+{'HospitalName': 'hartselle medical center', 'ProviderNumber': '10009', 'Address': '201 pine street northwest'}
+{'HospitalName': 'mizell memorial hospital', 'ProviderNumber': '10007', 'Address': '702 n main st'}
+{'HospitalName': 'marshall medical center north', 'ProviderNumber': '10010', 'Address': '8000 alabama highway 69'}
+{'HospitalName': 'helen keller memorial hospital', 'ProviderNumber': '10019', 'Address': '1300 south montgomery avenue'}
+There are also some **possible** wrong tuples for reference:
+
+
+Please analyze the error pattern and generate 10 realistic errors specifically for the attribute `HospitalName`:
+
+The output should be in the following strict format:
+['HospitalName', error_value_1, Reason: 'Error type1: Specific reason', {'HospitalName': 'error_value_1', 'ProviderNumber': 'ProviderNumber_val_1', 'Address': 'Address_val_1'}]
+['HospitalName', error_value_2, Reason: 'Error type2: Specific reason', {'HospitalName': 'error_value_2', 'ProviderNumber': 'ProviderNumber_val_2', 'Address': 'Address_val_2'}]
+...
+Please ensure that the reasons for each error are clearly specified.
+Do not be the same as the reference values.
+--------------------------------------------------------------------------
+
+******************** answer ********************
+['HospitalName', mizell memorial hospitl, Reason: 'Error type1: Pattern Violation - Typographical error in "hospital"', {'HospitalName': 'mizell memorial hospitl', 'ProviderNumber': '10007', 'Address': '702 n main st'}]
+['HospitalName', Marshall Medical Center North, Reason: 'Error type2: Pattern Violation - Incorrect capitalization', {'HospitalName': 'Marshall Medical Center North', 'ProviderNumber': '10010', 'Address': '8000 alabama highway 69'}]
+['HospitalName', marshall medical center north , Reason: 'Error type3: Pattern Violation - Trailing whitespace', {'HospitalName': 'marshall medical center north ', 'ProviderNumber': '10010', 'Address': '8000 alabama highway 69'}]
+['HospitalName', NULL, Reason: 'Error type4: Explicit Missing Value - HospitalName is null', {'HospitalName': 'NULL', 'ProviderNumber': '10009', 'Address': '201 pine street northwest'}]
+['HospitalName', unknown hospital, Reason: 'Error type5: Constraint Violation - Unknown hospital for the given provider number', {'HospitalName': 'unknown hospital', 'ProviderNumber': '10007', 'Address': '702 n main st'}]
+['HospitalName', central city hospital, Reason: 'Error type6: Out-of-domain Value - HospitalName not in recognized domain', {'HospitalName': 'central city hospital', 'ProviderNumber': '10099', 'Address': '123 fake road'}]
+['HospitalName', helen keller memorial hospitl, Reason: 'Error type7: Typos - Typographical error in "hospital" word', {'HospitalName': 'helen keller memorial hospitl', 'ProviderNumber': '10019', 'Address': '1300 south montgomery avenue'}]
+['HospitalName', callahan eye foundation hosp, Reason: 'Error type8: Pattern Violation - Abbreviated/truncated suffix (missing "ital hospital")', {'HospitalName': 'callahan eye foundation hosp', 'ProviderNumber': '10018', 'Address': '1720 university blvd'}]
+['HospitalName', saint marys hospital, Reason: 'Error type9: Violate common knowledge - HospitalName conflicts with widely known hospital roster', {'HospitalName': 'saint marys hospital', 'ProviderNumber': '10018', 'Address': '1720 university blvd'}]
+['HospitalName', sunrise medical center south, Reason: 'Error type10: Out-of-domain - Nonexistent ProviderNumber with plausible hospital name', {'HospitalName': 'sunrise medical center south', 'ProviderNumber': '10011', 'Address': '999 imaginary rd'}]
+
+
+
+
+

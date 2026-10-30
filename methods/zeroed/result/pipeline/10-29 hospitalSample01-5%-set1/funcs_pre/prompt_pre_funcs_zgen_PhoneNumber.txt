@@ -1,0 +1,40 @@
+You are a Data Cleaning Specialist tasked with distinguishing between clean and dirty cells in the `PhoneNumber`.
+
+Here are examples for the 'PhoneNumber' column:
+{'PhoneNumber': '2058383122', 'ProviderNumber': '10011', 'HospitalName': 'st vincents east'}
+{'PhoneNumber': '2567736511', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}
+{'PhoneNumber': '2565718000', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}
+{'PhoneNumber': '2565938310', 'ProviderNumber': '10005', 'HospitalName': 'marshall medical center south'}
+{'PhoneNumber': '3344933541', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}
+{'PhoneNumber': '3347938701', 'ProviderNumber': '10001', 'HospitalName': 'southeast alabama medical center'}
+{'PhoneNumber': '2565938310', 'ProviderNumber': '10005', 'HospitalName': 'marshall medical center south'}
+{'PhoneNumber': '2567688400', 'ProviderNumber': '10006', 'HospitalName': 'eliza coffee memorial hospital'}
+{'PhoneNumber': '3347938701', 'ProviderNumber': '10001', 'HospitalName': 'southeast alabama medical center'}
+{'PhoneNumber': '2567736511', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}
+{'PhoneNumber': '3344933541', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}
+{'PhoneNumber': '2567736511', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}
+{'PhoneNumber': '2567736511', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}
+{'PhoneNumber': '2565938310', 'ProviderNumber': '10005', 'HospitalName': 'marshall medical center south'}
+{'PhoneNumber': '3344933541', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}
+{'PhoneNumber': '3344933541', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}
+{'PhoneNumber': '2567688400', 'ProviderNumber': '10006', 'HospitalName': 'eliza coffee memorial hospital'}
+{'PhoneNumber': '2565x38310', 'ProviderNumber': '10005', 'HospitalName': 'marshall medical center south'}
+{'PhoneNumber': '3344933541', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}
+{'PhoneNumber': '2053258100', 'ProviderNumber': '10018', 'HospitalName': 'callahan eye foundation hospital'}
+
+Your task:
+1. Analyze the `PhoneNumber` column values.
+2. Create precise judge functions in Python that:
+- Receive the row content of the `PhoneNumber` column
+- Return True for clean values, False for dirty values
+- Use the naming convention 'is_clean_[judgment]'
+- Cover different perspectives of cleanliness as possible
+- Do not contain blank lines inner functions
+
+Example function code snippet:
+```python def is_clean_[judgment](row, attr):
+    # Value of `PhoneNumber` is row[attr]
+    # Your logic here
+    return True  # or False
+```
+Provide your functions below:

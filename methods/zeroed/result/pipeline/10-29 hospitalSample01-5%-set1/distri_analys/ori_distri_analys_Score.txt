@@ -1,0 +1,312 @@
+Analysis Results for Score
+==================================================
+
+
+=== Data Distribution Analysis Function 1 ===
+def distr_analysis_overview(dirty_csv, attr_name):
+    """
+    Basic overview for a given column.
+    - Total rows
+    - Missing/placeholder values (and percentage)
+    - Non-missing distinct values
+    - Representative top values with counts
+    - Non-missing sample values
+    Returns a detailed string description.
+    """
+    try:
+        s_raw = dirty_csv[attr_name]
+    except KeyError:
+        return f"Error: column '{attr_name}' not found in dataframe."
+    
+    total = int(len(s_raw))
+    
+    # Detect missing: NaN or empty string OR common placeholders
+    mask_nan = s_raw.isna()
+    mask_empty_string = s_raw.astype(str).str.strip().eq('')
+    placeholder_values = {'empty', 'na', 'null', 'none', 'missing'}
+    mask_placeholder = s_raw.astype(str).str.strip().str.lower().isin(placeholder_values)
+    missing_mask = mask_nan | mask_empty_string | mask_placeholder
+    missing_count = int(missing_mask.sum())
+    missing_pct = (missing_count / total) * 100 if total > 0 else 0.0
+    
+    present_mask = ~missing_mask
+    present_count = int(present_mask.sum())
+    
+    # Unique non-missing values
+    unique_non_missing = int(s_raw[present_mask].astype(str).nunique()) if present_count > 0 else 0
+    
+    # Top representative values (non-missing only)
+    top_values = s_raw[present_mask].astype(str).value_counts().head(5)
+    
+    # Sample non-missing values
+    sample_values = s_raw[present_mask].astype(str).head(5).tolist() if present_count > 0 else []
+    
+    lines = []
+    lines.append(f"Overview for column '{attr_name}':")
+    lines.append(f"- Total rows: {total}")
+    lines.append(f"- Missing/placeholder values: {missing_count} ({missing_pct:.2f}%)")
+    lines.append(f"- Non-missing rows: {present_count}, Non-missing distinct values: {unique_non_missing}")
+    
+    lines.append("Representative non-missing values (top counts):")
+    if not top_values.empty:
+        for val, cnt in top_values.items():
+            lines.append(f"  {val!r}: {cnt} occurrences")
+    else:
+        lines.append("  (none)")
+    
+    lines.append("Sample non-missing values:")
+    if sample_values:
+        lines.append("  " + ", ".join([f"{v!r}" for v in sample_values]))
+    else:
+        lines.append("  (no samples)")
+    
+    return "\n".join(lines)
+
+**Running Results:**
+Overview for column 'Score':
+- Total rows: 200
+- Missing/placeholder values: 33 (16.50%)
+- Non-missing rows: 167, Non-missing distinct values: 40
+Representative non-missing values (top counts):
+  '100%': 41 occurrences
+  '99%': 10 occurrences
+  '97%': 9 occurrences
+  '96%': 9 occurrences
+  '93%': 7 occurrences
+Sample non-missing values:
+  '97%', '92%', '75%', '100%', '86%'
+
+=== Data Distribution Analysis Function 2 ===
+def distr_analysis_score_numeric(dirty_csv, attr_name):
+    """
+    For Score-like fields encoded as strings with a trailing percent sign (e.g., '99%', '100%'):
+    - Identify strictly valid patterns (only digits with optional decimal and a trailing '%')
+    - Parse numeric values, compute statistics (mean, median, min, max)
+    - Provide distribution across 0-100 in 20-point bins
+    - Show samples of valid values
+    Returns a detailed string description.
+    """
+    try:
+        s_raw = dirty_csv[attr_name]
+    except KeyError:
+        return f"Error: column '{attr_name}' not found in dataframe."
+    
+    total = int(len(s_raw))
+    s_str = s_raw.astype(str)
+    
+    # Strictly valid pattern: digits with optional decimal, followed by '%'
+    pattern = r'^\s*(\d+(?:\.\d+)?)%\s*$'
+    mask_valid = s_str.str.match(pattern)
+    valid_vals = s_str[mask_valid].str.strip().str.rstrip('%').astype(float)
+    valid_count = int(mask_valid.sum())
+    invalid_count = total - valid_count
+    
+    lines = []
+    lines.append(f"Score Numeric Analysis for column '{attr_name}':")
+    lines.append(f"- Total rows: {total}")
+    lines.append(f"- Valid numeric percentages: {valid_count} ({valid_count/total*100:.2f}%)")
+    lines.append(f"- Invalid / non-matching values: {invalid_count} ({invalid_count/total*100:.2f}%)")
+    
+    if valid_count > 0:
+        mean_val = float(valid_vals.mean())
+        median_val = float(valid_vals.median())
+        min_val = float(valid_vals.min())
+        max_val = float(valid_vals.max())
+        q25 = float(valid_vals.quantile(0.25))
+        q50 = float(valid_vals.quantile(0.50))
+        q75 = float(valid_vals.quantile(0.75))
+        
+        lines.append(f"- Stats: mean={mean_val:.2f}, median={median_val:.2f}, min={min_val:.2f}, max={max_val:.2f}")
+        lines.append(f"- Quartiles: 25th={q25:.2f}, 50th={q50:.2f}, 75th={q75:.2f}")
+        
+        # Simple bin distribution across 0-100 in 20-point bins
+        bins = [0, 20, 40, 60, 80, 100]
+        bin_counts = pd.cut(valid_vals, bins=bins, right=False, include_lowest=True).value_counts().sort_index()
+        bin_summary = ", ".join([f"{str(interval)}: {cnt}" for interval, cnt in zip(bin_counts.index.astype(str), bin_counts.values)])
+        lines.append(f"- Distribution by bins (0-20, 20-40, 40-60, 60-80, 80-100): {bin_summary}")
+        
+        # Representative samples
+        samples = valid_vals.head(5).astype(int).tolist()
+        lines.append("Sample valid values (rounded to integers): " + ", ".join([f"{v}%" for v in samples]))
+    else:
+        lines.append("No strictly valid numeric percentage values found.")
+    
+    return "\n".join(lines)
+
+**Running Results:**
+Score Numeric Analysis for column 'Score':
+- Total rows: 200
+- Valid numeric percentages: 163 (81.50%)
+- Invalid / non-matching values: 37 (18.50%)
+- Stats: mean=87.74, median=94.00, min=0.00, max=100.00
+- Quartiles: 25th=86.00, 50th=94.00, 75th=99.50
+- Distribution by bins (0-20, 20-40, 40-60, 60-80, 80-100): [0, 20): 4, [20, 40): 3, [40, 60): 3, [60, 80): 19, [80, 100): 93
+Sample valid values (rounded to integers): 97%, 92%, 75%, 100%, 86%
+
+=== Data Distribution Analysis Function 3 ===
+def distr_analysis_missing_patterns(dirty_csv, attr_name):
+    """
+    Analyze how missing values are encoded in the column.
+    - Count NaN vs textual placeholders (empty string, 'empty', 'na', 'null', 'none', 'missing', etc.)
+    - Show distribution of missing encodings and a sample of non-missing values
+    Returns a detailed string description.
+    """
+    try:
+        s_raw = dirty_csv[attr_name]
+    except KeyError:
+        return f"Error: column '{attr_name}' not found in dataframe."
+    
+    total = int(len(s_raw))
+    # NaN mask
+    mask_nan = s_raw.isna()
+    
+    # Textual placeholders (non-NaN) in lower-case
+    placeholders = {'empty', 'na', 'null', 'none', 'missing', 'missing value'}
+    val_str = s_raw.astype(str).str.strip().str.lower()
+    mask_placeholder = val_str.isin(placeholders) & ~mask_nan
+    
+    count_nan = int(mask_nan.sum())
+    count_placeholders = int(mask_placeholder.sum())
+    non_missing_mask = ~(mask_nan | mask_placeholder)
+    non_missing_values = val_str[non_missing_mask]
+    
+    # Counts per placeholder type (for non-nan placeholders)
+    placeholder_types = val_str[mask_placeholder].value_counts().to_dict()
+    # Non-missing representative values
+    non_missing_top = non_missing_values.value_counts().head(5)
+    
+    lines = []
+    lines.append(f"Missing pattern analysis for column '{attr_name}':")
+    lines.append(f"- Total rows: {total}")
+    lines.append(f"- NaN values: {count_nan} ({count_nan/total*100:.2f}%)")
+    lines.append(f"- Placeholder encodings in non-missing values: {count_placeholders} "
+                 f"({count_placeholders/total*100:.2f}%)")
+    
+    if placeholder_types:
+        lines.append("- Placeholder type counts (non-NaN placeholders):")
+        # Show up to 5 placeholder types
+        for t, cnt in list(placeholder_types.items())[:5]:
+            lines.append(f"  {t!r}: {cnt} occurrences")
+    
+    lines.append("Representative non-missing values:")
+    if not non_missing_top.empty:
+        for val, cnt in non_missing_top.items():
+            lines.append(f"  {val!r}: {cnt} occurrences")
+    else:
+        lines.append("  (no non-missing values to display)")
+    
+    return "\n".join(lines)
+
+**Running Results:**
+Missing pattern analysis for column 'Score':
+- Total rows: 200
+- NaN values: 0 (0.00%)
+- Placeholder encodings in non-missing values: 33 (16.50%)
+- Placeholder type counts (non-NaN placeholders):
+  'empty': 33 occurrences
+Representative non-missing values:
+  '100%': 41 occurrences
+  '99%': 10 occurrences
+  '97%': 9 occurrences
+  '96%': 9 occurrences
+  '93%': 7 occurrences
+
+=== Data Distribution Analysis Function 4 ===
+def distr_analysis_length_and_charset(dirty_csv, attr_name):
+    """
+    Analyze string length distribution and ASCII/non-ASCII content.
+    - Length statistics for non-missing values
+    - ASCII vs non-ASCII count
+    - Representative length values
+    Returns a detailed string description.
+    """
+    try:
+        s_raw = dirty_csv[attr_name]
+    except KeyError:
+        return f"Error: column '{attr_name}' not found in dataframe."
+    
+    mask_nan = s_raw.isna()
+    non_missing = s_raw[~mask_nan].astype(str)
+    
+    lengths = non_missing.str.len()
+    if lengths.empty:
+        return f"No non-missing values to analyze in column '{attr_name}'."
+    
+    min_len = int(lengths.min())
+    max_len = int(lengths.max())
+    mean_len = float(lengths.mean())
+    median_len = float(lengths.median())
+    q25 = float(lengths.quantile(0.25))
+    q75 = float(lengths.quantile(0.75))
+    
+    # ASCII / non-ASCII detection
+    is_ascii = non_missing.str.encode('ascii', 'ignore').str.len() == non_missing.str.len()
+    ascii_count = int(is_ascii.sum())
+    non_ascii_count = int(lengths.size - ascii_count)
+    
+    # Representative samples by length
+    sample_by_length = non_missing.sort_values().head(5).tolist()
+    
+    lines = []
+    lines.append(f"Length & charset analysis for column '{attr_name}':")
+    lines.append(f"- Non-missing values: {non_missing.size}")
+    lines.append(f"- Lengths: min={min_len}, max={max_len}, mean={mean_len:.2f}, median={median_len:.2f}, "
+                 f"25th={q25:.2f}, 75th={q75:.2f}")
+    lines.append(f"- ASCII-only values: {ascii_count}, Non-ASCII values: {non_ascii_count}")
+    lines.append("Representative non-missing values by length (sample):")
+    if sample_by_length:
+        lines.append("  " + ", ".join([f"{v!r}" for v in sample_by_length]))
+    else:
+        lines.append("  (no samples)")
+    
+    return "\n".join(lines)
+
+**Running Results:**
+Length & charset analysis for column 'Score':
+- Non-missing values: 200
+- Lengths: min=2, max=5, mean=3.52, median=3.00, 25th=3.00, 75th=4.00
+- ASCII-only values: 200, Non-ASCII values: 0
+Representative non-missing values by length (sample):
+  '0%', '0%', '0%', '100%', '100%'
+
+=== Data Distribution Analysis Function 5 ===
+def distr_analysis_value_diversity(dirty_csv, attr_name, top_n=5):
+    """
+    Diversity-focused view: counts of top values and a small diversity metric note.
+    - Top_n representative values with counts
+    - Optional diversity hint: number of unique non-missing values
+    Returns a detailed string description.
+    """
+    try:
+        s_raw = dirty_csv[attr_name]
+    except KeyError:
+        return f"Error: column '{attr_name}' not found in dataframe."
+    
+    # Treat NaN as missing; consider non-missing values for diversity
+    non_missing = s_raw[~s_raw.isna()]
+    non_missing_str = non_missing.astype(str)
+    
+    unique_non_missing = non_missing_str.nunique()
+    top_values = non_missing_str.value_counts().head(top_n)
+    
+    lines = []
+    lines.append(f"Diversity view for column '{attr_name}':")
+    lines.append(f"- Non-missing distinct values: {int(unique_non_missing)}")
+    lines.append(f"- Top {top_n} values by frequency:")
+    if not top_values.empty:
+        for val, cnt in top_values.items():
+            lines.append(f"  {val!r}: {cnt} occurrences")
+    else:
+        lines.append("  (no non-missing values)")
+    
+    return "\n".join(lines)
+
+**Running Results:**
+Diversity view for column 'Score':
+- Non-missing distinct values: 41
+- Top 5 values by frequency:
+  '100%': 41 occurrences
+  'empty': 33 occurrences
+  '99%': 10 occurrences
+  '96%': 9 occurrences
+  '97%': 9 occurrences

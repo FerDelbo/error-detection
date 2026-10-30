@@ -1,0 +1,10 @@
+{"Stateavg": "al-hf-4", "MeasureName": "heart failure patients given smoking cessation advice/counseling", "MeasureCode": "hf-4"}
+{"Stateavg": "NULL", "MeasureName": "heart attack patients given aspirin at discharge", "MeasureCode": "ami-2"}
+{"Stateavg": "al_ami-9", "MeasureName": "heart attack patients given aspirin at discharge", "MeasureCode": "ami-2"}
+{"Stateavg": "al_pn-999", "MeasureName": "pneumonia patients given smoking cessation advice/counseling", "MeasureCode": "pn-4"}
+{"Stateavg": "al_amm-2", "MeasureName": "heart attack patients given aspirin at discharge", "MeasureCode": "ami-2"}
+{"Stateavg": "AL_hf-2", "MeasureName": "heart failure patients given an evaluation of left ventricular systolic (lvs) function", "MeasureCode": "hf-2"}
+{"Stateavg": "al_hf-04", "MeasureName": "heart failure patients given an evaluation of left ventricular systolic (lvs) function", "MeasureCode": "hf-2"}
+{"Stateavg": "al_hf-4 ", "MeasureName": "heart failure patients given smoking cessation advice/counseling", "MeasureCode": "hf-4"}
+{"Stateavg": "al_ami-2   ", "MeasureName": "heart attack patients given aspirin at discharge", "MeasureCode": "ami-2"}
+{"Stateavg": "ca_hf-4", "MeasureName": "heart failure patients given smoking cessation advice/counseling", "MeasureCode": "hf-4"}

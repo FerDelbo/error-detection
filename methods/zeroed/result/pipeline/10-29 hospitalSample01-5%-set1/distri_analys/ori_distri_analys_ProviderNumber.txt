@@ -1,0 +1,108 @@
+Analysis Results for ProviderNumber
+==================================================
+
+
+=== Data Distribution Analysis Function 2 ===
+def is_missing(val):
+        if val is None:
+            return True
+        s = str(val).strip().lower()
+        return s in {"", "nan", "none", "null", "missing", "empty"}
+
+**Running Results:**
+Error executing function: is_missing() takes 1 positional argument but 2 were given
+
+=== Data Distribution Analysis Function 3 ===
+def to_float(s):
+        if is_missing(s):
+            return None
+        t = str(s).strip()
+        t = t.replace('%', '')
+        t = t.replace(',', '')
+        t = t.replace(' ', '')
+        try:
+            return float(t)
+        except:
+            return None
+
+**Running Results:**
+Error executing function: to_float() takes 1 positional argument but 2 were given
+
+=== Data Distribution Analysis Function 5 ===
+def is_missing(val):
+        if val is None:
+            return True
+        s = str(val).strip().lower()
+        return s in {"", "nan", "none", "null", "missing", "empty"}
+
+**Running Results:**
+Error executing function: is_missing() takes 1 positional argument but 2 were given
+
+=== Data Distribution Analysis Function 6 ===
+def classify(val):
+        if is_missing(val):
+            return "missing"
+        s = str(val).strip()
+        # numeric (e.g., "123", "-45.6")
+        if re.fullmatch(r"-?\d+(\.\d+)?", s):
+            return "numeric"
+        # numeric with percent (e.g., "99%")
+        if re.fullmatch(r"-?\d+(\.\d+)?%", s):
+            return "numeric_with_percent"
+        # alphanumeric (contains both letters and digits)
+        if re.search(r"[A-Za-z]", s) and re.search(r"\d", s):
+            return "alphanumeric"
+        # alphabetic only
+        if re.fullmatch(r"[A-Za-z]+", s):
+            return "alpha"
+        # otherwise other
+        return "other"
+
+**Running Results:**
+Error executing function: classify() takes 1 positional argument but 2 were given
+
+=== Data Distribution Analysis Function 8 ===
+def is_missing(val):
+        if val is None:
+            return True
+        s = str(val).strip().lower()
+        return s in {"", "nan", "none", "null", "missing", "empty"}
+
+**Running Results:**
+Error executing function: is_missing() takes 1 positional argument but 2 were given
+
+=== Data Distribution Analysis Function 10 ===
+def is_missing(val):
+        if val is None:
+            return True
+        s = str(val).strip().lower()
+        return s in {"", "nan", "none", "null", "missing", "empty"}
+
+**Running Results:**
+Error executing function: is_missing() takes 1 positional argument but 2 were given
+
+=== Data Distribution Analysis Function 11 ===
+def to_float_safe(s):
+        if s is None or is_missing(s):
+            return None
+        t = str(s).strip()
+        t = t.replace('%', '')
+        t = t.replace(',', '')
+        t = t.replace(' ', '')
+        try:
+            return float(t)
+        except:
+            return None
+
+**Running Results:**
+Error executing function: to_float_safe() takes 1 positional argument but 2 were given
+
+=== Data Distribution Analysis Function 13 ===
+def is_missing(val):
+        if val is None:
+            return True
+        s = str(val).strip().lower()
+        return s in {"", "nan", "none", "null", "missing", "empty"}
+
+**Running Results:**
+Error executing function: is_missing() takes 1 positional argument but 2 were given

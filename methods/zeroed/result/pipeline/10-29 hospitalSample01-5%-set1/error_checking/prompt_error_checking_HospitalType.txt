@@ -1,0 +1,42 @@
+As a data quality expert, please first analyze attribute relations and analyze the 'HospitalType' attribute values for potential errors. Ignore case sensitivity
+Provide your analysis on `HospitalType` values in JSON format as follows, **do not care problems in other attributes**:
+
+
+```json
+{"column_name": "HospitalType",
+  "entries": [
+    {
+"value_row": "{'HospitalType': 'HospitalType_example_val_1', 'State': 'State_example_val_1', 'Condition': 'Condition_example_val_1'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_HospitalType_value": true/false,
+    },
+    {
+"value_row": "{'HospitalType': 'HospitalType_example_val_2', 'State': 'State_example_val_2', 'Condition': 'Condition_example_val_2'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_HospitalType_value": true/false,
+    }
+  ]
+}
+```
+
+
+If unsure, do not indicate an error.
+- Please ignore the case sensitivity issues.
+
+-----------------------------------------------
+
+Here are the given inputs:
+Values of column 'HospitalType' along with related attribute values:
+'{"HospitalType":"acute care hosxitals","State":"xl","Condition":"heart attack"}
+{"HospitalType":"acute care hospitals","State":"xl","Condition":"pneumonia"}
+{"HospitalType":"acute care hospitals","State":"al","Condition":"heart failure"}
+{"HospitalType":"acute care hospitals","State":"al","Condition":"heart attack"}
+{"HospitalType":"acute care hospitals","State":"al","Condition":"heart failure"}
+{"HospitalType":"acute care hospitals","State":"al","Condition":"heart attack"}
+{"HospitalType":"acute care hospitals","State":"al","Condition":"heart attack"}
+{"HospitalType":"acute care hospitals","State":"al","Condition":"surgical infection prevention"}
+{"HospitalType":"acute care hospitals","State":"al","Condition":"heart failure"}
+{"HospitalType":"acute care hospitals","State":"al","Condition":"pneumonia"}'
+Provide your analysis on `HospitalType` values in the required JSON format, **do not care problems in other attributes**:
+
+

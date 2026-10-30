@@ -1,0 +1,55 @@
+{
+  "column_name": "HospitalName",
+  "entries": [
+    {
+      "value_row": "{'HospitalName': 'hartselle medical center', 'ProviderNumber': '10009', 'Address': '201 pine street northwest'}",
+      "error_analysis": "No obvious pattern violations. HospitalName contains only lowercase letters and spaces; typical facility-name tokens present (e.g., 'medical center'). No digits or unusual symbols. Duplicates observed across rows relate to repeated records for the same provider, not an issue with the HospitalName value itself.",
+      "has_error_in_HospitalName_value": false
+    },
+    {
+      "value_row": "{'HospitalName': 'mizell memorial hospital', 'ProviderNumber': '10007', 'Address': '702 n main st'}",
+      "error_analysis": "No obvious pattern violations; plausible hospital-name tokens; no digits or special characters within the name. Duplicates exist for the same provider-number pair, which is acceptable as repeated records.",
+      "has_error_in_HospitalName_value": false
+    },
+    {
+      "value_row": "{'HospitalName': 'helen keller memorial hospital', 'ProviderNumber': '10019', 'Address': '1300 south montgomery avenue'}",
+      "error_analysis": "No obvious pattern violations; plausible hospital-name tokens; duplicates exist for the same provider-number pair, which is expected in repeated records.",
+      "has_error_in_HospitalName_value": false
+    },
+    {
+      "value_row": "{'HospitalName': 'mizell memorial hospital', 'ProviderNumber': '10007', 'Address': '702 n main st'}",
+      "error_analysis": "No obvious pattern violations; consistent with another row for the same provider-number. The HospitalName value itself appears clean.",
+      "has_error_in_HospitalName_value": false
+    },
+    {
+      "value_row": "{'HospitalName': 'helen keller memorial hospital', 'ProviderNumber': '10019', 'Address': '1300 south montgomery avenue'}",
+      "error_analysis": "No obvious pattern violations; consistent with another row for the same provider-number. The HospitalName value itself appears clean.",
+      "has_error_in_HospitalName_value": false
+    },
+    {
+      "value_row": "{'HospitalName': 'callahan eye foundation hospital', 'ProviderNumber': '10018', 'Address': '1720 university blvd'}",
+      "error_analysis": "No obvious pattern violations; multi-token hospital-name with no digits or unusual symbols. Appears valid.",
+      "has_error_in_HospitalName_value": false
+    },
+    {
+      "value_row": "{'HospitalName': 'marshall medical center north', 'ProviderNumber': '10010', 'Address': '8000 alabama highway 69'}",
+      "error_analysis": "No obvious pattern violations; plausible facility-name. Duplicates across rows reflect repeated records for the same provider; the HospitalName value itself is clean.",
+      "has_error_in_HospitalName_value": false
+    },
+    {
+      "value_row": "{'HospitalName': 'hartselle medical center', 'ProviderNumber': '10009', 'Address': '201 pine street northwest'}",
+      "error_analysis": "No obvious pattern violations; same as an earlier row for the same provider. HospitalName value remains clean.",
+      "has_error_in_HospitalName_value": false
+    },
+    {
+      "value_row": "{'HospitalName': 'marshall medical center north', 'ProviderNumber': '10010', 'Address': '8000 alabama highway 69'}",
+      "error_analysis": "No obvious pattern violations; duplicates observed; the HospitalName value appears consistently valid.",
+      "has_error_in_HospitalName_value": false
+    },
+    {
+      "value_row": "{'HospitalName': 'marshall medical center north', 'ProviderNumber': '10010', 'Address': '8000 alabama highway 69'}",
+      "error_analysis": "No obvious pattern violations; identical to previous row. The HospitalName itself is clean.",
+      "has_error_in_HospitalName_value": false
+    }
+  ]
+}

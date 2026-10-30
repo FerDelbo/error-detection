@@ -1,0 +1,42 @@
+def is_clean_double_spaces(row, attr):
+    s = str(row[attr])
+    if '  ' in s:
+        return False
+    return True
+
+def is_clean_min_length(row, attr):
+    s = str(row[attr])
+    if len(s) < 15:
+        return False
+    return True
+
+def is_clean_normalized_spacing(row, attr):
+    s = str(row[attr])
+    if s.strip() != s:
+        return False
+    if '  ' in s:
+        return False
+    return True
+
+def is_clean_no_nonascii(row, attr):
+    s = str(row[attr])
+    try:
+        s.encode('ascii')
+    except UnicodeEncodeError:
+        return False
+    return True
+
+def is_clean_common_typos(row, attr):
+    s = str(row[attr]).lower()
+    typos = ('attaxk','disxharge')
+    for t in typos:
+        if t in s:
+            return False
+    return True
+
+def is_clean_basic_characters(row, attr):
+    s = str(row[attr])
+    for ch in s:
+        if ord(ch) < 32 or ord(ch) > 126:
+            return False
+    return True

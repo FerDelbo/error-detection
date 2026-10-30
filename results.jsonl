@@ -1,0 +1,1 @@
+{"dataset": "hospitalSample", "method": "zeroed_s1", "precision": 0.045, "recall": 0.865, "f1": 0.086, "tp": 128, "fp": 2716, "fn": 20, "erros_reais": 148}

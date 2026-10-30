@@ -1,0 +1,36 @@
+def is_clean_by_modulo_five(row, attr):
+    value = row.get(attr, '')
+    s = str(value).strip()
+    import re
+    m = re.fullmatch(r'(\d+)\s+patients', s)
+    if not m: return False
+    return int(m.group(1)) % 5 == 0
+
+def is_clean_by_strict_pattern_and_divisible_by_five(row, attr):
+    value = row.get(attr, '')
+    s = str(value).strip()
+    import re
+    m = re.fullmatch(r'(\d+)\s+patients', s)
+    if not m: return False
+    n = int(m.group(1))
+    return n % 5 == 0
+
+def is_clean_by_last_digit_05(row, attr):
+    value = row.get(attr, '')
+    if not isinstance(value, str): value = str(value)
+    s = value.strip()
+    import re
+    m = re.fullmatch(r'(\d+)\s+patients', s)
+    if not m: return False
+    n = int(m.group(1))
+    return (n % 10) in (0, 5)
+
+def is_clean_by_endswith_zero_or_five(row, attr):
+    value = row.get(attr, '')
+    if not isinstance(value, str): value = str(value)
+    s = value.strip()
+    import re
+    m = re.fullmatch(r'(\d+)\s+patients', s)
+    if not m: return False
+    n = int(m.group(1))
+    return (n % 10) in (0, 5)

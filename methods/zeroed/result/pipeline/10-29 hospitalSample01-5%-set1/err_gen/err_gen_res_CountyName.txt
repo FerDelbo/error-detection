@@ -1,0 +1,10 @@
+{"CountyName": "covington ", "ProviderNumber": "10007", "HospitalName": "mizell memorial hospital"}
+{"CountyName": "Covington", "ProviderNumber": "10018", "HospitalName": "callahan eye foundation hospital"}
+{"CountyName": "jeffersonn", "ProviderNumber": "10019", "HospitalName": "helen keller memorial hospital"}
+{"CountyName": "marshalll", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}
+{"CountyName": "morgn", "ProviderNumber": "10009", "HospitalName": "hartselle medical center"}
+{"CountyName": "dekalb", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}
+{"CountyName": "", "ProviderNumber": "10007", "HospitalName": "mizell memorial hospital"}
+{"CountyName": "NULL", "ProviderNumber": "10019", "HospitalName": "helen keller memorial hospital"}
+{"CountyName": "covington#", "ProviderNumber": "10018", "HospitalName": "callahan eye foundation hospital"}
+{"CountyName": "UnknownCounty", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}

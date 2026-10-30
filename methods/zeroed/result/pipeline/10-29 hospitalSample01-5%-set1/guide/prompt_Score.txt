@@ -1,0 +1,91 @@
+You are a top data scientist, especially in data cleaning. Please generate a comprehensive and expert guide for identifying and analyzing common errors in the 'Score' attribute of the 'hospitalSample' table:
+
+Here are the data distribution analysis results for the attribute 'Score':
+
+=== Data Distribution Analysis 1 ===
+
+Overview for column 'Score':
+- Total rows: 200
+- Missing/placeholder values: 33 (16.50%)
+- Non-missing rows: 167, Non-missing distinct values: 40
+Representative non-missing values (top counts):
+  '100%': 41 occurrences
+  '99%': 10 occurrences
+  '97%': 9 occurrences
+  '96%': 9 occurrences
+  '93%': 7 occurrences
+Sample non-missing values:
+  '97%', '92%', '75%', '100%', '86%'
+
+=== Data Distribution Analysis 2 ===
+
+Score Numeric Analysis for column 'Score':
+- Total rows: 200
+- Valid numeric percentages: 163 (81.50%)
+- Invalid / non-matching values: 37 (18.50%)
+- Stats: mean=87.74, median=94.00, min=0.00, max=100.00
+- Quartiles: 25th=86.00, 50th=94.00, 75th=99.50
+- Distribution by bins (0-20, 20-40, 40-60, 60-80, 80-100): [0, 20): 4, [20, 40): 3, [40, 60): 3, [60, 80): 19, [80, 100): 93
+Sample valid values (rounded to integers): 97%, 92%, 75%, 100%, 86%
+
+=== Data Distribution Analysis 3 ===
+
+Missing pattern analysis for column 'Score':
+- Total rows: 200
+- NaN values: 0 (0.00%)
+- Placeholder encodings in non-missing values: 33 (16.50%)
+- Placeholder type counts (non-NaN placeholders):
+  'empty': 33 occurrences
+Representative non-missing values:
+  '100%': 41 occurrences
+  '99%': 10 occurrences
+  '97%': 9 occurrences
+  '96%': 9 occurrences
+  '93%': 7 occurrences
+
+=== Data Distribution Analysis 4 ===
+
+Length & charset analysis for column 'Score':
+- Non-missing values: 200
+- Lengths: min=2, max=5, mean=3.52, median=3.00, 25th=3.00, 75th=4.00
+- ASCII-only values: 200, Non-ASCII values: 0
+Representative non-missing values by length (sample):
+  '0%', '0%', '0%', '100%', '100%'
+
+=== Data Distribution Analysis 5 ===
+
+Diversity view for column 'Score':
+- Non-missing distinct values: 41
+- Top 5 values by frequency:
+  '100%': 41 occurrences
+  'empty': 33 occurrences
+  '99%': 10 occurrences
+  '96%': 9 occurrences
+  '97%': 9 occurrences
+
+Here are some examples for 'Score' along with strong correlated attribute values:
+{'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north', 'Address': '8000 alabama highway 69', 'City': 'guntersville', 'State': 'al', 'ZipCode': '35976', 'CountyName': 'marshall', 'PhoneNumber': '2565718000', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'government - hospital district or authority', 'EmergencyService': 'yes', 'Condition': 'heart attack', 'MeasureCode': 'ami-2', 'MeasureName': 'heart attack patients given aspirin at discharge', 'Score': '100%', 'Sample': '6xpatients', 'Stateavg': 'al_ami-2'}
+{'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital', 'Address': '1300 south montgomery avenue', 'City': 'sheffield', 'State': 'al', 'ZipCode': '35660', 'CountyName': 'jefferson', 'PhoneNumber': '2563864556', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'government - hospital district or authority', 'EmergencyService': 'yes', 'Condition': 'heart attack', 'MeasureCode': 'ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge', 'Score': '86%', 'Sample': '14 patients', 'Stateavg': 'al_ami-5'}
+{'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital', 'Address': '702 n main st', 'City': 'opp', 'State': 'xl', 'ZipCode': '36467', 'CountyName': 'covington', 'PhoneNumber': '3344933541', 'HospitalType': 'acute care hosxitals', 'HospitalOwner': 'voluntary non-profit - private', 'EmergencyService': 'no', 'Condition': 'heart attack', 'MeasureCode': 'ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge', 'Score': '100%', 'Sample': '2 patients', 'Stateavg': 'al_ami-5'}
+{'ProviderNumber': '10018', 'HospitalName': 'callahan eye foundation hospital', 'Address': '1720 university blvd', 'City': 'birmingham', 'State': 'al', 'ZipCode': '35233', 'CountyName': 'jefferson', 'PhoneNumber': '2053258100', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'voluntary non-profit - private', 'EmergencyService': 'yes', 'Condition': 'surgical infection prevention', 'MeasureCode': 'scip-inf-6', 'MeasureName': 'surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)', 'Score': 'empty', 'Sample': 'empty', 'Stateavg': 'al_scip-inf-6'}
+{'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center', 'Address': '201 pine street northwest', 'City': 'hartselle', 'State': 'al', 'ZipCode': '35640', 'CountyName': 'morgan', 'PhoneNumber': '2567736511', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'proprietary', 'EmergencyService': 'yes', 'Condition': 'heart attack', 'MeasureCode': 'ami-3', 'MeasureName': 'heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)', 'Score': '100%', 'Sample': '1 patients', 'Stateavg': 'al_ami-3'}
+{'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital', 'Address': '1300 south montgomery avenue', 'City': 'sheffield', 'State': 'al', 'ZipCode': '35660', 'CountyName': 'jefferson', 'PhoneNumber': '2563864556', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'government - hospital district or authority', 'EmergencyService': 'yes', 'Condition': 'heart failure', 'MeasureCode': 'hf-4', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling', 'Score': '100%', 'Sample': '41 patients', 'Stateavg': 'al_hf-4'}
+{'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north', 'Address': '8000 alabama highway 69', 'City': 'guntersville', 'State': 'xl', 'ZipCode': '35976', 'CountyName': 'marshall', 'PhoneNumber': '2565718000', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'government - hospital district or authority', 'EmergencyService': 'yes', 'Condition': 'pneumonia', 'MeasureCode': 'pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling', 'Score': '94%', 'Sample': '65 patients', 'Stateavg': 'al_pn-4'}
+{'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital', 'Address': '702 n main st', 'City': 'opp', 'State': 'al', 'ZipCode': '36467', 'CountyName': 'covington', 'PhoneNumber': '3344933541', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'voluntary non-profit - private', 'EmergencyService': 'no', 'Condition': 'pneumonia', 'MeasureCode': 'pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling', 'Score': '100%', 'Sample': '28 patients', 'Stateavg': 'al_pn-4'}
+{'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center', 'Address': '201 pine street northwest', 'City': 'hartselle', 'State': 'al', 'ZipCode': '35640', 'CountyName': 'morgan', 'PhoneNumber': '2567736511', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'proprietary', 'EmergencyService': 'yes', 'Condition': 'heart failure', 'MeasureCode': 'hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function', 'Score': '98%', 'Sample': '42 patients', 'Stateavg': 'al_hf-2'}
+{'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north', 'Address': '8000 alabama highway 69', 'City': 'guntersville', 'State': 'al', 'ZipCode': '35976', 'CountyName': 'marshall', 'PhoneNumber': '2565718000', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'government - hospital district or authority', 'EmergencyService': 'yes', 'Condition': 'heart failure', 'MeasureCode': 'hf-x', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function', 'Score': '84%', 'Sample': '80 patients', 'Stateavg': 'al_hf-2'}
+
+Please first explain the meaning of attribute 'Score'.
+
+
+Then, for each error type below, considering the data distribution analysis results, provide specific causes, examples, and detection methods for 'Score':
+1. Pattern Violations: Expected formats and non-conforming value identification.
+2. Missing Values: Explicit null indicators and implicit missing data patterns.
+3. Constraint Violations: Relationships of 'Score' with other attributes and how to verify them.
+4. Out-of-domain Values: Valid value range/set and possible outliers.
+5. Typos: Common misspellings or data entry errors and detection strategies.
+6. Common Knowledge Violations: Expected rules/facts and methods to identify contradictions.
+
+Please also generate some possible errors for the 'Score' attribute data based on the above error types. 
+
+IMPORTANT NOTE: When analyzing potential errors, if you are not completely certain that a value is wrong, please respect the mainstream data distribution patterns. Some values that appear unusual may actually be valid according to local requirements or domain-specific conventions. Only flag values as errors when you have high confidence they violate clear patterns or rules.

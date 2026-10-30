@@ -1,0 +1,55 @@
+{
+  "column_name": "PhoneNumber",
+  "entries": [
+    {
+      "value_row": "{'PhoneNumber': '2563864556', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}",
+      "error_analysis": "No issues detected: 10-digit numeric NANP format with valid area/exchange codes (256/386). Duplicates present but not an error in this field.",
+      "has_error_in_PhoneNumber_value": false
+    },
+    {
+      "value_row": "{'PhoneNumber': '2053258100', 'ProviderNumber': '10018', 'HospitalName': 'callahan eye foundation hospital'}",
+      "error_analysis": "No issues detected: 10-digit numeric NANP format with valid area/exchange codes (205/325). Duplicates present but not an error in this field.",
+      "has_error_in_PhoneNumber_value": false
+    },
+    {
+      "value_row": "{'PhoneNumber': '2563864556', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}",
+      "error_analysis": "No issues detected: 10-digit numeric NANP format with valid area/exchange codes (256/386). Duplicates present but not an error in this field.",
+      "has_error_in_PhoneNumber_value": false
+    },
+    {
+      "value_row": "{'PhoneNumber': '2565718000', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}",
+      "error_analysis": "No issues detected: 10-digit numeric NANP format with valid area/exchange codes (256/571). Duplicates present but not an error in this field.",
+      "has_error_in_PhoneNumber_value": false
+    },
+    {
+      "value_row": "{'PhoneNumber': '2567736511', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}",
+      "error_analysis": "No issues detected: 10-digit numeric NANP format with valid area/exchange codes (256/773). Duplicates present but not an error in this field.",
+      "has_error_in_PhoneNumber_value": false
+    },
+    {
+      "value_row": "{'PhoneNumber': '3344933541', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}",
+      "error_analysis": "No issues detected: 10-digit numeric NANP format with valid area/exchange codes (334/493). Duplicates present but not an error in this field.",
+      "has_error_in_PhoneNumber_value": false
+    },
+    {
+      "value_row": "{'PhoneNumber': '3344933541', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}",
+      "error_analysis": "No issues detected: 10-digit numeric NANP format with valid area/exchange codes (334/493). Duplicates present but not an error in this field.",
+      "has_error_in_PhoneNumber_value": false
+    },
+    {
+      "value_row": "{'PhoneNumber': '2565718000', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}",
+      "error_analysis": "No issues detected: 10-digit numeric NANP format with valid area/exchange codes (256/571). Duplicates present but not an error in this field.",
+      "has_error_in_PhoneNumber_value": false
+    },
+    {
+      "value_row": "{'PhoneNumber': '2565718000', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}",
+      "error_analysis": "No issues detected: 10-digit numeric NANP format with valid area/exchange codes (256/571). Duplicates present but not an error in this field.",
+      "has_error_in_PhoneNumber_value": false
+    },
+    {
+      "value_row": "{'PhoneNumber': '2567736511', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}",
+      "error_analysis": "No issues detected: 10-digit numeric NANP format with valid area/exchange codes (256/773). Duplicates present but not an error in this field.",
+      "has_error_in_PhoneNumber_value": false
+    }
+  ]
+}

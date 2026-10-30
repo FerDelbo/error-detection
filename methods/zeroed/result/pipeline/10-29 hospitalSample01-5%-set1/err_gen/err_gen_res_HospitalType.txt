@@ -1,0 +1,9 @@
+{"HospitalType": "acute care hospitls", "State": "al", "Condition": "heart failure"}
+{"HospitalType": "Acute Care Hospitals", "State": "xl", "Condition": "pneumonia"}
+{"HospitalType": "acute-care hospitals", "State": "al", "Condition": "heart attack"}
+{"HospitalType": "acute care hospitals ", "State": "al", "Condition": "heart failure"}
+{"HospitalType": "", "State": "al", "Condition": "pneumonia"}
+{"HospitalType": "N/A", "State": "xl", "Condition": "heart attack"}
+{"HospitalType": "teaching hospital", "State": "al", "Condition": "pneumonia"}
+{"HospitalType": "clinic hospital", "State": "xl", "Condition": "heart failure"}
+{"HospitalType": "funeral home", "State": "al", "Condition": "heart attack"}

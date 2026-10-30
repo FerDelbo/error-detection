@@ -1,0 +1,31 @@
+Analysis Results for HospitalName
+==================================================
+
+
+=== Data Distribution Analysis Function 1 ===
+def parse_numeric(val):
+        if pd.isna(val):
+            return None
+        sv = str(val).strip()
+        if sv == '':
+            return None
+        # If ends with percent, drop the %
+        if sv.endswith('%'):
+            sv = sv[:-1].strip()
+        # Remove commas for thousands, etc.
+        sv = sv.replace(',', '')
+        # Direct parse
+        try:
+            return float(sv)
+        except ValueError:
+            # Fallback: extract first numeric token present
+            m = re.search(r'-?\d+(?:\.\d+)?', sv)
+            if m:
+                try:
+                    return float(m.group())
+                except ValueError:
+                    return None
+            return None
+
+**Running Results:**
+Error executing function: parse_numeric() takes 1 positional argument but 2 were given

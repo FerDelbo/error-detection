@@ -1,0 +1,2833 @@
+all_wrong_num:148
+all_detected_num:2844
+correctly_detect:128
+pre:0.04500703234864625
+rec:0.864864864806428
+f1:0.08556149638526267
+
+Per-attribute statistics:
+
+Attribute: ProviderNumber
+Total errors: 3
+Wrongly detected: 197 (7.25%)
+Missing errors: 0 (0.00%)
+
+Attribute: HospitalName
+Total errors: 3
+Wrongly detected: 0 (0.00%)
+Missing errors: 3 (15.00%)
+
+Attribute: Address
+Total errors: 5
+Wrongly detected: 195 (7.18%)
+Missing errors: 0 (0.00%)
+
+Attribute: City
+Total errors: 8
+Wrongly detected: 192 (7.07%)
+Missing errors: 0 (0.00%)
+
+Attribute: State
+Total errors: 9
+Wrongly detected: 0 (0.00%)
+Missing errors: 9 (45.00%)
+
+Attribute: ZipCode
+Total errors: 9
+Wrongly detected: 191 (7.03%)
+Missing errors: 0 (0.00%)
+
+Attribute: CountyName
+Total errors: 4
+Wrongly detected: 196 (7.22%)
+Missing errors: 0 (0.00%)
+
+Attribute: PhoneNumber
+Total errors: 6
+Wrongly detected: 194 (7.14%)
+Missing errors: 0 (0.00%)
+
+Attribute: HospitalType
+Total errors: 4
+Wrongly detected: 196 (7.22%)
+Missing errors: 0 (0.00%)
+
+Attribute: HospitalOwner
+Total errors: 9
+Wrongly detected: 191 (7.03%)
+Missing errors: 0 (0.00%)
+
+Attribute: EmergencyService
+Total errors: 4
+Wrongly detected: 196 (7.22%)
+Missing errors: 0 (0.00%)
+
+Attribute: Condition
+Total errors: 5
+Wrongly detected: 195 (7.18%)
+Missing errors: 0 (0.00%)
+
+Attribute: MeasureCode
+Total errors: 6
+Wrongly detected: 162 (5.96%)
+Missing errors: 1 (5.00%)
+
+Attribute: MeasureName
+Total errors: 13
+Wrongly detected: 129 (4.75%)
+Missing errors: 1 (5.00%)
+
+Attribute: Score
+Total errors: 37
+Wrongly detected: 163 (6.00%)
+Missing errors: 0 (0.00%)
+
+Attribute: Sample
+Total errors: 20
+Wrongly detected: 122 (4.49%)
+Missing errors: 6 (30.00%)
+
+Attribute: Stateavg
+Total errors: 3
+Wrongly detected: 197 (7.25%)
+Missing errors: 0 (0.00%)
+
+wrongly_detected:
+0 ProviderNumber 10018
+1 ProviderNumber 10018
+2 ProviderNumber 10018
+3 ProviderNumber 10018
+4 ProviderNumber 10018
+5 ProviderNumber 10018
+6 ProviderNumber 10018
+7 ProviderNumber 10018
+8 ProviderNumber 10019
+9 ProviderNumber 10019
+10 ProviderNumber 10019
+11 ProviderNumber 10019
+12 ProviderNumber 10019
+14 ProviderNumber 10019
+15 ProviderNumber 10019
+16 ProviderNumber 10019
+17 ProviderNumber 10019
+18 ProviderNumber 10019
+19 ProviderNumber 10001
+20 ProviderNumber 10001
+21 ProviderNumber 10001
+22 ProviderNumber 10001
+23 ProviderNumber 10001
+24 ProviderNumber 10001
+25 ProviderNumber 10001
+26 ProviderNumber 10001
+27 ProviderNumber 10001
+28 ProviderNumber 10001
+29 ProviderNumber 10001
+30 ProviderNumber 10001
+31 ProviderNumber 10001
+32 ProviderNumber 10001
+33 ProviderNumber 10001
+34 ProviderNumber 10001
+35 ProviderNumber 10001
+36 ProviderNumber 10001
+37 ProviderNumber 10001
+38 ProviderNumber 10001
+39 ProviderNumber 10001
+40 ProviderNumber 10001
+41 ProviderNumber 10001
+42 ProviderNumber 10001
+43 ProviderNumber 10001
+44 ProviderNumber 10005
+46 ProviderNumber 10005
+47 ProviderNumber 10005
+48 ProviderNumber 10005
+49 ProviderNumber 10005
+50 ProviderNumber 10005
+51 ProviderNumber 10005
+52 ProviderNumber 10005
+53 ProviderNumber 10005
+54 ProviderNumber 10005
+55 ProviderNumber 10005
+56 ProviderNumber 10005
+57 ProviderNumber 10005
+58 ProviderNumber 10005
+59 ProviderNumber 10005
+60 ProviderNumber 10005
+61 ProviderNumber 10005
+62 ProviderNumber 10005
+63 ProviderNumber 10005
+64 ProviderNumber 10005
+65 ProviderNumber 10005
+66 ProviderNumber 10005
+67 ProviderNumber 10005
+68 ProviderNumber 10005
+69 ProviderNumber 10006
+70 ProviderNumber 10006
+71 ProviderNumber 10006
+72 ProviderNumber 10006
+73 ProviderNumber 10006
+74 ProviderNumber 10006
+75 ProviderNumber 10006
+76 ProviderNumber 10006
+77 ProviderNumber 10006
+78 ProviderNumber 10006
+79 ProviderNumber 10006
+80 ProviderNumber 10006
+82 ProviderNumber 10006
+83 ProviderNumber 10006
+84 ProviderNumber 10006
+85 ProviderNumber 10006
+86 ProviderNumber 10006
+87 ProviderNumber 10006
+88 ProviderNumber 10006
+89 ProviderNumber 10006
+90 ProviderNumber 10006
+91 ProviderNumber 10006
+92 ProviderNumber 10006
+93 ProviderNumber 10006
+94 ProviderNumber 10007
+95 ProviderNumber 10007
+96 ProviderNumber 10007
+97 ProviderNumber 10007
+98 ProviderNumber 10007
+99 ProviderNumber 10007
+100 ProviderNumber 10007
+101 ProviderNumber 10007
+102 ProviderNumber 10007
+103 ProviderNumber 10007
+104 ProviderNumber 10007
+105 ProviderNumber 10007
+106 ProviderNumber 10007
+107 ProviderNumber 10007
+108 ProviderNumber 10007
+109 ProviderNumber 10007
+110 ProviderNumber 10007
+111 ProviderNumber 10007
+112 ProviderNumber 10007
+113 ProviderNumber 10007
+114 ProviderNumber 10007
+115 ProviderNumber 10007
+116 ProviderNumber 10007
+117 ProviderNumber 10007
+118 ProviderNumber 10007
+119 ProviderNumber 10008
+120 ProviderNumber 10008
+121 ProviderNumber 10008
+122 ProviderNumber 10008
+123 ProviderNumber 10008
+124 ProviderNumber 10008
+125 ProviderNumber 10008
+126 ProviderNumber 10008
+127 ProviderNumber 10008
+128 ProviderNumber 10008
+129 ProviderNumber 10008
+130 ProviderNumber 10008
+131 ProviderNumber 10008
+132 ProviderNumber 10008
+133 ProviderNumber 10008
+134 ProviderNumber 10008
+135 ProviderNumber 10008
+136 ProviderNumber 10008
+137 ProviderNumber 10008
+138 ProviderNumber 10008
+139 ProviderNumber 10008
+140 ProviderNumber 10008
+141 ProviderNumber 10008
+142 ProviderNumber 10008
+143 ProviderNumber 10008
+144 ProviderNumber 10009
+145 ProviderNumber 10009
+146 ProviderNumber 10009
+147 ProviderNumber 10009
+148 ProviderNumber 10009
+149 ProviderNumber 10009
+150 ProviderNumber 10009
+151 ProviderNumber 10009
+152 ProviderNumber 10009
+153 ProviderNumber 10009
+154 ProviderNumber 10009
+155 ProviderNumber 10009
+156 ProviderNumber 10009
+157 ProviderNumber 10009
+158 ProviderNumber 10009
+159 ProviderNumber 10009
+160 ProviderNumber 10009
+161 ProviderNumber 10009
+162 ProviderNumber 10009
+163 ProviderNumber 10009
+164 ProviderNumber 10009
+165 ProviderNumber 10009
+166 ProviderNumber 10009
+167 ProviderNumber 10009
+168 ProviderNumber 10009
+169 ProviderNumber 10010
+170 ProviderNumber 10010
+171 ProviderNumber 10010
+172 ProviderNumber 10010
+173 ProviderNumber 10010
+174 ProviderNumber 10010
+175 ProviderNumber 10010
+176 ProviderNumber 10010
+177 ProviderNumber 10010
+178 ProviderNumber 10010
+179 ProviderNumber 10010
+180 ProviderNumber 10010
+181 ProviderNumber 10010
+182 ProviderNumber 10010
+183 ProviderNumber 10010
+184 ProviderNumber 10010
+185 ProviderNumber 10010
+186 ProviderNumber 10010
+187 ProviderNumber 10010
+188 ProviderNumber 10010
+189 ProviderNumber 10010
+190 ProviderNumber 10010
+191 ProviderNumber 10010
+192 ProviderNumber 10010
+193 ProviderNumber 10010
+194 ProviderNumber 10011
+195 ProviderNumber 10011
+196 ProviderNumber 10011
+197 ProviderNumber 10011
+198 ProviderNumber 10011
+199 ProviderNumber 10011
+0 Address 1720 university blvd
+1 Address 1720 university blvd
+2 Address 1720 university blvd
+3 Address 1720 university blvd
+4 Address 1720 university blvd
+5 Address 1720 university blvd
+6 Address 1720 university blvd
+7 Address 1720 university blvd
+8 Address 1300 south montgomery avenue
+9 Address 1300 south montgomery avenue
+10 Address 1300 south montgomery avenue
+11 Address 1300 south montgomery avenue
+12 Address 1300 south montgomery avenue
+13 Address 1300 south montgomery avenue
+14 Address 1300 south montgomery avenue
+15 Address 1300 south montgomery avenue
+16 Address 1300 south montgomery avenue
+17 Address 1300 south montgomery avenue
+18 Address 1300 south montgomery avenue
+19 Address 1108 ross clark circle
+20 Address 1108 ross clark circle
+21 Address 1108 ross clark circle
+22 Address 1108 ross clark circle
+23 Address 1108 ross clark circle
+24 Address 1108 ross clark circle
+25 Address 1108 ross clark circle
+26 Address 1108 ross clark circle
+27 Address 1108 ross clark circle
+28 Address 1108 ross clark circle
+29 Address 1108 ross clark circle
+30 Address 1108 ross clark circle
+31 Address 1108 ross clark circle
+32 Address 1108 ross clark circle
+33 Address 1108 ross clark circle
+34 Address 1108 ross clark circle
+35 Address 1108 ross clark circle
+36 Address 1108 ross clark circle
+37 Address 1108 ross clark circle
+38 Address 1108 ross clark circle
+39 Address 1108 ross clark circle
+40 Address 1108 ross clark circle
+41 Address 1108 ross clark circle
+42 Address 1108 ross clark circle
+43 Address 1108 ross clark circle
+44 Address 2505 u s highway 431 north
+45 Address 2505 u s highway 431 north
+46 Address 2505 u s highway 431 north
+47 Address 2505 u s highway 431 north
+48 Address 2505 u s highway 431 north
+49 Address 2505 u s highway 431 north
+50 Address 2505 u s highway 431 north
+51 Address 2505 u s highway 431 north
+52 Address 2505 u s highway 431 north
+53 Address 2505 u s highway 431 north
+54 Address 2505 u s highway 431 north
+55 Address 2505 u s highway 431 north
+56 Address 2505 u s highway 431 north
+58 Address 2505 u s highway 431 north
+59 Address 2505 u s highway 431 north
+60 Address 2505 u s highway 431 north
+61 Address 2505 u s highway 431 north
+62 Address 2505 u s highway 431 north
+63 Address 2505 u s highway 431 north
+64 Address 2505 u s highway 431 north
+65 Address 2505 u s highway 431 north
+66 Address 2505 u s highway 431 north
+67 Address 2505 u s highway 431 north
+68 Address 2505 u s highway 431 north
+69 Address 205 marengo street
+70 Address 205 marengo street
+71 Address 205 marengo street
+72 Address 205 marengo street
+73 Address 205 marengo street
+74 Address 205 marengo street
+75 Address 205 marengo street
+76 Address 205 marengo street
+77 Address 205 marengo street
+78 Address 205 marengo street
+79 Address 205 marengo street
+80 Address 205 marengo street
+81 Address 205 marengo street
+82 Address 205 marengo street
+83 Address 205 marengo street
+84 Address 205 marengo street
+85 Address 205 marengo street
+86 Address 205 marengo street
+87 Address 205 marengo street
+88 Address 205 marengo street
+89 Address 205 marengo street
+90 Address 205 marengo street
+91 Address 205 marengo street
+92 Address 205 marengo street
+93 Address 205 marengo street
+95 Address 702 n main st
+96 Address 702 n main st
+97 Address 702 n main st
+98 Address 702 n main st
+99 Address 702 n main st
+100 Address 702 n main st
+101 Address 702 n main st
+102 Address 702 n main st
+103 Address 702 n main st
+104 Address 702 n main st
+105 Address 702 n main st
+107 Address 702 n main st
+108 Address 702 n main st
+109 Address 702 n main st
+110 Address 702 n main st
+111 Address 702 n main st
+112 Address 702 n main st
+113 Address 702 n main st
+114 Address 702 n main st
+115 Address 702 n main st
+116 Address 702 n main st
+117 Address 702 n main st
+118 Address 702 n main st
+119 Address 101 hospital circle
+120 Address 101 hospital circle
+121 Address 101 hospital circle
+122 Address 101 hospital circle
+123 Address 101 hospital circle
+124 Address 101 hospital circle
+125 Address 101 hospital circle
+126 Address 101 hospital circle
+127 Address 101 hospital circle
+128 Address 101 hospital circle
+129 Address 101 hospital circle
+130 Address 101 hospital circle
+131 Address 101 hospital circle
+132 Address 101 hospital circle
+133 Address 101 hospital circle
+134 Address 101 hospital circle
+135 Address 101 hospital circle
+136 Address 101 hospital circle
+137 Address 101 hospital circle
+138 Address 101 hospital circle
+139 Address 101 hospital circle
+140 Address 101 hospital circle
+141 Address 101 hospital circle
+142 Address 101 hospital circle
+143 Address 101 hospital circle
+144 Address 201 pine street northwest
+145 Address 201 pine street northwest
+146 Address 201 pine street northwest
+147 Address 201 pine street northwest
+148 Address 201 pine street northwest
+149 Address 201 pine street northwest
+150 Address 201 pine street northwest
+151 Address 201 pine street northwest
+152 Address 201 pine street northwest
+153 Address 201 pine street northwest
+154 Address 201 pine street northwest
+155 Address 201 pine street northwest
+156 Address 201 pine street northwest
+157 Address 201 pine street northwest
+158 Address 201 pine street northwest
+159 Address 201 pine street northwest
+160 Address 201 pine street northwest
+162 Address 201 pine street northwest
+163 Address 201 pine street northwest
+164 Address 201 pine street northwest
+165 Address 201 pine street northwest
+166 Address 201 pine street northwest
+167 Address 201 pine street northwest
+168 Address 201 pine street northwest
+169 Address 8000 alabama highway 69
+170 Address 8000 alabama highway 69
+171 Address 8000 alabama highway 69
+172 Address 8000 alabama highway 69
+173 Address 8000 alabama highway 69
+174 Address 8000 alabama highway 69
+176 Address 8000 alabama highway 69
+177 Address 8000 alabama highway 69
+178 Address 8000 alabama highway 69
+179 Address 8000 alabama highway 69
+180 Address 8000 alabama highway 69
+181 Address 8000 alabama highway 69
+182 Address 8000 alabama highway 69
+183 Address 8000 alabama highway 69
+184 Address 8000 alabama highway 69
+185 Address 8000 alabama highway 69
+186 Address 8000 alabama highway 69
+187 Address 8000 alabama highway 69
+188 Address 8000 alabama highway 69
+189 Address 8000 alabama highway 69
+190 Address 8000 alabama highway 69
+191 Address 8000 alabama highway 69
+192 Address 8000 alabama highway 69
+193 Address 8000 alabama highway 69
+194 Address 50 medical park east drive
+195 Address 50 medical park east drive
+196 Address 50 medical park east drive
+197 Address 50 medical park east drive
+198 Address 50 medical park east drive
+199 Address 50 medical park east drive
+0 City birmingham
+1 City birmingham
+2 City birmingham
+4 City birmingham
+5 City birmingham
+6 City birmingham
+8 City sheffield
+9 City sheffield
+11 City sheffield
+12 City sheffield
+13 City sheffield
+14 City sheffield
+15 City sheffield
+16 City sheffield
+17 City sheffield
+18 City sheffield
+19 City dothan
+20 City dothan
+21 City dothan
+22 City dothan
+23 City dothan
+24 City dothan
+25 City dothan
+26 City dothan
+27 City dothan
+28 City dothan
+29 City dothan
+30 City dothan
+31 City dothan
+32 City dothan
+33 City dothan
+34 City dothan
+35 City dothan
+36 City dothan
+37 City dothan
+38 City dothan
+39 City dothan
+40 City dothan
+41 City dothan
+42 City dothan
+43 City dothan
+44 City boaz
+45 City boaz
+46 City boaz
+47 City boaz
+48 City boaz
+49 City boaz
+50 City boaz
+51 City boaz
+52 City boaz
+53 City boaz
+54 City boaz
+55 City boaz
+57 City boaz
+58 City boaz
+59 City boaz
+60 City boaz
+61 City boaz
+62 City boaz
+63 City boaz
+64 City boaz
+65 City boaz
+66 City boaz
+67 City boaz
+68 City boaz
+69 City florence
+70 City florence
+71 City florence
+72 City florence
+73 City florence
+74 City florence
+75 City florence
+76 City florence
+77 City florence
+78 City florence
+80 City florence
+81 City florence
+82 City florence
+83 City florence
+84 City florence
+85 City florence
+86 City florence
+87 City florence
+89 City florence
+90 City florence
+91 City florence
+92 City florence
+94 City opp
+95 City opp
+96 City opp
+97 City opp
+98 City opp
+99 City opp
+100 City opp
+101 City opp
+102 City opp
+103 City opp
+104 City opp
+105 City opp
+106 City opp
+107 City opp
+108 City opp
+109 City opp
+110 City opp
+111 City opp
+112 City opp
+113 City opp
+114 City opp
+115 City opp
+116 City opp
+117 City opp
+118 City opp
+119 City luverne
+120 City luverne
+121 City luverne
+122 City luverne
+123 City luverne
+124 City luverne
+125 City luverne
+126 City luverne
+127 City luverne
+128 City luverne
+129 City luverne
+130 City luverne
+131 City luverne
+132 City luverne
+133 City luverne
+134 City luverne
+135 City luverne
+136 City luverne
+137 City luverne
+138 City luverne
+139 City luverne
+140 City luverne
+141 City luverne
+142 City luverne
+143 City luverne
+144 City hartselle
+145 City hartselle
+146 City hartselle
+147 City hartselle
+148 City hartselle
+149 City hartselle
+150 City hartselle
+151 City hartselle
+152 City hartselle
+153 City hartselle
+154 City hartselle
+155 City hartselle
+156 City hartselle
+157 City hartselle
+158 City hartselle
+159 City hartselle
+160 City hartselle
+161 City hartselle
+162 City hartselle
+163 City hartselle
+164 City hartselle
+165 City hartselle
+166 City hartselle
+167 City hartselle
+168 City hartselle
+169 City guntersville
+170 City guntersville
+171 City guntersville
+172 City guntersville
+173 City guntersville
+174 City guntersville
+175 City guntersville
+176 City guntersville
+177 City guntersville
+178 City guntersville
+179 City guntersville
+181 City guntersville
+182 City guntersville
+183 City guntersville
+184 City guntersville
+185 City guntersville
+186 City guntersville
+187 City guntersville
+188 City guntersville
+189 City guntersville
+190 City guntersville
+191 City guntersville
+192 City guntersville
+193 City guntersville
+194 City birmingham
+195 City birmingham
+196 City birmingham
+197 City birmingham
+198 City birmingham
+199 City birmingham
+0 ZipCode 35233
+1 ZipCode 35233
+2 ZipCode 35233
+3 ZipCode 35233
+4 ZipCode 35233
+5 ZipCode 35233
+6 ZipCode 35233
+7 ZipCode 35233
+8 ZipCode 35660
+9 ZipCode 35660
+10 ZipCode 35660
+11 ZipCode 35660
+12 ZipCode 35660
+13 ZipCode 35660
+14 ZipCode 35660
+15 ZipCode 35660
+16 ZipCode 35660
+17 ZipCode 35660
+18 ZipCode 35660
+19 ZipCode 36302
+20 ZipCode 36302
+21 ZipCode 36302
+22 ZipCode 36302
+23 ZipCode 36302
+24 ZipCode 36302
+25 ZipCode 36302
+26 ZipCode 36302
+27 ZipCode 36302
+28 ZipCode 36302
+29 ZipCode 36302
+30 ZipCode 36302
+31 ZipCode 36302
+32 ZipCode 36302
+33 ZipCode 36302
+34 ZipCode 36302
+35 ZipCode 36302
+36 ZipCode 36302
+37 ZipCode 36302
+38 ZipCode 36302
+39 ZipCode 36302
+40 ZipCode 36302
+41 ZipCode 36302
+42 ZipCode 36302
+43 ZipCode 36302
+45 ZipCode 35957
+46 ZipCode 35957
+47 ZipCode 35957
+48 ZipCode 35957
+49 ZipCode 35957
+50 ZipCode 35957
+51 ZipCode 35957
+52 ZipCode 35957
+53 ZipCode 35957
+54 ZipCode 35957
+55 ZipCode 35957
+56 ZipCode 35957
+57 ZipCode 35957
+58 ZipCode 35957
+59 ZipCode 35957
+60 ZipCode 35957
+61 ZipCode 35957
+62 ZipCode 35957
+64 ZipCode 35957
+65 ZipCode 35957
+66 ZipCode 35957
+67 ZipCode 35957
+68 ZipCode 35957
+69 ZipCode 35631
+71 ZipCode 35631
+72 ZipCode 35631
+73 ZipCode 35631
+74 ZipCode 35631
+75 ZipCode 35631
+76 ZipCode 35631
+77 ZipCode 35631
+78 ZipCode 35631
+79 ZipCode 35631
+80 ZipCode 35631
+81 ZipCode 35631
+82 ZipCode 35631
+83 ZipCode 35631
+84 ZipCode 35631
+85 ZipCode 35631
+86 ZipCode 35631
+87 ZipCode 35631
+88 ZipCode 35631
+89 ZipCode 35631
+90 ZipCode 35631
+91 ZipCode 35631
+92 ZipCode 35631
+94 ZipCode 36467
+95 ZipCode 36467
+96 ZipCode 36467
+97 ZipCode 36467
+98 ZipCode 36467
+99 ZipCode 36467
+100 ZipCode 36467
+101 ZipCode 36467
+102 ZipCode 36467
+103 ZipCode 36467
+104 ZipCode 36467
+105 ZipCode 36467
+106 ZipCode 36467
+107 ZipCode 36467
+108 ZipCode 36467
+109 ZipCode 36467
+110 ZipCode 36467
+111 ZipCode 36467
+112 ZipCode 36467
+113 ZipCode 36467
+114 ZipCode 36467
+115 ZipCode 36467
+116 ZipCode 36467
+117 ZipCode 36467
+118 ZipCode 36467
+119 ZipCode 36049
+120 ZipCode 36049
+121 ZipCode 36049
+122 ZipCode 36049
+123 ZipCode 36049
+124 ZipCode 36049
+125 ZipCode 36049
+126 ZipCode 36049
+127 ZipCode 36049
+128 ZipCode 36049
+129 ZipCode 36049
+130 ZipCode 36049
+131 ZipCode 36049
+132 ZipCode 36049
+133 ZipCode 36049
+134 ZipCode 36049
+135 ZipCode 36049
+136 ZipCode 36049
+138 ZipCode 36049
+140 ZipCode 36049
+141 ZipCode 36049
+142 ZipCode 36049
+143 ZipCode 36049
+144 ZipCode 35640
+145 ZipCode 35640
+146 ZipCode 35640
+147 ZipCode 35640
+148 ZipCode 35640
+150 ZipCode 35640
+151 ZipCode 35640
+152 ZipCode 35640
+153 ZipCode 35640
+154 ZipCode 35640
+155 ZipCode 35640
+156 ZipCode 35640
+158 ZipCode 35640
+159 ZipCode 35640
+160 ZipCode 35640
+161 ZipCode 35640
+162 ZipCode 35640
+163 ZipCode 35640
+164 ZipCode 35640
+165 ZipCode 35640
+166 ZipCode 35640
+167 ZipCode 35640
+168 ZipCode 35640
+169 ZipCode 35976
+170 ZipCode 35976
+171 ZipCode 35976
+172 ZipCode 35976
+173 ZipCode 35976
+174 ZipCode 35976
+175 ZipCode 35976
+176 ZipCode 35976
+177 ZipCode 35976
+178 ZipCode 35976
+179 ZipCode 35976
+180 ZipCode 35976
+181 ZipCode 35976
+182 ZipCode 35976
+183 ZipCode 35976
+184 ZipCode 35976
+185 ZipCode 35976
+186 ZipCode 35976
+187 ZipCode 35976
+188 ZipCode 35976
+189 ZipCode 35976
+190 ZipCode 35976
+191 ZipCode 35976
+192 ZipCode 35976
+193 ZipCode 35976
+194 ZipCode 35235
+195 ZipCode 35235
+197 ZipCode 35235
+198 ZipCode 35235
+199 ZipCode 35235
+0 CountyName jefferson
+1 CountyName jefferson
+2 CountyName jefferson
+3 CountyName jefferson
+4 CountyName jefferson
+5 CountyName jefferson
+6 CountyName jefferson
+7 CountyName jefferson
+8 CountyName jefferson
+9 CountyName jefferson
+10 CountyName jefferson
+11 CountyName jefferson
+12 CountyName jefferson
+13 CountyName jefferson
+14 CountyName jefferson
+15 CountyName jefferson
+16 CountyName jefferson
+17 CountyName jefferson
+18 CountyName jefferson
+19 CountyName houston
+20 CountyName houston
+21 CountyName houston
+22 CountyName houston
+23 CountyName houston
+24 CountyName houston
+25 CountyName houston
+26 CountyName houston
+27 CountyName houston
+28 CountyName houston
+29 CountyName houston
+30 CountyName houston
+31 CountyName houston
+32 CountyName houston
+33 CountyName houston
+34 CountyName houston
+35 CountyName houston
+36 CountyName houston
+37 CountyName houston
+38 CountyName houston
+39 CountyName houston
+40 CountyName houston
+41 CountyName houston
+42 CountyName houston
+43 CountyName houston
+44 CountyName marshall
+45 CountyName marshall
+46 CountyName marshall
+47 CountyName marshall
+48 CountyName marshall
+49 CountyName marshall
+50 CountyName marshall
+51 CountyName marshall
+52 CountyName marshall
+53 CountyName marshall
+54 CountyName marshall
+55 CountyName marshall
+56 CountyName marshall
+57 CountyName marshall
+58 CountyName marshall
+59 CountyName marshall
+60 CountyName marshall
+61 CountyName marshall
+62 CountyName marshall
+63 CountyName marshall
+64 CountyName marshall
+65 CountyName marshall
+66 CountyName marshall
+68 CountyName marshall
+69 CountyName lauderdale
+70 CountyName lauderdale
+71 CountyName lauderdale
+73 CountyName lauderdale
+74 CountyName lauderdale
+75 CountyName lauderdale
+76 CountyName lauderdale
+78 CountyName lauderdale
+79 CountyName lauderdale
+80 CountyName lauderdale
+81 CountyName lauderdale
+82 CountyName lauderdale
+83 CountyName lauderdale
+84 CountyName lauderdale
+85 CountyName lauderdale
+86 CountyName lauderdale
+87 CountyName lauderdale
+88 CountyName lauderdale
+89 CountyName lauderdale
+90 CountyName lauderdale
+91 CountyName lauderdale
+92 CountyName lauderdale
+93 CountyName lauderdale
+94 CountyName covington
+95 CountyName covington
+96 CountyName covington
+97 CountyName covington
+98 CountyName covington
+99 CountyName covington
+100 CountyName covington
+101 CountyName covington
+102 CountyName covington
+103 CountyName covington
+104 CountyName covington
+105 CountyName covington
+106 CountyName covington
+107 CountyName covington
+108 CountyName covington
+109 CountyName covington
+110 CountyName covington
+111 CountyName covington
+112 CountyName covington
+113 CountyName covington
+114 CountyName covington
+115 CountyName covington
+116 CountyName covington
+117 CountyName covington
+118 CountyName covington
+119 CountyName crenshaw
+120 CountyName crenshaw
+121 CountyName crenshaw
+122 CountyName crenshaw
+123 CountyName crenshaw
+124 CountyName crenshaw
+125 CountyName crenshaw
+126 CountyName crenshaw
+127 CountyName crenshaw
+128 CountyName crenshaw
+129 CountyName crenshaw
+130 CountyName crenshaw
+131 CountyName crenshaw
+132 CountyName crenshaw
+133 CountyName crenshaw
+134 CountyName crenshaw
+135 CountyName crenshaw
+137 CountyName crenshaw
+138 CountyName crenshaw
+139 CountyName crenshaw
+140 CountyName crenshaw
+141 CountyName crenshaw
+142 CountyName crenshaw
+143 CountyName crenshaw
+144 CountyName morgan
+145 CountyName morgan
+146 CountyName morgan
+147 CountyName morgan
+148 CountyName morgan
+149 CountyName morgan
+150 CountyName morgan
+151 CountyName morgan
+152 CountyName morgan
+153 CountyName morgan
+154 CountyName morgan
+155 CountyName morgan
+156 CountyName morgan
+157 CountyName morgan
+158 CountyName morgan
+159 CountyName morgan
+160 CountyName morgan
+161 CountyName morgan
+162 CountyName morgan
+163 CountyName morgan
+164 CountyName morgan
+165 CountyName morgan
+166 CountyName morgan
+167 CountyName morgan
+168 CountyName morgan
+169 CountyName marshall
+170 CountyName marshall
+171 CountyName marshall
+172 CountyName marshall
+173 CountyName marshall
+174 CountyName marshall
+175 CountyName marshall
+176 CountyName marshall
+177 CountyName marshall
+178 CountyName marshall
+179 CountyName marshall
+180 CountyName marshall
+181 CountyName marshall
+182 CountyName marshall
+183 CountyName marshall
+184 CountyName marshall
+185 CountyName marshall
+186 CountyName marshall
+187 CountyName marshall
+188 CountyName marshall
+189 CountyName marshall
+190 CountyName marshall
+191 CountyName marshall
+192 CountyName marshall
+193 CountyName marshall
+194 CountyName jefferson
+195 CountyName jefferson
+196 CountyName jefferson
+197 CountyName jefferson
+198 CountyName jefferson
+199 CountyName jefferson
+0 PhoneNumber 2053258100
+1 PhoneNumber 2053258100
+2 PhoneNumber 2053258100
+3 PhoneNumber 2053258100
+4 PhoneNumber 2053258100
+5 PhoneNumber 2053258100
+6 PhoneNumber 2053258100
+7 PhoneNumber 2053258100
+8 PhoneNumber 2563864556
+9 PhoneNumber 2563864556
+10 PhoneNumber 2563864556
+11 PhoneNumber 2563864556
+12 PhoneNumber 2563864556
+13 PhoneNumber 2563864556
+14 PhoneNumber 2563864556
+15 PhoneNumber 2563864556
+16 PhoneNumber 2563864556
+17 PhoneNumber 2563864556
+18 PhoneNumber 2563864556
+19 PhoneNumber 3347938701
+20 PhoneNumber 3347938701
+21 PhoneNumber 3347938701
+22 PhoneNumber 3347938701
+23 PhoneNumber 3347938701
+25 PhoneNumber 3347938701
+26 PhoneNumber 3347938701
+27 PhoneNumber 3347938701
+28 PhoneNumber 3347938701
+29 PhoneNumber 3347938701
+30 PhoneNumber 3347938701
+31 PhoneNumber 3347938701
+32 PhoneNumber 3347938701
+33 PhoneNumber 3347938701
+34 PhoneNumber 3347938701
+35 PhoneNumber 3347938701
+37 PhoneNumber 3347938701
+38 PhoneNumber 3347938701
+39 PhoneNumber 3347938701
+40 PhoneNumber 3347938701
+41 PhoneNumber 3347938701
+42 PhoneNumber 3347938701
+43 PhoneNumber 3347938701
+44 PhoneNumber 2565938310
+45 PhoneNumber 2565938310
+46 PhoneNumber 2565938310
+47 PhoneNumber 2565938310
+48 PhoneNumber 2565938310
+49 PhoneNumber 2565938310
+50 PhoneNumber 2565938310
+51 PhoneNumber 2565938310
+52 PhoneNumber 2565938310
+53 PhoneNumber 2565938310
+54 PhoneNumber 2565938310
+55 PhoneNumber 2565938310
+56 PhoneNumber 2565938310
+58 PhoneNumber 2565938310
+59 PhoneNumber 2565938310
+61 PhoneNumber 2565938310
+62 PhoneNumber 2565938310
+63 PhoneNumber 2565938310
+64 PhoneNumber 2565938310
+66 PhoneNumber 2565938310
+67 PhoneNumber 2565938310
+68 PhoneNumber 2565938310
+69 PhoneNumber 2567688400
+70 PhoneNumber 2567688400
+71 PhoneNumber 2567688400
+72 PhoneNumber 2567688400
+73 PhoneNumber 2567688400
+74 PhoneNumber 2567688400
+75 PhoneNumber 2567688400
+76 PhoneNumber 2567688400
+77 PhoneNumber 2567688400
+78 PhoneNumber 2567688400
+79 PhoneNumber 2567688400
+80 PhoneNumber 2567688400
+81 PhoneNumber 2567688400
+82 PhoneNumber 2567688400
+83 PhoneNumber 2567688400
+84 PhoneNumber 2567688400
+85 PhoneNumber 2567688400
+86 PhoneNumber 2567688400
+87 PhoneNumber 2567688400
+88 PhoneNumber 2567688400
+89 PhoneNumber 2567688400
+90 PhoneNumber 2567688400
+91 PhoneNumber 2567688400
+92 PhoneNumber 2567688400
+93 PhoneNumber 2567688400
+94 PhoneNumber 3344933541
+95 PhoneNumber 3344933541
+96 PhoneNumber 3344933541
+97 PhoneNumber 3344933541
+98 PhoneNumber 3344933541
+99 PhoneNumber 3344933541
+100 PhoneNumber 3344933541
+102 PhoneNumber 3344933541
+103 PhoneNumber 3344933541
+104 PhoneNumber 3344933541
+105 PhoneNumber 3344933541
+106 PhoneNumber 3344933541
+107 PhoneNumber 3344933541
+108 PhoneNumber 3344933541
+109 PhoneNumber 3344933541
+110 PhoneNumber 3344933541
+111 PhoneNumber 3344933541
+112 PhoneNumber 3344933541
+113 PhoneNumber 3344933541
+114 PhoneNumber 3344933541
+115 PhoneNumber 3344933541
+116 PhoneNumber 3344933541
+117 PhoneNumber 3344933541
+118 PhoneNumber 3344933541
+119 PhoneNumber 3343353374
+120 PhoneNumber 3343353374
+121 PhoneNumber 3343353374
+122 PhoneNumber 3343353374
+123 PhoneNumber 3343353374
+124 PhoneNumber 3343353374
+125 PhoneNumber 3343353374
+126 PhoneNumber 3343353374
+127 PhoneNumber 3343353374
+128 PhoneNumber 3343353374
+129 PhoneNumber 3343353374
+130 PhoneNumber 3343353374
+131 PhoneNumber 3343353374
+132 PhoneNumber 3343353374
+133 PhoneNumber 3343353374
+134 PhoneNumber 3343353374
+135 PhoneNumber 3343353374
+136 PhoneNumber 3343353374
+137 PhoneNumber 3343353374
+138 PhoneNumber 3343353374
+139 PhoneNumber 3343353374
+140 PhoneNumber 3343353374
+141 PhoneNumber 3343353374
+142 PhoneNumber 3343353374
+143 PhoneNumber 3343353374
+144 PhoneNumber 2567736511
+145 PhoneNumber 2567736511
+146 PhoneNumber 2567736511
+147 PhoneNumber 2567736511
+148 PhoneNumber 2567736511
+149 PhoneNumber 2567736511
+150 PhoneNumber 2567736511
+151 PhoneNumber 2567736511
+152 PhoneNumber 2567736511
+153 PhoneNumber 2567736511
+154 PhoneNumber 2567736511
+155 PhoneNumber 2567736511
+156 PhoneNumber 2567736511
+157 PhoneNumber 2567736511
+158 PhoneNumber 2567736511
+159 PhoneNumber 2567736511
+160 PhoneNumber 2567736511
+161 PhoneNumber 2567736511
+162 PhoneNumber 2567736511
+163 PhoneNumber 2567736511
+164 PhoneNumber 2567736511
+165 PhoneNumber 2567736511
+166 PhoneNumber 2567736511
+167 PhoneNumber 2567736511
+168 PhoneNumber 2567736511
+169 PhoneNumber 2565718000
+170 PhoneNumber 2565718000
+171 PhoneNumber 2565718000
+172 PhoneNumber 2565718000
+173 PhoneNumber 2565718000
+174 PhoneNumber 2565718000
+175 PhoneNumber 2565718000
+176 PhoneNumber 2565718000
+177 PhoneNumber 2565718000
+178 PhoneNumber 2565718000
+179 PhoneNumber 2565718000
+180 PhoneNumber 2565718000
+181 PhoneNumber 2565718000
+182 PhoneNumber 2565718000
+183 PhoneNumber 2565718000
+184 PhoneNumber 2565718000
+185 PhoneNumber 2565718000
+186 PhoneNumber 2565718000
+187 PhoneNumber 2565718000
+188 PhoneNumber 2565718000
+189 PhoneNumber 2565718000
+190 PhoneNumber 2565718000
+191 PhoneNumber 2565718000
+192 PhoneNumber 2565718000
+193 PhoneNumber 2565718000
+194 PhoneNumber 2058383122
+195 PhoneNumber 2058383122
+196 PhoneNumber 2058383122
+197 PhoneNumber 2058383122
+198 PhoneNumber 2058383122
+199 PhoneNumber 2058383122
+0 HospitalType acute care hospitals
+1 HospitalType acute care hospitals
+2 HospitalType acute care hospitals
+3 HospitalType acute care hospitals
+4 HospitalType acute care hospitals
+5 HospitalType acute care hospitals
+6 HospitalType acute care hospitals
+7 HospitalType acute care hospitals
+8 HospitalType acute care hospitals
+9 HospitalType acute care hospitals
+10 HospitalType acute care hospitals
+11 HospitalType acute care hospitals
+12 HospitalType acute care hospitals
+13 HospitalType acute care hospitals
+14 HospitalType acute care hospitals
+15 HospitalType acute care hospitals
+17 HospitalType acute care hospitals
+18 HospitalType acute care hospitals
+19 HospitalType acute care hospitals
+20 HospitalType acute care hospitals
+21 HospitalType acute care hospitals
+22 HospitalType acute care hospitals
+23 HospitalType acute care hospitals
+24 HospitalType acute care hospitals
+25 HospitalType acute care hospitals
+26 HospitalType acute care hospitals
+27 HospitalType acute care hospitals
+28 HospitalType acute care hospitals
+29 HospitalType acute care hospitals
+30 HospitalType acute care hospitals
+31 HospitalType acute care hospitals
+32 HospitalType acute care hospitals
+33 HospitalType acute care hospitals
+34 HospitalType acute care hospitals
+35 HospitalType acute care hospitals
+36 HospitalType acute care hospitals
+37 HospitalType acute care hospitals
+38 HospitalType acute care hospitals
+40 HospitalType acute care hospitals
+41 HospitalType acute care hospitals
+42 HospitalType acute care hospitals
+43 HospitalType acute care hospitals
+44 HospitalType acute care hospitals
+45 HospitalType acute care hospitals
+46 HospitalType acute care hospitals
+47 HospitalType acute care hospitals
+48 HospitalType acute care hospitals
+49 HospitalType acute care hospitals
+50 HospitalType acute care hospitals
+51 HospitalType acute care hospitals
+52 HospitalType acute care hospitals
+53 HospitalType acute care hospitals
+54 HospitalType acute care hospitals
+55 HospitalType acute care hospitals
+56 HospitalType acute care hospitals
+57 HospitalType acute care hospitals
+58 HospitalType acute care hospitals
+59 HospitalType acute care hospitals
+60 HospitalType acute care hospitals
+61 HospitalType acute care hospitals
+62 HospitalType acute care hospitals
+63 HospitalType acute care hospitals
+64 HospitalType acute care hospitals
+65 HospitalType acute care hospitals
+66 HospitalType acute care hospitals
+67 HospitalType acute care hospitals
+68 HospitalType acute care hospitals
+69 HospitalType acute care hospitals
+70 HospitalType acute care hospitals
+71 HospitalType acute care hospitals
+72 HospitalType acute care hospitals
+73 HospitalType acute care hospitals
+74 HospitalType acute care hospitals
+75 HospitalType acute care hospitals
+76 HospitalType acute care hospitals
+77 HospitalType acute care hospitals
+78 HospitalType acute care hospitals
+79 HospitalType acute care hospitals
+80 HospitalType acute care hospitals
+81 HospitalType acute care hospitals
+82 HospitalType acute care hospitals
+83 HospitalType acute care hospitals
+84 HospitalType acute care hospitals
+85 HospitalType acute care hospitals
+86 HospitalType acute care hospitals
+87 HospitalType acute care hospitals
+88 HospitalType acute care hospitals
+89 HospitalType acute care hospitals
+90 HospitalType acute care hospitals
+91 HospitalType acute care hospitals
+92 HospitalType acute care hospitals
+93 HospitalType acute care hospitals
+94 HospitalType acute care hospitals
+95 HospitalType acute care hospitals
+96 HospitalType acute care hospitals
+97 HospitalType acute care hospitals
+99 HospitalType acute care hospitals
+100 HospitalType acute care hospitals
+101 HospitalType acute care hospitals
+102 HospitalType acute care hospitals
+103 HospitalType acute care hospitals
+104 HospitalType acute care hospitals
+105 HospitalType acute care hospitals
+106 HospitalType acute care hospitals
+107 HospitalType acute care hospitals
+108 HospitalType acute care hospitals
+109 HospitalType acute care hospitals
+110 HospitalType acute care hospitals
+111 HospitalType acute care hospitals
+112 HospitalType acute care hospitals
+113 HospitalType acute care hospitals
+114 HospitalType acute care hospitals
+115 HospitalType acute care hospitals
+116 HospitalType acute care hospitals
+117 HospitalType acute care hospitals
+118 HospitalType acute care hospitals
+119 HospitalType acute care hospitals
+120 HospitalType acute care hospitals
+121 HospitalType acute care hospitals
+122 HospitalType acute care hospitals
+123 HospitalType acute care hospitals
+124 HospitalType acute care hospitals
+125 HospitalType acute care hospitals
+126 HospitalType acute care hospitals
+127 HospitalType acute care hospitals
+128 HospitalType acute care hospitals
+129 HospitalType acute care hospitals
+130 HospitalType acute care hospitals
+131 HospitalType acute care hospitals
+132 HospitalType acute care hospitals
+133 HospitalType acute care hospitals
+134 HospitalType acute care hospitals
+135 HospitalType acute care hospitals
+136 HospitalType acute care hospitals
+137 HospitalType acute care hospitals
+138 HospitalType acute care hospitals
+139 HospitalType acute care hospitals
+140 HospitalType acute care hospitals
+141 HospitalType acute care hospitals
+142 HospitalType acute care hospitals
+143 HospitalType acute care hospitals
+144 HospitalType acute care hospitals
+145 HospitalType acute care hospitals
+146 HospitalType acute care hospitals
+147 HospitalType acute care hospitals
+148 HospitalType acute care hospitals
+149 HospitalType acute care hospitals
+150 HospitalType acute care hospitals
+151 HospitalType acute care hospitals
+152 HospitalType acute care hospitals
+153 HospitalType acute care hospitals
+154 HospitalType acute care hospitals
+155 HospitalType acute care hospitals
+156 HospitalType acute care hospitals
+157 HospitalType acute care hospitals
+158 HospitalType acute care hospitals
+159 HospitalType acute care hospitals
+160 HospitalType acute care hospitals
+161 HospitalType acute care hospitals
+162 HospitalType acute care hospitals
+163 HospitalType acute care hospitals
+164 HospitalType acute care hospitals
+165 HospitalType acute care hospitals
+166 HospitalType acute care hospitals
+167 HospitalType acute care hospitals
+168 HospitalType acute care hospitals
+169 HospitalType acute care hospitals
+170 HospitalType acute care hospitals
+171 HospitalType acute care hospitals
+172 HospitalType acute care hospitals
+173 HospitalType acute care hospitals
+174 HospitalType acute care hospitals
+175 HospitalType acute care hospitals
+176 HospitalType acute care hospitals
+177 HospitalType acute care hospitals
+178 HospitalType acute care hospitals
+179 HospitalType acute care hospitals
+180 HospitalType acute care hospitals
+181 HospitalType acute care hospitals
+182 HospitalType acute care hospitals
+183 HospitalType acute care hospitals
+184 HospitalType acute care hospitals
+185 HospitalType acute care hospitals
+186 HospitalType acute care hospitals
+187 HospitalType acute care hospitals
+188 HospitalType acute care hospitals
+189 HospitalType acute care hospitals
+190 HospitalType acute care hospitals
+191 HospitalType acute care hospitals
+192 HospitalType acute care hospitals
+193 HospitalType acute care hospitals
+194 HospitalType acute care hospitals
+195 HospitalType acute care hospitals
+196 HospitalType acute care hospitals
+197 HospitalType acute care hospitals
+198 HospitalType acute care hospitals
+0 HospitalOwner voluntary non-profit - private
+1 HospitalOwner voluntary non-profit - private
+2 HospitalOwner voluntary non-profit - private
+3 HospitalOwner voluntary non-profit - private
+4 HospitalOwner voluntary non-profit - private
+5 HospitalOwner voluntary non-profit - private
+6 HospitalOwner voluntary non-profit - private
+7 HospitalOwner voluntary non-profit - private
+8 HospitalOwner government - hospital district or authority
+9 HospitalOwner government - hospital district or authority
+10 HospitalOwner government - hospital district or authority
+11 HospitalOwner government - hospital district or authority
+12 HospitalOwner government - hospital district or authority
+13 HospitalOwner government - hospital district or authority
+14 HospitalOwner government - hospital district or authority
+15 HospitalOwner government - hospital district or authority
+16 HospitalOwner government - hospital district or authority
+17 HospitalOwner government - hospital district or authority
+18 HospitalOwner government - hospital district or authority
+19 HospitalOwner government - hospital district or authority
+20 HospitalOwner government - hospital district or authority
+21 HospitalOwner government - hospital district or authority
+23 HospitalOwner government - hospital district or authority
+24 HospitalOwner government - hospital district or authority
+25 HospitalOwner government - hospital district or authority
+26 HospitalOwner government - hospital district or authority
+28 HospitalOwner government - hospital district or authority
+29 HospitalOwner government - hospital district or authority
+30 HospitalOwner government - hospital district or authority
+32 HospitalOwner government - hospital district or authority
+33 HospitalOwner government - hospital district or authority
+34 HospitalOwner government - hospital district or authority
+35 HospitalOwner government - hospital district or authority
+36 HospitalOwner government - hospital district or authority
+37 HospitalOwner government - hospital district or authority
+38 HospitalOwner government - hospital district or authority
+39 HospitalOwner government - hospital district or authority
+40 HospitalOwner government - hospital district or authority
+41 HospitalOwner government - hospital district or authority
+43 HospitalOwner government - hospital district or authority
+44 HospitalOwner government - hospital district or authority
+45 HospitalOwner government - hospital district or authority
+46 HospitalOwner government - hospital district or authority
+47 HospitalOwner government - hospital district or authority
+48 HospitalOwner government - hospital district or authority
+49 HospitalOwner government - hospital district or authority
+50 HospitalOwner government - hospital district or authority
+51 HospitalOwner government - hospital district or authority
+52 HospitalOwner government - hospital district or authority
+53 HospitalOwner government - hospital district or authority
+54 HospitalOwner government - hospital district or authority
+55 HospitalOwner government - hospital district or authority
+56 HospitalOwner government - hospital district or authority
+57 HospitalOwner government - hospital district or authority
+58 HospitalOwner government - hospital district or authority
+59 HospitalOwner government - hospital district or authority
+60 HospitalOwner government - hospital district or authority
+61 HospitalOwner government - hospital district or authority
+62 HospitalOwner government - hospital district or authority
+63 HospitalOwner government - hospital district or authority
+64 HospitalOwner government - hospital district or authority
+65 HospitalOwner government - hospital district or authority
+66 HospitalOwner government - hospital district or authority
+67 HospitalOwner government - hospital district or authority
+68 HospitalOwner government - hospital district or authority
+69 HospitalOwner voluntary non-profit - other
+70 HospitalOwner voluntary non-profit - other
+71 HospitalOwner voluntary non-profit - other
+72 HospitalOwner voluntary non-profit - other
+73 HospitalOwner voluntary non-profit - other
+74 HospitalOwner voluntary non-profit - other
+75 HospitalOwner voluntary non-profit - other
+76 HospitalOwner voluntary non-profit - other
+77 HospitalOwner voluntary non-profit - other
+78 HospitalOwner voluntary non-profit - other
+79 HospitalOwner voluntary non-profit - other
+80 HospitalOwner voluntary non-profit - other
+81 HospitalOwner voluntary non-profit - other
+82 HospitalOwner voluntary non-profit - other
+83 HospitalOwner voluntary non-profit - other
+84 HospitalOwner voluntary non-profit - other
+85 HospitalOwner voluntary non-profit - other
+86 HospitalOwner voluntary non-profit - other
+87 HospitalOwner voluntary non-profit - other
+88 HospitalOwner voluntary non-profit - other
+89 HospitalOwner voluntary non-profit - other
+90 HospitalOwner voluntary non-profit - other
+91 HospitalOwner voluntary non-profit - other
+92 HospitalOwner voluntary non-profit - other
+93 HospitalOwner voluntary non-profit - other
+94 HospitalOwner voluntary non-profit - private
+95 HospitalOwner voluntary non-profit - private
+96 HospitalOwner voluntary non-profit - private
+97 HospitalOwner voluntary non-profit - private
+98 HospitalOwner voluntary non-profit - private
+99 HospitalOwner voluntary non-profit - private
+100 HospitalOwner voluntary non-profit - private
+101 HospitalOwner voluntary non-profit - private
+102 HospitalOwner voluntary non-profit - private
+103 HospitalOwner voluntary non-profit - private
+104 HospitalOwner voluntary non-profit - private
+105 HospitalOwner voluntary non-profit - private
+106 HospitalOwner voluntary non-profit - private
+107 HospitalOwner voluntary non-profit - private
+108 HospitalOwner voluntary non-profit - private
+109 HospitalOwner voluntary non-profit - private
+110 HospitalOwner voluntary non-profit - private
+111 HospitalOwner voluntary non-profit - private
+112 HospitalOwner voluntary non-profit - private
+114 HospitalOwner voluntary non-profit - private
+115 HospitalOwner voluntary non-profit - private
+116 HospitalOwner voluntary non-profit - private
+117 HospitalOwner voluntary non-profit - private
+118 HospitalOwner voluntary non-profit - private
+119 HospitalOwner government - federal
+120 HospitalOwner government - federal
+121 HospitalOwner government - federal
+122 HospitalOwner government - federal
+123 HospitalOwner government - federal
+124 HospitalOwner government - federal
+125 HospitalOwner government - federal
+126 HospitalOwner government - federal
+127 HospitalOwner government - federal
+128 HospitalOwner government - federal
+129 HospitalOwner government - federal
+130 HospitalOwner government - federal
+131 HospitalOwner government - federal
+132 HospitalOwner government - federal
+133 HospitalOwner government - federal
+134 HospitalOwner government - federal
+135 HospitalOwner government - federal
+136 HospitalOwner government - federal
+137 HospitalOwner government - federal
+138 HospitalOwner government - federal
+139 HospitalOwner government - federal
+140 HospitalOwner government - federal
+141 HospitalOwner government - federal
+142 HospitalOwner government - federal
+143 HospitalOwner government - federal
+144 HospitalOwner proprietary
+145 HospitalOwner proprietary
+146 HospitalOwner proprietary
+147 HospitalOwner proprietary
+148 HospitalOwner proprietary
+149 HospitalOwner proprietary
+150 HospitalOwner proprietary
+151 HospitalOwner proprietary
+152 HospitalOwner proprietary
+153 HospitalOwner proprietary
+154 HospitalOwner proprietary
+155 HospitalOwner proprietary
+156 HospitalOwner proprietary
+158 HospitalOwner proprietary
+160 HospitalOwner proprietary
+161 HospitalOwner proprietary
+163 HospitalOwner proprietary
+165 HospitalOwner proprietary
+166 HospitalOwner proprietary
+167 HospitalOwner proprietary
+168 HospitalOwner proprietary
+169 HospitalOwner government - hospital district or authority
+170 HospitalOwner government - hospital district or authority
+171 HospitalOwner government - hospital district or authority
+172 HospitalOwner government - hospital district or authority
+173 HospitalOwner government - hospital district or authority
+174 HospitalOwner government - hospital district or authority
+175 HospitalOwner government - hospital district or authority
+176 HospitalOwner government - hospital district or authority
+177 HospitalOwner government - hospital district or authority
+178 HospitalOwner government - hospital district or authority
+179 HospitalOwner government - hospital district or authority
+180 HospitalOwner government - hospital district or authority
+181 HospitalOwner government - hospital district or authority
+182 HospitalOwner government - hospital district or authority
+183 HospitalOwner government - hospital district or authority
+184 HospitalOwner government - hospital district or authority
+185 HospitalOwner government - hospital district or authority
+186 HospitalOwner government - hospital district or authority
+187 HospitalOwner government - hospital district or authority
+188 HospitalOwner government - hospital district or authority
+189 HospitalOwner government - hospital district or authority
+190 HospitalOwner government - hospital district or authority
+191 HospitalOwner government - hospital district or authority
+192 HospitalOwner government - hospital district or authority
+193 HospitalOwner government - hospital district or authority
+194 HospitalOwner voluntary non-profit - private
+195 HospitalOwner voluntary non-profit - private
+196 HospitalOwner voluntary non-profit - private
+197 HospitalOwner voluntary non-profit - private
+198 HospitalOwner voluntary non-profit - private
+199 HospitalOwner voluntary non-profit - private
+0 EmergencyService yes
+1 EmergencyService yes
+2 EmergencyService yes
+3 EmergencyService yes
+4 EmergencyService yes
+5 EmergencyService yes
+6 EmergencyService yes
+7 EmergencyService yes
+8 EmergencyService yes
+9 EmergencyService yes
+10 EmergencyService yes
+11 EmergencyService yes
+12 EmergencyService yes
+13 EmergencyService yes
+14 EmergencyService yes
+15 EmergencyService yes
+16 EmergencyService yes
+17 EmergencyService yes
+18 EmergencyService yes
+19 EmergencyService yes
+20 EmergencyService yes
+21 EmergencyService yes
+22 EmergencyService yes
+23 EmergencyService yes
+25 EmergencyService yes
+26 EmergencyService yes
+27 EmergencyService yes
+28 EmergencyService yes
+29 EmergencyService yes
+30 EmergencyService yes
+31 EmergencyService yes
+32 EmergencyService yes
+33 EmergencyService yes
+34 EmergencyService yes
+35 EmergencyService yes
+36 EmergencyService yes
+37 EmergencyService yes
+38 EmergencyService yes
+39 EmergencyService yes
+40 EmergencyService yes
+41 EmergencyService yes
+42 EmergencyService yes
+44 EmergencyService yes
+45 EmergencyService yes
+46 EmergencyService yes
+47 EmergencyService yes
+48 EmergencyService yes
+49 EmergencyService yes
+50 EmergencyService yes
+52 EmergencyService yes
+53 EmergencyService yes
+54 EmergencyService yes
+55 EmergencyService yes
+56 EmergencyService yes
+57 EmergencyService yes
+58 EmergencyService yes
+59 EmergencyService yes
+60 EmergencyService yes
+61 EmergencyService yes
+62 EmergencyService yes
+63 EmergencyService yes
+64 EmergencyService yes
+65 EmergencyService yes
+66 EmergencyService yes
+67 EmergencyService yes
+68 EmergencyService yes
+69 EmergencyService yes
+70 EmergencyService yes
+71 EmergencyService yes
+72 EmergencyService yes
+73 EmergencyService yes
+74 EmergencyService yes
+75 EmergencyService yes
+76 EmergencyService yes
+77 EmergencyService yes
+78 EmergencyService yes
+79 EmergencyService yes
+80 EmergencyService yes
+81 EmergencyService yes
+82 EmergencyService yes
+83 EmergencyService yes
+84 EmergencyService yes
+85 EmergencyService yes
+86 EmergencyService yes
+87 EmergencyService yes
+88 EmergencyService yes
+89 EmergencyService yes
+90 EmergencyService yes
+91 EmergencyService yes
+92 EmergencyService yes
+93 EmergencyService yes
+94 EmergencyService no
+95 EmergencyService no
+96 EmergencyService no
+97 EmergencyService no
+98 EmergencyService no
+99 EmergencyService no
+100 EmergencyService no
+101 EmergencyService no
+102 EmergencyService no
+103 EmergencyService no
+104 EmergencyService no
+105 EmergencyService no
+106 EmergencyService no
+107 EmergencyService no
+108 EmergencyService no
+109 EmergencyService no
+110 EmergencyService no
+111 EmergencyService no
+112 EmergencyService no
+113 EmergencyService no
+114 EmergencyService no
+115 EmergencyService no
+116 EmergencyService no
+117 EmergencyService no
+118 EmergencyService no
+119 EmergencyService yes
+120 EmergencyService yes
+121 EmergencyService yes
+122 EmergencyService yes
+123 EmergencyService yes
+124 EmergencyService yes
+125 EmergencyService yes
+126 EmergencyService yes
+127 EmergencyService yes
+128 EmergencyService yes
+129 EmergencyService yes
+130 EmergencyService yes
+131 EmergencyService yes
+132 EmergencyService yes
+133 EmergencyService yes
+134 EmergencyService yes
+135 EmergencyService yes
+136 EmergencyService yes
+137 EmergencyService yes
+138 EmergencyService yes
+139 EmergencyService yes
+140 EmergencyService yes
+141 EmergencyService yes
+142 EmergencyService yes
+143 EmergencyService yes
+144 EmergencyService yes
+145 EmergencyService yes
+146 EmergencyService yes
+147 EmergencyService yes
+148 EmergencyService yes
+149 EmergencyService yes
+150 EmergencyService yes
+151 EmergencyService yes
+152 EmergencyService yes
+153 EmergencyService yes
+154 EmergencyService yes
+155 EmergencyService yes
+156 EmergencyService yes
+158 EmergencyService yes
+159 EmergencyService yes
+160 EmergencyService yes
+161 EmergencyService yes
+162 EmergencyService yes
+163 EmergencyService yes
+164 EmergencyService yes
+165 EmergencyService yes
+166 EmergencyService yes
+167 EmergencyService yes
+168 EmergencyService yes
+169 EmergencyService yes
+170 EmergencyService yes
+171 EmergencyService yes
+172 EmergencyService yes
+173 EmergencyService yes
+174 EmergencyService yes
+175 EmergencyService yes
+176 EmergencyService yes
+177 EmergencyService yes
+178 EmergencyService yes
+179 EmergencyService yes
+180 EmergencyService yes
+181 EmergencyService yes
+182 EmergencyService yes
+183 EmergencyService yes
+184 EmergencyService yes
+185 EmergencyService yes
+186 EmergencyService yes
+187 EmergencyService yes
+188 EmergencyService yes
+189 EmergencyService yes
+190 EmergencyService yes
+191 EmergencyService yes
+192 EmergencyService yes
+193 EmergencyService yes
+194 EmergencyService yes
+195 EmergencyService yes
+196 EmergencyService yes
+197 EmergencyService yes
+198 EmergencyService yes
+199 EmergencyService yes
+0 Condition surgical infection prevention
+1 Condition surgical infection prevention
+2 Condition surgical infection prevention
+3 Condition surgical infection prevention
+4 Condition surgical infection prevention
+5 Condition surgical infection prevention
+6 Condition surgical infection prevention
+7 Condition surgical infection prevention
+8 Condition heart attack
+9 Condition heart attack
+10 Condition heart attack
+11 Condition heart attack
+12 Condition heart attack
+13 Condition heart attack
+14 Condition heart attack
+15 Condition heart failure
+16 Condition heart failure
+17 Condition heart failure
+18 Condition heart failure
+19 Condition heart attack
+20 Condition heart attack
+23 Condition heart attack
+24 Condition heart attack
+25 Condition heart attack
+26 Condition heart failure
+27 Condition heart failure
+28 Condition heart failure
+29 Condition heart failure
+30 Condition pneumonia
+31 Condition pneumonia
+32 Condition pneumonia
+33 Condition pneumonia
+34 Condition pneumonia
+35 Condition pneumonia
+36 Condition surgical infection prevention
+37 Condition surgical infection prevention
+38 Condition surgical infection prevention
+39 Condition surgical infection prevention
+40 Condition surgical infection prevention
+41 Condition surgical infection prevention
+42 Condition surgical infection prevention
+43 Condition surgical infection prevention
+44 Condition heart attack
+45 Condition heart attack
+46 Condition heart attack
+47 Condition heart attack
+48 Condition heart attack
+49 Condition heart attack
+50 Condition heart attack
+51 Condition heart failure
+52 Condition heart failure
+53 Condition heart failure
+54 Condition heart failure
+55 Condition pneumonia
+56 Condition pneumonia
+57 Condition pneumonia
+58 Condition pneumonia
+59 Condition pneumonia
+60 Condition pneumonia
+61 Condition surgical infection prevention
+62 Condition surgical infection prevention
+63 Condition surgical infection prevention
+64 Condition surgical infection prevention
+65 Condition surgical infection prevention
+66 Condition surgical infection prevention
+67 Condition surgical infection prevention
+68 Condition surgical infection prevention
+69 Condition heart attack
+70 Condition heart attack
+71 Condition heart attack
+72 Condition heart attack
+74 Condition heart attack
+75 Condition heart attack
+76 Condition heart failure
+77 Condition heart failure
+78 Condition heart failure
+79 Condition heart failure
+80 Condition pneumonia
+81 Condition pneumonia
+82 Condition pneumonia
+83 Condition pneumonia
+84 Condition pneumonia
+85 Condition pneumonia
+86 Condition surgical infection prevention
+87 Condition surgical infection prevention
+88 Condition surgical infection prevention
+89 Condition surgical infection prevention
+90 Condition surgical infection prevention
+91 Condition surgical infection prevention
+92 Condition surgical infection prevention
+93 Condition surgical infection prevention
+94 Condition heart attack
+95 Condition heart attack
+96 Condition heart attack
+97 Condition heart attack
+98 Condition heart attack
+99 Condition heart attack
+100 Condition heart attack
+101 Condition heart failure
+102 Condition heart failure
+103 Condition heart failure
+104 Condition heart failure
+105 Condition pneumonia
+106 Condition pneumonia
+107 Condition pneumonia
+108 Condition pneumonia
+109 Condition pneumonia
+110 Condition pneumonia
+111 Condition surgical infection prevention
+112 Condition surgical infection prevention
+113 Condition surgical infection prevention
+114 Condition surgical infection prevention
+115 Condition surgical infection prevention
+116 Condition surgical infection prevention
+117 Condition surgical infection prevention
+118 Condition surgical infection prevention
+119 Condition heart attack
+120 Condition heart attack
+121 Condition heart attack
+122 Condition heart attack
+123 Condition heart attack
+124 Condition heart attack
+125 Condition heart attack
+126 Condition heart failure
+128 Condition heart failure
+129 Condition heart failure
+130 Condition pneumonia
+131 Condition pneumonia
+132 Condition pneumonia
+133 Condition pneumonia
+134 Condition pneumonia
+135 Condition pneumonia
+136 Condition surgical infection prevention
+137 Condition surgical infection prevention
+138 Condition surgical infection prevention
+139 Condition surgical infection prevention
+140 Condition surgical infection prevention
+141 Condition surgical infection prevention
+142 Condition surgical infection prevention
+143 Condition surgical infection prevention
+144 Condition heart attack
+145 Condition heart attack
+146 Condition heart attack
+147 Condition heart attack
+148 Condition heart attack
+149 Condition heart attack
+150 Condition heart attack
+151 Condition heart failure
+152 Condition heart failure
+153 Condition heart failure
+154 Condition heart failure
+155 Condition pneumonia
+156 Condition pneumonia
+157 Condition pneumonia
+158 Condition pneumonia
+159 Condition pneumonia
+160 Condition pneumonia
+161 Condition surgical infection prevention
+162 Condition surgical infection prevention
+163 Condition surgical infection prevention
+164 Condition surgical infection prevention
+165 Condition surgical infection prevention
+166 Condition surgical infection prevention
+167 Condition surgical infection prevention
+168 Condition surgical infection prevention
+169 Condition heart attack
+170 Condition heart attack
+171 Condition heart attack
+172 Condition heart attack
+173 Condition heart attack
+174 Condition heart attack
+175 Condition heart attack
+176 Condition heart failure
+177 Condition heart failure
+178 Condition heart failure
+179 Condition heart failure
+180 Condition pneumonia
+181 Condition pneumonia
+182 Condition pneumonia
+183 Condition pneumonia
+184 Condition pneumonia
+185 Condition pneumonia
+186 Condition surgical infection prevention
+187 Condition surgical infection prevention
+188 Condition surgical infection prevention
+189 Condition surgical infection prevention
+190 Condition surgical infection prevention
+191 Condition surgical infection prevention
+192 Condition surgical infection prevention
+193 Condition surgical infection prevention
+194 Condition heart attack
+195 Condition heart attack
+196 Condition heart attack
+197 Condition heart attack
+198 Condition heart attack
+0 MeasureCode scip-card-2
+1 MeasureCode scip-inf-1
+2 MeasureCode scip-inf-2
+3 MeasureCode scip-inf-3
+4 MeasureCode scip-inf-4
+5 MeasureCode scip-inf-6
+6 MeasureCode scip-vte-1
+7 MeasureCode scip-vte-2
+8 MeasureCode ami-1
+9 MeasureCode ami-2
+11 MeasureCode ami-4
+12 MeasureCode ami-5
+13 MeasureCode ami-7a
+14 MeasureCode ami-8a
+15 MeasureCode hf-1
+19 MeasureCode ami-1
+20 MeasureCode ami-2
+22 MeasureCode ami-4
+23 MeasureCode ami-5
+24 MeasureCode ami-7a
+25 MeasureCode ami-8a
+26 MeasureCode hf-1
+30 MeasureCode pn-2
+31 MeasureCode pn-3b
+32 MeasureCode pn-4
+33 MeasureCode pn-5c
+34 MeasureCode pn-6
+35 MeasureCode pn-7
+36 MeasureCode scip-card-2
+37 MeasureCode scip-inf-1
+38 MeasureCode scip-inf-2
+39 MeasureCode scip-inf-3
+40 MeasureCode scip-inf-4
+41 MeasureCode scip-inf-6
+42 MeasureCode scip-vte-1
+43 MeasureCode scip-vte-2
+44 MeasureCode ami-1
+45 MeasureCode ami-2
+47 MeasureCode ami-4
+48 MeasureCode ami-5
+49 MeasureCode ami-7a
+50 MeasureCode ami-8a
+51 MeasureCode hf-1
+55 MeasureCode pn-2
+56 MeasureCode pn-3b
+57 MeasureCode pn-4
+58 MeasureCode pn-5c
+59 MeasureCode pn-6
+60 MeasureCode pn-7
+61 MeasureCode scip-card-2
+62 MeasureCode scip-inf-1
+63 MeasureCode scip-inf-2
+64 MeasureCode scip-inf-3
+65 MeasureCode scip-inf-4
+66 MeasureCode scip-inf-6
+67 MeasureCode scip-vte-1
+68 MeasureCode scip-vte-2
+69 MeasureCode ami-1
+70 MeasureCode ami-2
+72 MeasureCode ami-4
+73 MeasureCode ami-5
+74 MeasureCode ami-7a
+75 MeasureCode ami-8a
+76 MeasureCode hf-1
+80 MeasureCode pn-2
+81 MeasureCode pn-3b
+82 MeasureCode pn-4
+83 MeasureCode pn-5c
+84 MeasureCode pn-6
+85 MeasureCode pn-7
+86 MeasureCode scip-card-2
+87 MeasureCode scip-inf-1
+88 MeasureCode scip-inf-2
+89 MeasureCode scip-inf-3
+90 MeasureCode scip-inf-4
+91 MeasureCode scip-inf-6
+92 MeasureCode scip-vte-1
+93 MeasureCode scip-vte-2
+94 MeasureCode ami-1
+95 MeasureCode ami-2
+98 MeasureCode ami-5
+99 MeasureCode ami-7a
+100 MeasureCode ami-8a
+105 MeasureCode pn-2
+106 MeasureCode pn-3b
+107 MeasureCode pn-4
+109 MeasureCode pn-6
+110 MeasureCode pn-7
+111 MeasureCode scip-card-2
+112 MeasureCode scip-inf-1
+113 MeasureCode scip-inf-2
+114 MeasureCode scip-inf-3
+115 MeasureCode scip-inf-4
+116 MeasureCode scip-inf-6
+117 MeasureCode scip-vte-1
+118 MeasureCode scip-vte-2
+119 MeasureCode ami-1
+122 MeasureCode ami-4
+123 MeasureCode ami-5
+124 MeasureCode ami-7a
+125 MeasureCode ami-8a
+126 MeasureCode hf-1
+130 MeasureCode pn-2
+131 MeasureCode pn-3b
+132 MeasureCode pn-4
+133 MeasureCode pn-5c
+134 MeasureCode pn-6
+135 MeasureCode pn-7
+136 MeasureCode scip-card-2
+137 MeasureCode scip-inf-1
+138 MeasureCode scip-inf-2
+139 MeasureCode scip-inf-3
+140 MeasureCode scip-inf-4
+141 MeasureCode scip-inf-6
+142 MeasureCode scip-vte-1
+143 MeasureCode scip-vte-2
+144 MeasureCode ami-1
+145 MeasureCode ami-2
+147 MeasureCode ami-4
+148 MeasureCode ami-5
+149 MeasureCode ami-7a
+150 MeasureCode ami-8a
+151 MeasureCode hf-1
+155 MeasureCode pn-2
+156 MeasureCode pn-3b
+157 MeasureCode pn-4
+158 MeasureCode pn-5c
+159 MeasureCode pn-6
+160 MeasureCode pn-7
+161 MeasureCode scip-card-2
+162 MeasureCode scip-inf-1
+163 MeasureCode scip-inf-2
+164 MeasureCode scip-inf-3
+165 MeasureCode scip-inf-4
+166 MeasureCode scip-inf-6
+167 MeasureCode scip-vte-1
+168 MeasureCode scip-vte-2
+169 MeasureCode ami-1
+170 MeasureCode ami-2
+172 MeasureCode ami-4
+173 MeasureCode ami-5
+174 MeasureCode ami-7a
+175 MeasureCode ami-8a
+176 MeasureCode hf-1
+180 MeasureCode pn-2
+181 MeasureCode pn-3b
+182 MeasureCode pn-4
+183 MeasureCode pn-5c
+184 MeasureCode pn-6
+185 MeasureCode pn-7
+186 MeasureCode scip-card-2
+187 MeasureCode scip-inf-1
+188 MeasureCode scip-inf-2
+189 MeasureCode scip-inf-3
+191 MeasureCode scip-inf-6
+192 MeasureCode scip-vte-1
+193 MeasureCode scip-vte-2
+194 MeasureCode ami-1
+195 MeasureCode ami-2
+197 MeasureCode ami-4
+198 MeasureCode ami-5
+199 MeasureCode ami-7a
+1 MeasureName surgery patients who were given an antibiotic at the right time (within one hour before surgery) to help prevent infection
+3 MeasureName surgery patients whose preventive antibiotics were stopped at the right time (within 24 hours after surgery)
+4 MeasureName all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery
+5 MeasureName surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+6 MeasureName surgery patients whose doctors ordered treatments to prevent blood clots after certain types of surgeries
+7 MeasureName patients who got treatment  at the right time (within 24 hours before or after their surgery) to help prevent blood clots after certain types of surgery
+8 MeasureName heart attack patients given aspirin at arrival
+9 MeasureName heart attack patients given aspirin at discharge
+10 MeasureName heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
+11 MeasureName heart attack patients given smoking cessation advice/counseling
+12 MeasureName heart attack patients given beta blocker at discharge
+13 MeasureName heart attack patients given fibrinolytic medication within 30 minutes of arrival
+14 MeasureName heart attack patients given pci within 90 minutes of arrival
+15 MeasureName heart failure patients given discharge instructions
+16 MeasureName heart failure patients given an evaluation of left ventricular systolic (lvs) function
+19 MeasureName heart attack patients given aspirin at arrival
+20 MeasureName heart attack patients given aspirin at discharge
+21 MeasureName heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
+22 MeasureName heart attack patients given smoking cessation advice/counseling
+23 MeasureName heart attack patients given beta blocker at discharge
+24 MeasureName heart attack patients given fibrinolytic medication within 30 minutes of arrival
+25 MeasureName heart attack patients given pci within 90 minutes of arrival
+26 MeasureName heart failure patients given discharge instructions
+27 MeasureName heart failure patients given an evaluation of left ventricular systolic (lvs) function
+36 MeasureName surgery patients who were taking heart drugs called beta blockers before coming to the hospital who were kept on the beta blockers during the period just before and after their surgery
+37 MeasureName surgery patients who were given an antibiotic at the right time (within one hour before surgery) to help prevent infection
+39 MeasureName surgery patients whose preventive antibiotics were stopped at the right time (within 24 hours after surgery)
+40 MeasureName all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery
+41 MeasureName surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+42 MeasureName surgery patients whose doctors ordered treatments to prevent blood clots after certain types of surgeries
+43 MeasureName patients who got treatment  at the right time (within 24 hours before or after their surgery) to help prevent blood clots after certain types of surgery
+44 MeasureName heart attack patients given aspirin at arrival
+45 MeasureName heart attack patients given aspirin at discharge
+46 MeasureName heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
+47 MeasureName heart attack patients given smoking cessation advice/counseling
+48 MeasureName heart attack patients given beta blocker at discharge
+49 MeasureName heart attack patients given fibrinolytic medication within 30 minutes of arrival
+50 MeasureName heart attack patients given pci within 90 minutes of arrival
+51 MeasureName heart failure patients given discharge instructions
+52 MeasureName heart failure patients given an evaluation of left ventricular systolic (lvs) function
+61 MeasureName surgery patients who were taking heart drugs called beta blockers before coming to the hospital who were kept on the beta blockers during the period just before and after their surgery
+62 MeasureName surgery patients who were given an antibiotic at the right time (within one hour before surgery) to help prevent infection
+64 MeasureName surgery patients whose preventive antibiotics were stopped at the right time (within 24 hours after surgery)
+65 MeasureName all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery
+66 MeasureName surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+67 MeasureName surgery patients whose doctors ordered treatments to prevent blood clots after certain types of surgeries
+68 MeasureName patients who got treatment  at the right time (within 24 hours before or after their surgery) to help prevent blood clots after certain types of surgery
+69 MeasureName heart attack patients given aspirin at arrival
+70 MeasureName heart attack patients given aspirin at discharge
+71 MeasureName heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
+72 MeasureName heart attack patients given smoking cessation advice/counseling
+73 MeasureName heart attack patients given beta blocker at discharge
+74 MeasureName heart attack patients given fibrinolytic medication within 30 minutes of arrival
+75 MeasureName heart attack patients given pci within 90 minutes of arrival
+76 MeasureName heart failure patients given discharge instructions
+77 MeasureName heart failure patients given an evaluation of left ventricular systolic (lvs) function
+86 MeasureName surgery patients who were taking heart drugs called beta blockers before coming to the hospital who were kept on the beta blockers during the period just before and after their surgery
+87 MeasureName surgery patients who were given an antibiotic at the right time (within one hour before surgery) to help prevent infection
+89 MeasureName surgery patients whose preventive antibiotics were stopped at the right time (within 24 hours after surgery)
+90 MeasureName all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery
+91 MeasureName surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+92 MeasureName surgery patients whose doctors ordered treatments to prevent blood clots after certain types of surgeries
+93 MeasureName patients who got treatment  at the right time (within 24 hours before or after their surgery) to help prevent blood clots after certain types of surgery
+95 MeasureName heart attack patients given aspirin at discharge
+96 MeasureName heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
+97 MeasureName heart attack patients given smoking cessation advice/counseling
+98 MeasureName heart attack patients given beta blocker at discharge
+99 MeasureName heart attack patients given fibrinolytic medication within 30 minutes of arrival
+100 MeasureName heart attack patients given pci within 90 minutes of arrival
+101 MeasureName heart failure patients given discharge instructions
+102 MeasureName heart failure patients given an evaluation of left ventricular systolic (lvs) function
+112 MeasureName surgery patients who were given an antibiotic at the right time (within one hour before surgery) to help prevent infection
+114 MeasureName surgery patients whose preventive antibiotics were stopped at the right time (within 24 hours after surgery)
+115 MeasureName all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery
+116 MeasureName surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+117 MeasureName surgery patients whose doctors ordered treatments to prevent blood clots after certain types of surgeries
+118 MeasureName patients who got treatment  at the right time (within 24 hours before or after their surgery) to help prevent blood clots after certain types of surgery
+120 MeasureName heart attack patients given aspirin at discharge
+121 MeasureName heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
+122 MeasureName heart attack patients given smoking cessation advice/counseling
+123 MeasureName heart attack patients given beta blocker at discharge
+124 MeasureName heart attack patients given fibrinolytic medication within 30 minutes of arrival
+125 MeasureName heart attack patients given pci within 90 minutes of arrival
+126 MeasureName heart failure patients given discharge instructions
+127 MeasureName heart failure patients given an evaluation of left ventricular systolic (lvs) function
+136 MeasureName surgery patients who were taking heart drugs called beta blockers before coming to the hospital who were kept on the beta blockers during the period just before and after their surgery
+137 MeasureName surgery patients who were given an antibiotic at the right time (within one hour before surgery) to help prevent infection
+139 MeasureName surgery patients whose preventive antibiotics were stopped at the right time (within 24 hours after surgery)
+140 MeasureName all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery
+141 MeasureName surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+142 MeasureName surgery patients whose doctors ordered treatments to prevent blood clots after certain types of surgeries
+143 MeasureName patients who got treatment  at the right time (within 24 hours before or after their surgery) to help prevent blood clots after certain types of surgery
+144 MeasureName heart attack patients given aspirin at arrival
+146 MeasureName heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
+147 MeasureName heart attack patients given smoking cessation advice/counseling
+148 MeasureName heart attack patients given beta blocker at discharge
+149 MeasureName heart attack patients given fibrinolytic medication within 30 minutes of arrival
+150 MeasureName heart attack patients given pci within 90 minutes of arrival
+151 MeasureName heart failure patients given discharge instructions
+152 MeasureName heart failure patients given an evaluation of left ventricular systolic (lvs) function
+161 MeasureName surgery patients who were taking heart drugs called beta blockers before coming to the hospital who were kept on the beta blockers during the period just before and after their surgery
+162 MeasureName surgery patients who were given an antibiotic at the right time (within one hour before surgery) to help prevent infection
+164 MeasureName surgery patients whose preventive antibiotics were stopped at the right time (within 24 hours after surgery)
+165 MeasureName all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery
+166 MeasureName surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+167 MeasureName surgery patients whose doctors ordered treatments to prevent blood clots after certain types of surgeries
+168 MeasureName patients who got treatment  at the right time (within 24 hours before or after their surgery) to help prevent blood clots after certain types of surgery
+169 MeasureName heart attack patients given aspirin at arrival
+170 MeasureName heart attack patients given aspirin at discharge
+171 MeasureName heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
+172 MeasureName heart attack patients given smoking cessation advice/counseling
+173 MeasureName heart attack patients given beta blocker at discharge
+174 MeasureName heart attack patients given fibrinolytic medication within 30 minutes of arrival
+175 MeasureName heart attack patients given pci within 90 minutes of arrival
+176 MeasureName heart failure patients given discharge instructions
+177 MeasureName heart failure patients given an evaluation of left ventricular systolic (lvs) function
+186 MeasureName surgery patients who were taking heart drugs called beta blockers before coming to the hospital who were kept on the beta blockers during the period just before and after their surgery
+187 MeasureName surgery patients who were given an antibiotic at the right time (within one hour before surgery) to help prevent infection
+189 MeasureName surgery patients whose preventive antibiotics were stopped at the right time (within 24 hours after surgery)
+190 MeasureName all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery
+191 MeasureName surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+192 MeasureName surgery patients whose doctors ordered treatments to prevent blood clots after certain types of surgeries
+193 MeasureName patients who got treatment  at the right time (within 24 hours before or after their surgery) to help prevent blood clots after certain types of surgery
+194 MeasureName heart attack patients given aspirin at arrival
+195 MeasureName heart attack patients given aspirin at discharge
+196 MeasureName heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
+197 MeasureName heart attack patients given smoking cessation advice/counseling
+198 MeasureName heart attack patients given beta blocker at discharge
+199 MeasureName heart attack patients given fibrinolytic medication within 30 minutes of arrival
+8 Score 97%
+9 Score 92%
+10 Score 75%
+11 Score 100%
+12 Score 86%
+15 Score 80%
+16 Score 99%
+17 Score 92%
+18 Score 100%
+19 Score 98%
+20 Score 99%
+21 Score 96%
+22 Score 100%
+23 Score 99%
+25 Score 72%
+26 Score 78%
+27 Score 99%
+28 Score 91%
+29 Score 100%
+30 Score 93%
+31 Score 89%
+32 Score 99%
+33 Score 92%
+34 Score 80%
+35 Score 84%
+36 Score 72%
+37 Score 94%
+38 Score 98%
+39 Score 88%
+40 Score 96%
+41 Score 90%
+42 Score 86%
+43 Score 83%
+44 Score 80%
+45 Score 60%
+46 Score 100%
+48 Score 100%
+51 Score 78%
+52 Score 99%
+53 Score 90%
+54 Score 94%
+55 Score 97%
+56 Score 97%
+57 Score 97%
+58 Score 96%
+59 Score 92%
+60 Score 81%
+61 Score 36%
+62 Score 96%
+63 Score 93%
+64 Score 95%
+66 Score 100%
+67 Score 78%
+68 Score 74%
+69 Score 97%
+70 Score 96%
+71 Score 93%
+72 Score 100%
+73 Score 96%
+75 Score 98%
+76 Score 79%
+77 Score 97%
+78 Score 82%
+79 Score 100%
+80 Score 90%
+81 Score 95%
+82 Score 100%
+83 Score 96%
+84 Score 91%
+85 Score 88%
+86 Score 96%
+87 Score 99%
+88 Score 99%
+89 Score 94%
+90 Score 89%
+91 Score 100%
+92 Score 95%
+93 Score 92%
+94 Score 60%
+95 Score 50%
+98 Score 100%
+101 Score 98%
+102 Score 87%
+103 Score 64%
+104 Score 100%
+105 Score 87%
+106 Score 78%
+107 Score 100%
+108 Score 95%
+109 Score 88%
+110 Score 90%
+111 Score 91%
+112 Score 88%
+113 Score 91%
+114 Score 93%
+116 Score 100%
+117 Score 87%
+118 Score 88%
+119 Score 0%
+123 Score 0%
+126 Score 4%
+127 Score 72%
+128 Score 75%
+129 Score 0%
+130 Score 25%
+131 Score 93%
+132 Score 33%
+133 Score 95%
+134 Score 62%
+135 Score 47%
+136 Score 100%
+137 Score 100%
+138 Score 100%
+139 Score 100%
+141 Score 100%
+142 Score 100%
+143 Score 100%
+144 Score 100%
+145 Score 100%
+146 Score 100%
+147 Score 100%
+148 Score 100%
+151 Score 97%
+152 Score 98%
+153 Score 100%
+154 Score 100%
+155 Score 98%
+156 Score 100%
+157 Score 100%
+159 Score 100%
+160 Score 97%
+161 Score 67%
+162 Score 100%
+164 Score 80%
+166 Score 100%
+167 Score 78%
+168 Score 78%
+169 Score 100%
+170 Score 100%
+171 Score 50%
+172 Score 100%
+173 Score 83%
+176 Score 93%
+177 Score 84%
+178 Score 78%
+179 Score 100%
+180 Score 87%
+181 Score 94%
+182 Score 94%
+183 Score 97%
+184 Score 93%
+185 Score 90%
+186 Score 86%
+188 Score 91%
+189 Score 100%
+191 Score 100%
+192 Score 86%
+193 Score 84%
+194 Score 99%
+195 Score 96%
+196 Score 91%
+197 Score 100%
+198 Score 99%
+9 Sample 13 patients
+10 Sample 4 patients
+12 Sample 14 patients
+13 Sample 0 patients
+14 Sample 0 patients
+15 Sample 114 patients
+16 Sample 149 patients
+19 Sample 270 patients
+20 Sample 516 patients
+21 Sample 71 patients
+23 Sample 441 patients
+24 Sample 0 patients
+25 Sample 40 patients
+27 Sample 514 patients
+28 Sample 165 patients
+30 Sample 191 patients
+31 Sample 125 patients
+32 Sample 107 patients
+33 Sample 196 patients
+34 Sample 147 patients
+36 Sample 79 patients
+38 Sample 405 patients
+39 Sample 385 patients
+40 Sample 136 patients
+41 Sample 537 patients
+42 Sample 185 patients
+43 Sample 184 patients
+44 Sample 20 patients
+45 Sample 5 patients
+49 Sample 0 patients
+50 Sample 0 patients
+51 Sample 110 patients
+52 Sample 160 patients
+53 Sample 69 patients
+58 Sample 211 patients
+59 Sample 175 patients
+60 Sample 118 patients
+61 Sample 14 patients
+62 Sample 168 patients
+63 Sample 167 patients
+64 Sample 158 patients
+65 Sample 0 patients
+67 Sample 76 patients
+68 Sample 76 patients
+70 Sample 247 patients
+71 Sample 43 patients
+73 Sample 227 patients
+74 Sample 0 patients
+75 Sample 61 patients
+76 Sample 217 patients
+78 Sample 84 patients
+80 Sample 174 patients
+81 Sample 137 patients
+83 Sample 200 patients
+84 Sample 138 patients
+85 Sample 85 patients
+86 Sample 107 patients
+87 Sample 457 patients
+88 Sample 462 patients
+90 Sample 130 patients
+92 Sample 242 patients
+93 Sample 242 patients
+94 Sample 5 patients
+96 Sample 0 patients
+99 Sample 0 patients
+100 Sample 0 patients
+101 Sample 59 patients
+102 Sample 76 patients
+103 Sample 14 patients
+105 Sample 85 patients
+106 Sample 64 patients
+108 Sample 87 patients
+109 Sample 57 patients
+110 Sample 63 patients
+111 Sample 11 patients
+112 Sample 101 patients
+113 Sample 101 patients
+114 Sample 100 patients
+117 Sample 77 patients
+118 Sample 76 patients
+121 Sample 0 patients
+124 Sample 0 patients
+125 Sample 0 patients
+126 Sample 26 patients
+127 Sample 39 patients
+128 Sample 8 patients
+130 Sample 16 patients
+131 Sample 15 patients
+132 Sample 9 patients
+134 Sample 21 patients
+135 Sample 15 patients
+140 Sample 0 patients
+149 Sample 0 patients
+150 Sample 0 patients
+152 Sample 42 patients
+155 Sample 44 patients
+158 Sample 51 patients
+161 Sample 3 patients
+163 Sample 7 patients
+164 Sample 5 patients
+165 Sample 0 patients
+167 Sample 9 patients
+168 Sample 9 patients
+173 Sample 6 patients
+174 Sample 0 patients
+175 Sample 0 patients
+176 Sample 55 patients
+178 Sample 27 patients
+180 Sample 128 patients
+184 Sample 133 patients
+185 Sample 101 patients
+186 Sample 14 patients
+187 Sample 66 patients
+188 Sample 64 patients
+190 Sample 0 patients
+192 Sample 56 patients
+193 Sample 56 patients
+194 Sample 240 patients
+195 Sample 295 patients
+196 Sample 70 patients
+198 Sample 288 patients
+199 Sample 0 patients
+0 Stateavg al_scip-card-2
+1 Stateavg al_scip-inf-1
+2 Stateavg al_scip-inf-2
+3 Stateavg al_scip-inf-3
+4 Stateavg al_scip-inf-4
+5 Stateavg al_scip-inf-6
+6 Stateavg al_scip-vte-1
+7 Stateavg al_scip-vte-2
+8 Stateavg al_ami-1
+9 Stateavg al_ami-2
+10 Stateavg al_ami-3
+11 Stateavg al_ami-4
+12 Stateavg al_ami-5
+13 Stateavg al_ami-7a
+14 Stateavg al_ami-8a
+15 Stateavg al_hf-1
+16 Stateavg al_hf-2
+17 Stateavg al_hf-3
+18 Stateavg al_hf-4
+19 Stateavg al_ami-1
+20 Stateavg al_ami-2
+21 Stateavg al_ami-3
+22 Stateavg al_ami-4
+23 Stateavg al_ami-5
+24 Stateavg al_ami-7a
+25 Stateavg al_ami-8a
+26 Stateavg al_hf-1
+27 Stateavg al_hf-2
+28 Stateavg al_hf-3
+29 Stateavg al_hf-4
+30 Stateavg al_pn-2
+31 Stateavg al_pn-3b
+32 Stateavg al_pn-4
+33 Stateavg al_pn-5c
+34 Stateavg al_pn-6
+35 Stateavg al_pn-7
+36 Stateavg al_scip-card-2
+37 Stateavg al_scip-inf-1
+38 Stateavg al_scip-inf-2
+39 Stateavg al_scip-inf-3
+40 Stateavg al_scip-inf-4
+41 Stateavg al_scip-inf-6
+42 Stateavg al_scip-vte-1
+43 Stateavg al_scip-vte-2
+44 Stateavg al_ami-1
+45 Stateavg al_ami-2
+46 Stateavg al_ami-3
+47 Stateavg al_ami-4
+48 Stateavg al_ami-5
+49 Stateavg al_ami-7a
+50 Stateavg al_ami-8a
+51 Stateavg al_hf-1
+52 Stateavg al_hf-2
+53 Stateavg al_hf-3
+54 Stateavg al_hf-4
+55 Stateavg al_pn-2
+57 Stateavg al_pn-4
+58 Stateavg al_pn-5c
+59 Stateavg al_pn-6
+60 Stateavg al_pn-7
+61 Stateavg al_scip-card-2
+62 Stateavg al_scip-inf-1
+63 Stateavg al_scip-inf-2
+64 Stateavg al_scip-inf-3
+65 Stateavg al_scip-inf-4
+66 Stateavg al_scip-inf-6
+67 Stateavg al_scip-vte-1
+68 Stateavg al_scip-vte-2
+70 Stateavg al_ami-2
+71 Stateavg al_ami-3
+72 Stateavg al_ami-4
+73 Stateavg al_ami-5
+74 Stateavg al_ami-7a
+75 Stateavg al_ami-8a
+76 Stateavg al_hf-1
+77 Stateavg al_hf-2
+78 Stateavg al_hf-3
+79 Stateavg al_hf-4
+80 Stateavg al_pn-2
+81 Stateavg al_pn-3b
+82 Stateavg al_pn-4
+83 Stateavg al_pn-5c
+84 Stateavg al_pn-6
+85 Stateavg al_pn-7
+86 Stateavg al_scip-card-2
+87 Stateavg al_scip-inf-1
+88 Stateavg al_scip-inf-2
+89 Stateavg al_scip-inf-3
+90 Stateavg al_scip-inf-4
+91 Stateavg al_scip-inf-6
+92 Stateavg al_scip-vte-1
+93 Stateavg al_scip-vte-2
+94 Stateavg al_ami-1
+95 Stateavg al_ami-2
+96 Stateavg al_ami-3
+97 Stateavg al_ami-4
+98 Stateavg al_ami-5
+99 Stateavg al_ami-7a
+100 Stateavg al_ami-8a
+101 Stateavg al_hf-1
+102 Stateavg al_hf-2
+103 Stateavg al_hf-3
+104 Stateavg al_hf-4
+105 Stateavg al_pn-2
+106 Stateavg al_pn-3b
+107 Stateavg al_pn-4
+108 Stateavg al_pn-5c
+109 Stateavg al_pn-6
+110 Stateavg al_pn-7
+111 Stateavg al_scip-card-2
+112 Stateavg al_scip-inf-1
+113 Stateavg al_scip-inf-2
+114 Stateavg al_scip-inf-3
+115 Stateavg al_scip-inf-4
+116 Stateavg al_scip-inf-6
+117 Stateavg al_scip-vte-1
+118 Stateavg al_scip-vte-2
+119 Stateavg al_ami-1
+120 Stateavg al_ami-2
+121 Stateavg al_ami-3
+122 Stateavg al_ami-4
+123 Stateavg al_ami-5
+124 Stateavg al_ami-7a
+125 Stateavg al_ami-8a
+126 Stateavg al_hf-1
+127 Stateavg al_hf-2
+128 Stateavg al_hf-3
+129 Stateavg al_hf-4
+130 Stateavg al_pn-2
+131 Stateavg al_pn-3b
+132 Stateavg al_pn-4
+133 Stateavg al_pn-5c
+134 Stateavg al_pn-6
+135 Stateavg al_pn-7
+136 Stateavg al_scip-card-2
+137 Stateavg al_scip-inf-1
+138 Stateavg al_scip-inf-2
+139 Stateavg al_scip-inf-3
+140 Stateavg al_scip-inf-4
+141 Stateavg al_scip-inf-6
+142 Stateavg al_scip-vte-1
+143 Stateavg al_scip-vte-2
+144 Stateavg al_ami-1
+145 Stateavg al_ami-2
+146 Stateavg al_ami-3
+147 Stateavg al_ami-4
+148 Stateavg al_ami-5
+149 Stateavg al_ami-7a
+150 Stateavg al_ami-8a
+151 Stateavg al_hf-1
+152 Stateavg al_hf-2
+153 Stateavg al_hf-3
+154 Stateavg al_hf-4
+155 Stateavg al_pn-2
+156 Stateavg al_pn-3b
+157 Stateavg al_pn-4
+158 Stateavg al_pn-5c
+159 Stateavg al_pn-6
+160 Stateavg al_pn-7
+161 Stateavg al_scip-card-2
+162 Stateavg al_scip-inf-1
+163 Stateavg al_scip-inf-2
+164 Stateavg al_scip-inf-3
+165 Stateavg al_scip-inf-4
+166 Stateavg al_scip-inf-6
+167 Stateavg al_scip-vte-1
+168 Stateavg al_scip-vte-2
+169 Stateavg al_ami-1
+170 Stateavg al_ami-2
+171 Stateavg al_ami-3
+172 Stateavg al_ami-4
+173 Stateavg al_ami-5
+174 Stateavg al_ami-7a
+175 Stateavg al_ami-8a
+176 Stateavg al_hf-1
+177 Stateavg al_hf-2
+178 Stateavg al_hf-3
+179 Stateavg al_hf-4
+180 Stateavg al_pn-2
+181 Stateavg al_pn-3b
+182 Stateavg al_pn-4
+183 Stateavg al_pn-5c
+184 Stateavg al_pn-6
+185 Stateavg al_pn-7
+186 Stateavg al_scip-card-2
+187 Stateavg al_scip-inf-1
+188 Stateavg al_scip-inf-2
+189 Stateavg al_scip-inf-3
+190 Stateavg al_scip-inf-4
+191 Stateavg al_scip-inf-6
+192 Stateavg al_scip-vte-1
+194 Stateavg al_ami-1
+195 Stateavg al_ami-2
+196 Stateavg al_ami-3
+197 Stateavg al_ami-4
+198 Stateavg al_ami-5
+199 Stateavg al_ami-7a
+
+missing_errors:
+0 13 surgery patients who were taking heart drugs caxxed beta bxockers before coming to the hospitax who were kept on the beta bxockers during the period just before and after their surgery --> surgery patients who were taking heart drugs called beta blockers before coming to the hospital who were kept on the beta blockers during the period just before and after their surgery
+26 1 southeast alabama medxcal center --> southeast alabama medical center
+42 4 xl --> al
+46 4 xl --> al
+50 4 xl --> al
+83 4 xl --> al
+91 15 619 paxienxs --> 619 patients
+98 4 xl --> al
+119 4 ax --> al
+131 1 crenshaw cxmmunity hxspital --> crenshaw community hospital
+136 15 1 patients --> 1 patient
+140 4 ax --> al
+145 15 1 patients --> 1 patient
+146 15 1 patients --> 1 patient
+165 4 ax --> al
+166 15 xx patients --> 11 patients
+170 15 6xpatients --> 6 patients
+171 1 marshall medical cenxer norxh --> marshall medical center north
+177 12 hf-x --> hf-2
+182 4 xl --> al

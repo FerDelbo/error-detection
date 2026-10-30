@@ -1,0 +1,40 @@
+You are a Data Cleaning Specialist tasked with distinguishing between clean and dirty cells in the `HospitalType`.
+
+Here are examples for the 'HospitalType' column:
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart attack'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'surgical infection prevention'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart attack'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'pneumonia'}
+{'HospitalType': 'acuxe care hospixals', 'State': 'al', 'Condition': 'heart failure'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'surgical infection prevention'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart failure'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'surgical infection prevention'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'surgical infection prevention'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'pneumonia'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'pneumonia'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart failure'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'pneumonia'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'surgical infection prevention'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart failure'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'surgical infection prevention'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'pneumonia'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart attack'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'pneumonia'}
+{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'surgical infection prevention'}
+
+Your task:
+1. Analyze the `HospitalType` column values.
+2. Create precise judge functions in Python that:
+- Receive the row content of the `HospitalType` column
+- Return True for clean values, False for dirty values
+- Use the naming convention 'is_clean_[judgment]'
+- Cover different perspectives of cleanliness as possible
+- Do not contain blank lines inner functions
+
+Example function code snippet:
+```python def is_clean_[judgment](row, attr):
+    # Value of `HospitalType` is row[attr]
+    # Your logic here
+    return True  # or False
+```
+Provide your functions below:

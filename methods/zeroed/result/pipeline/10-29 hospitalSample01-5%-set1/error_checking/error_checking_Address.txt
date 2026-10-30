@@ -1,0 +1,55 @@
+{
+  "column_name": "Address",
+  "entries": [
+    {
+      "value_row": "{'Address': '8000 alabama highway 69', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}",
+      "error_analysis": "No obvious errors detected in Address value (structure looks valid: house number, street name, and suffix; directional terms included where applicable). Duplicates observed for some addresses (e.g., 8000 Alabama Highway 69) indicating potential data duplication rather than an address format error.",
+      "has_error_in_Address_value": false
+    },
+    {
+      "value_row": "{'Address': '702 n main st', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}",
+      "error_analysis": "No obvious errors detected in Address value (starts with house number, includes street name and suffix). Duplicate instance present in the dataset (same address appears elsewhere).",
+      "has_error_in_Address_value": false
+    },
+    {
+      "value_row": "{'Address': '1720 university blvd', 'ProviderNumber': '10018', 'HospitalName': 'callahan eye foundation hospital'}",
+      "error_analysis": "No obvious errors detected in Address value (standard format with house number, street name, and suffix).",
+      "has_error_in_Address_value": false
+    },
+    {
+      "value_row": "{'Address': '8000 alabama highway 69', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}",
+      "error_analysis": "No obvious errors detected in Address value. Duplicate of entry 1; indicates data duplication rather than an address format issue.",
+      "has_error_in_Address_value": false
+    },
+    {
+      "value_row": "{'Address': '201 pine street northwest', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}",
+      "error_analysis": "No obvious errors detected in Address value (house number present, street name, and directional suffix).",
+      "has_error_in_Address_value": false
+    },
+    {
+      "value_row": "{'Address': '1300 south montgomery avenue', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}",
+      "error_analysis": "No obvious errors detected in Address value (valid pattern with house number, street, and suffix).",
+      "has_error_in_Address_value": false
+    },
+    {
+      "value_row": "{'Address': '1300 south montgomery avenue', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}",
+      "error_analysis": "No obvious errors detected in Address value (duplicate of entry 6; not an address-format issue).",
+      "has_error_in_Address_value": false
+    },
+    {
+      "value_row": "{'Address': '702 n main st', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}",
+      "error_analysis": "No obvious errors detected in Address value (duplicate of entry 2; not an address-format issue).",
+      "has_error_in_Address_value": false
+    },
+    {
+      "value_row": "{'Address': '8000 alabama highway 69', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}",
+      "error_analysis": "No obvious errors detected in Address value (duplicate of entry 1; not an address-format issue).",
+      "has_error_in_Address_value": false
+    },
+    {
+      "value_row": "{'Address': '201 pine street northwest', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}",
+      "error_analysis": "No obvious errors detected in Address value (duplicate of entry 5; not an address-format issue).",
+      "has_error_in_Address_value": false
+    }
+  ]
+}

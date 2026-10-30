@@ -1,0 +1,8 @@
+{"State": "AL", "HospitalType": "acute care hospitals", "MeasureName": "heart attack patients given beta blocker at discharge"}
+{"State": "", "HospitalType": "acute care hospitals", "MeasureName": "pneumonia patients given smoking cessation advice/counseling"}
+{"State": "al ", "HospitalType": "acute care hospitals", "MeasureName": "heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)"}
+{"State": "alp", "HospitalType": "acute care hospitals", "MeasureName": "heart failure patients given an evaluation of left ventricular systolic (lvs) function"}
+{"State": "xx", "HospitalType": "acute care hosxitals", "MeasureName": "pneumonia patients given smoking cessation advice/counseling"}
+{"State": "a", "HospitalType": "acute care hospitals", "MeasureName": "surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)"}
+{"State": "al1", "HospitalType": "acute care hospitals", "MeasureName": "heart attack patients given aspirin at discharge"}
+{"State": "alabama", "HospitalType": "acute care hospitals", "MeasureName": "heart attack patients given beta blocker at discharge"}

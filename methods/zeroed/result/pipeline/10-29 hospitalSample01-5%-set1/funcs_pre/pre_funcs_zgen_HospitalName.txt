@@ -1,0 +1,92 @@
+def is_clean_all_words_known(row, attr):
+    value = (row.get(attr) or '').lower()
+    words = set(re.findall(r'[a-z0-9]+', value))
+    allowed = {
+        'marshall','medical','center','north','south','crenshaw','community','hospital',
+        'southeast','alabama','eliza','coffee','memorial','hartselle','marengo','street',
+        'circle','northwest'
+    }
+    if not words:
+        return False
+    return words.issubset(allowed)
+
+def is_clean_spacing_normalized(row, attr):
+    value = (row.get(attr) or '').strip()
+    normalized = ' '.join(value.split())
+    return value == normalized
+
+def is_clean_token_overlap(row, attr):
+    val = (row.get(attr) or '')
+    s = val.lower()
+    tokens = set(re.findall(r'[a-z0-9]+', s))
+    canonical_names = [
+        'marshall medical center north',
+        'marshall medical center south',
+        'crenshaw community hospital',
+        'southeast alabama medical center',
+        'hartselle medical center',
+        'eliza coffee memorial hospital'
+    ]
+    for can in canonical_names:
+        can_tokens = set(re.findall(r'[a-z0-9]+', can))
+        if not can_tokens:
+            continue
+        inter = len(tokens & can_tokens)
+        union = len(tokens | can_tokens)
+        if union > 0 and inter / union >= 0.8:
+            return True
+        if can in s or s in can:
+            return True
+    return False
+
+def is_clean_exact_match(row, attr):
+    value = (row.get(attr) or '').strip().lower()
+    canonical = {
+        'marshall medical center north',
+        'marshall medical center south',
+        'crenshaw community hospital',
+        'southeast alabama medical center',
+        'hartselle medical center',
+        'eliza coffee memorial hospital'
+    }
+    return value in canonical
+
+def is_clean_provider_consistency(row, attr):
+    value = (row.get(attr) or '').strip().lower()
+    provider = str(row.get('ProviderNumber') or '').strip()
+    mapping = {
+        '10010': 'marshall medical center north',
+        '10005': 'marshall medical center south',
+        '10008': 'crenshaw community hospital',
+        '10001': 'southeast alabama medical center',
+        '10009': 'hartselle medical center',
+        '10006': 'eliza coffee memorial hospital'
+    }
+    if provider in mapping:
+        expected = mapping[provider]
+        val_norm = ' '.join(value.split())
+        exp_norm = ' '.join(expected.split())
+        if val_norm == exp_norm:
+            return True
+        tokens_v = set(re.findall(r'[a-z0-9]+', val_norm))
+        tokens_e = set(re.findall(r'[a-z0-9]+', exp_norm))
+        if tokens_v and tokens_e:
+            inter = len(tokens_v & tokens_e)
+            union = len(tokens_v | tokens_e)
+            if union > 0 and inter / union >= 0.8:
+                return True
+        return False
+    return is_clean_exact_match(row, attr)
+
+def is_clean_case_insensitive(row, attr):
+    value = (row.get(attr) or '').strip().lower()
+    canonical = {
+        'marshall medical center north',
+        'marshall medical center south',
+        'crenshaw community hospital',
+        'southeast alabama medical center',
+        'hartselle medical center',
+        'eliza coffee memorial hospital'
+    }
+    normalized = re.sub(r'\s+', ' ', value)
+    return normalized in canonical

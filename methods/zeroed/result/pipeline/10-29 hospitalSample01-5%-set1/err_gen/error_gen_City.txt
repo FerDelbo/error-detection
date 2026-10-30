@@ -1,0 +1,10 @@
+['City', 'guntersvile', Reason: 'Typos: Misspelling of city name (missing "l")', {'City': 'guntersvile', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}]
+['City', 'GUNTERSVILLE', Reason: 'Pattern Violations: City names should be lowercase and single token', {'City': 'GUNTERSVILLE', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}]
+['City', '', Reason: 'Explicit/Implicit Missing Values: City is empty', {'City': '', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}]
+['City', 'los angeles', Reason: 'Pattern Violations: Multi-word city value not consistent with single-token dataset', {'City': 'los angeles', 'ProviderNumber': '10018', 'HospitalName': 'callahan eye foundation hospital'}]
+['City', 'krypton', Reason: 'Out-of-domain values: City not within the expected Alabama city set', {'City': 'krypton', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}]
+['City', 'birminghamm', Reason: 'Typos: Extra character in city name', {'City': 'birminghamm', 'ProviderNumber': '10018', 'HospitalName': 'callahan eye foundation hospital'}]
+['City', 'guntersville ', Reason: 'Pattern Violations: Trailing whitespace in City', {'City': 'guntersville ', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}]
+['City', 'gunters ville', Reason: 'Pattern Violations: Space within city name', {'City': 'gunters ville', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}]
+['City', 'hartsellee', Reason: 'Typos: Extra trailing letter in city name', {'City': 'hartsellee', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}]
+['City', 'OPP', Reason: 'Pattern Violations: City should be lowercase; uppercase used', {'City': 'OPP', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}

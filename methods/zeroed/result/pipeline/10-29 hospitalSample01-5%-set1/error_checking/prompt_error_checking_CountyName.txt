@@ -1,0 +1,42 @@
+As a data quality expert, please first analyze attribute relations and analyze the 'CountyName' attribute values for potential errors. Ignore case sensitivity
+Provide your analysis on `CountyName` values in JSON format as follows, **do not care problems in other attributes**:
+
+
+```json
+{"column_name": "CountyName",
+  "entries": [
+    {
+"value_row": "{'CountyName': 'CountyName_example_val_1', 'ProviderNumber': 'ProviderNumber_example_val_1', 'HospitalName': 'HospitalName_example_val_1'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_CountyName_value": true/false,
+    },
+    {
+"value_row": "{'CountyName': 'CountyName_example_val_2', 'ProviderNumber': 'ProviderNumber_example_val_2', 'HospitalName': 'HospitalName_example_val_2'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_CountyName_value": true/false,
+    }
+  ]
+}
+```
+
+
+If unsure, do not indicate an error.
+- Please ignore the case sensitivity issues.
+
+-----------------------------------------------
+
+Here are the given inputs:
+Values of column 'CountyName' along with related attribute values:
+'{"CountyName":"jefferson","ProviderNumber":"10019","HospitalName":"helen keller memorial hospital"}
+{"CountyName":"jefferson","ProviderNumber":"10018","HospitalName":"callahan eye foundation hospital"}
+{"CountyName":"marshall","ProviderNumber":"10010","HospitalName":"marshall medical center north"}
+{"CountyName":"covington","ProviderNumber":"10007","HospitalName":"mizell memorial hospital"}
+{"CountyName":"covington","ProviderNumber":"10007","HospitalName":"mizell memorial hospital"}
+{"CountyName":"morgan","ProviderNumber":"10009","HospitalName":"hartselle medical center"}
+{"CountyName":"marshall","ProviderNumber":"10010","HospitalName":"marshall medical center north"}
+{"CountyName":"marshall","ProviderNumber":"10010","HospitalName":"marshall medical center north"}
+{"CountyName":"morgan","ProviderNumber":"10009","HospitalName":"hartselle medical center"}
+{"CountyName":"jefferson","ProviderNumber":"10019","HospitalName":"helen keller memorial hospital"}'
+Provide your analysis on `CountyName` values in the required JSON format, **do not care problems in other attributes**:
+
+

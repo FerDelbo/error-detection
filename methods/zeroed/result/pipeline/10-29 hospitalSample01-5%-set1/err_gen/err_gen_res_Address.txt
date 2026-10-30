@@ -1,0 +1,10 @@
+{"Address": "1300 south montgomery avnue", "ProviderNumber": "10019", "HospitalName": "helen keller memorial hospital"}
+{"Address": "", "ProviderNumber": "10019", "HospitalName": "helen keller memorial hospital"}
+{"Address": "one thousand three hundred south montgomery avenue", "ProviderNumber": "10019", "HospitalName": "helen keller memorial hospital"}
+{"Address": "8000 alabama hwy 69", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}
+{"Address": "99999 nowhere street", "ProviderNumber": "10009", "HospitalName": "hartselle medical center"}
+{"Address": "N/A", "ProviderNumber": "10009", "HospitalName": "hartselle medical center"}
+{"Address": "1300 SOUTH MONTGOMERY AVENUE", "ProviderNumber": "10019", "HospitalName": "helen keller memorial hospital"}
+{"Address": "201 pine street northeast", "ProviderNumber": "10010", "HospitalName": "marshall medical center north"}
+{"Address": "201 pine strret northwest", "ProviderNumber": "10009", "HospitalName": "hartselle medical center"}
+{"Address": "-100 pine street northwest", "ProviderNumber": "10009", "HospitalName": "hartselle medical center"}

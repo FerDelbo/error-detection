@@ -1,0 +1,31 @@
+def is_clean_alphabetic_only(row, attr):
+    val = str(row.get(attr, '')).strip()
+    if not val:
+        return False
+    return val.isalpha()
+
+def is_clean_length_within_bounds(row, attr):
+    val = str(row.get(attr, '')).strip()
+    if not val:
+        return False
+    return 4 <= len(val) <= 12
+
+def is_clean_known_misspellings(row, attr):
+    val = str(row.get(attr, '')).strip().lower()
+    valid = {'houston', 'marshall', 'crenshaw', 'lauderdale', 'covington', 'morgan'}
+    misspellings = {'laudexdale'}
+    if not val:
+        return False
+    if val in valid:
+        return True
+    if val in misspellings:
+        return False
+    # If the value is neither a known valid county nor a known misspelling, mark as dirty
+    return False
+
+def is_clean_exact_match(row, attr):
+    valid = {'houston', 'marshall', 'crenshaw', 'lauderdale', 'covington', 'morgan'}
+    val = str(row.get(attr, '')).strip().lower()
+    if not val:
+        return False
+    return val in valid

@@ -1,0 +1,40 @@
+You are a Data Cleaning Specialist tasked with distinguishing between clean and dirty cells in the `CountyName`.
+
+Here are examples for the 'CountyName' column:
+{'CountyName': 'houston', 'ProviderNumber': '10001', 'HospitalName': 'southeast alabama medical center'}
+{'CountyName': 'marshall', 'ProviderNumber': '10005', 'HospitalName': 'marshall medical center south'}
+{'CountyName': 'crenshaw', 'ProviderNumber': '10008', 'HospitalName': 'crenshaw cxmmunity hxspital'}
+{'CountyName': 'marshall', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}
+{'CountyName': 'crenshaw', 'ProviderNumber': '10008', 'HospitalName': 'crenshaw community hospital'}
+{'CountyName': 'crenshaw', 'ProviderNumber': '10008', 'HospitalName': 'crenshaw community hospital'}
+{'CountyName': 'crenshaw', 'ProviderNumber': '10008', 'HospitalName': 'crenshaw community hospital'}
+{'CountyName': 'laudexdale', 'ProviderNumber': '10006', 'HospitalName': 'eliza coffee memorial hospital'}
+{'CountyName': 'marshall', 'ProviderNumber': '10005', 'HospitalName': 'marshall medical center south'}
+{'CountyName': 'houston', 'ProviderNumber': '10001', 'HospitalName': 'southeast alabama medical center'}
+{'CountyName': 'marshall', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}
+{'CountyName': 'marshall', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}
+{'CountyName': 'houston', 'ProviderNumber': '10001', 'HospitalName': 'southeast alabama medical center'}
+{'CountyName': 'lauderdale', 'ProviderNumber': '10006', 'HospitalName': 'eliza coffee memorial hospital'}
+{'CountyName': 'covington', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}
+{'CountyName': 'morgan', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}
+{'CountyName': 'marshall', 'ProviderNumber': '10005', 'HospitalName': 'marshall medical center south'}
+{'CountyName': 'marshall', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}
+{'CountyName': 'lauderdale', 'ProviderNumber': '10006', 'HospitalName': 'eliza coffee memorial hospital'}
+{'CountyName': 'covington', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}
+
+Your task:
+1. Analyze the `CountyName` column values.
+2. Create precise judge functions in Python that:
+- Receive the row content of the `CountyName` column
+- Return True for clean values, False for dirty values
+- Use the naming convention 'is_clean_[judgment]'
+- Cover different perspectives of cleanliness as possible
+- Do not contain blank lines inner functions
+
+Example function code snippet:
+```python def is_clean_[judgment](row, attr):
+    # Value of `CountyName` is row[attr]
+    # Your logic here
+    return True  # or False
+```
+Provide your functions below:

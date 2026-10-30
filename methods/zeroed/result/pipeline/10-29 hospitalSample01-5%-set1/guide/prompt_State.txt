@@ -1,0 +1,88 @@
+You are a top data scientist, especially in data cleaning. Please generate a comprehensive and expert guide for identifying and analyzing common errors in the 'State' attribute of the 'hospitalSample' table:
+
+Here are the data distribution analysis results for the attribute 'State':
+
+=== Data Distribution Analysis 1 ===
+
+Basic distribution for 'State':
+- Total records: 200
+- Observed (non-missing): 200
+- Missing: 0 (0.0%)
+- Unique non-missing values: 3
+- Top 3 representative values:
+  'al': 191 occurrences (95.5%)
+  'xl': 6 occurrences (3.0%)
+  'ax': 3 occurrences (1.5%)
+- Representative non-missing samples (up to 5): al, xl, ax
+
+=== Data Distribution Analysis 2 ===
+
+Missing-value analysis for 'State':
+- Total records: 200
+- Missing: 0 (0.0%)
+- Non-missing: 200
+- Non-missing unique values: 3
+- Top 3 non-missing values (if any):
+  'al': 191 (95.5%)
+  'xl': 6 (3.0%)
+  'ax': 3 (1.5%)
+- Representative non-missing samples (up to 5): al, xl, ax
+
+=== Data Distribution Analysis 3 ===
+
+Length distribution for 'State':
+- Non-missing count: 200
+- Length range: 2 to 2
+- Mean length: 2.00, Median: 2.00, Std dev: 0.00
+- 25th/50th/75th percentiles: 2, 2, 2
+- Most common lengths:
+  Length 2: 200 values (100.0%)
+- Samples with median length (2): al, al, al
+
+=== Data Distribution Analysis 4 ===
+
+Pattern/format quality for 'State':
+- Non-missing values: 200
+- Numeric percentages: 0 values (0.0%)
+- Whole numbers: 0 values (0.0%)
+- Other patterns: 200 values (100.0%)
+- Representative samples:
+  Other: al, al, al
+
+=== Data Distribution Analysis 5 ===
+
+Domain validity for 'State' (State-like field):
+- Total non-missing observations: 200
+- Valid domain matches: 191 values (95.5%)
+- Common invalid values (not in domain):
+  'xl': 6 occurrences
+  'ax': 3 occurrences
+- Common valid values (by frequency):
+  'al': 191 occurrences (95.5%)
+
+Here are some examples for 'State' along with strong correlated attribute values:
+{'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital', 'Address': '1300 south montgomery avenue', 'City': 'sheffield', 'State': 'al', 'ZipCode': '35660', 'CountyName': 'jefferson', 'PhoneNumber': '2563864556', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'government - hospital district or authority', 'EmergencyService': 'yes', 'Condition': 'heart attack', 'MeasureCode': 'ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge', 'Score': '86%', 'Sample': '14 patients', 'Stateavg': 'al_ami-5'}
+{'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital', 'Address': '702 n main st', 'City': 'opp', 'State': 'al', 'ZipCode': '36467', 'CountyName': 'covington', 'PhoneNumber': '3344933541', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'voluntary non-profit - private', 'EmergencyService': 'no', 'Condition': 'pneumonia', 'MeasureCode': 'pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling', 'Score': '100%', 'Sample': '28 patients', 'Stateavg': 'al_pn-4'}
+{'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center', 'Address': '201 pine street northwest', 'City': 'hartselle', 'State': 'al', 'ZipCode': '35640', 'CountyName': 'morgan', 'PhoneNumber': '2567736511', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'proprietary', 'EmergencyService': 'yes', 'Condition': 'heart attack', 'MeasureCode': 'ami-3', 'MeasureName': 'heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)', 'Score': '100%', 'Sample': '1 patients', 'Stateavg': 'al_ami-3'}
+{'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center', 'Address': '201 pine street northwest', 'City': 'hartselle', 'State': 'al', 'ZipCode': '35640', 'CountyName': 'morgan', 'PhoneNumber': '2567736511', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'proprietary', 'EmergencyService': 'yes', 'Condition': 'heart failure', 'MeasureCode': 'hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function', 'Score': '98%', 'Sample': '42 patients', 'Stateavg': 'al_hf-2'}
+{'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north', 'Address': '8000 alabama highway 69', 'City': 'guntersville', 'State': 'al', 'ZipCode': '35976', 'CountyName': 'marshall', 'PhoneNumber': '2565718000', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'government - hospital district or authority', 'EmergencyService': 'yes', 'Condition': 'heart failure', 'MeasureCode': 'hf-x', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function', 'Score': '84%', 'Sample': '80 patients', 'Stateavg': 'al_hf-2'}
+{'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital', 'Address': '1300 south montgomery avenue', 'City': 'sheffield', 'State': 'al', 'ZipCode': '35660', 'CountyName': 'jefferson', 'PhoneNumber': '2563864556', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'government - hospital district or authority', 'EmergencyService': 'yes', 'Condition': 'heart failure', 'MeasureCode': 'hf-4', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling', 'Score': '100%', 'Sample': '41 patients', 'Stateavg': 'al_hf-4'}
+{'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north', 'Address': '8000 alabama highway 69', 'City': 'guntersville', 'State': 'xl', 'ZipCode': '35976', 'CountyName': 'marshall', 'PhoneNumber': '2565718000', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'government - hospital district or authority', 'EmergencyService': 'yes', 'Condition': 'pneumonia', 'MeasureCode': 'pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling', 'Score': '94%', 'Sample': '65 patients', 'Stateavg': 'al_pn-4'}
+{'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north', 'Address': '8000 alabama highway 69', 'City': 'guntersville', 'State': 'al', 'ZipCode': '35976', 'CountyName': 'marshall', 'PhoneNumber': '2565718000', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'government - hospital district or authority', 'EmergencyService': 'yes', 'Condition': 'heart attack', 'MeasureCode': 'ami-2', 'MeasureName': 'heart attack patients given aspirin at discharge', 'Score': '100%', 'Sample': '6xpatients', 'Stateavg': 'al_ami-2'}
+{'ProviderNumber': '10018', 'HospitalName': 'callahan eye foundation hospital', 'Address': '1720 university blvd', 'City': 'birmingham', 'State': 'al', 'ZipCode': '35233', 'CountyName': 'jefferson', 'PhoneNumber': '2053258100', 'HospitalType': 'acute care hospitals', 'HospitalOwner': 'voluntary non-profit - private', 'EmergencyService': 'yes', 'Condition': 'surgical infection prevention', 'MeasureCode': 'scip-inf-6', 'MeasureName': 'surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)', 'Score': 'empty', 'Sample': 'empty', 'Stateavg': 'al_scip-inf-6'}
+{'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital', 'Address': '702 n main st', 'City': 'opp', 'State': 'xl', 'ZipCode': '36467', 'CountyName': 'covington', 'PhoneNumber': '3344933541', 'HospitalType': 'acute care hosxitals', 'HospitalOwner': 'voluntary non-profit - private', 'EmergencyService': 'no', 'Condition': 'heart attack', 'MeasureCode': 'ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge', 'Score': '100%', 'Sample': '2 patients', 'Stateavg': 'al_ami-5'}
+
+Please first explain the meaning of attribute 'State'.
+
+
+Then, for each error type below, considering the data distribution analysis results, provide specific causes, examples, and detection methods for 'State':
+1. Pattern Violations: Expected formats and non-conforming value identification.
+2. Missing Values: Explicit null indicators and implicit missing data patterns.
+3. Constraint Violations: Relationships of 'State' with other attributes and how to verify them.
+4. Out-of-domain Values: Valid value range/set and possible outliers.
+5. Typos: Common misspellings or data entry errors and detection strategies.
+6. Common Knowledge Violations: Expected rules/facts and methods to identify contradictions.
+
+Please also generate some possible errors for the 'State' attribute data based on the above error types. 
+
+IMPORTANT NOTE: When analyzing potential errors, if you are not completely certain that a value is wrong, please respect the mainstream data distribution patterns. Some values that appear unusual may actually be valid according to local requirements or domain-specific conventions. Only flag values as errors when you have high confidence they violate clear patterns or rules.

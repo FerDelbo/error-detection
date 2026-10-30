@@ -1,0 +1,55 @@
+{
+  "column_name": "HospitalOwner",
+  "entries": [
+    {
+      "value_row": "{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'marshall', 'ProviderNumber': '10010'}",
+      "error_analysis": "Value matches canonical category 'government - hospital district or authority'; formatting is canonical; no missing or malformed pattern detected.",
+      "has_error_in_HospitalOwner_value": false
+    },
+    {
+      "value_row": "{'HospitalOwner': 'voluntary non-profit - private', 'CountyName': 'covington', 'ProviderNumber': '10007'}",
+      "error_analysis": "Value matches canonical category 'voluntary non-profit - private'; formatting is canonical; no issues detected.",
+      "has_error_in_HospitalOwner_value": false
+    },
+    {
+      "value_row": "{'HospitalOwner': 'voluntary non-profit - private', 'CountyName': 'covington', 'ProviderNumber': '10007'}",
+      "error_analysis": "Value matches canonical category 'voluntary non-profit - private'; formatting is canonical; no issues detected.",
+      "has_error_in_HospitalOwner_value": false
+    },
+    {
+      "value_row": "{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'jefferson', 'ProviderNumber': '10019'}",
+      "error_analysis": "Value matches canonical category 'government - hospital district or authority'; formatting is canonical; no issues detected.",
+      "has_error_in_HospitalOwner_value": false
+    },
+    {
+      "value_row": "{'HospitalOwner': 'proprietary', 'CountyName': 'morgan', 'ProviderNumber': '10009'}",
+      "error_analysis": "Value matches canonical category 'proprietary'; single-word form is an accepted canonical value for this dataset; formatting is canonical.",
+      "has_error_in_HospitalOwner_value": false
+    },
+    {
+      "value_row": "{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'marshall', 'ProviderNumber': '10010'}",
+      "error_analysis": "Value matches canonical category 'government - hospital district or authority'; formatting is canonical; no issues detected.",
+      "has_error_in_HospitalOwner_value": false
+    },
+    {
+      "value_row": "{'HospitalOwner': 'voluntary non-profit - private', 'CountyName': 'jefferson', 'ProviderNumber': '10018'}",
+      "error_analysis": "Value matches canonical category 'voluntary non-profit - private'; formatting is canonical; no issues detected.",
+      "has_error_in_HospitalOwner_value": false
+    },
+    {
+      "value_row": "{'HospitalOwner': 'proprietary', 'CountyName': 'morgan', 'ProviderNumber': '10009'}",
+      "error_analysis": "Value matches canonical category 'proprietary'; single-word form is an accepted canonical value for this dataset; formatting is canonical.",
+      "has_error_in_HospitalOwner_value": false
+    },
+    {
+      "value_row": "{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'marshall', 'ProviderNumber': '10010'}",
+      "error_analysis": "Value matches canonical category 'government - hospital district or authority'; formatting is canonical; no issues detected.",
+      "has_error_in_HospitalOwner_value": false
+    },
+    {
+      "value_row": "{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'jefferson', 'ProviderNumber': '10019'}",
+      "error_analysis": "Value matches canonical category 'government - hospital district or authority'; formatting is canonical; no issues detected.",
+      "has_error_in_HospitalOwner_value": false
+    }
+  ]
+}

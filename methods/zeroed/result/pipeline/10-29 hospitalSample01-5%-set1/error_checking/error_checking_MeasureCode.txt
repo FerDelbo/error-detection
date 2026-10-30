@@ -1,0 +1,55 @@
+{
+  "column_name": "MeasureCode",
+  "entries": [
+    {
+      "value_row": "{'MeasureCode': 'ami-2', 'Stateavg': 'al_ami-2', 'MeasureName': 'heart attack patients given aspirin at discharge'}",
+      "error_analysis": "Pattern/format valid: code uses numeric suffix and matches AMI category; no issue detected.",
+      "has_error_in_MeasureCode_value": false
+    },
+    {
+      "value_row": "{'MeasureCode': 'ami-3', 'Stateavg': 'al_ami-3', 'MeasureName': 'heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)'}",
+      "error_analysis": "Pattern/format valid: code follows expected AMI pattern; numeric suffix present; no issue detected.",
+      "has_error_in_MeasureCode_value": false
+    },
+    {
+      "value_row": "{'MeasureCode': 'hf-2', 'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}",
+      "error_analysis": "Pattern/format valid: code follows HF pattern with numeric suffix; no issue detected.",
+      "has_error_in_MeasureCode_value": false
+    },
+    {
+      "value_row": "{'MeasureCode': 'pn-4', 'Stateavg': 'al_pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling'}",
+      "error_analysis": "Pattern/format valid: code follows PN pattern with numeric suffix; no issue detected.",
+      "has_error_in_MeasureCode_value": false
+    },
+    {
+      "value_row": "{'MeasureCode': 'ami-5', 'Stateavg': 'al_ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge'}",
+      "error_analysis": "Pattern/format valid: code follows AMI pattern with numeric suffix; no issue detected.",
+      "has_error_in_MeasureCode_value": false
+    },
+    {
+      "value_row": "{'MeasureCode': 'pn-4', 'Stateavg': 'al_pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling'}",
+      "error_analysis": "Pattern/format valid: duplicate row with numeric PN code; no issue detected.",
+      "has_error_in_MeasureCode_value": false
+    },
+    {
+      "value_row": "{'MeasureCode': 'hf-4', 'Stateavg': 'al_hf-4', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling'}",
+      "error_analysis": "Pattern/format valid: code follows HF pattern with numeric suffix; no issue detected.",
+      "has_error_in_MeasureCode_value": false
+    },
+    {
+      "value_row": "{'MeasureCode': 'scip-inf-6', 'Stateavg': 'al_scip-inf-6', 'MeasureName': 'surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)'}",
+      "error_analysis": "Pattern/format valid: SCIP-inf code adheres to expected pattern; no issue detected.",
+      "has_error_in_MeasureCode_value": false
+    },
+    {
+      "value_row": "{'MeasureCode': 'ami-5', 'Stateavg': 'al_ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge'}",
+      "error_analysis": "Pattern/format valid: duplicate AMI code present; no issue detected.",
+      "has_error_in_MeasureCode_value": false
+    },
+    {
+      "value_row": "{'MeasureCode': 'hf-x', 'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}",
+      "error_analysis": "Pattern violation: hf-x uses a non-numeric suffix after the hyphen, which is not in the canonical numeric set (e.g., hf-1..hf-6). This likely indicates a placeholder or data entry error.",
+      "has_error_in_MeasureCode_value": true
+    }
+  ]
+}

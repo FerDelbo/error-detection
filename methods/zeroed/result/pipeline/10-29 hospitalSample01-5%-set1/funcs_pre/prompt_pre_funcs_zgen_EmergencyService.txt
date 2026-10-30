@@ -1,0 +1,40 @@
+You are a Data Cleaning Specialist tasked with distinguishing between clean and dirty cells in the `EmergencyService`.
+
+Here are examples for the 'EmergencyService' column:
+{'EmergencyService': 'yes', 'CountyName': 'crenshaw', 'PhoneNumber': '3343353374'}
+{'EmergencyService': 'yes', 'CountyName': 'crenshaw', 'PhoneNumber': '3343353374'}
+{'EmergencyService': 'yes', 'CountyName': 'jefferson', 'PhoneNumber': '2563864556'}
+{'EmergencyService': 'yes', 'CountyName': 'jefferson', 'PhoneNumber': '2053258100'}
+{'EmergencyService': 'yes', 'CountyName': 'crxnshaw', 'PhoneNumber': '3343353374'}
+{'EmergencyService': 'no', 'CountyName': 'covington', 'PhoneNumber': '3344933541'}
+{'EmergencyService': 'yes', 'CountyName': 'morgan', 'PhoneNumber': '2567736511'}
+{'EmergencyService': 'yes', 'CountyName': 'marshall', 'PhoneNumber': '2565938310'}
+{'EmergencyService': 'yes', 'CountyName': 'crenshaw', 'PhoneNumber': '3343353374'}
+{'EmergencyService': 'yes', 'CountyName': 'houston', 'PhoneNumber': '3347938701'}
+{'EmergencyService': 'yes', 'CountyName': 'marshall', 'PhoneNumber': '2565x38310'}
+{'EmergencyService': 'yes', 'CountyName': 'morgan', 'PhoneNumber': '2567736511'}
+{'EmergencyService': 'yes', 'CountyName': 'marshall', 'PhoneNumber': '2565938310'}
+{'EmergencyService': 'yes', 'CountyName': 'marshall', 'PhoneNumber': '2565718000'}
+{'EmergencyService': 'yes', 'CountyName': 'crenshaw', 'PhoneNumber': '3343353374'}
+{'EmergencyService': 'yes', 'CountyName': 'morgan', 'PhoneNumber': '2567736511'}
+{'EmergencyService': 'yes', 'CountyName': 'lauderdale', 'PhoneNumber': '2567688400'}
+{'EmergencyService': 'yes', 'CountyName': 'jefferson', 'PhoneNumber': '2053258100'}
+{'EmergencyService': 'yes', 'CountyName': 'morgan', 'PhoneNumber': '2567736511'}
+{'EmergencyService': 'yes', 'CountyName': 'marshall', 'PhoneNumber': '2565938310'}
+
+Your task:
+1. Analyze the `EmergencyService` column values.
+2. Create precise judge functions in Python that:
+- Receive the row content of the `EmergencyService` column
+- Return True for clean values, False for dirty values
+- Use the naming convention 'is_clean_[judgment]'
+- Cover different perspectives of cleanliness as possible
+- Do not contain blank lines inner functions
+
+Example function code snippet:
+```python def is_clean_[judgment](row, attr):
+    # Value of `EmergencyService` is row[attr]
+    # Your logic here
+    return True  # or False
+```
+Provide your functions below:

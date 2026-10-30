@@ -1,0 +1,364 @@
+Analysis Results for State
+==================================================
+
+
+=== Data Distribution Analysis Function 1 ===
+def distr_analysis_basic_distribution(dirty_csv, attr_name):
+    """
+    Basic distribution analysis for the given attribute.
+    - total records
+    - missing vs observed
+    - number of unique non-missing values
+    - top 3 representative values (with counts and percentages)
+    - up to 5 representative non-missing sample values (in order of appearance)
+    
+    Assumes dirty_csv is a pandas DataFrame and all values are strings (but may include NaN).
+    Missing is determined by a combination of actual NaN and common placeholders like '', 'empty', 'null', 'na', 'nan' (case-insensitive).
+    """
+    if attr_name not in dirty_csv.columns:
+        raise ValueError(f"Column '{attr_name}' not found in the provided dataframe.")
+    
+    series = dirty_csv[attr_name]
+    
+    # Determine missing using both actual NaN and common string placeholders
+    missing_indicators = {'', 'empty', 'null', 'na', 'nan', 'NULL', 'NA', 'NONE', 'none'}
+    def _is_missing(val):
+        if pd.isna(val):
+            return True
+        s = str(val).strip().lower()
+        return s in missing_indicators
+    
+    is_missing = series.apply(_is_missing)
+    total = len(series)
+    missing_count = int(is_missing.sum())
+    observed_count = total - missing_count
+    non_missing = series[~is_missing]
+    
+    unique_non_missing = non_missing.nunique() if observed_count > 0 else 0
+    
+    top_vals = non_missing.value_counts().head(3)
+    top_info = []
+    for val, cnt in top_vals.items():
+        # compute percentage with respect to observed
+        pct = (cnt / observed_count * 100) if observed_count > 0 else 0.0
+        top_info.append(f"{val!r}: {cnt} occurrences ({pct:.1f}%)")
+    
+    # Representative samples (up to 5, in order of first appearance)
+    reps = non_missing.drop_duplicates().head(5).tolist()
+    
+    lines = []
+    lines.append(f"Basic distribution for '{attr_name}':")
+    lines.append(f"- Total records: {total}")
+    lines.append(f"- Observed (non-missing): {observed_count}")
+    lines.append(f"- Missing: {missing_count} ({missing_count/total*100:.1f}%)")
+    lines.append(f"- Unique non-missing values: {unique_non_missing}")
+    lines.append(f"- Top 3 representative values:")
+    if top_info:
+        lines.extend([f"  {t}" for t in top_info])
+    else:
+        lines.append("  (no non-missing values)")
+    
+    if reps:
+        lines.append(f"- Representative non-missing samples (up to 5): {', '.join([str(x) for x in reps])}")
+    else:
+        lines.append("- Representative samples: N/A")
+    
+    return "\n".join(lines)
+
+**Running Results:**
+Basic distribution for 'State':
+- Total records: 200
+- Observed (non-missing): 200
+- Missing: 0 (0.0%)
+- Unique non-missing values: 3
+- Top 3 representative values:
+  'al': 191 occurrences (95.5%)
+  'xl': 6 occurrences (3.0%)
+  'ax': 3 occurrences (1.5%)
+- Representative non-missing samples (up to 5): al, xl, ax
+
+=== Data Distribution Analysis Function 2 ===
+def distr_analysis_missing_values(dirty_csv, attr_name):
+    """
+    Focused missing-value analysis for the given attribute.
+    - missing count and percentage
+    - fraction of truly meaningful non-missing values
+    - top 3 most common non-missing values (for context)
+    """
+    if attr_name not in dirty_csv.columns:
+        raise ValueError(f"Column '{attr_name}' not found in the provided dataframe.")
+    
+    series = dirty_csv[attr_name]
+    
+    missing_indicators = {'', 'empty', 'null', 'na', 'nan', 'NULL', 'NA', 'NONE', 'none'}
+    def _is_missing(val):
+        if pd.isna(val):
+            return True
+        s = str(val).strip().lower()
+        return s in missing_indicators
+    
+    is_missing = series.apply(_is_missing)
+    total = len(series)
+    missing_count = int(is_missing.sum())
+    observed_count = total - missing_count
+    non_missing = series[~is_missing]
+    
+    non_missing_counts = non_missing.value_counts().head(3)
+    samples = non_missing.drop_duplicates().head(5).tolist() if observed_count > 0 else []
+    
+    lines = []
+    lines.append(f"Missing-value analysis for '{attr_name}':")
+    lines.append(f"- Total records: {total}")
+    lines.append(f"- Missing: {missing_count} ({missing_count/total*100:.1f}%)")
+    lines.append(f"- Non-missing: {observed_count}")
+    lines.append(f"- Non-missing unique values: {non_missing.nunique() if observed_count>0 else 0}")
+    
+    lines.append(f"- Top 3 non-missing values (if any):")
+    if not non_missing_counts.empty:
+        for val, cnt in non_missing_counts.items():
+            pct = cnt / observed_count * 100 if observed_count > 0 else 0.0
+            lines.append(f"  {val!r}: {cnt} ({pct:.1f}%)")
+    else:
+        lines.append("  (none)")
+    
+    if samples:
+        lines.append(f"- Representative non-missing samples (up to 5): {', '.join([str(x) for x in samples])}")
+    else:
+        lines.append("- Representative samples: N/A")
+    
+    return "\n".join(lines)
+
+**Running Results:**
+Missing-value analysis for 'State':
+- Total records: 200
+- Missing: 0 (0.0%)
+- Non-missing: 200
+- Non-missing unique values: 3
+- Top 3 non-missing values (if any):
+  'al': 191 (95.5%)
+  'xl': 6 (3.0%)
+  'ax': 3 (1.5%)
+- Representative non-missing samples (up to 5): al, xl, ax
+
+=== Data Distribution Analysis Function 3 ===
+def distr_analysis_length_stats(dirty_csv, attr_name):
+    """
+    Analyze length distribution of string values for the given attribute.
+    - min/max length
+    - mean/median/std
+    - length-based distribution (most common lengths)
+    - representative samples around median length
+    """
+    if attr_name not in dirty_csv.columns:
+        raise ValueError(f"Column '{attr_name}' not found in the provided dataframe.")
+    
+    series = dirty_csv[attr_name]
+    
+    missing_indicators = {'', 'empty', 'null', 'na', 'nan', 'NULL', 'NA', 'NONE', 'none'}
+    def _is_missing(val):
+        if pd.isna(val):
+            return True
+        s = str(val).strip().lower()
+        return s in missing_indicators
+    
+    is_missing = series.apply(_is_missing)
+    non_missing = series[~is_missing]
+    
+    if non_missing.empty:
+        return f"No non-missing values found for '{attr_name}'."
+    
+    lengths = non_missing.astype(str).map(len)
+    min_len = int(lengths.min())
+    max_len = int(lengths.max())
+    mean_len = float(lengths.mean())
+    median_len = float(lengths.median())
+    std_len = float(lengths.std(ddof=0))
+    quartiles = lengths.quantile([0.25, 0.5, 0.75]).to_dict()
+    
+    most_common_lengths = lengths.value_counts().head(3)
+    
+    # Samples around median length
+    median_len_val = int(median_len)
+    around_median = non_missing.nonzero()[0] if hasattr(non_missing, 'nonzero') else []
+    # Simpler: collect up to 3 samples whose length equals median
+    median_samples = non_missing[non_missing.astype(str).map(len) == median_len_val].head(3).tolist()
+    
+    lines = []
+    lines.append(f"Length distribution for '{attr_name}':")
+    lines.append(f"- Non-missing count: {len(non_missing)}")
+    lines.append(f"- Length range: {min_len} to {max_len}")
+    lines.append(f"- Mean length: {mean_len:.2f}, Median: {median_len:.2f}, Std dev: {std_len:.2f}")
+    lines.append(f"- 25th/50th/75th percentiles: {quartiles.get(0.25, None):.0f}, {quartiles.get(0.5, None):.0f}, {quartiles.get(0.75, None):.0f}")
+    lines.append(f"- Most common lengths:")
+    for length_val, cnt in most_common_lengths.items():
+        pct = cnt / len(non_missing) * 100
+        lines.append(f"  Length {length_val}: {cnt} values ({pct:.1f}%)")
+    
+    if median_samples:
+        lines.append(f"- Samples with median length ({median_len_val}): {', '.join([str(x) for x in median_samples])}")
+    else:
+        lines.append("- Median-length samples: N/A")
+    
+    return "\n".join(lines)
+
+**Running Results:**
+Length distribution for 'State':
+- Non-missing count: 200
+- Length range: 2 to 2
+- Mean length: 2.00, Median: 2.00, Std dev: 0.00
+- 25th/50th/75th percentiles: 2, 2, 2
+- Most common lengths:
+  Length 2: 200 values (100.0%)
+- Samples with median length (2): al, al, al
+
+=== Data Distribution Analysis Function 4 ===
+def distr_analysis_pattern_quality(dirty_csv, attr_name):
+    """
+    Classify values into:
+      - numeric_percent: digits with an optional decimal followed by %
+      - integer: digits without %
+      - other: anything else
+    Provides counts and representative examples for each category.
+    """
+    if attr_name not in dirty_csv.columns:
+        raise ValueError(f"Column '{attr_name}' not found in the provided dataframe.")
+    
+    series = dirty_csv[attr_name]
+    
+    missing_indicators = {'', 'empty', 'null', 'na', 'nan', 'NULL', 'NA', 'NONE', 'none'}
+    def _is_missing(val):
+        if pd.isna(val):
+            return True
+        s = str(val).strip().lower()
+        return s in missing_indicators
+    
+    is_missing = series.apply(_is_missing)
+    non_missing = series[~is_missing].astype(str).str.strip()
+    
+    pattern_percent = re.compile(r'^\d+(\.\d+)?%$')
+    pattern_int = re.compile(r'^\d+$')
+    
+    is_percent = non_missing.str.match(pattern_percent)
+    is_int = non_missing.str.match(pattern_int)
+    
+    count_percent = int(is_percent.sum())
+    count_int = int(is_int.sum())
+    count_other = non_missing.shape[0] - count_percent - count_int
+    
+    # Representatives
+    rep_percent = non_missing[is_percent].head(3).tolist()
+    rep_int = non_missing[is_int].head(3).tolist()
+    rep_other = non_missing[~(is_percent | is_int)].head(3).tolist()
+    
+    total_non_missing = non_missing.shape[0]
+    
+    lines = []
+    lines.append(f"Pattern/format quality for '{attr_name}':")
+    lines.append(f"- Non-missing values: {total_non_missing}")
+    lines.append(f"- Numeric percentages: {count_percent} values ({(count_percent/total_non_missing*100 if total_non_missing>0 else 0):.1f}%)")
+    lines.append(f"- Whole numbers: {count_int} values ({(count_int/total_non_missing*100 if total_non_missing>0 else 0):.1f}%)")
+    lines.append(f"- Other patterns: {count_other} values ({(count_other/total_non_missing*100 if total_non_missing>0 else 0):.1f}%)")
+    
+    lines.append(f"- Representative samples:")
+    if rep_percent:
+        lines.append(f"  Percent values: {', '.join([str(x) for x in rep_percent])}")
+    if rep_int:
+        lines.append(f"  Integer values: {', '.join([str(x) for x in rep_int])}")
+    if rep_other:
+        lines.append(f"  Other: {', '.join([str(x) for x in rep_other])}")
+    if not rep_percent and not rep_int and not rep_other:
+        lines.append("  (none)")
+    
+    return "\n".join(lines)
+
+**Running Results:**
+Pattern/format quality for 'State':
+- Non-missing values: 200
+- Numeric percentages: 0 values (0.0%)
+- Whole numbers: 0 values (0.0%)
+- Other patterns: 200 values (100.0%)
+- Representative samples:
+  Other: al, al, al
+
+=== Data Distribution Analysis Function 5 ===
+def distr_analysis_domain_validity(dirty_csv, attr_name):
+    """
+    Domain validity analysis for common enumerated fields.
+    Currently focused on 'State'-like fields. Detects:
+    - fraction of values that match a known domain (case-insensitive)
+    - most common invalid values (with counts)
+    - sample valid values by frequency
+    If attr_name is not a known domain field, this function returns a helpful message.
+    """
+    if attr_name not in dirty_csv.columns:
+        raise ValueError(f"Column '{attr_name}' not found in the provided dataframe.")
+    
+    # Basic heuristic: if the column name suggests a US state code, perform domain check.
+    is_state_like = attr_name.strip().lower() in {'state', 'st', 'us_state', 'usstate'}
+    
+    series = dirty_csv[attr_name]
+    # Gather non-missing values (treat placeholders as missing as well)
+    missing_indicators = {'', 'empty', 'null', 'na', 'nan', 'NULL', 'NA', 'NONE', 'none'}
+    def _is_missing(val):
+        if pd.isna(val):
+            return True
+        s = str(val).strip().lower()
+        return s in missing_indicators
+    non_missing = series[~series.apply(_is_missing)]
+    
+    if not is_state_like:
+        return f"Domain validity check is requested for '{attr_name}', but no predefined domain is available for this column in this function."
+    
+    # Valid US state codes (lowercase for comparison)
+    valid_codes = {
+        ab.lower() for ab in [
+            "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI",
+            "MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA",
+            "VT","WA","WI","WV","WY","DC"
+        ]
+    }
+    
+    # normalize to lower-case
+    non_missing_lower = non_missing.astype(str).str.strip().str.lower()
+    total_non_missing = non_missing_lower.size
+    valid_mask = non_missing_lower.isin(valid_codes)
+    valid_count = int(valid_mask.sum())
+    invalid_mask = ~valid_mask
+    invalid_values = non_missing_lower[invalid_mask]
+    
+    invalid_counts = invalid_values.value_counts().head(5)
+    
+    # Most common valid values (by frequency)
+    valid_values_counts = non_missing_lower[valid_mask].value_counts().head(5)
+    
+    lines = []
+    lines.append(f"Domain validity for '{attr_name}' (State-like field):")
+    lines.append(f"- Total non-missing observations: {total_non_missing}")
+    lines.append(f"- Valid domain matches: {valid_count} values ({valid_count/total_non_missing*100:.1f}%)")
+    
+    if not invalid_counts.empty:
+        lines.append(f"- Common invalid values (not in domain):")
+        for val, cnt in invalid_counts.items():
+            lines.append(f"  {val!r}: {cnt} occurrences")
+    else:
+        lines.append("- No common invalid values detected.")
+    
+    if not valid_values_counts.empty:
+        lines.append(f"- Common valid values (by frequency):")
+        for val, cnt in valid_values_counts.items():
+            pct = cnt / total_non_missing * 100
+            lines.append(f"  {val!r}: {cnt} occurrences ({pct:.1f}%)")
+    else:
+        lines.append("- No valid domain values detected.")
+    
+    return "\n".join(lines)
+
+**Running Results:**
+Domain validity for 'State' (State-like field):
+- Total non-missing observations: 200
+- Valid domain matches: 191 values (95.5%)
+- Common invalid values (not in domain):
+  'xl': 6 occurrences
+  'ax': 3 occurrences
+- Common valid values (by frequency):
+  'al': 191 occurrences (95.5%)

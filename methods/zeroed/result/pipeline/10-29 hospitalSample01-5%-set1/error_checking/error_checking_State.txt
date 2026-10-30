@@ -1,0 +1,55 @@
+{
+  "column_name": "State",
+  "entries": [
+    {
+      "value_row": "{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)'}",
+      "error_analysis": "Lowercase 'al' is acceptable when case is ignored; after normalization to uppercase it becomes 'AL', a valid US state code.",
+      "has_error_in_State_value": false
+    },
+    {
+      "value_row": "{'State': 'xl', 'HospitalType': 'acute care hospitals', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling'}",
+      "error_analysis": "Value 'xl' uppercases to 'XL', which is not a recognized US state code; out-of-domain / invalid.",
+      "has_error_in_State_value": true
+    },
+    {
+      "value_row": "{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}",
+      "error_analysis": "Lowercase 'al' normalized to 'AL' → valid state code.",
+      "has_error_in_State_value": false
+    },
+    {
+      "value_row": "{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling'}",
+      "error_analysis": "Lowercase 'al' normalized to 'AL' → valid state code.",
+      "has_error_in_State_value": false
+    },
+    {
+      "value_row": "{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}",
+      "error_analysis": "Lowercase 'al' normalized to 'AL' → valid state code.",
+      "has_error_in_State_value": false
+    },
+    {
+      "value_row": "{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart attack patients given beta blocker at discharge'}",
+      "error_analysis": "Lowercase 'al' normalized to 'AL' → valid state code.",
+      "has_error_in_State_value": false
+    },
+    {
+      "value_row": "{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling'}",
+      "error_analysis": "Lowercase 'al' normalized to 'AL' → valid state code.",
+      "has_error_in_State_value": false
+    },
+    {
+      "value_row": "{'State': 'xl', 'HospitalType': 'acute care hosxitals', 'MeasureName': 'heart attack patients given beta blocker at discharge'}",
+      "error_analysis": "Uppercase 'XL' is not a valid US state code; out-of-domain / invalid.",
+      "has_error_in_State_value": true
+    },
+    {
+      "value_row": "{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart attack patients given aspirin at discharge'}",
+      "error_analysis": "Lowercase 'al' normalized to 'AL' → valid state code.",
+      "has_error_in_State_value": false
+    },
+    {
+      "value_row": "{'State': 'al', 'HospitalType': 'acute care hospitals', 'MeasureName': 'heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)'}",
+      "error_analysis": "Lowercase 'al' normalized to 'AL' → valid state code.",
+      "has_error_in_State_value": false
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+def is_clean_yes_no_strict(row, attr):
+    # Value of `EmergencyService` is row[attr]
+    value = row[attr]
+    v = str(value).strip().lower()
+    return v in ('yes', 'no')
+
+def is_clean_boolean_like(row, attr):
+    # Value of `EmergencyService` is row[attr]
+    value = row[attr]
+    if isinstance(value, bool):
+        return True
+    v = str(value).strip().lower()
+    return v in ('yes', 'no')
+
+def is_clean_nonempty_emergencyservice(row, attr):
+    # Value of `EmergencyService` is row[attr]
+    value = row[attr]
+    s = str(value)
+    return len(s.strip()) > 0
+
+def is_clean_yes_no_flexible(row, attr):
+    # Value of `EmergencyService` is row[attr]
+    value = row[attr]
+    v = str(value).strip().lower()
+    return v in ('yes', 'no', 'y', 'n', 'true', 'false', '1', '0')
+
+def is_clean_yes_no_binary01(row, attr):
+    # Value of `EmergencyService` is row[attr]
+    value = row[attr]
+    s = str(value).strip().lower()
+    return s in ('1', '0')
+
+def is_clean_punctuation_ignored(row, attr):
+    # Value of `EmergencyService` is row[attr]
+    value = row[attr]
+    import string
+    s = ''.join(ch for ch in str(value) if ch.isalnum())
+    if not s:
+        return False
+    s = s.lower()
+    return s in ('yes', 'no')

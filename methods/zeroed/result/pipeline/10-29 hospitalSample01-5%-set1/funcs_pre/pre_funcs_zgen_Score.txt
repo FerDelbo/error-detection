@@ -1,0 +1,68 @@
+def is_clean_no_whitespace(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str):
+        return False
+    return val == val.strip() and ' ' not in val
+
+def is_clean_percent_format(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str):
+        return False
+    s = val.strip()
+    if not s.endswith('%') or len(s) < 2:
+        return False
+    num_str = s[:-1]
+    if not num_str.isdigit():
+        return False
+    n = int(num_str)
+    return 0 <= n <= 100
+
+def is_clean_known_percent_values(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str):
+        return False
+    s = val.strip()
+    if not s.endswith('%'):
+        return False
+    core = s[:-1]
+    if not core.isdigit():
+        return False
+    n = int(core)
+    allowed = {0, 50, 91, 92, 94, 96, 97, 98, 100}
+    return n in allowed
+
+def is_clean_numeric_range(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str):
+        return False
+    if not val.endswith('%'):
+        return False
+    digits = val[:-1]
+    if not digits.isdigit():
+        return False
+    n = int(digits)
+    return 0 <= n <= 100
+
+def is_clean_digits_plus_percent_only(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str):
+        return False
+    s = val.strip()
+    if not s.endswith('%'):
+        return False
+    core = s[:-1]
+    if core == '':
+        return False
+    for ch in core:
+        if not ch.isdigit():
+            return False
+    return True
+
+def is_clean_no_empty_marker(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str):
+        return False
+    s = val.strip().lower()
+    if s == 'empty' or s == '':
+        return False
+    return True

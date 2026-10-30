@@ -1,0 +1,45 @@
+def is_clean_exact_match(row, attr):
+    val = row[attr] if isinstance(row, dict) else getattr(row, attr, None)
+    if not isinstance(val, str):
+        return False
+    return val.strip().lower() == 'acute care hospitals'
+
+def is_clean_levenshtein_match(row, attr, threshold=3):
+    val = row[attr] if isinstance(row, dict) else getattr(row, attr, None)
+    if not isinstance(val, str):
+        return False
+    s = val.strip().lower()
+    target = 'acute care hospitals'
+    return levenshtein_distance(s, target) <= threshold
+
+def is_clean_by_length_and_char_class(row, attr):
+    import re
+    val = row[attr] if isinstance(row, dict) else getattr(row, attr, None)
+    if not isinstance(val, str):
+        return False
+    s = val.strip().lower()
+    if not re.fullmatch(r'[a-z ]+', s):
+        return False
+    L = len(s)
+    return 16 <= L <= 30
+
+def is_clean_case_insensitive_match(row, attr):
+    val = row[attr] if isinstance(row, dict) else getattr(row, attr, None)
+    if not isinstance(val, str):
+        return False
+    return val.strip().lower() == 'acute care hospitals'
+
+def is_clean_fuzzy_match(row, attr):
+    val = row[attr] if isinstance(row, dict) else getattr(row, attr, None)
+    if not isinstance(val, str):
+        return False
+    s = val.strip().lower()
+    import difflib
+    return difflib.SequenceMatcher(None, s, 'acute care hospitals').ratio() >= 0.85
+
+def is_clean_word_presence(row, attr):
+    val = row[attr] if isinstance(row, dict) else getattr(row, attr, None)
+    if not isinstance(val, str):
+        return False
+    s = val.lower()
+    return all(w in s for w in ('acute', 'care', 'hospitals'))

@@ -1,0 +1,42 @@
+As a data quality expert, please first analyze attribute relations and analyze the 'HospitalName' attribute values for potential errors. Ignore case sensitivity
+Provide your analysis on `HospitalName` values in JSON format as follows, **do not care problems in other attributes**:
+
+
+```json
+{"column_name": "HospitalName",
+  "entries": [
+    {
+"value_row": "{'HospitalName': 'HospitalName_example_val_1', 'ProviderNumber': 'ProviderNumber_example_val_1', 'Address': 'Address_example_val_1'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_HospitalName_value": true/false,
+    },
+    {
+"value_row": "{'HospitalName': 'HospitalName_example_val_2', 'ProviderNumber': 'ProviderNumber_example_val_2', 'Address': 'Address_example_val_2'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_HospitalName_value": true/false,
+    }
+  ]
+}
+```
+
+
+If unsure, do not indicate an error.
+- Please ignore the case sensitivity issues.
+
+-----------------------------------------------
+
+Here are the given inputs:
+Values of column 'HospitalName' along with related attribute values:
+'{"HospitalName":"hartselle medical center","ProviderNumber":"10009","Address":"201 pine street northwest"}
+{"HospitalName":"mizell memorial hospital","ProviderNumber":"10007","Address":"702 n main st"}
+{"HospitalName":"helen keller memorial hospital","ProviderNumber":"10019","Address":"1300 south montgomery avenue"}
+{"HospitalName":"mizell memorial hospital","ProviderNumber":"10007","Address":"702 n main st"}
+{"HospitalName":"helen keller memorial hospital","ProviderNumber":"10019","Address":"1300 south montgomery avenue"}
+{"HospitalName":"callahan eye foundation hospital","ProviderNumber":"10018","Address":"1720 university blvd"}
+{"HospitalName":"marshall medical center north","ProviderNumber":"10010","Address":"8000 alabama highway 69"}
+{"HospitalName":"hartselle medical center","ProviderNumber":"10009","Address":"201 pine street northwest"}
+{"HospitalName":"marshall medical center north","ProviderNumber":"10010","Address":"8000 alabama highway 69"}
+{"HospitalName":"marshall medical center north","ProviderNumber":"10010","Address":"8000 alabama highway 69"}'
+Provide your analysis on `HospitalName` values in the required JSON format, **do not care problems in other attributes**:
+
+

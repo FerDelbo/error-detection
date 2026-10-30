@@ -1,0 +1,48 @@
+def is_clean_whitelist(row, attr):
+    val = str(row.get(attr, '')).strip().lower()
+    allowed = {
+        'voluntary non-profit - private',
+        'voluntary non-profit - other',
+        'government - hospital district or authority',
+        'government - federal',
+        'proprietary'
+    }
+    return val in allowed
+
+def is_clean_nonempty(row, attr):
+    val = row.get(attr, None)
+    if val is None: 
+        return False
+    if isinstance(val, str) and val.strip() == '':
+        return False
+    return True
+
+def is_clean_vocab_consistent(row, attr):
+    val = str(row.get(attr, '')).strip().lower()
+    if val == 'proprietary':
+        return True
+    first, sep, rest = val.partition(' - ')
+    if not sep:
+        return False
+    if first == 'voluntary non-profit':
+        return rest in ('private', 'other')
+    if first == 'government':
+        return rest in ('federal', 'hospital district or authority')
+    return False
+
+def is_clean_pattern(row, attr):
+    import re
+    val = str(row.get(attr, '')).strip().lower()
+    pattern = r'^(voluntary non-profit - (private|other)|government - (federal|hospital district or authority)|proprietary)$'
+    return re.match(pattern, val) is not None
+
+def is_clean_case_insensitive(row, attr):
+    val = str(row.get(attr, '')).strip().lower()
+    allowed = {
+        'voluntary non-profit - private',
+        'voluntary non-profit - other',
+        'government - hospital district or authority',
+        'government - federal',
+        'proprietary'
+    }
+    return val in allowed

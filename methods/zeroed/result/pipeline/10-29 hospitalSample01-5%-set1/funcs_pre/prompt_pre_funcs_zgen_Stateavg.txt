@@ -1,0 +1,40 @@
+You are a Data Cleaning Specialist tasked with distinguishing between clean and dirty cells in the `Stateavg`.
+
+Here are examples for the 'Stateavg' column:
+{'Stateavg': 'al_hf-3', 'MeasureName': 'heart failure patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)', 'MeasureCode': 'hf-3'}
+{'Stateavg': 'al_ami-4', 'MeasureName': 'heart attack patients given smoking cessation advice/counseling', 'MeasureCode': 'ami-4'}
+{'Stateavg': 'al_hf-3', 'MeasureName': 'heart failure patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)', 'MeasureCode': 'hf-3'}
+{'Stateavg': 'al_scip-inf-4', 'MeasureName': 'all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery', 'MeasureCode': 'scip-inf-4'}
+{'Stateavg': 'al_scip-inf-4', 'MeasureName': 'all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery', 'MeasureCode': 'scip-inf-4'}
+{'Stateavg': 'al_pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling', 'MeasureCode': 'pn-4'}
+{'Stateavg': 'al_ami-7a', 'MeasureName': 'heart attack patients given fibrinolytic medication within 30 minutes of arrival', 'MeasureCode': 'ami-7a'}
+{'Stateavg': 'al_hf-3', 'MeasureName': 'heart failure patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)', 'MeasureCode': 'hf-3'}
+{'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function', 'MeasureCode': 'hf-2'}
+{'Stateavg': 'al_hf-4', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling', 'MeasureCode': 'hf-4'}
+{'Stateavg': 'al_ami-3', 'MeasureName': 'heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)', 'MeasureCode': 'ami-3'}
+{'Stateavg': 'al_pn-3b', 'MeasureName': 'pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics', 'MeasureCode': 'pn-3b'}
+{'Stateavg': 'al_ami-2', 'MeasureName': 'heart attaxk patients given aspirin at disxharge', 'MeasureCode': 'ami-2'}
+{'Stateavg': 'al_hf-3', 'MeasureName': 'heart failure patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)', 'MeasureCode': 'hf-3'}
+{'Stateavg': 'al_pn-6', 'MeasureName': 'pneumonia patients given the most appropriate initial antibiotic(s)', 'MeasureCode': 'pn-6'}
+{'Stateavg': 'al_pn-2', 'MeasureName': 'pneumonia patients assessed and given pneumococcal vaccination', 'MeasureCode': 'pn-2'}
+{'Stateavg': 'al_ami-1', 'MeasureName': 'heart attack patients given aspirin at arrival', 'MeasureCode': 'ami-1'}
+{'Stateavg': 'al_ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge', 'MeasureCode': 'ami-5'}
+{'Stateavg': 'al_scip-inf-1', 'MeasureName': 'surgery patients who were given an antibiotic at the right time (within one hour before surgery) to help prevent infection', 'MeasureCode': 'scip-inf-1'}
+{'Stateavg': 'al_scip-card-2', 'MeasureName': 'surgery patients who were taking heart drugs called beta blockers before coming to the hospital who were kept on the beta blockers during the period just before and after their surgery', 'MeasureCode': 'scip-card-2'}
+
+Your task:
+1. Analyze the `Stateavg` column values.
+2. Create precise judge functions in Python that:
+- Receive the row content of the `Stateavg` column
+- Return True for clean values, False for dirty values
+- Use the naming convention 'is_clean_[judgment]'
+- Cover different perspectives of cleanliness as possible
+- Do not contain blank lines inner functions
+
+Example function code snippet:
+```python def is_clean_[judgment](row, attr):
+    # Value of `Stateavg` is row[attr]
+    # Your logic here
+    return True  # or False
+```
+Provide your functions below:

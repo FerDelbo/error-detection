@@ -1,0 +1,56 @@
+******************** prompt ********************
+
+You are a data quality analyst with extensive experience in identifying and generating realistic data errors. Your task is to analyze a given dataset and generate plausible errors for a specific attribute, simulating real-world data quality issues.
+
+I will provide you with a sample of **possible** clean and dirty values in a tabular format for various attributes. Your objectives are to:
+
+1. Analyze the data to identify patterns, relationships, and constraints between attributes.
+2. Focus on the attribute named `MeasureName` and generate realistic errors that could occur in real-world scenarios.
+3. Ensure the errors you generate are diverse and cover multiple error types.
+
+Your task is to analyze the data and identify inner relationships. Based on this analysis, generate errors specifically for the attribute `attribute_name` as they might occur in real-world scenarios. 
+The types of errors include the following ones
+1. Pattern Violations: Values that don't match the expected format
+2. Explicit/Implicit Missing Values: Null values or placeholders for missing data
+3. Constraints Violations: Values that conflict with other columns or violate business rules
+4. Out-of-domain values: Values outside the expected range or set
+5. Typos: Spelling or data entry errors
+6. Violate common knowledge: Values that contradict widely known facts
+For the attribute `MeasureName`, here are the given **possible** clean tuples:
+{'MeasureName': 'heart attack patients given beta blocker at discharge', 'Stateavg': 'al_ami-5', 'MeasureCode': 'ami-5'}
+{'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function', 'Stateavg': 'al_hf-2', 'MeasureCode': 'hf-2'}
+{'MeasureName': 'heart failure patients given smoking cessation advice/counseling', 'Stateavg': 'al_hf-4', 'MeasureCode': 'hf-4'}
+{'MeasureName': 'heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)', 'Stateavg': 'al_ami-3', 'MeasureCode': 'ami-3'}
+{'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function', 'Stateavg': 'al_hf-2', 'MeasureCode': 'hf-x'}
+{'MeasureName': 'pneumonia patients given smoking cessation advice/counseling', 'Stateavg': 'al_pn-4', 'MeasureCode': 'pn-4'}
+{'MeasureName': 'surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)', 'Stateavg': 'al_scip-inf-6', 'MeasureCode': 'scip-inf-6'}
+{'MeasureName': 'heart attack patients given aspirin at discharge', 'Stateavg': 'al_ami-2', 'MeasureCode': 'ami-2'}
+{'MeasureName': 'pneumonia patients given smoking cessation advice/counseling', 'Stateavg': 'al_pn-4', 'MeasureCode': 'pn-4'}
+There are also some **possible** wrong tuples for reference:
+{'MeasureName': 'heart attack patients given beta blocker at discharge', 'Stateavg': 'al_ami-5', 'MeasureCode': 'ami-5'}
+
+Please analyze the error pattern and generate 9 realistic errors specifically for the attribute `MeasureName`:
+
+The output should be in the following strict format:
+['MeasureName', error_value_1, Reason: 'Error type1: Specific reason', {'MeasureName': 'error_value_1', 'Stateavg': 'Stateavg_val_1', 'MeasureCode': 'MeasureCode_val_1'}]
+['MeasureName', error_value_2, Reason: 'Error type2: Specific reason', {'MeasureName': 'error_value_2', 'Stateavg': 'Stateavg_val_2', 'MeasureCode': 'MeasureCode_val_2'}]
+...
+Please ensure that the reasons for each error are clearly specified.
+Do not be the same as the reference values.
+--------------------------------------------------------------------------
+
+******************** answer ********************
+['MeasureName', 'heartattack patients given beta blocker at discharge', Reason: 'Error type1: Pattern Violation: missing space between words in "heartattack"', {'MeasureName': 'heartattack patients given beta blocker at discharge', 'Stateavg': 'al_ami-5', 'MeasureCode': 'ami-5'}]
+['MeasureName', 'N/A', Reason: 'Error type2: Explicit Missing/Null Value: placeholder used', {'MeasureName': 'N/A', 'Stateavg': 'al_pn-4', 'MeasureCode': 'pn-4'}]
+['MeasureName', '', Reason: 'Error type2: Explicit Missing/Null Value: empty string', {'MeasureName': '', 'Stateavg': 'al_hf-2', 'MeasureCode': 'hf-2'}]
+['MeasureName', 'pneumonia patients given aspirin at discharge', Reason: 'Error type3: Constraints Violation: measure code mismatch with pneumonia context', {'MeasureName': 'pneumonia patients given aspirin at discharge', 'Stateavg': 'al_pn-4', 'MeasureCode': 'ami-3'}]
+['MeasureName', 'stroke patients given statin therapy at discharge', Reason: 'Error type4: Out-of-domain values: new patient group not represented in current patterns', {'MeasureName': 'stroke patients given statin therapy at discharge', 'Stateavg': 'al_stroke-1', 'MeasureCode': 'st-1'}]
+['MeasureName', 'heart failre patients given an evaluation of left ventricular systolic (lvs) function', Reason: 'Error type5: Typos: misspelling in "failre"', {'MeasureName': 'heart failre patients given an evaluation of left ventricular systolic (lvs) function', 'Stateavg': 'al_hf-2', 'MeasureCode': 'hf-2'}]
+['MeasureName', 'heart attack patients given insulin at discharge', Reason: 'Error type6: Violate common knowledge: insulin at discharge not a standard universal measure', {'MeasureName': 'heart attack patients given insulin at discharge', 'Stateavg': 'al_ami-2', 'MeasureCode': 'ami-2'}]
+['MeasureName', 'pneumonia patients given an evaluation of left ventricular systolic (lvs) function', Reason: 'Error type4: Out-of-domain: cross-domain measure for pneumonia context', {'MeasureName': 'pneumonia patients given an evaluation of left ventricular systolic (lvs) function', 'Stateavg': 'al_pn-4', 'MeasureCode': 'pn-4'}]
+['MeasureName', 'heartattack patients given aspirin at discharve', Reason: 'Error type5: Pattern Violations: multiple typos and spacing errors', {'MeasureName': 'heartattack patients given aspirin at discharve', 'Stateavg': 'al_ami-2', 'MeasureCode': 'ami-2'}]
+
+
+
+
+

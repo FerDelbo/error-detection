@@ -1,0 +1,43 @@
+def is_clean_format_core(row, attr):
+    val = row.get(attr, '')
+    if not isinstance(val, str): 
+        return False
+    if not val.startswith('al_'): 
+        return False
+    if '-' not in val: 
+        return False
+    return bool(__import__('re').fullmatch(r'[a-z0-9_-]+', val))
+
+def is_clean_known_prefixes(row, attr):
+    import re
+    val = row.get(attr, '')
+    if not isinstance(val, str): 
+        return False
+    pattern = r'^al_(hf|ami|pn|scip-inf|scip-card)-[0-9]+[a-z]?$'
+    return bool(re.match(pattern, val))
+
+def is_clean_min_length(row, attr):
+    val = row.get(attr, '')
+    if not isinstance(val, str): 
+        return False
+    return len(val) >= 6
+
+def is_clean_pattern_regex(row, attr):
+    import re
+    val = row.get(attr, '')
+    if not isinstance(val, str): 
+        return False
+    pattern = r'^al_[a-z0-9-]+-\w+$'
+    return bool(re.match(pattern, val))
+
+def is_clean_allowed_chars(row, attr):
+    val = row.get(attr, '')
+    if not isinstance(val, str): 
+        return False
+    return bool(__import__('re').fullmatch(r'[a-z0-9_-]+', val))
+
+def is_clean_lowercase_only(row, attr):
+    val = row.get(attr, '')
+    if not isinstance(val, str): 
+        return False
+    return val == val.lower()

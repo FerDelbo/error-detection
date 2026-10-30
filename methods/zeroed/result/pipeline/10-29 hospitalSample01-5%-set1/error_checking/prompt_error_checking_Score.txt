@@ -1,0 +1,42 @@
+As a data quality expert, please first analyze attribute relations and analyze the 'Score' attribute values for potential errors. Ignore case sensitivity
+Provide your analysis on `Score` values in JSON format as follows, **do not care problems in other attributes**:
+
+
+```json
+{"column_name": "Score",
+  "entries": [
+    {
+"value_row": "{'Score': 'Score_example_val_1', 'Sample': 'Sample_example_val_1', 'MeasureName': 'MeasureName_example_val_1'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_Score_value": true/false,
+    },
+    {
+"value_row": "{'Score': 'Score_example_val_2', 'Sample': 'Sample_example_val_2', 'MeasureName': 'MeasureName_example_val_2'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_Score_value": true/false,
+    }
+  ]
+}
+```
+
+
+If unsure, do not indicate an error.
+- Please ignore the case sensitivity issues.
+
+-----------------------------------------------
+
+Here are the given inputs:
+Values of column 'Score' along with related attribute values:
+'{"Score":"100%","Sample":"6xpatients","MeasureName":"heart attack patients given aspirin at discharge"}
+{"Score":"94%","Sample":"65 patients","MeasureName":"pneumonia patients given smoking cessation advice/counseling"}
+{"Score":"86%","Sample":"14 patients","MeasureName":"heart attack patients given beta blocker at discharge"}
+{"Score":"100%","Sample":"2 patients","MeasureName":"heart attack patients given beta blocker at discharge"}
+{"Score":"84%","Sample":"80 patients","MeasureName":"heart failure patients given an evaluation of left ventricular systolic (lvs) function"}
+{"Score":"98%","Sample":"42 patients","MeasureName":"heart failure patients given an evaluation of left ventricular systolic (lvs) function"}
+{"Score":"100%","Sample":"41 patients","MeasureName":"heart failure patients given smoking cessation advice/counseling"}
+{"Score":"empty","Sample":"empty","MeasureName":"surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)"}
+{"Score":"100%","Sample":"1 patients","MeasureName":"heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)"}
+{"Score":"100%","Sample":"28 patients","MeasureName":"pneumonia patients given smoking cessation advice/counseling"}'
+Provide your analysis on `Score` values in the required JSON format, **do not care problems in other attributes**:
+
+

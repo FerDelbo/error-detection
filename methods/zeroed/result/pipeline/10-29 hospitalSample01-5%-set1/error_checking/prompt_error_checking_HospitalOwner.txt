@@ -1,0 +1,42 @@
+As a data quality expert, please first analyze attribute relations and analyze the 'HospitalOwner' attribute values for potential errors. Ignore case sensitivity
+Provide your analysis on `HospitalOwner` values in JSON format as follows, **do not care problems in other attributes**:
+
+
+```json
+{"column_name": "HospitalOwner",
+  "entries": [
+    {
+"value_row": "{'HospitalOwner': 'HospitalOwner_example_val_1', 'CountyName': 'CountyName_example_val_1', 'ProviderNumber': 'ProviderNumber_example_val_1'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_HospitalOwner_value": true/false,
+    },
+    {
+"value_row": "{'HospitalOwner': 'HospitalOwner_example_val_2', 'CountyName': 'CountyName_example_val_2', 'ProviderNumber': 'ProviderNumber_example_val_2'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_HospitalOwner_value": true/false,
+    }
+  ]
+}
+```
+
+
+If unsure, do not indicate an error.
+- Please ignore the case sensitivity issues.
+
+-----------------------------------------------
+
+Here are the given inputs:
+Values of column 'HospitalOwner' along with related attribute values:
+'{"HospitalOwner":"government - hospital district or authority","CountyName":"marshall","ProviderNumber":"10010"}
+{"HospitalOwner":"voluntary non-profit - private","CountyName":"covington","ProviderNumber":"10007"}
+{"HospitalOwner":"voluntary non-profit - private","CountyName":"covington","ProviderNumber":"10007"}
+{"HospitalOwner":"government - hospital district or authority","CountyName":"jefferson","ProviderNumber":"10019"}
+{"HospitalOwner":"proprietary","CountyName":"morgan","ProviderNumber":"10009"}
+{"HospitalOwner":"government - hospital district or authority","CountyName":"marshall","ProviderNumber":"10010"}
+{"HospitalOwner":"voluntary non-profit - private","CountyName":"jefferson","ProviderNumber":"10018"}
+{"HospitalOwner":"proprietary","CountyName":"morgan","ProviderNumber":"10009"}
+{"HospitalOwner":"government - hospital district or authority","CountyName":"marshall","ProviderNumber":"10010"}
+{"HospitalOwner":"government - hospital district or authority","CountyName":"jefferson","ProviderNumber":"10019"}'
+Provide your analysis on `HospitalOwner` values in the required JSON format, **do not care problems in other attributes**:
+
+

@@ -1,0 +1,42 @@
+As a data quality expert, please first analyze attribute relations and analyze the 'MeasureCode' attribute values for potential errors. Ignore case sensitivity
+Provide your analysis on `MeasureCode` values in JSON format as follows, **do not care problems in other attributes**:
+
+
+```json
+{"column_name": "MeasureCode",
+  "entries": [
+    {
+"value_row": "{'MeasureCode': 'MeasureCode_example_val_1', 'Stateavg': 'Stateavg_example_val_1', 'MeasureName': 'MeasureName_example_val_1'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_MeasureCode_value": true/false,
+    },
+    {
+"value_row": "{'MeasureCode': 'MeasureCode_example_val_2', 'Stateavg': 'Stateavg_example_val_2', 'MeasureName': 'MeasureName_example_val_2'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_MeasureCode_value": true/false,
+    }
+  ]
+}
+```
+
+
+If unsure, do not indicate an error.
+- Please ignore the case sensitivity issues.
+
+-----------------------------------------------
+
+Here are the given inputs:
+Values of column 'MeasureCode' along with related attribute values:
+'{"MeasureCode":"ami-2","Stateavg":"al_ami-2","MeasureName":"heart attack patients given aspirin at discharge"}
+{"MeasureCode":"ami-3","Stateavg":"al_ami-3","MeasureName":"heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)"}
+{"MeasureCode":"hf-2","Stateavg":"al_hf-2","MeasureName":"heart failure patients given an evaluation of left ventricular systolic (lvs) function"}
+{"MeasureCode":"pn-4","Stateavg":"al_pn-4","MeasureName":"pneumonia patients given smoking cessation advice/counseling"}
+{"MeasureCode":"ami-5","Stateavg":"al_ami-5","MeasureName":"heart attack patients given beta blocker at discharge"}
+{"MeasureCode":"pn-4","Stateavg":"al_pn-4","MeasureName":"pneumonia patients given smoking cessation advice/counseling"}
+{"MeasureCode":"hf-4","Stateavg":"al_hf-4","MeasureName":"heart failure patients given smoking cessation advice/counseling"}
+{"MeasureCode":"scip-inf-6","Stateavg":"al_scip-inf-6","MeasureName":"surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)"}
+{"MeasureCode":"ami-5","Stateavg":"al_ami-5","MeasureName":"heart attack patients given beta blocker at discharge"}
+{"MeasureCode":"hf-x","Stateavg":"al_hf-2","MeasureName":"heart failure patients given an evaluation of left ventricular systolic (lvs) function"}'
+Provide your analysis on `MeasureCode` values in the required JSON format, **do not care problems in other attributes**:
+
+

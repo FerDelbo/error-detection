@@ -1,0 +1,31 @@
+def is_clean_state_nonempty_alpha(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str): return False
+    s = val.strip()
+    return len(s) > 0 and s.isalpha()
+
+def is_clean_state_in_known_codes(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str): return False
+    s = val.strip().lower()
+    codes = {'al','ak','az','ar','ca','co','ct','de','fl','ga','hi','ia','id','il','in','ks','ky','la','ma','md','me','mi','mn','mo','ms','mt','nc','nd','ne','nh','nj','nm','nv','ny','oh','ok','or','pa','ri','sc','sd','tn','tx','ut','va','vt','wa','wi','wv','wy','dc'}
+    return s in codes
+
+def is_clean_state_no_extraneous_whitespace(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str): return False
+    return val == val.strip()
+
+def is_clean_state_two_letter_lowercase(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str): return False
+    s = val.strip()
+    if len(s) != 2: return False
+    if not s.isalpha(): return False
+    return s == s.lower()
+
+def is_clean_state_regex_two_letters(row, attr):
+    val = row.get(attr)
+    if not isinstance(val, str): return False
+    import re
+    return bool(re.fullmatch(r'[a-z]{2}', val))

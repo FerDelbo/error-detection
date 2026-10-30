@@ -1,0 +1,42 @@
+As a data quality expert, please first analyze attribute relations and analyze the 'ZipCode' attribute values for potential errors. Ignore case sensitivity
+Provide your analysis on `ZipCode` values in JSON format as follows, **do not care problems in other attributes**:
+
+
+```json
+{"column_name": "ZipCode",
+  "entries": [
+    {
+"value_row": "{'ZipCode': 'ZipCode_example_val_1', 'ProviderNumber': 'ProviderNumber_example_val_1', 'HospitalName': 'HospitalName_example_val_1'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_ZipCode_value": true/false,
+    },
+    {
+"value_row": "{'ZipCode': 'ZipCode_example_val_2', 'ProviderNumber': 'ProviderNumber_example_val_2', 'HospitalName': 'HospitalName_example_val_2'}",
+"error_analysis": "[Brief explanation of the error analysis, if applicable]",
+"has_error_in_ZipCode_value": true/false,
+    }
+  ]
+}
+```
+
+
+If unsure, do not indicate an error.
+- Please ignore the case sensitivity issues.
+
+-----------------------------------------------
+
+Here are the given inputs:
+Values of column 'ZipCode' along with related attribute values:
+'{"ZipCode":"35976","ProviderNumber":"10010","HospitalName":"marshall medical center north"}
+{"ZipCode":"35976","ProviderNumber":"10010","HospitalName":"marshall medical center north"}
+{"ZipCode":"35640","ProviderNumber":"10009","HospitalName":"hartselle medical center"}
+{"ZipCode":"35660","ProviderNumber":"10019","HospitalName":"helen keller memorial hospital"}
+{"ZipCode":"36467","ProviderNumber":"10007","HospitalName":"mizell memorial hospital"}
+{"ZipCode":"35976","ProviderNumber":"10010","HospitalName":"marshall medical center north"}
+{"ZipCode":"36467","ProviderNumber":"10007","HospitalName":"mizell memorial hospital"}
+{"ZipCode":"35233","ProviderNumber":"10018","HospitalName":"callahan eye foundation hospital"}
+{"ZipCode":"35640","ProviderNumber":"10009","HospitalName":"hartselle medical center"}
+{"ZipCode":"35660","ProviderNumber":"10019","HospitalName":"helen keller memorial hospital"}'
+Provide your analysis on `ZipCode` values in the required JSON format, **do not care problems in other attributes**:
+
+

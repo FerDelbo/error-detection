@@ -1,0 +1,199 @@
+
+******************************ProviderNumber******************************
+
+Wrong data labeling accuracy: 1.0 (0/0)
+Right data labeling accuracy: 1.0 (10/10)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************HospitalName******************************
+
+Wrong data labeling accuracy: 1.0 (0/0)
+Right data labeling accuracy: 1.0 (10/10)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************Address******************************
+
+Wrong data labeling accuracy: 1.0 (0/0)
+Right data labeling accuracy: 1.0 (10/10)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************City******************************
+
+Wrong data labeling accuracy: 1.0 (0/0)
+Right data labeling accuracy: 1.0 (10/10)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************State******************************
+
+Wrong data labeling accuracy: 1.0 (2/2)
+Right data labeling accuracy: 1.0 (8/8)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************ZipCode******************************
+
+Wrong data labeling accuracy: 1.0 (0/0)
+Right data labeling accuracy: 1.0 (10/10)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************CountyName******************************
+
+Wrong data labeling accuracy: 1.0 (0/0)
+Right data labeling accuracy: 1.0 (10/10)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************PhoneNumber******************************
+
+Wrong data labeling accuracy: 1.0 (0/0)
+Right data labeling accuracy: 1.0 (10/10)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************HospitalType******************************
+
+Wrong data labeling accuracy: 1.0 (1/1)
+Right data labeling accuracy: 1.0 (9/9)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************HospitalOwner******************************
+
+Wrong data labeling accuracy: 1.0 (0/0)
+Right data labeling accuracy: 1.0 (10/10)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************EmergencyService******************************
+
+Wrong data labeling accuracy: 1.0 (0/0)
+Right data labeling accuracy: 1.0 (10/10)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************Condition******************************
+
+Wrong data labeling accuracy: 1.0 (0/0)
+Right data labeling accuracy: 1.0 (10/10)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************MeasureCode******************************
+
+Wrong data labeling accuracy: 1.0 (1/1)
+Right data labeling accuracy: 1.0 (9/9)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************MeasureName******************************
+
+Wrong data labeling accuracy: 9.99998999939855e-07 (0/1)
+Right data labeling accuracy: 1.0 (9/9)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+Dirty: {'MeasureName': 'surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)', 'Stateavg': 'al_scip-inf-6', 'MeasureCode': 'scip-inf-6'}
+Clean: {'MeasureName': 'heart attack patients given beta blocker at discharge', 'Stateavg': 'al_ami-5', 'MeasureCode': 'ami-5'}
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************Score******************************
+
+Wrong data labeling accuracy: 1.0 (1/1)
+Right data labeling accuracy: 1.0 (9/9)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+******************************Sample******************************
+
+Wrong data labeling accuracy: 1.0 (2/2)
+Right data labeling accuracy: 0.8750000156249981 (7/8)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+
+Dirty: {'Sample': '1 patients', 'Score': '100%', 'MeasureName': 'heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)'}
+Clean: {'Sample': '80 patients', 'Score': '84%', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}
+
+
+******************************Stateavg******************************
+
+Wrong data labeling accuracy: 1.0 (0/0)
+Right data labeling accuracy: 1.0 (10/10)
+
+------------------------------Wrongly Detected Values------------------------------
+
+
+------------------------------Missing Erroneous Values------------------------------
+
+******************************Overall Evaluation******************************
+
+Overall Wrong data labeling accuracy: 0.8750000156249981 (7/8)
+Overall Right data labeling accuracy: 0.9938281604938272 (161/162)
+

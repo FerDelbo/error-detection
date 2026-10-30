@@ -1,0 +1,26 @@
+You are a Data Cleaning Specialist tasked with identifying and distinguishing between clean and dirty cells in the `MeasureName` column.
+
+Clean examples for the 'MeasureName' column:
+{'MeasureName': 'pneumonia patients given smoking cessation advice/counseling', 'Stateavg': 'al_pn-4', 'MeasureCode': 'pn-4'}
+
+Error examples for the 'MeasureName' column:
+
+{'MeasureName': 'heart attack patients given beta blocker at discharge', 'Stateavg': 'al_ami-5', 'MeasureCode': 'ami-5'}
+
+Your task:
+1. Analyze the `MeasureName` column values.
+2. Compare the differences between clean and dirty values.
+3. Create precise judge functions in Python that:
+- Receive the row content of the `MeasureName` column
+- Return True for clean values, False for dirty values
+- Use the naming convention 'is_clean_[judgment]'
+- Cover different perspectives of cleanliness as possible
+- Do not contain blank lines inner functions
+
+Example function code snippet:
+```python def is_clean_[judgment](row, attr):
+    # Value of `MeasureName` is row[attr]
+    # Your logic here
+    return True  # or False
+```
+Provide your functions below:

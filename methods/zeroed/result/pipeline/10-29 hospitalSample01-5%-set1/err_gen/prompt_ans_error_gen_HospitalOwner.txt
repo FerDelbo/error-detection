@@ -1,0 +1,58 @@
+******************** prompt ********************
+
+You are a data quality analyst with extensive experience in identifying and generating realistic data errors. Your task is to analyze a given dataset and generate plausible errors for a specific attribute, simulating real-world data quality issues.
+
+I will provide you with a sample of **possible** clean and dirty values in a tabular format for various attributes. Your objectives are to:
+
+1. Analyze the data to identify patterns, relationships, and constraints between attributes.
+2. Focus on the attribute named `HospitalOwner` and generate realistic errors that could occur in real-world scenarios.
+3. Ensure the errors you generate are diverse and cover multiple error types.
+
+Your task is to analyze the data and identify inner relationships. Based on this analysis, generate errors specifically for the attribute `attribute_name` as they might occur in real-world scenarios. 
+The types of errors include the following ones
+1. Pattern Violations: Values that don't match the expected format
+2. Explicit/Implicit Missing Values: Null values or placeholders for missing data
+3. Constraints Violations: Values that conflict with other columns or violate business rules
+4. Out-of-domain values: Values outside the expected range or set
+5. Typos: Spelling or data entry errors
+6. Violate common knowledge: Values that contradict widely known facts
+For the attribute `HospitalOwner`, here are the given **possible** clean tuples:
+{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'marshall', 'ProviderNumber': '10010'}
+{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'jefferson', 'ProviderNumber': '10019'}
+{'HospitalOwner': 'proprietary', 'CountyName': 'morgan', 'ProviderNumber': '10009'}
+{'HospitalOwner': 'voluntary non-profit - private', 'CountyName': 'covington', 'ProviderNumber': '10007'}
+{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'jefferson', 'ProviderNumber': '10019'}
+{'HospitalOwner': 'voluntary non-profit - private', 'CountyName': 'jefferson', 'ProviderNumber': '10018'}
+{'HospitalOwner': 'voluntary non-profit - private', 'CountyName': 'covington', 'ProviderNumber': '10007'}
+{'HospitalOwner': 'proprietary', 'CountyName': 'morgan', 'ProviderNumber': '10009'}
+{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'marshall', 'ProviderNumber': '10010'}
+{'HospitalOwner': 'government - hospital district or authority', 'CountyName': 'marshall', 'ProviderNumber': '10010'}
+There are also some **possible** wrong tuples for reference:
+
+
+Please analyze the error pattern and generate 10 realistic errors specifically for the attribute `HospitalOwner`:
+
+The output should be in the following strict format:
+['HospitalOwner', error_value_1, Reason: 'Error type1: Specific reason', {'HospitalOwner': 'error_value_1', 'CountyName': 'CountyName_val_1', 'ProviderNumber': 'ProviderNumber_val_1'}]
+['HospitalOwner', error_value_2, Reason: 'Error type2: Specific reason', {'HospitalOwner': 'error_value_2', 'CountyName': 'CountyName_val_2', 'ProviderNumber': 'ProviderNumber_val_2'}]
+...
+Please ensure that the reasons for each error are clearly specified.
+Do not be the same as the reference values.
+--------------------------------------------------------------------------
+
+******************** answer ********************
+['HospitalOwner', 'goverment - hospital district or authority', Reason: 'Error type1: Pattern Violation - common misspelling of government', {'HospitalOwner': 'goverment - hospital district or authority', 'CountyName': 'marshall', 'ProviderNumber': '10010'}]
+['HospitalOwner', '', Reason: 'Error type2: Explicit Missing Value - blank field', {'HospitalOwner': '', 'CountyName': 'jefferson', 'ProviderNumber': '10019'}]
+['HospitalOwner', 'government - hospital distric or autthority', Reason: 'Error type3: Constraint Violation - County-Owner mismatch', {'HospitalOwner': 'government - hospital distric or autthority', 'CountyName': 'covington', 'ProviderNumber': '10007'}]
+['HospitalOwner', 'federal-government', Reason: 'Error type4: Out-of-domain Value - not in allowed categories', {'HospitalOwner': 'federal-government', 'CountyName': 'morgan', 'ProviderNumber': '10009'}]
+['HospitalOwner', 'volunary non-profit - private', Reason: 'Error type5: Typos - missing "t" in "voluntary"', {'HospitalOwner': 'volunary non-profit - private', 'CountyName': 'jefferson', 'ProviderNumber': '10018'}]
+['HospitalOwner', 'private for-profit', Reason: 'Error type6: Violate common knowledge - not a recognized ownership category in dataset', {'HospitalOwner': 'private for-profit', 'CountyName': 'covington', 'ProviderNumber': '10007'}]
+['HospitalOwner', 'N/A', Reason: 'Error type2: Explicit Missing Value - placeholder for missing data', {'HospitalOwner': 'N/A', 'CountyName': 'jefferson', 'ProviderNumber': '10019'}]
+['HospitalOwner', '   ', Reason: 'Error type1: Pattern Violation - whitespace-only value', {'HospitalOwner': '   ', 'CountyName': 'covington', 'ProviderNumber': '10007'}]
+['HospitalOwner', 'voluntary nonprofit - private', Reason: 'Error type5: Typos - missing hyphen in "non-profit"', {'HospitalOwner': 'voluntary nonprofit - private', 'CountyName': 'marshall', 'ProviderNumber': '10010'}]
+['HospitalOwner', 'VOLUNTARY NON-PROFIT - PRIVATE', Reason: 'Error type4: Out-of-domain Variation - casing not supported', {'HospitalOwner': 'VOLUNTARY NON-PROFIT - PRIVATE', 'CountyName': 'jefferson', 'ProviderNumber': '10019'}]
+
+
+
+
+

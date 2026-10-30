@@ -1,0 +1,58 @@
+******************** prompt ********************
+
+You are a data quality analyst with extensive experience in identifying and generating realistic data errors. Your task is to analyze a given dataset and generate plausible errors for a specific attribute, simulating real-world data quality issues.
+
+I will provide you with a sample of **possible** clean and dirty values in a tabular format for various attributes. Your objectives are to:
+
+1. Analyze the data to identify patterns, relationships, and constraints between attributes.
+2. Focus on the attribute named `ProviderNumber` and generate realistic errors that could occur in real-world scenarios.
+3. Ensure the errors you generate are diverse and cover multiple error types.
+
+Your task is to analyze the data and identify inner relationships. Based on this analysis, generate errors specifically for the attribute `attribute_name` as they might occur in real-world scenarios. 
+The types of errors include the following ones
+1. Pattern Violations: Values that don't match the expected format
+2. Explicit/Implicit Missing Values: Null values or placeholders for missing data
+3. Constraints Violations: Values that conflict with other columns or violate business rules
+4. Out-of-domain values: Values outside the expected range or set
+5. Typos: Spelling or data entry errors
+6. Violate common knowledge: Values that contradict widely known facts
+For the attribute `ProviderNumber`, here are the given **possible** clean tuples:
+{'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital', 'Address': '1300 south montgomery avenue'}
+{'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center', 'Address': '201 pine street northwest'}
+{'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north', 'Address': '8000 alabama highway 69'}
+{'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center', 'Address': '201 pine street northwest'}
+{'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north', 'Address': '8000 alabama highway 69'}
+{'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital', 'Address': '702 n main st'}
+{'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north', 'Address': '8000 alabama highway 69'}
+{'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital', 'Address': '702 n main st'}
+{'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital', 'Address': '1300 south montgomery avenue'}
+{'ProviderNumber': '10018', 'HospitalName': 'callahan eye foundation hospital', 'Address': '1720 university blvd'}
+There are also some **possible** wrong tuples for reference:
+
+
+Please analyze the error pattern and generate 10 realistic errors specifically for the attribute `ProviderNumber`:
+
+The output should be in the following strict format:
+['ProviderNumber', error_value_1, Reason: 'Error type1: Specific reason', {'ProviderNumber': 'error_value_1', 'HospitalName': 'HospitalName_val_1', 'Address': 'Address_val_1'}]
+['ProviderNumber', error_value_2, Reason: 'Error type2: Specific reason', {'ProviderNumber': 'error_value_2', 'HospitalName': 'HospitalName_val_2', 'Address': 'Address_val_2'}]
+...
+Please ensure that the reasons for each error are clearly specified.
+Do not be the same as the reference values.
+--------------------------------------------------------------------------
+
+******************** answer ********************
+['ProviderNumber', '9999', Reason: 'Pattern Violation: Too few digits for a 5-digit provider number', {'ProviderNumber': '9999', 'HospitalName': 'hartselle medical center', 'Address': '201 pine street northwest'}]
+['ProviderNumber', '1001O', Reason: 'Pattern Violation: Non-numeric character in provider number', {'ProviderNumber': '1001O', 'HospitalName': 'mizell memorial hospital', 'Address': '702 n main st'}]
+['ProviderNumber', '100000', Reason: 'Pattern Violation: Too many digits for a 5-digit provider number', {'ProviderNumber': '100000', 'HospitalName': 'callahan eye foundation hospital', 'Address': '1720 university blvd'}]
+['ProviderNumber', 'A0109', Reason: 'Pattern Violation: Non-numeric characters present in provider number', {'ProviderNumber': 'A0109', 'HospitalName': 'helen keller memorial hospital', 'Address': '1300 south montgomery avenue'}]
+['ProviderNumber', '10119', Reason: 'Out-of-domain: ProviderNumber not in the expected range of known providers', {'ProviderNumber': '10119', 'HospitalName': 'marshall medical center north', 'Address': '8000 alabama highway 69'}]
+['ProviderNumber', '1009', Reason: 'Pattern Violation: Too few digits for a 5-digit provider number', {'ProviderNumber': '1009', 'HospitalName': 'mizell memorial hospital', 'Address': '702 n main st'}]
+['ProviderNumber', '', Reason: 'Explicit Missing Value: ProviderNumber is empty', {'ProviderNumber': '', 'HospitalName': 'hartselle medical center', 'Address': '201 pine street northwest'}]
+['ProviderNumber', 'NULL', Reason: 'Implicit Missing Value: Placeholder used for missing data', {'ProviderNumber': 'NULL', 'HospitalName': 'callahan eye foundation hospital', 'Address': '1720 university blvd'}]
+['ProviderNumber', '99999', Reason: 'Out-of-domain: ProviderNumber outside the known provider range', {'ProviderNumber': '99999', 'HospitalName': 'helen keller memorial hospital', 'Address': '1300 south montgomery avenue'}]
+['ProviderNumber', '10009', Reason: 'Constraint Violation: ProviderNumber conflicts with existing HospitalName/Location mapping', {'ProviderNumber': '10009', 'HospitalName': 'helen keller memorial hospital', 'Address': '1300 south montgomery avenue'}
+
+
+
+
+

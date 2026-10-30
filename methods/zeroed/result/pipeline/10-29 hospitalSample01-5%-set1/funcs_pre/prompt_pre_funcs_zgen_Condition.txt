@@ -1,0 +1,40 @@
+You are a Data Cleaning Specialist tasked with distinguishing between clean and dirty cells in the `Condition`.
+
+Here are examples for the 'Condition' column:
+{'Condition': 'pneumonia', 'Stateavg': 'al_pn-3b', 'MeasureName': 'pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics'}
+{'Condition': 'pneumonia', 'Stateavg': 'al_pn-5c', 'MeasureName': 'pneumonia patients given initial antibiotic(s) within 6 hours after arrival'}
+{'Condition': 'pneumonia', 'Stateavg': 'al_pn-7', 'MeasureName': 'pneumonia patients assessed and given influenza vaccination'}
+{'Condition': 'pneumonia', 'Stateavg': 'al_pn-4', 'MeasureName': 'pneumonia patients given smoking cessation advice/counseling'}
+{'Condition': 'heart failure', 'Stateavg': 'al_hf-4', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling'}
+{'Condition': 'surgical infection prevention', 'Stateavg': 'al_scip-card-2', 'MeasureName': 'surgery patiexts who were takixg heart drugs called beta blockers before comixg to the hospital who were kept ox the beta blockers durixg the period just before axd after their surgery'}
+{'Condition': 'heart attack', 'Stateavg': 'al_ami-1', 'MeasureName': 'heart attack patients given aspirin at arrival'}
+{'Condition': 'heart failure', 'Stateavg': 'al_hf-4', 'MeasureName': 'heart failure patients given smoking cessation advice/counseling'}
+{'Condition': 'heart attack', 'Stateavg': 'al_ami-4', 'MeasureName': 'heart attack patients given smoking cessation advice/counseling'}
+{'Condition': 'surgical infection prevention', 'Stateavg': 'al_scip-card-2', 'MeasureName': 'surgery patients who were taking heart drugs called beta blockers before coming to the hospital who were kept on the beta blockers during the period just before and after their surgery'}
+{'Condition': 'heart attack', 'Stateavg': 'al_ami-4', 'MeasureName': 'heart attack patients given smoking cessation advice/counseling'}
+{'Condition': 'heart failure', 'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}
+{'Condition': 'heart attack', 'Stateavg': 'al_ami-4', 'MeasureName': 'heart attack patients given smoking cessation advice/counseling'}
+{'Condition': 'pneumonia', 'Stateavg': 'al_pn-3b', 'MeasureName': 'pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics'}
+{'Condition': 'heart attack', 'Stateavg': 'al_ami-8a', 'MeasureName': 'heart attack patients given pci within 90 minutes of arrival'}
+{'Condition': 'heart failure', 'Stateavg': 'al_hf-2', 'MeasureName': 'heart failure patients given an evaluation of left ventricular systolic (lvs) function'}
+{'Condition': 'heart attack', 'Stateavg': 'al_ami-3', 'MeasureName': 'heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)'}
+{'Condition': 'heart attack', 'Stateavg': 'al_ami-5', 'MeasureName': 'heart attack patients given beta blocker at discharge'}
+{'Condition': 'surgical infection prevention', 'Stateavg': 'al_scip-inf-3', 'MeasureName': 'surgery patients whose preventive antibiotics were stopped at the right time (within 24 hours after surgery)'}
+{'Condition': 'pneumonia', 'Stateavg': 'al_pn-6', 'MeasureName': 'pneumonia patients given the most appropriate initial antibiotic(s)'}
+
+Your task:
+1. Analyze the `Condition` column values.
+2. Create precise judge functions in Python that:
+- Receive the row content of the `Condition` column
+- Return True for clean values, False for dirty values
+- Use the naming convention 'is_clean_[judgment]'
+- Cover different perspectives of cleanliness as possible
+- Do not contain blank lines inner functions
+
+Example function code snippet:
+```python def is_clean_[judgment](row, attr):
+    # Value of `Condition` is row[attr]
+    # Your logic here
+    return True  # or False
+```
+Provide your functions below:

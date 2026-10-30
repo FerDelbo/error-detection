@@ -1,0 +1,33 @@
+def is_clean_length_ok(row, attr):
+    # Value of `Address` is row[attr]
+    s = str(row[attr])
+    l = len(s)
+    return 6 <= l <= 100
+
+def is_clean_ascii(row, attr):
+    # Value of `Address` is row[attr]
+    s = str(row[attr])
+    return all(ord(ch) < 128 for ch in s)
+
+def is_clean_contains_street_type(row, attr):
+    # Value of `Address` is row[attr]
+    s = str(row[attr]).lower()
+    street_types = {'st','street','ave','avenue','blvd','boulevard','rd','road','dr','drive','circle','cir','highway','hwy','pkwy','parkway','lane','court','terr','terrace','place','square','way','loop','trail','alley'}
+    for t in s.split():
+        if t in street_types:
+            return True
+    return False
+
+def is_clean_no_invalid_characters(row, attr):
+    # Value of `Address` is row[attr]
+    s = str(row[attr])
+    allowed = set("abcdefghijklmnopqrstuvwxyz0123456789 -")
+    return all(ch.lower() in allowed for ch in s)
+
+def is_clean_starts_with_number(row, attr):
+    # Value of `Address` is row[attr]
+    s = str(row[attr]).strip()
+    if not s:
+        return False
+    first_token = s.split()[0]
+    return first_token.isdigit()

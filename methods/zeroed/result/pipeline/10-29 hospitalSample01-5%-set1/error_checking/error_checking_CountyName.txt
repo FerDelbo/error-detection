@@ -1,0 +1,55 @@
+{
+  "column_name": "CountyName",
+  "entries": [
+    {
+      "value_row": "{'CountyName': 'jefferson', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}",
+      "error_analysis": "No obvious errors in CountyName; value is a standard lowercase county name. Duplicates across rows are allowed and not considered an error for CountyName.",
+      "has_error_in_CountyName_value": false
+    },
+    {
+      "value_row": "{'CountyName': 'jefferson', 'ProviderNumber': '10018', 'HospitalName': 'callahan eye foundation hospital'}",
+      "error_analysis": "No obvious errors; CountyName is a valid lowercase county name; no pattern issues detected.",
+      "has_error_in_CountyName_value": false
+    },
+    {
+      "value_row": "{'CountyName': 'marshall', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}",
+      "error_analysis": "No obvious errors; valid CountyName; formatting consistent.",
+      "has_error_in_CountyName_value": false
+    },
+    {
+      "value_row": "{'CountyName': 'covington', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}",
+      "error_analysis": "No obvious errors; valid county name.",
+      "has_error_in_CountyName_value": false
+    },
+    {
+      "value_row": "{'CountyName': 'covington', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}",
+      "error_analysis": "No obvious errors; duplicate row; CountyName remains valid.",
+      "has_error_in_CountyName_value": false
+    },
+    {
+      "value_row": "{'CountyName': 'morgan', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}",
+      "error_analysis": "No obvious errors; valid CountyName; lowercase formatting consistent.",
+      "has_error_in_CountyName_value": false
+    },
+    {
+      "value_row": "{'CountyName': 'marshall', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}",
+      "error_analysis": "No obvious errors; CountyName valid and consistent.",
+      "has_error_in_CountyName_value": false
+    },
+    {
+      "value_row": "{'CountyName': 'marshall', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}",
+      "error_analysis": "No obvious errors; duplicate; CountyName valid.",
+      "has_error_in_CountyName_value": false
+    },
+    {
+      "value_row": "{'CountyName': 'morgan', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}",
+      "error_analysis": "No obvious errors; valid CountyName.",
+      "has_error_in_CountyName_value": false
+    },
+    {
+      "value_row": "{'CountyName': 'jefferson', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}",
+      "error_analysis": "No obvious errors; valid CountyName; duplicate of the first row.",
+      "has_error_in_CountyName_value": false
+    }
+  ]
+}

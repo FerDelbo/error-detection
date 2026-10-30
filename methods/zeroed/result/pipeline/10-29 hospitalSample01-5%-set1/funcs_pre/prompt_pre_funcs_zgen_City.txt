@@ -1,0 +1,40 @@
+You are a Data Cleaning Specialist tasked with distinguishing between clean and dirty cells in the `City`.
+
+Here are examples for the 'City' column:
+{'City': 'luverne', 'ProviderNumber': '10008', 'HospitalName': 'crenshaw community hospital'}
+{'City': 'luverne', 'ProviderNumber': '10008', 'HospitalName': 'crenshaw community hospital'}
+{'City': 'dothan', 'ProviderNumber': '10001', 'HospitalName': 'southeast alabama medical center'}
+{'City': 'boaz', 'ProviderNumber': '10005', 'HospitalName': 'marshall medical center south'}
+{'City': 'dothan', 'ProviderNumber': '10001', 'HospitalName': 'southeast alabama medical center'}
+{'City': 'hartselle', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}
+{'City': 'hartselle', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}
+{'City': 'fxorence', 'ProviderNumber': '10006', 'HospitalName': 'eliza coffee memorial hospital'}
+{'City': 'florence', 'ProviderNumber': '10006', 'HospitalName': 'eliza coffee memorial hospital'}
+{'City': 'guntersville', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}
+{'City': 'guntersville', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}
+{'City': 'hartselle', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}
+{'City': 'luverne', 'ProviderNumber': '10008', 'HospitalName': 'crenshaw community hospital'}
+{'City': 'dothan', 'ProviderNumber': '10001', 'HospitalName': 'southeast alabama medical center'}
+{'City': 'opp', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}
+{'City': 'dothan', 'ProviderNumber': '10001', 'HospitalName': 'southeast alabama medical center'}
+{'City': 'birmingham', 'ProviderNumber': '10011', 'HospitalName': 'st vincents east'}
+{'City': 'opp', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}
+{'City': 'dothan', 'ProviderNumber': '10001', 'HospitalName': 'southeast alabama medical center'}
+{'City': 'florence', 'ProviderNumber': '10006', 'HospitalName': 'eliza coffee memorial hospital'}
+
+Your task:
+1. Analyze the `City` column values.
+2. Create precise judge functions in Python that:
+- Receive the row content of the `City` column
+- Return True for clean values, False for dirty values
+- Use the naming convention 'is_clean_[judgment]'
+- Cover different perspectives of cleanliness as possible
+- Do not contain blank lines inner functions
+
+Example function code snippet:
+```python def is_clean_[judgment](row, attr):
+    # Value of `City` is row[attr]
+    # Your logic here
+    return True  # or False
+```
+Provide your functions below:

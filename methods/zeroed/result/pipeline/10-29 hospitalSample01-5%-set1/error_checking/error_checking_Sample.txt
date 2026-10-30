@@ -1,0 +1,55 @@
+{
+  "column_name": "Sample",
+  "entries": [
+    {
+      "value_row": "{\"Sample\":\"empty\",\"Score\":\"empty\",\"MeasureName\":\"surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)\"}",
+      "error_analysis": "Missing Sample value (represented as 'empty').",
+      "has_error_in_Sample_value": true
+    },
+    {
+      "value_row": "{\"Sample\":\"41 patients\",\"Score\":\"100%\",\"MeasureName\":\"heart failure patients given smoking cessation advice/counseling\"}",
+      "error_analysis": "Pattern compliant: numeric count followed by 'patients'.",
+      "has_error_in_Sample_value": false
+    },
+    {
+      "value_row": "{\"Sample\":\"80 patients\",\"Score\":\"84%\",\"MeasureName\":\"heart failure patients given an evaluation of left ventricular systolic (lvs) function\"}",
+      "error_analysis": "Pattern compliant: numeric count followed by 'patients'.",
+      "has_error_in_Sample_value": false
+    },
+    {
+      "value_row": "{\"Sample\":\"6xpatients\",\"Score\":\"100%\",\"MeasureName\":\"heart attack patients given aspirin at discharge\"}",
+      "error_analysis": "Pattern violation: contains 'x' and lacks a space between number and unit; potential typo. Could auto-correct to '6 patients'.",
+      "has_error_in_Sample_value": true
+    },
+    {
+      "value_row": "{\"Sample\":\"42 patients\",\"Score\":\"98%\",\"MeasureName\":\"heart failure patients given an evaluation of left ventricular systolic (lvs) function\"}",
+      "error_analysis": "Pattern compliant: numeric count followed by 'patients'.",
+      "has_error_in_Sample_value": false
+    },
+    {
+      "value_row": "{\"Sample\":\"14 patients\",\"Score\":\"86%\",\"MeasureName\":\"heart attack patients given beta blocker at discharge\"}",
+      "error_analysis": "Pattern compliant: numeric count followed by 'patients'.",
+      "has_error_in_Sample_value": false
+    },
+    {
+      "value_row": "{\"Sample\":\"65 patients\",\"Score\":\"94%\",\"MeasureName\":\"pneumonia patients given smoking cessation advice/counseling\"}",
+      "error_analysis": "Pattern compliant: numeric count followed by 'patients'.",
+      "has_error_in_Sample_value": false
+    },
+    {
+      "value_row": "{\"Sample\":\"1 patients\",\"Score\":\"100%\",\"MeasureName\":\"heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)\"}",
+      "error_analysis": "Pattern compliant: numeric count followed by 'patients' (grammatical oddity in singular/plural not treated as error here).",
+      "has_error_in_Sample_value": false
+    },
+    {
+      "value_row": "{\"Sample\":\"2 patients\",\"Score\":\"100%\",\"MeasureName\":\"heart attack patients given beta blocker at discharge\"}",
+      "error_analysis": "Pattern compliant: numeric count followed by 'patients'.",
+      "has_error_in_Sample_value": false
+    },
+    {
+      "value_row": "{\"Sample\":\"28 patients\",\"Score\":\"100%\",\"MeasureName\":\"pneumonia patients given smoking cessation advice/counseling\"}",
+      "error_analysis": "Pattern compliant: numeric count followed by 'patients'.",
+      "has_error_in_Sample_value": false
+    }
+  ]
+}

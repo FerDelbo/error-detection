@@ -1,0 +1,33 @@
+data:
+  all_set_num: 1
+  base_dir: .
+  datasets:
+  - hospitalSample
+  err_check_val_num_per_query: 20
+  err_rate_list:
+  - '01'
+  result_dir: pipeline
+model:
+  api_use: true
+  distri_analysis: true
+  err_gen_use: true
+  func_use: true
+  guide_use: true
+  n_method: 5%
+  pre_func_use: true
+  rel_top: 2
+  related_attrs: true
+  run_info: pipeline
+read:
+  cluster: false
+  distri_analysis: false
+  end_time: 01-01-00:00
+  err_gen: false
+  error_checking: false
+  func: false
+  guide: false
+  pre_func: false
+  read_in_batch: false
+  related_attrs: false
+  start_time: 01-01-00:00
+read_paths: {}

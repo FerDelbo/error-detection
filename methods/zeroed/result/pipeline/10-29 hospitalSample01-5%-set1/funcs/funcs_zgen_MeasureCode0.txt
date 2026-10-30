@@ -1,0 +1,52 @@
+def is_clean_by_measurename_length(row, attr):
+    measure_name = row.get('MeasureName', '')
+    if not isinstance(measure_name, str):
+        measure_name = str(measure_name)
+    return len(measure_name) > 60
+
+def is_clean_by_code3_and_name_contains_terms(row, attr):
+    code = row.get(attr, '')
+    measure_name = row.get('MeasureName', '')
+    if not isinstance(measure_name, str):
+        measure_name = str(measure_name)
+    name = measure_name.lower()
+    code_ok = isinstance(code, str) and code.strip() == 'ami-3'
+    terms = ['ace inhibitor','arb','left ventricular','lvsd','systolic dysfunction']
+    name_ok = any(t in name for t in terms)
+    return code_ok and name_ok
+
+def is_clean_exact_ami3(row, attr):
+    val = row.get(attr, '')
+    if isinstance(val, str):
+        return val.strip() == 'ami-3'
+    return False
+
+def is_clean_by_code3_or_long_name(row, attr):
+    code = row.get(attr, '')
+    measure_name = row.get('MeasureName', '')
+    if not isinstance(measure_name, str):
+        measure_name = str(measure_name)
+    name_len = len(measure_name)
+    return (isinstance(code, str) and code.strip() == 'ami-3') or (name_len > 60)
+
+def is_clean_by_no_aspirin_and_code3(row, attr):
+    code = row.get(attr, '')
+    measure_name = row.get('MeasureName', '')
+    if not isinstance(measure_name, str):
+        measure_name = str(measure_name)
+    name_lower = measure_name.lower()
+    return isinstance(code, str) and code.strip() == 'ami-3' and 'aspirin' not in name_lower
+
+def is_clean_by_name_keywords(row, attr):
+    code = row.get(attr, '')
+    measure_name = row.get('MeasureName', '')
+    if not isinstance(measure_name, str):
+        measure_name = str(measure_name)
+    name = measure_name.lower()
+    if not isinstance(code, str):
+        code = str(code)
+    keywords = ['ace inhibitor','arb','left ventricular','lvsd','systolic dysfunction']
+    for kw in keywords:
+        if kw in name:
+            return True
+    return False

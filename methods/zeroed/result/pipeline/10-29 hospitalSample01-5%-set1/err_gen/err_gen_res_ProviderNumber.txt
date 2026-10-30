@@ -1,0 +1,9 @@
+{"ProviderNumber": "9999", "HospitalName": "hartselle medical center", "Address": "201 pine street northwest"}
+{"ProviderNumber": "1001O", "HospitalName": "mizell memorial hospital", "Address": "702 n main st"}
+{"ProviderNumber": "100000", "HospitalName": "callahan eye foundation hospital", "Address": "1720 university blvd"}
+{"ProviderNumber": "A0109", "HospitalName": "helen keller memorial hospital", "Address": "1300 south montgomery avenue"}
+{"ProviderNumber": "10119", "HospitalName": "marshall medical center north", "Address": "8000 alabama highway 69"}
+{"ProviderNumber": "1009", "HospitalName": "mizell memorial hospital", "Address": "702 n main st"}
+{"ProviderNumber": "", "HospitalName": "hartselle medical center", "Address": "201 pine street northwest"}
+{"ProviderNumber": "NULL", "HospitalName": "callahan eye foundation hospital", "Address": "1720 university blvd"}
+{"ProviderNumber": "99999", "HospitalName": "helen keller memorial hospital", "Address": "1300 south montgomery avenue"}

@@ -1,0 +1,55 @@
+{
+  "column_name": "HospitalType",
+  "entries": [
+    {
+      "value_row": "{'HospitalType': 'acute care hosxitals', 'State': 'xl', 'Condition': 'heart attack'}",
+      "error_analysis": "Typo detected in HospitalType: 'hosxitals' is a misspelling of 'hospitals'.",
+      "has_error_in_HospitalType_value": true
+    },
+    {
+      "value_row": "{'HospitalType': 'acute care hospitals', 'State': 'xl', 'Condition': 'pneumonia'}",
+      "error_analysis": "No error detected; value matches canonical form 'acute care hospitals'.",
+      "has_error_in_HospitalType_value": false
+    },
+    {
+      "value_row": "{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart fail ure'}",
+      "error_analysis": "No error detected.",
+      "has_error_in_HospitalType_value": false
+    },
+    {
+      "value_row": "{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart attack'}",
+      "error_analysis": "No error detected.",
+      "has_error_in_HospitalType_value": false
+    },
+    {
+      "value_row": "{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart failure'}",
+      "error_analysis": "No error detected.",
+      "has_error_in_HospitalType_value": false
+    },
+    {
+      "value_row": "{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart attack'}",
+      "error_analysis": "No error detected.",
+      "has_error_in_HospitalType_value": false
+    },
+    {
+      "value_row": "{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart attack'}",
+      "error_analysis": "No error detected.",
+      "has_error_in_HospitalType_value": false
+    },
+    {
+      "value_row": "{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'surgical infection prevention'}",
+      "error_analysis": "No error detected; HospitalType value remains within canonical form.",
+      "has_error_in_HospitalType_value": false
+    },
+    {
+      "value_row": "{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'heart failure'}",
+      "error_analysis": "No error detected.",
+      "has_error_in_HospitalType_value": false
+    },
+    {
+      "value_row": "{'HospitalType': 'acute care hospitals', 'State': 'al', 'Condition': 'pneumonia'}",
+      "error_analysis": "No error detected.",
+      "has_error_in_HospitalType_value": false
+    }
+  ]
+}

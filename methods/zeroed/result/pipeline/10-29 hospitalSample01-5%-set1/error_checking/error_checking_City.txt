@@ -1,0 +1,55 @@
+{
+  "column_name": "City",
+  "entries": [
+    {
+      "value_row": "{'City': 'opp', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}",
+      "error_analysis": "No errors detected in City: 'opp' is a valid Alabama city name (lowercase as provided); case-insensitive match is acceptable.",
+      "has_error_in_City_value": false
+    },
+    {
+      "value_row": "{'City': 'opp', 'ProviderNumber': '10007', 'HospitalName': 'mizell memorial hospital'}",
+      "error_analysis": "No errors detected in City: duplicate record with valid city name 'opp'.",
+      "has_error_in_City_value": false
+    },
+    {
+      "value_row": "{'City': 'birmingham', 'ProviderNumber': '10018', 'HospitalName': 'callahan eye foundation hospital'}",
+      "error_analysis": "No errors detected in City: 'birmingham' is a valid Alabama city name; lowercase formatting is acceptable for case-insensitive analysis.",
+      "has_error_in_City_value": false
+    },
+    {
+      "value_row": "{'City': 'hartselle', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}",
+      "error_analysis": "No errors detected in City: 'hartselle' is a valid Alabama city name; formatting is consistent with the dataset.",
+      "has_error_in_City_value": false
+    },
+    {
+      "value_row": "{'City': 'guntersville', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}",
+      "error_analysis": "No errors detected in City: 'guntersville' is a valid Alabama city name; consistent with other records for the same provider.",
+      "has_error_in_City_value": false
+    },
+    {
+      "value_row": "{'City': 'guntersville', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}",
+      "error_analysis": "No errors detected in City: duplicate of previous 'guntersville' entry; valid city name.",
+      "has_error_in_City_value": false
+    },
+    {
+      "value_row": "{'City': 'sheffield', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}",
+      "error_analysis": "No errors detected in City: 'sheffield' is a valid Alabama city name; all lowercase formatting is acceptable.",
+      "has_error_in_City_value": false
+    },
+    {
+      "value_row": "{'City': 'guntersville', 'ProviderNumber': '10010', 'HospitalName': 'marshall medical center north'}",
+      "error_analysis": "No errors detected in City: again, valid city name 'guntersville'; repeated across records is common for multiple facilities.",
+      "has_error_in_City_value": false
+    },
+    {
+      "value_row": "{'City': 'sheffield', 'ProviderNumber': '10019', 'HospitalName': 'helen keller memorial hospital'}",
+      "error_analysis": "No errors detected in City: 'sheffield' valid; appears with matching provider/hospital in this row.",
+      "has_error_in_City_value": false
+    },
+    {
+      "value_row": "{'City': 'hartselle', 'ProviderNumber': '10009', 'HospitalName': 'hartselle medical center'}",
+      "error_analysis": "No errors detected in City: 'hartselle' is valid; no case-sensitivity issues observed.",
+      "has_error_in_City_value": false
+    }
+  ]
+}

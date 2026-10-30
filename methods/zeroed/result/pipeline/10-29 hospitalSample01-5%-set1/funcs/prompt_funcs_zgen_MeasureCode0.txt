@@ -1,0 +1,26 @@
+You are a Data Cleaning Specialist tasked with identifying and distinguishing between clean and dirty cells in the `MeasureCode` column.
+
+Clean examples for the 'MeasureCode' column:
+{'MeasureCode': 'ami-3', 'Stateavg': 'al_ami-3', 'MeasureName': 'heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)'}
+
+Error examples for the 'MeasureCode' column:
+
+{'MeasureCode': 'ami-2', 'Stateavg': 'al_ami-2', 'MeasureName': 'heart attack patients given aspirin at discharge'}
+
+Your task:
+1. Analyze the `MeasureCode` column values.
+2. Compare the differences between clean and dirty values.
+3. Create precise judge functions in Python that:
+- Receive the row content of the `MeasureCode` column
+- Return True for clean values, False for dirty values
+- Use the naming convention 'is_clean_[judgment]'
+- Cover different perspectives of cleanliness as possible
+- Do not contain blank lines inner functions
+
+Example function code snippet:
+```python def is_clean_[judgment](row, attr):
+    # Value of `MeasureCode` is row[attr]
+    # Your logic here
+    return True  # or False
+```
+Provide your functions below:

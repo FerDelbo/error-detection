@@ -1,0 +1,55 @@
+{
+  "column_name": "Score",
+  "entries": [
+    {
+      "value_row": "{\"Score\":\"100%\",\"Sample\":\"6xpatients\",\"MeasureName\":\"heart attack patients given aspirin at discharge\"}",
+      "error_analysis": "Pattern valid: numeric percentage (0-100) with '%' end; no missing indicator.",
+      "has_error_in_Score_value": false
+    },
+    {
+      "value_row": "{\"Score\":\"94%\",\"Sample\":\"65 patients\",\"MeasureName\":\"pneumonia patients given smoking cessation advice/counseling\"}",
+      "error_analysis": "Pattern valid; value within expected 0-100 range; no missing indicator.",
+      "has_error_in_Score_value": false
+    },
+    {
+      "value_row": "{\"Score\":\"86%\",\"Sample\":\"14 patients\",\"MeasureName\":\"heart attack patients given beta blocker at discharge\"}",
+      "error_analysis": "Pattern valid; value within 0-100; no missing indicator.",
+      "has_error_in_Score_value": false
+    },
+    {
+      "value_row": "{\"Score\":\"100%\",\"Sample\":\"2 patients\",\"MeasureName\":\"heart attack patients given beta blocker at discharge\"}",
+      "error_analysis": "Pattern valid; value within 0-100; no missing indicator.",
+      "has_error_in_Score_value": false
+    },
+    {
+      "value_row": "{\"Score\":\"84%\",\"Sample\":\"80 patients\",\"MeasureName\":\"heart failure patients given an evaluation of left ventricular systolic (lvs) function\"}",
+      "error_analysis": "Pattern valid; value within 0-100; no missing indicator.",
+      "has_error_in_Score_value": false
+    },
+    {
+      "value_row": "{\"Score\":\"98%\",\"Sample\":\"42 patients\",\"MeasureName\":\"heart failure patients given an evaluation of left ventricular systolic (lvs) function\"}",
+      "error_analysis": "Pattern valid; value within 0-100; no missing indicator.",
+      "has_error_in_Score_value": false
+    },
+    {
+      "value_row": "{\"Score\":\"100%\",\"Sample\":\"41 patients\",\"MeasureName\":\"heart failure patients given smoking cessation advice/counseling\"}",
+      "error_analysis": "Pattern valid; value within 0-100; no missing indicator.",
+      "has_error_in_Score_value": false
+    },
+    {
+      "value_row": "{\"Score\":\"empty\",\"Sample\":\"empty\",\"MeasureName\":\"surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)\"}",
+      "error_analysis": "Missing value represented as 'empty'; treated as missing/NaN in numeric analyses.",
+      "has_error_in_Score_value": true
+    },
+    {
+      "value_row": "{\"Score\":\"100%\",\"Sample\":\"1 patients\",\"MeasureName\":\"heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)\"}",
+      "error_analysis": "Pattern valid; value within 0-100; no missing indicator.",
+      "has_error_in_Score_value": false
+    },
+    {
+      "value_row": "{\"Score\":\"100%\",\"Sample\":\"28 patients\",\"MeasureName\":\"pneumonia patients given smoking cessation advice/counseling\"}",
+      "error_analysis": "Pattern valid; value within 0-100; no missing indicator.",
+      "has_error_in_Score_value": false
+    }
+  ]
+}

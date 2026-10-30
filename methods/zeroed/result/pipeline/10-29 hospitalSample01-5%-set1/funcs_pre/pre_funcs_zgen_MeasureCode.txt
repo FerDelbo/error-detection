@@ -1,0 +1,30 @@
+def is_clean_by_regex_pattern(row, attr):
+    code = row.get(attr, '')
+    import re
+    return bool(re.fullmatch(r'[a-z]+(?:-[a-z0-9]+)*', code))
+
+def is_clean_length_constraint(row, attr):
+    code = row.get(attr, '')
+    return 3 <= len(code) <= 20
+
+def is_clean_nonempty(row, attr):
+    code = row.get(attr, '')
+    return bool(str(code).strip())
+
+def is_clean_no_underscore(row, attr):
+    code = row.get(attr, '')
+    return '_' not in code
+
+def is_clean_stateavg_consistency(row, attr):
+    code = row.get(attr, '')
+    stateavg = row.get('Stateavg', '')
+    return stateavg == 'al_' + code
+
+def is_clean_known_code_set(row, attr):
+    code = row.get(attr, '')
+    allowed = {'scip-inf-2','pn-7','pn-2','scip-inf-4','scip-vte-2','scip-vte-1','hf-2','hf-4','ami-7a','scip-inf-1','pn-5c','ami-3','pn-3b','pn-7','ami-7a','ami-5','pn-4','ami-2'}
+    return code in allowed and code != ''
+
+def is_clean_all_lowercase(row, attr):
+    code = row.get(attr, '')
+    return code == code.lower()

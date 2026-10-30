@@ -1,0 +1,59 @@
+
+
+=== Data Distribution Analysis 1 ===
+
+Basic distribution for 'State':
+- Total records: 200
+- Observed (non-missing): 200
+- Missing: 0 (0.0%)
+- Unique non-missing values: 3
+- Top 3 representative values:
+  'al': 191 occurrences (95.5%)
+  'xl': 6 occurrences (3.0%)
+  'ax': 3 occurrences (1.5%)
+- Representative non-missing samples (up to 5): al, xl, ax
+
+=== Data Distribution Analysis 2 ===
+
+Missing-value analysis for 'State':
+- Total records: 200
+- Missing: 0 (0.0%)
+- Non-missing: 200
+- Non-missing unique values: 3
+- Top 3 non-missing values (if any):
+  'al': 191 (95.5%)
+  'xl': 6 (3.0%)
+  'ax': 3 (1.5%)
+- Representative non-missing samples (up to 5): al, xl, ax
+
+=== Data Distribution Analysis 3 ===
+
+Length distribution for 'State':
+- Non-missing count: 200
+- Length range: 2 to 2
+- Mean length: 2.00, Median: 2.00, Std dev: 0.00
+- 25th/50th/75th percentiles: 2, 2, 2
+- Most common lengths:
+  Length 2: 200 values (100.0%)
+- Samples with median length (2): al, al, al
+
+=== Data Distribution Analysis 4 ===
+
+Pattern/format quality for 'State':
+- Non-missing values: 200
+- Numeric percentages: 0 values (0.0%)
+- Whole numbers: 0 values (0.0%)
+- Other patterns: 200 values (100.0%)
+- Representative samples:
+  Other: al, al, al
+
+=== Data Distribution Analysis 5 ===
+
+Domain validity for 'State' (State-like field):
+- Total non-missing observations: 200
+- Valid domain matches: 191 values (95.5%)
+- Common invalid values (not in domain):
+  'xl': 6 occurrences
+  'ax': 3 occurrences
+- Common valid values (by frequency):
+  'al': 191 occurrences (95.5%)

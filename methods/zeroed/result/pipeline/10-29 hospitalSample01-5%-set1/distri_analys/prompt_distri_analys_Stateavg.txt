@@ -1,0 +1,31 @@
+
+Based on the column 'Stateavg' with examples: Examples of values in column 'Stateavg': 
+ProviderNumber: 10011, HospitalName: st vincents east, Address: 50 medical park east drive, City: birmingham, State: al, ZipCode: 35235, CountyName: jefferson, PhoneNumber: 2058383122, HospitalType: acute care hospitals, HospitalOwner: voluntary non-profit - private, EmergencyService: yes, Condition: heart attack, MeasureCode: ami-5, MeasureName: heart attack patients given beta blocker at discharge, Score: 99%, Sample: 288 patients, Stateavg: al_ami-5
+ProviderNumber: 10005, HospitalName: marshall medical center south, Address: 2505 u s highway 431 north, City: boaz, State: xl, ZipCode: 35957, CountyName: marshall, PhoneNumber: 2565938310, HospitalType: acute care hospitals, HospitalOwner: government - hospital district or authority, EmergencyService: yes, Condition: heart attack, MeasureCode: ami-3, MeasureName: heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd), Score: 100%, Sample: 2 patients, Stateavg: al_ami-3
+ProviderNumber: 10008, HospitalName: crenshaw community hospital, Address: 101 hospital circle, City: luverne, State: al, ZipCode: 36049, CountyName: crenshaw, PhoneNumber: 3343353374, HospitalType: acute care hospitals, HospitalOwner: government - federal, EmergencyService: yes, Condition: surgical infection prevention, MeasureCode: scip-inf-2, MeasureName: surgery patients who were given the  right kind  of antibiotic to help prevent infection, Score: 100%, Sample: 2 patients, Stateavg: al_scip-inf-2
+ProviderNumber: 10001, HospitalName: southeast alabama medical center, Address: 1108 ross clark circle, City: dothan, State: al, ZipCode: 36302, CountyName: houston, PhoneNumber: 3347938701, HospitalType: acute care hospitals, HospitalOwner: government - hospital district or authority, EmergencyService: yes, Condition: heart attack, MeasureCode: ami-2, MeasureName: heart attack patients given aspirin at discharge, Score: 99%, Sample: 516 patients, Stateavg: al_ami-2
+ProviderNumber: 10009, HospitalName: hartselle medical center, Address: 201 pine street northwest, City: hartselle, State: al, ZipCode: 35640, CountyName: morgan, PhoneNumber: 2567736511, HospitalType: acute care hospitals, HospitalOwner: proprietary, EmergencyService: yes, Condition: surgical infection prevention, MeasureCode: scip-inf-2, MeasureName: surgery patients who were given the  right kind  of antibiotic to help prevent infection, Score: x7%, Sample: 7 patients, Stateavg: al_scip-inf-2
+ProviderNumber: 10018, HospitalName: callahan eye foundation hospital, Address: 1720 university blvd, City: birmingham, State: al, ZipCode: 35233, CountyName: jefferson, PhoneNumber: 2053258100, HospitalType: acute care hospitals, HospitalOwner: voluntary non-profit - private, EmergencyService: yes, Condition: surgical infection prevention, MeasureCode: scip-inf-1, MeasureName: surgery patients who were given an antibiotic at the right time (within one hour before surgery) to help prevent infection, Score: empty, Sample: empty, Stateavg: al_scip-inf-1
+ProviderNumber: 10010, HospitalName: marshall medical center north, Address: 8000 alabama xigxway 69, City: guntersville, State: al, ZipCode: 35976, CountyName: marshall, PhoneNumber: 2565718000, HospitalType: acute care hospitals, HospitalOwner: government - hospital district or authority, EmergencyService: yes, Condition: heart attack, MeasureCode: ami-8a, MeasureName: heart attack patients given pci within 90 minutes of arrival, Score: empty, Sample: 0 patients, Stateavg: al_ami-8a
+ProviderNumber: 10009, HospitalName: hartselle medical center, Address: 201 pine street northwest, City: hartselle, State: al, ZipCode: 35640, CountyName: morgan, PhoneNumber: 2567736511, HospitalType: acute care hospitals, HospitalOwner: proprietary, EmergencyService: yes, Condition: pneumonia, MeasureCode: pn-3b, MeasureName: pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics, Score: 100%, Sample: 30 patients, Stateavg: al_pn-3b
+ProviderNumber: 10018, HospitalName: callahan eye foundation hospital, Address: 1720 university blvd, City: birmingham, State: al, ZipCode: 35233, CountyName: jefferson, PhoneNumber: 2053258100, HospitalType: acute care hospitals, HospitalOwner: voluntary non-profit - private, EmergencyService: yes, Condition: surgical infection prevention, MeasureCode: scip-vte-1, MeasureName: surgery patients whose doctors ordered treatments to prevent blood clots after certain types of surgeries, Score: empty, Sample: empty, Stateavg: al_scip-vte-1
+ProviderNumber: 10011, HospitalName: st vincents east, Address: 50 medical park east drive, City: birmingham, State: al, ZipCode: 3x23x, CountyName: jefferson, PhoneNumber: 2058383122, HospitalType: acute care hospitals, HospitalOwner: voluntary non-profit - private, EmergencyService: yes, Condition: heart attack, MeasureCode: ami-3, MeasureName: heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd), Score: 91%, Sample: 70 patients, Stateavg: al_ami-3
+
+Please generate Python functions to analyze the data distribution from various perspectives, so that we can verify whether an error is reasonable or not. 
+Each function should:
+1. Take parameters (dirty_csv: dataframe, attr_name: str), regard all values in dirty_csv are **strings**
+2. Return a string containing the **detailed** analysis results
+3. Do not enumerate/count all values, showing representative ones
+4. **Also import necessary libraries**
+        
+Example function code snippet:
+
+```python 
+def distr_analysis_[perspective](dirty_csv, attr_name):
+    # Your logic here
+    return 'Detailed description of the analysis results'
+```
+
+Provide your functions below:
+
+        
