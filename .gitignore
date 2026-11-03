@@ -224,3 +224,6 @@ __marimo__/
 /methods/zeroed/cc.en.17.bin
 /methods/zeroed/cc.en.300.bin
 /methods/zeroed/cc.en.300.bin.gz
+
+# Modelos de detecção já treinados GIDCL
+methods/GIDCL/GEIL_Data

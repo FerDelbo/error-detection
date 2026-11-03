@@ -1,5 +1,6 @@
 import argparse, json, os, sys
 import pandas as pd
+import numpy as np
 
 ap = argparse.ArgumentParser(description="Precisão/recall/F1 de detecção de erros")
 ap.add_argument("--name", required=True, help="rótulo do dataset")
@@ -8,6 +9,8 @@ ap.add_argument("--dirty", required=True)
 ap.add_argument("--clean", required=True)
 ap.add_argument("--pred", help="matriz 0/1; padrão: outputs/<name>/<method>/pred.csv")
 ap.add_argument("--results", default="results.jsonl")
+ap.add_argument("--exclude-rows", help="CSV com coluna 'row' (índices 0-based) a ignorar, ex.: tuplas rotuladas")
+
 args = ap.parse_args()
 
 pred_path = args.pred or os.path.join("outputs", args.name, args.method, "pred.csv")
@@ -22,6 +25,14 @@ assert clean.shape == dirty.shape == pred.shape, \
     f"tamanhos diferentes: clean{clean.shape} dirty{dirty.shape} pred{pred.shape}"
 
 y, p = (dirty.values != clean.values), pred.values.astype(bool)
+n_excl = 0
+if args.exclude_rows:
+    ex = pd.read_csv(args.exclude_rows)["row"].astype(int).values
+    keep = np.ones(len(y), dtype=bool)
+    keep[ex] = False
+    y, p, n_excl = y[keep], p[keep], len(ex)
+
+# y, p = (dirty.values != clean.values), pred.values.astype(bool)
 tp, fp, fn = (y & p).sum(), (~y & p).sum(), (y & ~p).sum()
 prec = tp / (tp + fp) if tp + fp else 0.0
 rec = tp / (tp + fn) if tp + fn else 0.0
@@ -29,7 +40,7 @@ f1 = 2 * prec * rec / (prec + rec) if prec + rec else 0.0
 
 row = dict(dataset=args.name, method=args.method, precision=round(prec, 3),
            recall=round(rec, 3), f1=round(f1, 3), tp=int(tp), fp=int(fp), fn=int(fn),
-           erros_reais=int(y.sum()))
+           erros_reais=int(y.sum()), excluidos=n_excl)
 print(row)
 with open(args.results, "a") as f:
     f.write(json.dumps(row) + "\n")
