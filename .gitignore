@@ -227,3 +227,9 @@ __marimo__/
 
 # Modelos de detecção já treinados GIDCL
 methods/GIDCL/GEIL_Data
+
+# dados restaurantes
+data/dataset/restaurants/clean.csv
+data/dataset/restaurants/dirty.csv
+data/dataset/restaurants/errors.csv
+meta.json
