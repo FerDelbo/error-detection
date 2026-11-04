@@ -138,7 +138,7 @@ class Baselines:
                     detection_dictionary[(i, r_j)] = "JUST A DUUMY VALUE"
         for attribute, pattern, opcode in self.DATASET_CONSTRAINTS[d.name]["patterns"]:
             j = d.dataframe.columns.get_loc(attribute)
-            for i, value in d.dataframe[attribute].iteritems():
+            for i, value in d.dataframe[attribute].items():
                 if opcode == "OM":
                     if len(re.findall(pattern, value, re.UNICODE)) > 0:
                         detection_dictionary[(i, j)] = "JUST A DUUMY VALUE"
