@@ -1,0 +1,57 @@
+import numpy as np
+import pandas as pd 
+from tqdm import tqdm
+import pandas as pd
+tqdm.pandas(desc='pandas bar')
+# from pandarallel import pandarallel
+import random
+from tqdm.notebook import tqdm
+import copy
+import logging
+# pandarallel.initialize(progress_bar=True)
+
+import argparse
+from types import SimpleNamespace
+from ditto.model import DittoModel,DittoDataset,load_model,to_str,classify,train,simple_train,simple_train_update
+import os 
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
+from sklearn.metrics import f1_score
+hp_simple = SimpleNamespace(task='hospital-detector-train',
+                     batch_size=64,
+                     max_len=128,
+                     lr=3e-5,
+                     n_epochs=20,
+                     save_model=True,
+                     logdir="detector_model/", ## Checkpoint save path
+                     lm='roberta-base', ## roberta-base model, please change to your own model path
+                     fp16=True,
+                     alpha_aug=0.8)
+
+train_output = pd.read_csv('GEIL_Data/dataset/detector/train.csv',index_col=0).astype(str)
+
+valid_output = pd.read_csv('GEIL_Data/dataset/detector/train.csv',index_col=0).astype(str)
+
+test_output = pd.read_csv('GEIL_Data/dataset/detector/test.csv',index_col=0).astype(str)
+train_dataset = DittoDataset(train_output,max_len=128,lm = 'roberta-base')
+valid_dataset = DittoDataset(valid_output,max_len=128,lm = 'roberta-base')
+test_dataset = DittoDataset(test_output,max_len=128,lm = 'roberta-base')
+test_dataset_all = DittoDataset(test_output,max_len=128,lm = 'roberta-base')
+
+model_output = simple_train(train_dataset,valid_dataset,test_dataset,hp_simple) ## Training
+import time
+from sklearn.metrics import precision_score,recall_score,f1_score
+start_time = time.time()
+predict = classify(test_dataset_all,model=model_output,lm='roberta-base',max_len=128,threshold=0.5) ## Inference
+# result_f1 = f1_score(y_pred=predict[0],y_true=test_all.iloc[:,-1].astype(int))
+# print('episode_%s Task: %s f1-score: %s' % ('0','rayyan-init-20',str(result_f1)))
+end_time = time.time()
+print(f"inference time：{end_time - start_time} s")
+print("prec: ", precision_score(y_pred=predict[0],y_true=test_all.iloc[:,-1].astype(int)), " recall: ",  recall_score(y_pred=predict[0],y_true=test_all.iloc[:,-1].astype(int)), ", f1: ", f1_score(y_pred=predict[0],y_true=test_all.iloc[:,-1].astype(int)))
+
+result = np.array(predict[0]).reshape((-1,6)) ## reshape to match the dirty.csv shape
+
+
+np.save('GEIL_Data/dataset/detector/detector.npy',result)
