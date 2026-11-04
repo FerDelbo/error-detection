@@ -1,276 +1,276 @@
 row,column,dirty,clean
-5,ProviderNumber,10018,10018
-5,HospitalName,callahan eye foundation hospital,callahan eye foundation hospital
-5,Address,1720 university blvd,1720 university blvd
-5,City,birmingham,birmingham
-5,State,al,al
-5,ZipCode,35233,35233
-5,CountyName,jefferson,jefferson
-5,PhoneNumber,2053258100,2053258100
-5,HospitalType,acute care hospitals,acute care hospitals
-5,HospitalOwner,voluntary non-profit - private,voluntary non-profit - private
-5,EmergencyService,yes,yes
-5,Condition,surgical infection prevention,surgical infection prevention
-5,MeasureCode,scip-inf-6,scip-inf-6
-5,MeasureName,surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor),surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
-5,Score,empty,empty (wait to be cleaned)
-5,Sample,empty,empty (wait to be cleaned)
-5,Stateavg,al_scip-inf-6,al_scip-inf-6
-15,ProviderNumber,10019,10019
-15,HospitalName,helen keller memorial hospital,helen keller memorial hospital
-15,Address,1300 south montgomery avenue,1300 south montgomery avenue
-15,City,sheffield,sheffield
-15,State,al,al
-15,ZipCode,35660,35660
-15,CountyName,jefferson,jefferson
-15,PhoneNumber,2563864556,2563864556
-15,HospitalType,acute care hospitals,acute care hospitals
-15,HospitalOwner,government - hospital district or authority,government - hospital district or authority
-15,EmergencyService,yes,yes
-15,Condition,heart failure,heart failure
-15,MeasureCode,hf-1,hf-1
-15,MeasureName,heart failure patients given discharge instructions,heart failure patients given discharge instructions
-15,Score,80%,80%
-15,Sample,114 patients,114 patients
-15,Stateavg,al_hf-1,al_hf-1
-21,ProviderNumber,10001,10001
-21,HospitalName,southeast alabama medical center,southeast alabama medical center
-21,Address,1108 ross clark circle,1108 ross clark circle
-21,City,dothan,dothan
-21,State,al,al
-21,ZipCode,36302,36302
-21,CountyName,houston,houston
-21,PhoneNumber,3347938701,3347938701
-21,HospitalType,acute care hospitals,acute care hospitals
-21,HospitalOwner,government - hospital district or authority,government - hospital district or authority
-21,EmergencyService,yes,yes
-21,Condition,heart attaxk,heart attack
-21,MeasureCode,ami-3,ami-3
-21,MeasureName,heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd),heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
-21,Score,96%,96%
-21,Sample,71 patients,71 patients
-21,Stateavg,al_ami-3,al_ami-3
-34,ProviderNumber,10001,10001
-34,HospitalName,southeast alabama medical center,southeast alabama medical center
-34,Address,1108 ross clark circle,1108 ross clark circle
-34,City,dothan,dothan
-34,State,al,al
-34,ZipCode,36302,36302
-34,CountyName,houston,houston
-34,PhoneNumber,3347938701,3347938701
-34,HospitalType,acute care hospitals,acute care hospitals
-34,HospitalOwner,government - hospital district or authority,government - hospital district or authority
-34,EmergencyService,yes,yes
-34,Condition,pneumonia,pneumonia
-34,MeasureCode,pn-6,pn-6
-34,MeasureName,pneumonia patients given the most appropriate initial antibiotic(s),pneumonia patients given the most appropriate initial antibiotic(s)
-34,Score,80%,80%
-34,Sample,147 patients,147 patients
-34,Stateavg,al_pn-6,al_pn-6
-42,ProviderNumber,10001,10001
-42,HospitalName,southeast alabama medical center,southeast alabama medical center
-42,Address,1108 ross clark circle,1108 ross clark circle
-42,City,dothan,dothan
-42,State,xl,al
-42,ZipCode,36302,36302
-42,CountyName,houston,houston
-42,PhoneNumber,3347938701,3347938701
-42,HospitalType,acute care hospitals,acute care hospitals
-42,HospitalOwner,gxvernment - hxspital district xr authxrity,government - hospital district or authority
-42,EmergencyService,yes,yes
-42,Condition,surgical infection prevention,surgical infection prevention
-42,MeasureCode,scip-vte-1,scip-vte-1
-42,MeasureName,surgery patients whose doctors ordered treatments to prevent blood clots after certain types of surgeries,surgery patients whose doctors ordered treatments to prevent blood clots after certain types of surgeries
-42,Score,86%,86%
-42,Sample,185 patients,185 patients
-42,Stateavg,al_scip-vte-1,al_scip-vte-1
-58,ProviderNumber,10005,10005
-58,HospitalName,marshall medical center south,marshall medical center south
-58,Address,2505 u s highway 431 north,2505 u s highway 431 north
-58,City,boaz,boaz
-58,State,al,al
-58,ZipCode,35957,35957
-58,CountyName,marshall,marshall
-58,PhoneNumber,2565938310,2565938310
-58,HospitalType,acute care hospitals,acute care hospitals
-58,HospitalOwner,government - hospital district or authority,government - hospital district or authority
-58,EmergencyService,yes,yes
-58,Condition,pneumonia,pneumonia
-58,MeasureCode,pn-5c,pn-5c
-58,MeasureName,pneumonia patients given initial antibiotic(s) within 6 hours after arrival,pneumonia patients given initial antibiotic(s) within 6 hours after arrival
-58,Score,96%,96%
-58,Sample,211 patients,211 patients
-58,Stateavg,al_pn-5c,al_pn-5c
-78,ProviderNumber,10006,10006
-78,HospitalName,eliza coffee memorial hospital,eliza coffee memorial hospital
-78,Address,205 marengo street,205 marengo street
-78,City,florence,florence
-78,State,al,al
-78,ZipCode,35631,35631
-78,CountyName,lauderdale,lauderdale
-78,PhoneNumber,2567688400,2567688400
-78,HospitalType,acute care hospitals,acute care hospitals
-78,HospitalOwner,voluntary non-profit - other,voluntary non-profit - other
-78,EmergencyService,yes,yes
-78,Condition,heart failure,heart failure
-78,MeasureCode,hf-3,hf-3
-78,MeasureName,heart failure patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd),heart failure patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
-78,Score,82%,82%
-78,Sample,84 patients,84 patients
-78,Stateavg,al_hf-3,al_hf-3
-82,ProviderNumber,10006,10006
-82,HospitalName,eliza coffee memorial hospital,eliza coffee memorial hospital
-82,Address,205 marengo street,205 marengo street
-82,City,florence,florence
-82,State,al,al
-82,ZipCode,35631,35631
-82,CountyName,lauderdale,lauderdale
-82,PhoneNumber,2567688400,2567688400
-82,HospitalType,acute care hospitals,acute care hospitals
-82,HospitalOwner,voluntary non-profit - other,voluntary non-profit - other
-82,EmergencyService,yes,yes
-82,Condition,pneumonia,pneumonia
-82,MeasureCode,pn-4,pn-4
-82,MeasureName,pneumonia patients given smoking cessation advice/counseling,pneumonia patients given smoking cessation advice/counseling
-82,Score,100%,100%
-82,Sample,65 patients,65 patients
-82,Stateavg,al_pn-4,al_pn-4
-90,ProviderNumber,10006,10006
-90,HospitalName,eliza coffee memorial hospital,eliza coffee memorial hospital
-90,Address,205 marengo street,205 marengo street
-90,City,florence,florence
-90,State,al,al
-90,ZipCode,35631,35631
-90,CountyName,lauderdale,lauderdale
-90,PhoneNumber,2567688400,2567688400
-90,HospitalType,acute care hospitals,acute care hospitals
-90,HospitalOwner,voluntary non-profit - other,voluntary non-profit - other
-90,EmergencyService,yes,yes
-90,Condition,surgical infection prevention,surgical infection prevention
-90,MeasureCode,scip-inf-4,scip-inf-4
-90,MeasureName,all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery,all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery
-90,Score,89%,89%
-90,Sample,130 patients,130 patients
-90,Stateavg,al_scip-inf-4,al_scip-inf-4
-94,ProviderNumber,10007,10007
-94,HospitalName,mizell memorial hospital,mizell memorial hospital
-94,Address,702xnxmainxst,702 n main st
-94,City,opp,opp
-94,State,al,al
-94,ZipCode,36467,36467
-94,CountyName,covington,covington
-94,PhoneNumber,3344933541,3344933541
-94,HospitalType,acute care hospitals,acute care hospitals
-94,HospitalOwner,voluntary non-profit - private,voluntary non-profit - private
-94,EmergencyService,no,no
-94,Condition,heart attack,heart attack
-94,MeasureCode,ami-1,ami-1
-94,MeasureName,xeart attack patients given aspirin at arrival,heart attack patients given aspirin at arrival
-94,Score,60%,60%
-94,Sample,5 patients,5 patients
-94,Stateavg,al_ami-1,al_ami-1
-106,ProviderNumber,10007,10007
-106,HospitalName,mizell memorial hospital,mizell memorial hospital
-106,Address,702 x maix st,702 n main st
-106,City,opp,opp
-106,State,al,al
-106,ZipCode,36467,36467
-106,CountyName,covington,covington
-106,PhoneNumber,3344933541,3344933541
-106,HospitalType,acute care hospitals,acute care hospitals
-106,HospitalOwner,voluntary non-profit - private,voluntary non-profit - private
-106,EmergencyService,no,no
-106,Condition,pneumonia,pneumonia
-106,MeasureCode,pn-3b,pn-3b
-106,MeasureName,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics
-106,Score,78%,78%
-106,Sample,64 patients,64 patients
-106,Stateavg,al_pn-3b,al_pn-3b
-113,ProviderNumber,10007,10007
-113,HospitalName,mizell memorial hospital,mizell memorial hospital
-113,Address,702 n main st,702 n main st
-113,City,opp,opp
-113,State,al,al
-113,ZipCode,36467,36467
-113,CountyName,covington,covington
-113,PhoneNumber,3344933541,3344933541
-113,HospitalType,acute care hospitals,acute care hospitals
-113,HospitalOwner,volunxary non-profix - privaxe,voluntary non-profit - private
-113,EmergencyService,no,no
-113,Condition,surgical infection prevention,surgical infection prevention
-113,MeasureCode,scip-inf-2,scip-inf-2
-113,MeasureName,surgery patients who were given the  right kind  of antibiotic to help prevent infection,surgery patients who were given the  right kind of antibiotic to help prevent infection
-113,Score,91%,91%
-113,Sample,101 patients,101 patients
-113,Stateavg,al_scip-inf-2,al_scip-inf-2
-127,ProviderNumber,10008,10008
-127,HospitalName,crenshaw community hospital,crenshaw community hospital
-127,Address,101 hospital circle,101 hospital circle
-127,City,luverne,luverne
-127,State,al,al
-127,ZipCode,36049,36049
-127,CountyName,crenshaw,crenshaw
-127,PhoneNumber,3343353374,3343353374
-127,HospitalType,acute care hospitals,acute care hospitals
-127,HospitalOwner,government - federal,government - federal
-127,EmergencyService,yes,yes
-127,Condition,heaxt failuxe,heart failure
-127,MeasureCode,hf-2,hf-2
-127,MeasureName,heart failure patients given an evaluation of left ventricular systolic (lvs) function,heart failure patients given an evaluation of left ventricular systolic (lvs) function
-127,Score,72%,72%
-127,Sample,39 patients,39 patients
-127,Stateavg,al_hf-2,al_hf-2
-130,ProviderNumber,10008,10008
-130,HospitalName,crenshaw community hospital,crenshaw community hospital
-130,Address,101 hospital circle,101 hospital circle
-130,City,luverne,luverne
-130,State,al,al
-130,ZipCode,36049,36049
-130,CountyName,crenshaw,crenshaw
-130,PhoneNumber,3343353374,3343353374
-130,HospitalType,acute care hospitals,acute care hospitals
-130,HospitalOwner,government - federal,government - federal
-130,EmergencyService,yes,yes
-130,Condition,pneumonia,pneumonia
-130,MeasureCode,pn-2,pn-2
-130,MeasureName,pneumonia patients assessed and given pneumococcal vaccination,pneumonia patients assessed and given pneumococcal vaccination
-130,Score,25%,25%
-130,Sample,16 patients,16 patients
-130,Stateavg,al_pn-2,al_pn-2
-150,ProviderNumber,10009,10009
-150,HospitalName,hartselle medical center,hartselle medical center
-150,Address,201 pine street northwest,201 pine street northwest
-150,City,hartselle,hartselle
-150,State,al,al
-150,ZipCode,35640,35640
-150,CountyName,morgan,morgan
-150,PhoneNumber,2567736511,2567736511
-150,HospitalType,acute care hospitals,acute care hospitals
-150,HospitalOwner,proprietary,proprietary
-150,EmergencyService,yes,yes
-150,Condition,heart attack,heart attack
-150,MeasureCode,ami-8a,ami-8a
-150,MeasureName,heart attack patients given pci within 90 minutes of arrival,heart attack patients given pci within 90 minutes of arrival
-150,Score,empty,empty (wait to be cleaned)
-150,Sample,0 patients,0 patients
-150,Stateavg,al_ami-8a,al_ami-8a
-160,ProviderNumber,10009,10009
-160,HospitalName,hartselle medical center,hartselle medical center
-160,Address,201 pine street northwest,201 pine street northwest
-160,City,hartselle,hartselle
-160,State,al,al
-160,ZipCode,35640,35640
-160,CountyName,morgan,morgan
-160,PhoneNumber,2567736511,2567736511
-160,HospitalType,acute care hospitals,acute care hospitals
-160,HospitalOwner,proprietary,proprietary
-160,EmergencyService,yes,yes
-160,Condition,pneumonia,pneumonia
-160,MeasureCode,pn-7,pn-7
-160,MeasureName,pneumonia patients assessed and given influenza vaccination,pneumonia patients assessed and given influenza vaccination
-160,Score,97%,97%
-160,Sample,30 patients,30 patients
-160,Stateavg,al_pn-7,al_pn-7
+7,ProviderNumber,10018,10018
+7,HospitalName,callahan eye foundation hospital,callahan eye foundation hospital
+7,Address,1720 university blvd,1720 university blvd
+7,City,birmingxam,birmingham
+7,State,al,al
+7,ZipCode,35233,35233
+7,CountyName,jefferson,jefferson
+7,PhoneNumber,2053258100,2053258100
+7,HospitalType,acute care hospitals,acute care hospitals
+7,HospitalOwner,voluntary non-profit - private,voluntary non-profit - private
+7,EmergencyService,yes,yes
+7,Condition,surgical infection prevention,surgical infection prevention
+7,MeasureCode,scip-vte-2,scip-vte-2
+7,MeasureName,patients who got treatment  at the right time (within 24 hours before or after their surgery) to help prevent blood clots after certain types of surgery,patients who got treatment  at the right time (within 24 hours before or after their surgery) to help prevent blood clots after certain types of surgery
+7,Score,empty,empty (wait to be cleaned)
+7,Sample,empty,empty (wait to be cleaned)
+7,Stateavg,al_scip-vte-2,al_scip-vte-2
+10,ProviderNumber,10019,10019
+10,HospitalName,helen keller memorial hospital,helen keller memorial hospital
+10,Address,1300 south montgomery avenue,1300 south montgomery avenue
+10,City,sheffxeld,sheffield
+10,State,al,al
+10,ZipCode,35660,35660
+10,CountyName,jefferson,jefferson
+10,PhoneNumber,2563864556,2563864556
+10,HospitalType,acute care hospitals,acute care hospitals
+10,HospitalOwner,government - hospital district or authority,government - hospital district or authority
+10,EmergencyService,yes,yes
+10,Condition,heart attack,heart attack
+10,MeasureCode,ami-3,ami-3
+10,MeasureName,heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd),heart attack patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
+10,Score,75%,75%
+10,Sample,4 patients,4 patients
+10,Stateavg,al_ami-3,al_ami-3
+26,ProviderNumber,10001,10001
+26,HospitalName,southeast alabama medxcal center,southeast alabama medical center
+26,Address,1108 ross clark circle,1108 ross clark circle
+26,City,dothan,dothan
+26,State,al,al
+26,ZipCode,36302,36302
+26,CountyName,houston,houston
+26,PhoneNumber,3347938701,3347938701
+26,HospitalType,acute care hospitals,acute care hospitals
+26,HospitalOwner,government - hospital district or authority,government - hospital district or authority
+26,EmergencyService,yes,yes
+26,Condition,heart failure,heart failure
+26,MeasureCode,hf-1,hf-1
+26,MeasureName,heart failure patients given discharge instructions,heart failure patients given discharge instructions
+26,Score,78%,78%
+26,Sample,455 patients,455 patients
+26,Stateavg,al_hf-1,al_hf-1
+31,ProviderNumber,10001,10001
+31,HospitalName,southeast alabama medical center,southeast alabama medical center
+31,Address,1108 ross clark circle,1108 ross clark circle
+31,City,dothan,dothan
+31,State,al,al
+31,ZipCode,36302,36302
+31,CountyName,houston,houston
+31,PhoneNumber,3347938701,3347938701
+31,HospitalType,acute care hospitals,acute care hospitals
+31,HospitalOwner,governmenx - hospixal disxricx or auxhorixy,government - hospital district or authority
+31,EmergencyService,yes,yes
+31,Condition,pneumonia,pneumonia
+31,MeasureCode,pn-3b,pn-3b
+31,MeasureName,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics
+31,Score,89%,89%
+31,Sample,125 patients,125 patients
+31,Stateavg,al_pn-3b,al_pn-3b
+41,ProviderNumber,10001,10001
+41,HospitalName,southeast alabama medical center,southeast alabama medical center
+41,Address,1108 ross clark circle,1108 ross clark circle
+41,City,dothan,dothan
+41,State,al,al
+41,ZipCode,36302,36302
+41,CountyName,houston,houston
+41,PhoneNumber,3347938701,3347938701
+41,HospitalType,acute care hospitals,acute care hospitals
+41,HospitalOwner,government - hospital district or authority,government - hospital district or authority
+41,EmergencyService,yes,yes
+41,Condition,surgical infection prevention,surgical infection prevention
+41,MeasureCode,scip-inf-6,scip-inf-6
+41,MeasureName,surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor),surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+41,Score,90%,90%
+41,Sample,537 patients,537 patients
+41,Stateavg,al_scip-inf-6,al_scip-inf-6
+50,ProviderNumber,10005,10005
+50,HospitalName,marshall medical center south,marshall medical center south
+50,Address,2505 u s highway 431 north,2505 u s highway 431 north
+50,City,boaz,boaz
+50,State,xl,al
+50,ZipCode,35957,35957
+50,CountyName,marshall,marshall
+50,PhoneNumber,2565938310,2565938310
+50,HospitalType,acute care hospitals,acute care hospitals
+50,HospitalOwner,government - hospital district or authority,government - hospital district or authority
+50,EmergencyService,yes,yes
+50,Condition,heart attack,heart attack
+50,MeasureCode,ami-8a,ami-8a
+50,MeasureName,heart attack patients given pci within 90 minutes of arrival,heart attack patients given pci within 90 minutes of arrival
+50,Score,empty,empty (wait to be cleaned)
+50,Sample,0 patients,0 patients
+50,Stateavg,al_ami-8a,al_ami-8a
+56,ProviderNumber,10005,10005
+56,HospitalName,marshall medical center south,marshall medical center south
+56,Address,2505 u s highway 431 north,2505 u s highway 431 north
+56,City,boxz,boaz
+56,State,al,al
+56,ZipCode,35957,35957
+56,CountyName,marshall,marshall
+56,PhoneNumber,2565938310,2565938310
+56,HospitalType,acute care hospitals,acute care hospitals
+56,HospitalOwner,government - hospital district or authority,government - hospital district or authority
+56,EmergencyService,yes,yes
+56,Condition,pneumonia,pneumonia
+56,MeasureCode,pn-3b,pn-3b
+56,MeasureName,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics
+56,Score,97%,97%
+56,Sample,120 patients,120 patients
+56,Stateavg,al_pn-xb,al_pn-3b
+66,ProviderNumber,10005,10005
+66,HospitalName,marshall medical center south,marshall medical center south
+66,Address,2505 u s highway 431 north,2505 u s highway 431 north
+66,City,boaz,boaz
+66,State,al,al
+66,ZipCode,35957,35957
+66,CountyName,marshall,marshall
+66,PhoneNumber,2565938310,2565938310
+66,HospitalType,acute care hospitals,acute care hospitals
+66,HospitalOwner,government - hospital district or authority,government - hospital district or authority
+66,EmergencyService,yes,yes
+66,Condition,surgical infection prevention,surgical infection prevention
+66,MeasureCode,scip-inf-6,scip-inf-6
+66,MeasureName,surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor),surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+66,Score,100%,100%
+66,Sample,237 patients,237 patients
+66,Stateavg,al_scip-inf-6,al_scip-inf-6
+77,ProviderNumber,10006,10006
+77,HospitalName,eliza coffee memorial hospital,eliza coffee memorial hospital
+77,Address,205 marengo street,205 marengo street
+77,City,florence,florence
+77,State,al,al
+77,ZipCode,35631,35631
+77,CountyName,laudexdale,lauderdale
+77,PhoneNumber,2567688400,2567688400
+77,HospitalType,acute care hospitals,acute care hospitals
+77,HospitalOwner,voluntary non-profit - other,voluntary non-profit - other
+77,EmergencyService,yes,yes
+77,Condition,heart failure,heart failure
+77,MeasureCode,hf-2,hf-2
+77,MeasureName,heart failure patients given an evaluation of left ventricular systolic (lvs) function,heart failure patients given an evaluation of left ventricular systolic (lvs) function
+77,Score,97%,97%
+77,Sample,259 patients,259 patients
+77,Stateavg,al_hf-2,al_hf-2
+110,ProviderNumber,10007,10007
+110,HospitalName,mizell memorial hospital,mizell memorial hospital
+110,Address,702 n main st,702 n main st
+110,City,opp,opp
+110,State,al,al
+110,ZipCode,36467,36467
+110,CountyName,covington,covington
+110,PhoneNumber,3344933541,3344933541
+110,HospitalType,acute care hospitals,acute care hospitals
+110,HospitalOwner,voluntary non-profit - private,voluntary non-profit - private
+110,EmergencyService,no,no
+110,Condition,pneumonia,pneumonia
+110,MeasureCode,pn-7,pn-7
+110,MeasureName,pneumonia patients assessed and given influenza vaccination,pneumonia patients assessed and given influenza vaccination
+110,Score,90%,90%
+110,Sample,63 patients,63 patients
+110,Stateavg,al_pn-7,al_pn-7
+116,ProviderNumber,10007,10007
+116,HospitalName,mizell memorial hospital,mizell memorial hospital
+116,Address,702 n main st,702 n main st
+116,City,opp,opp
+116,State,al,al
+116,ZipCode,36467,36467
+116,CountyName,covington,covington
+116,PhoneNumber,3344933541,3344933541
+116,HospitalType,acute care hospitals,acute care hospitals
+116,HospitalOwner,voluntary non-profit - private,voluntary non-profit - private
+116,EmergencyService,no,no
+116,Condition,surgical infection prevention,surgical infection prevention
+116,MeasureCode,scip-inf-6,scip-inf-6
+116,MeasureName,surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor),surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+116,Score,100%,100%
+116,Sample,123 patients,123 patients
+116,Stateavg,al_scip-inf-6,al_scip-inf-6
+119,ProviderNumber,10008,10008
+119,HospitalName,crenshaw community hospital,crenshaw community hospital
+119,Address,101 hospital circle,101 hospital circle
+119,City,luverne,luverne
+119,State,ax,al
+119,ZipCode,36049,36049
+119,CountyName,crenshaw,crenshaw
+119,PhoneNumber,3343353374,3343353374
+119,HospitalType,acute care hospitals,acute care hospitals
+119,HospitalOwner,government - federal,government - federal
+119,EmergencyService,yes,yes
+119,Condition,heart attack,heart attack
+119,MeasureCode,ami-1,ami-1
+119,MeasureName,heart attack patients given aspirin at arrivax,heart attack patients given aspirin at arrival
+119,Score,0%,0%
+119,Sample,1 patients,1 patient
+119,Stateavg,al_ami-1,al_ami-1
+131,ProviderNumber,10008,10008
+131,HospitalName,crenshaw cxmmunity hxspital,crenshaw community hospital
+131,Address,101 hospital circle,101 hospital circle
+131,City,luverne,luverne
+131,State,al,al
+131,ZipCode,36049,36049
+131,CountyName,crenshaw,crenshaw
+131,PhoneNumber,3343353374,3343353374
+131,HospitalType,acute care hospitals,acute care hospitals
+131,HospitalOwner,government - federal,government - federal
+131,EmergencyService,yes,yes
+131,Condition,pneumonia,pneumonia
+131,MeasureCode,pn-3b,pn-3b
+131,MeasureName,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics
+131,Score,93%,93%
+131,Sample,15 patients,15 patients
+131,Stateavg,al_pn-3b,al_pn-3b
+140,ProviderNumber,10008,10008
+140,HospitalName,crenshaw community hospital,crenshaw community hospital
+140,Address,101 hospital circle,101 hospital circle
+140,City,luverne,luverne
+140,State,ax,al
+140,ZipCode,36049,36049
+140,CountyName,crenshaw,crenshaw
+140,PhoneNumber,3343353374,3343353374
+140,HospitalType,acute care hospitals,acute care hospitals
+140,HospitalOwner,government - federal,government - federal
+140,EmergencyService,yes,yes
+140,Condition,surgical infection prevention,surgical infection prevention
+140,MeasureCode,scip-inf-4,scip-inf-4
+140,MeasureName,all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery,all heart surgery patients whose blood sugar (blood glucose) is kept under good control in the days right after surgery
+140,Score,empty,empty (wait to be cleaned)
+140,Sample,0 patients,0 patients
+140,Stateavg,al_scip-inf-4,al_scip-inf-4
+153,ProviderNumber,10009,10009
+153,HospitalName,hartselle medical center,hartselle medical center
+153,Address,201 pine street northwest,201 pine street northwest
+153,City,hartselle,hartselle
+153,State,al,al
+153,ZipCode,35640,35640
+153,CountyName,morgan,morgan
+153,PhoneNumber,2567736511,2567736511
+153,HospitalType,acute care hospitals,acute care hospitals
+153,HospitalOwner,proprietary,proprietary
+153,EmergencyService,yes,yes
+153,Condition,heart failure,heart failure
+153,MeasureCode,hf-3,hf-3
+153,MeasureName,heart failure patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd),heart failure patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
+153,Score,100%,100%
+153,Sample,10 patients,10 patients
+153,Stateavg,al_hf-3,al_hf-3
+156,ProviderNumber,10009,10009
+156,HospitalName,hartselle medical center,hartselle medical center
+156,Address,201 pine street northwest,201 pine street northwest
+156,City,hartselle,hartselle
+156,State,al,al
+156,ZipCode,35640,35640
+156,CountyName,morgan,morgan
+156,PhoneNumber,2567736511,2567736511
+156,HospitalType,acute care hospitals,acute care hospitals
+156,HospitalOwner,proprietary,proprietary
+156,EmergencyService,yes,yes
+156,Condition,pneumonia,pneumonia
+156,MeasureCode,pn-3b,pn-3b
+156,MeasureName,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics
+156,Score,100%,100%
+156,Sample,30 patients,30 patients
+156,Stateavg,al_pn-3b,al_pn-3b
 161,ProviderNumber,10009,10009
 161,HospitalName,hartselle medical center,hartselle medical center
 161,Address,201 pine sxreex norxhwesx,201 pine street northwest
@@ -288,40 +288,40 @@ row,column,dirty,clean
 161,Score,67%,67%
 161,Sample,3 patients,3 patients
 161,Stateavg,al_scip-card-2,al_scip-card-2
-164,ProviderNumber,10009,10009
-164,HospitalName,hartselle medical center,hartselle medical center
-164,Address,201 pine street northwest,201 pine street northwest
-164,City,hartselle,hartselle
-164,State,al,al
-164,ZipCode,35640,35640
-164,CountyName,morgan,morgan
-164,PhoneNumber,2567736511,2567736511
-164,HospitalType,acute care hospitals,acute care hospitals
-164,HospitalOwner,pxopxietaxy,proprietary
-164,EmergencyService,yes,yes
-164,Condition,surgical infection prevention,surgical infection prevention
-164,MeasureCode,scip-inf-3,scip-inf-3
-164,MeasureName,surgery patients whose preventive antibiotics were stopped at the right time (within 24 hours after surgery),surgery patients whose preventive antibiotics were stopped at the right time (within 24 hours after surgery)
-164,Score,80%,80%
-164,Sample,5 patients,5 patients
-164,Stateavg,al_scip-inf-3,al_scip-inf-3
-172,ProviderNumber,10010,10010
-172,HospitalName,marshall medical center north,marshall medical center north
-172,Address,8000 alabama highway 69,8000 alabama highway 69
-172,City,guntersville,guntersville
-172,State,al,al
-172,ZipCode,35976,35976
-172,CountyName,marshall,marshall
-172,PhoneNumber,2565718000,2565718000
-172,HospitalType,acute care hospitals,acute care hospitals
-172,HospitalOwner,government - hospital district or authority,government - hospital district or authority
-172,EmergencyService,yes,yes
-172,Condition,heart attack,heart attack
-172,MeasureCode,ami-4,ami-4
-172,MeasureName,heart attack patients given smoking cessation advice/counseling,heart attack patients given smoking cessation advice/counseling
-172,Score,100%,100%
-172,Sample,2 patients,2 patients
-172,Stateavg,al_ami-4,al_ami-4
+180,ProviderNumber,10010,10010
+180,HospitalName,marshall medical center north,marshall medical center north
+180,Address,8000 alabama highway 69,8000 alabama highway 69
+180,City,guntxrsvillx,guntersville
+180,State,al,al
+180,ZipCode,35976,35976
+180,CountyName,marshall,marshall
+180,PhoneNumber,2565718000,2565718000
+180,HospitalType,acute care hospitals,acute care hospitals
+180,HospitalOwner,government - hospital district or authority,government - hospital district or authority
+180,EmergencyService,yes,yes
+180,Condition,pneumonia,pneumonia
+180,MeasureCode,pn-2,pn-2
+180,MeasureName,pneumonia patients assessed and given pneumococcal vaccination,pneumonia patients assessed and given pneumococcal vaccination
+180,Score,87%,87%
+180,Sample,128 patients,128 patients
+180,Stateavg,al_pn-2,al_pn-2
+191,ProviderNumber,10010,10010
+191,HospitalName,marshall medical center north,marshall medical center north
+191,Address,8000 alabama highway 69,8000 alabama highway 69
+191,City,guntersville,guntersville
+191,State,al,al
+191,ZipCode,35976,35976
+191,CountyName,marshall,marshall
+191,PhoneNumber,2565718000,2565718000
+191,HospitalType,acute care hospitals,acute care hospitals
+191,HospitalOwner,government - hospital district or authority,government - hospital district or authority
+191,EmergencyService,yes,yes
+191,Condition,surgical infection prevention,surgical infection prevention
+191,MeasureCode,scip-inf-6,scip-inf-6
+191,MeasureName,surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor),surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+191,Score,100%,100%
+191,Sample,155 patients,155 patients
+191,Stateavg,al_scip-inf-6,al_scip-inf-6
 199,ProviderNumber,10011,10011
 199,HospitalName,st vincents east,st vincents east
 199,Address,50 medical park east drive,50 medical park east drive

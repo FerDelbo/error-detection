@@ -58,11 +58,10 @@ def llm(messages):
     global _client
     from openai import OpenAI
     if _client is None:
-        _client = OpenAI(api_key=os.environ["OPENAI_KEY"], base_url=os.environ["OPENAI_BASE_URL"])
+        _client = OpenAI(api_key=os.environ["OPENAI_API_KEY"], base_url=os.environ["OPENAI_BASE_URL"])
     for attempt in range(6):
         try:
-            r = _client.chat.completions.create(model=os.environ["OPENAI_MODEL"], messages=messages,
-                                                temperature=float(os.environ.get("OPENAI_TEMPERATURE", "0")))
+            r = _client.chat.completions.create(model=os.environ["OPENAI_MODEL"], messages=messages)
             USAGE["calls"] += 1
             if r.usage:
                 USAGE["prompt_tokens"] += r.usage.prompt_tokens
@@ -184,7 +183,7 @@ PROMPT_GEN = ("Now write a function `corrupt(cell)` that receives a CLEAN value 
 
 # ------------------------------------------------------------------ dados
 def main():
-    miss = [v for v in ("OPENAI_MODEL", "OPENAI_BASE_URL", "OPENAI_KEY") if not os.environ.get(v)]
+    miss = [v for v in ("OPENAI_MODEL", "OPENAI_BASE_URL", "OPENAI_API_KEY") if not os.environ.get(v)]
     if miss:
         sys.exit("Defina no .env: " + ", ".join(miss))
     import torch
