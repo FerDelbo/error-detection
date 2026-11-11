@@ -31,6 +31,9 @@ def _project_root() -> Path:
 
 
 ROOT = _project_root()
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pipeline_meta import write_metadata  # noqa: E402
+
 DEFAULT_ADAPTER = f"{Path(__file__).resolve().parent / 'tabreformer_adapter.py'}:predict_cells"
 
 
@@ -141,6 +144,11 @@ def main() -> int:
     pred_df.to_csv(out_csv, index=False)
 
     duration = time.time() - start
+    if args.predictions:
+        print("[tabreformer] AVISO: --predictions informado; run_time_s mede só a conversão, não o treino")
+    write_metadata(outdir, f"tabreformer_s{args.seed}", args.name,
+                   {"seed": args.seed, "budget": args.budget, "adapter": args.adapter}, duration,
+                   extra={"predictions": args.predictions})
     print(
         f"[tabreformer] {args.name} seed={args.seed} detectadas={int(mask.sum())} "
         f"tempo={duration:.1f}s -> {out_csv}"

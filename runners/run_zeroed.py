@@ -31,6 +31,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, "runners"))
+from pipeline_meta import write_metadata
 ZDIR = os.path.join(ROOT, "methods", "zeroed")
 
 # ---------------------------------------------------------------- patches (idempotentes)
@@ -322,8 +324,15 @@ def export(a):
             for line in open(tf):
                 if line.startswith("total:"):
                     total = round(float(line.split(":")[1]), 1)
-        json.dump({"total_s": total, "ft_dim": ft_dim_of(a), "n_sets_no_arquivo_de_tokens": len(latest), **tokens},
-                  open(os.path.join(out, "runtime.json"), "w"))
+        if total is None:
+            sys.exit(f"tempo total não encontrado em {tf}; metadata.json não pode ser gerado")
+        cfg = {"n_method": a.n_method, "ft_dim": ft_dim_of(a), "runs": a.runs, "procs": a.procs,
+               "llm_model": os.getenv("OPENAI_MODEL"), "set": int(n)}
+        write_metadata(out, f"{method_of(a)}_s{n}", a.name, cfg, total, uses_llm=True,
+                       prompt_tokens=tokens["prompt_tokens"], completion_tokens=tokens["completion_tokens"],
+                       extra={"origem": r, "fora_dos_limites": skipped,
+                              # o arquivo de tokens soma todas as execuções (sets) deste 'run'
+                              "tokens_somam_n_sets": len(latest)})
         print(f"[{method_of(a)}] {a.name} set{n}: detectadas={int(mat.sum())} fora_dos_limites={skipped} "
               f"tempo={total}s -> {out}/pred.csv\n   métricas do próprio ZeroED: {os.path.join(r, 'func_det_res.txt')}")
     print("Tokens (soma de todas as execuções deste dataset):", tokens)

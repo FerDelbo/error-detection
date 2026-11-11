@@ -5,6 +5,8 @@ import pandas as pd
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "methods", "raha-master"))
 from raha.tools.dBoost.dboost import imported_dboost
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pipeline_meta import write_metadata
 
 ap = argparse.ArgumentParser(description="dBoost (detecção) -> pred.csv")
 ap.add_argument("--name", required=True, help="rótulo do dataset")
@@ -43,5 +45,9 @@ else:
 out = os.path.join(args.outdir, args.name, tag)
 os.makedirs(out, exist_ok=True)
 pd.DataFrame(mat, columns=dirty.columns).to_csv(os.path.join(out, "pred.csv"), index=False)
+model, *vals = args.config
+cfg = {"model": model, "statistical": 0.5}
+cfg.update(dict(zip(["threshold"] if model == "gaussian" else ["peak", "outlier"], map(float, vals))))
+write_metadata(out, tag, args.name, cfg, elapsed)
 print(f"[dboost] {args.name} config={' '.join(args.config)} detectadas={int(mat.sum())} "
       f"tempo={elapsed:.1f}s -> {out}/pred.csv")

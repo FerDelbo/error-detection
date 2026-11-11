@@ -44,8 +44,10 @@ DEFAULT_GRID = {
     "gidcl": {"k": [10, 20], "embed": ["tfidf", "sbert"], "rounds": [3], "epochs": [8], "seed": [0]},
 }
 
+# run_time_s e tokens vêm do metadata.json do método; tempo_parede_s inclui preparação e conversões
 FIELDS = ["dataset", "modelo", "precisao", "recall", "f1", "configuracao", "avaliacao",
-          "tp", "fp", "fn", "erros_reais", "detectadas", "tempo_s", "status", "pred"]
+          "tp", "fp", "fn", "erros_reais", "detectadas", "run_time_s", "uses_llm", "prompt_tokens",
+          "completion_tokens", "tempo_parede_s", "status", "pred"]
 
 
 def expand(grid):
@@ -81,7 +83,7 @@ def load_dotenv(path):
 def cmds_raha(a, cfg, out):
     argv = [a.py_raha, "runners/run_raha.py", "--name", a.name, "--dirty", a.dirty, "--clean", a.clean,
             "--budget", str(cfg["budget"]), "--seed", str(cfg["seed"]), "--outdir", out]
-    return [argv], [("todas", os.path.join(out, a.name, f"raha_s{cfg['seed']}", "pred.csv"), [])]
+    return [argv], [("todas", os.path.join(out, a.name, f"raha_b{cfg['budget']}_s{cfg['seed']}", "pred.csv"), [])]
 
 
 def cmds_dboost(a, cfg, out):
@@ -136,23 +138,29 @@ def run_cmd(argv, log, env, timeout):
 
 
 def evaluate(a, pred, extra, env):
-    tmp = pred + ".eval.jsonl"
+    """Roda o evaluate.py (pred + GROUND_TRUTH + metadata.json) e devolve a linha produzida."""
+    tmp = pred + ".eval.csv"
     if os.path.exists(tmp):
         os.remove(tmp)
-    argv = [a.py_raha, "evaluate.py", "--name", a.name, "--method", "bench", "--dirty", a.dirty,
-            "--clean", a.clean, "--pred", pred, "--results", tmp, *extra]
+    argv = [a.py_raha, "evaluate.py", "--pred", pred, "--ground-truth", a.ground_truth,
+            "--metadata", os.path.join(os.path.dirname(pred), "metadata.json"), "--results", tmp, *extra]
     p = subprocess.run(argv, cwd=ROOT, env=env, capture_output=True, text=True)
     if p.returncode != 0 or not os.path.exists(tmp):
         raise RuntimeError(p.stderr.strip() or p.stdout.strip())
-    row = json.loads(open(tmp).read().splitlines()[-1])
+    with open(tmp) as f:
+        row = list(csv.DictReader(f))[-1]
     os.remove(tmp)
     return row
 
 
-def count_pred(pred):
-    with open(pred) as f:
-        next(f)
-        return sum(line.count("1") for line in f)
+def ensure_ground_truth(a):
+    gt = a.ground_truth
+    stale = not os.path.isfile(gt) or any(os.path.getmtime(x) > os.path.getmtime(gt) for x in (a.dirty, a.clean))
+    if stale:
+        p = subprocess.run([a.py_raha, "scripts/make_ground_truth.py", "--dirty", a.dirty, "--clean", a.clean,
+                            "--out", gt], cwd=ROOT)
+        if p.returncode != 0:
+            sys.exit(f"não foi possível gerar {gt}")
 
 
 def main():
@@ -163,6 +171,7 @@ def main():
     ap.add_argument("--methods", default="raha,dboost,zeroed,gidcl")
     ap.add_argument("--grid", help="JSON com a grade (substitui a padrão só dos métodos presentes nele)")
     ap.add_argument("--out", help="CSV de saída (padrão: outputs/<nome>/benchmark.csv)")
+    ap.add_argument("--ground-truth", help="GROUND_TRUTH.csv (padrão: na pasta do dirty; gerado se faltar)")
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--show-grid", action="store_true", help="mostra a grade padrão em JSON e sai")
@@ -183,6 +192,10 @@ def main():
     for p in (a.dirty, a.clean):
         if not os.path.isfile(p):
             sys.exit(f"arquivo não encontrado: {p}")
+
+    a.ground_truth = os.path.abspath(a.ground_truth or os.path.join(os.path.dirname(a.dirty), "GROUND_TRUTH.csv"))
+    if not a.dry_run:
+        ensure_ground_truth(a)
 
     grid = dict(DEFAULT_GRID)
     if a.grid:
@@ -207,6 +220,11 @@ def main():
     os.makedirs(os.path.join(ROOT, "logs"), exist_ok=True)
 
     new_file = not os.path.exists(out_csv)
+    if not new_file:
+        with open(out_csv) as f:
+            header = next(csv.reader(f), [])
+        if header != FIELDS:
+            sys.exit(f"{out_csv} tem colunas antigas/diferentes; use outro --out ou renomeie o arquivo")
     with open(out_csv, "a", newline="") as fcsv:
         writer = csv.DictWriter(fcsv, fieldnames=FIELDS)
         if new_file:
@@ -241,13 +259,15 @@ def main():
 
             for label, pred, extra in evals:
                 row = dict(dataset=a.name, modelo=m, configuracao=cfg_str, avaliacao=label,
-                           tempo_s=elapsed, status=status, pred=os.path.relpath(pred, ROOT))
+                           tempo_parede_s=elapsed, status=status, pred=os.path.relpath(pred, ROOT))
                 if status == "ok":
                     try:
                         r = evaluate(a, pred, extra, env)
                         row.update(precisao=r["precision"], recall=r["recall"], f1=r["f1"], tp=r["tp"],
                                    fp=r["fp"], fn=r["fn"], erros_reais=r["erros_reais"],
-                                   detectadas=count_pred(pred))
+                                   detectadas=r["detectadas"], run_time_s=r["run_time_s"],
+                                   uses_llm=r["uses_llm"], prompt_tokens=r["prompt_tokens"],
+                                   completion_tokens=r["completion_tokens"])
                     except Exception as e:  # noqa: BLE001 — registra e segue para a próxima configuração
                         row["status"] = f"erro na avaliação: {str(e).splitlines()[-1][:200]}"
                 writer.writerow(row)

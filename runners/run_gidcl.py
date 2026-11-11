@@ -28,6 +28,8 @@ except ImportError:
     pass
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, "runners"))
+from pipeline_meta import write_metadata
 
 ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 ap.add_argument("--name", required=True)
@@ -50,7 +52,12 @@ ap.add_argument("--order", choices=["C", "F", "auto"], default="C",
                      "auto = escolhe a de maior F1 (usa o clean só para decidir o layout)")
 ap.add_argument("--row-offset", type=int, default=0, help="para listas de células com linhas 1-based use 1")
 ap.add_argument("--outdir", default=os.path.join(ROOT, "outputs"))
+ap.add_argument("--run-time", type=float, help="modo --from-file: tempo (s) da execução original")
+ap.add_argument("--prompt-tokens", type=int, help="modo --from-file: tokens de entrada da execução original")
+ap.add_argument("--completion-tokens", type=int, help="modo --from-file: tokens de saída da execução original")
 args = ap.parse_args()
+if args.from_file and None in (args.run_time, args.prompt_tokens, args.completion_tokens):
+    sys.exit("--from-file exige --run-time, --prompt-tokens e --completion-tokens (vão para o metadata.json)")
 
 if not args.from_file and not (args.cmd and args.output):
     sys.exit("use --from-file ARQUIVO, ou --cmd e --output")
@@ -245,8 +252,30 @@ if marked == 0:
              f"Confira --skip-cols/--order/--row-offset ou me envie o formato do arquivo.")
 
 pd.DataFrame(mat, columns=cols).to_csv(os.path.join(out, "pred.csv"), index=False)
-json.dump({"total_s": round(elapsed, 1), "modo": "arquivo" if args.from_file else "comando",
-           "origem": det_file, "cmd": " ".join(cmd) if cmd else None, "labeled": args.labeled,
-           "skip_cols": args.skip_cols, "order": args.order},
-          open(os.path.join(out, "runtime.json"), "w"), indent=1)
+cfg = {"seed": args.seed, "labeled": args.labeled, "order": args.order, "skip_cols": args.skip_cols}
+extra = {"modo": "arquivo" if args.from_file else "comando", "origem": det_file,
+         "cmd": " ".join(cmd) if cmd else None, "fora_dos_limites": fora}
+if args.from_file:
+    run_time, p_tok, c_tok = args.run_time, args.prompt_tokens, args.completion_tokens
+else:
+    run_time = elapsed
+    report_path = os.path.join(out, "report.json")
+    if not os.path.isfile(report_path):
+        sys.exit(f"{report_path} não encontrado: sem ele não há tokens para o metadata.json")
+    report = json.load(open(report_path, encoding="utf-8"))
+    usage = report.get("uso_llm") or {}
+    p_tok, c_tok = usage.get("prompt_tokens"), usage.get("completion_tokens")
+    cfg.update({k: v for k, v in (report.get("args") or {}).items()
+                if k not in ("dirty", "labeled", "clusters", "outdir")})
+    cfg["llm_model"] = report.get("modelo_llm")
+    extra["llm_calls"] = usage.get("calls")
+if args.split_dir:
+    info = os.path.join(os.path.abspath(args.split_dir), "split_info.json")
+    if os.path.isfile(info):
+        si = json.load(open(info))
+        cfg.update({"k": si.get("k"), "clusters": si.get("clusters"), "select": si.get("select"),
+                    "embed": si.get("embed")})
+        cfg["labeled"] = si.get("k", args.labeled)
+write_metadata(out, f"gidcl_s{args.seed}", args.name, cfg, run_time, uses_llm=True,
+               prompt_tokens=p_tok, completion_tokens=c_tok, extra=extra)
 print(f"\n[gidcl] {args.name} marcadas={marked} de {mat.size} fora_dos_limites={fora} -> {out}/pred.csv")

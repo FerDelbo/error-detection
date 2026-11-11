@@ -1,0 +1,15 @@
+{
+ "method": "dboost_histogram_0.9_0.6",
+ "dataset": "movies",
+ "run_time_s": 11.96,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "model": "histogram",
+  "statistical": 0.5,
+  "peak": 0.9,
+  "outlier": 0.6
+ },
+ "extra": {}
+}

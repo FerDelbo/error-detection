@@ -1,0 +1,15 @@
+{
+ "method": "raha_b10_s2",
+ "dataset": "rayyan",
+ "run_time_s": 13.83,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "budget": 10,
+  "seed": 2,
+  "algorithms": "OD+PVD+RVD+KBVD",
+  "classifier": "GBC"
+ },
+ "extra": {}
+}

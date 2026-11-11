@@ -1,0 +1,14 @@
+{
+ "method": "dboost_gaussian_1.5",
+ "dataset": "movies",
+ "run_time_s": 10.06,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "model": "gaussian",
+  "statistical": 0.5,
+  "threshold": 1.5
+ },
+ "extra": {}
+}

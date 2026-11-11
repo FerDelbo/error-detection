@@ -1,0 +1,15 @@
+{
+ "method": "raha_b15_s1",
+ "dataset": "beers",
+ "run_time_s": 37.77,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "budget": 15,
+  "seed": 1,
+  "algorithms": "OD+PVD+RVD+KBVD",
+  "classifier": "GBC"
+ },
+ "extra": {}
+}

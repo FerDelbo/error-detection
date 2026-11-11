@@ -3,7 +3,7 @@
 Runner genérico para o método Raha (Mahdavi et al., SIGMOD 2019).
 Recebe --dirty e --clean de qualquer caminho no sistema de arquivos,
 isola artefatos temporários em diretório temporário para não poluir a pasta da base
-e salva a matriz binária 0/1 em outputs/<name>/raha_s<seed>/pred.csv.
+e salva a matriz binária 0/1 em outputs/<name>/raha_b<budget>_s<seed>/pred.csv.
 """
 import argparse
 import os
@@ -21,6 +21,9 @@ RAHA_DIR = os.path.join(ROOT, "methods", "raha-master")
 sys.path.insert(0, RAHA_DIR)
 sys.path.insert(0, os.path.join(RAHA_DIR, "raha"))
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pipeline_meta import guard_output, write_metadata
+
 try:
     from detection import Detection
 except ImportError:
@@ -35,6 +38,8 @@ def main():
     ap.add_argument("--budget", type=int, default=2, help="Orçamento de tuplas rotuladas (padrão: 2)")
     ap.add_argument("--seed", type=int, default=0, help="Semente aleatória (padrão: 0)")
     ap.add_argument("--outdir", default=os.path.join(ROOT, "outputs"), help="Diretório raiz de saída")
+    ap.add_argument("--overwrite", action="store_true",
+                    help="Permite sobrescrever saída de outra configuração")
     args = ap.parse_args()
 
     dirty_src = os.path.abspath(os.path.expanduser(args.dirty))
@@ -42,6 +47,11 @@ def main():
     for p in (dirty_src, clean_src):
         if not os.path.isfile(p):
             sys.exit(f"[raha] ERRO: arquivo não encontrado: {p}")
+
+    tag = f"raha_b{args.budget}_s{args.seed}"
+    out = os.path.join(args.outdir, args.name, tag)
+    config = {"budget": args.budget, "seed": args.seed}
+    guard_output(out, config, args.overwrite)
 
     random.seed(args.seed)
     np.random.seed(args.seed)
@@ -82,11 +92,10 @@ def main():
         if 0 <= i < mat.shape[0] and 0 <= j < mat.shape[1]:
             mat[i, j] = 1
 
-    tag = f"raha_s{args.seed}"
-    out = os.path.join(args.outdir, args.name, tag)
     os.makedirs(out, exist_ok=True)
     out_csv = os.path.join(out, "pred.csv")
     pd.DataFrame(mat, columns=dirty.columns).to_csv(out_csv, index=False)
+    write_metadata(out, tag, args.name, config, elapsed)
     print(
         f"[raha] {args.name} budget={args.budget} seed={args.seed} "
         f"detectadas={int(mat.sum())} tempo={elapsed:.1f}s -> {out_csv}"

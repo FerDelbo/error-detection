@@ -1,0 +1,15 @@
+{
+ "method": "raha_b10_s0",
+ "dataset": "flights",
+ "run_time_s": 14.48,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "budget": 10,
+  "seed": 0,
+  "algorithms": "OD+PVD+RVD+KBVD",
+  "classifier": "GBC"
+ },
+ "extra": {}
+}

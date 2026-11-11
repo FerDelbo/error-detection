@@ -1,0 +1,14 @@
+{
+ "method": "dboost_gaussian_1.7",
+ "dataset": "beers",
+ "run_time_s": 1.37,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "model": "gaussian",
+  "statistical": 0.5,
+  "threshold": 1.7
+ },
+ "extra": {}
+}

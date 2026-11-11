@@ -1,0 +1,14 @@
+{
+ "method": "dboost_gaussian_2.5",
+ "dataset": "hospital",
+ "run_time_s": 1.69,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "model": "gaussian",
+  "statistical": 0.5,
+  "threshold": 2.5
+ },
+ "extra": {}
+}

@@ -1,0 +1,15 @@
+{
+ "method": "dboost_histogram_0.8_0.7",
+ "dataset": "beers",
+ "run_time_s": 1.69,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "model": "histogram",
+  "statistical": 0.5,
+  "peak": 0.8,
+  "outlier": 0.7
+ },
+ "extra": {}
+}

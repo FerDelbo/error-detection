@@ -1,0 +1,15 @@
+{
+ "method": "raha_b15_s2",
+ "dataset": "hospital",
+ "run_time_s": 42.66,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "budget": 15,
+  "seed": 2,
+  "algorithms": "OD+PVD+RVD+KBVD",
+  "classifier": "GBC"
+ },
+ "extra": {}
+}
