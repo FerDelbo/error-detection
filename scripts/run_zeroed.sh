@@ -5,7 +5,8 @@ cd "$(dirname "$0")/.."
 source scripts/common.sh
 [ -f .env ] && { set -a; source .env; set +a; }
 
-PY=${ZEROED_PY:-python}
+PY=${ZEROED_PY:-$HOME/miniconda3/envs/zeroed/bin/python}
+[ -x "$PY" ] || PY=python
 NAME=${1:?uso: run_zeroed.sh <nome> <dirty.csv> <clean.csv> [execuções]}
 DIRTY=${2:?}; CLEAN=${3:?}; RUNS=${4:-1}
 mkdir -p logs

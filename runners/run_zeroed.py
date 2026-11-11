@@ -7,9 +7,14 @@ Com --ft-dim 300 (variante sem redução do fastText): outputs/<name>/zeroed_ft3
 Subcomandos (todos usam --name, --dirty, --clean):
   prepare : copia dirty/clean para methods/zeroed/data/, gera config_pipeline.yaml e aplica os patches
   fasttext: gera o fastText reduzido cc.en.<dim>.bin (1 vez por dimensão)
-  run     : roda main.py (exige ZEROED_API_KEY, ZEROED_BASE_URL e ZEROED_MODEL)
+  run     : roda main.py (exige OPENAI_API_KEY, OPENAI_BASE_URL e OPENAI_MODEL)
   export  : converte detected.json -> pred.csv
   all     : prepare + fasttext + run + export
+
+Padrões = parâmetros do artigo: 5% de rótulos do LLM, 2 atributos correlacionados, lotes de
+20 valores, temperatura 0 (ZEROED_TEMPERATURE). O artigo reporta a média de 3 execuções
+(--runs 3). O código em methods/zeroed NÃO é alterado por este runner; a amostragem usada
+é a que está fixa no main.py do método e é só registrada no metadata.json.
 
 Execute com o Python do ambiente conda do ZeroED, a partir de qualquer pasta.
 Pré-requisito: methods/zeroed com o código do ZeroED e cc.en.300.bin (pode ser link simbólico).
@@ -183,6 +188,13 @@ def ft_dim_of(a):
     return len(pd.read_csv(a.dirty, nrows=0).columns)
 
 
+def cluster_of_method():
+    """Amostragem fixa no main.py do ZeroED (só leitura, para registrar no metadata)."""
+    src = open(os.path.join(ZDIR, "main.py"), encoding="utf-8").read()
+    m = re.search(r"apply_async\(cluster, args=\(dataset, '(\w+)'", src)
+    return m.group(1) if m else None
+
+
 def usage_file(a):
     return os.path.join(ROOT, "logs", f"zeroed_{tag_of(a)}_usage.jsonl")
 
@@ -326,13 +338,16 @@ def export(a):
                     total = round(float(line.split(":")[1]), 1)
         if total is None:
             sys.exit(f"tempo total não encontrado em {tf}; metadata.json não pode ser gerado")
-        cfg = {"n_method": a.n_method, "ft_dim": ft_dim_of(a), "runs": a.runs, "procs": a.procs,
+        cfg = {"n_method": a.n_method, "cluster": cluster_of_method(), "rel_top": 2, "batch": 20,
+               "temperature": float(os.getenv("ZEROED_TEMPERATURE", "0")),
+               "ft_dim": ft_dim_of(a), "runs": a.runs, "procs": a.procs,
                "llm_model": os.getenv("OPENAI_MODEL"), "set": int(n)}
         write_metadata(out, f"{method_of(a)}_s{n}", a.name, cfg, total, uses_llm=True,
-                       prompt_tokens=tokens["prompt_tokens"], completion_tokens=tokens["completion_tokens"],
+                       prompt_tokens=tokens["prompt_tokens"] / len(latest),
+                       completion_tokens=tokens["completion_tokens"] / len(latest),
                        extra={"origem": r, "fora_dos_limites": skipped,
-                              # o arquivo de tokens soma todas as execuções (sets) deste 'run'
-                              "tokens_somam_n_sets": len(latest)})
+                              # o arquivo de tokens soma todos os sets deste 'run': grava-se a média por set
+                              "tokens_media_de_n_sets": len(latest), "tokens_total": tokens})
         print(f"[{method_of(a)}] {a.name} set{n}: detectadas={int(mat.sum())} fora_dos_limites={skipped} "
               f"tempo={total}s -> {out}/pred.csv\n   métricas do próprio ZeroED: {os.path.join(r, 'func_det_res.txt')}")
     print("Tokens (soma de todas as execuções deste dataset):", tokens)
@@ -356,7 +371,7 @@ if __name__ == "__main__":
         p.add_argument("--clean", required=True, help="caminho do CSV limpo")
         p.add_argument("--runs", type=int, default=1, help="execuções (sets) por dataset")
         p.add_argument("--procs", default="2", help="ZEROED_PROCS (processos paralelos)")
-        p.add_argument("--n-method", default="5%", help="proporção de linhas rotuladas pelo LLM")
+        p.add_argument("--n-method", default="5%", help="proporção de linhas rotuladas pelo LLM (artigo: 5%%)")
         p.add_argument("--ft-dim", type=int, default=None,
                        help="dimensão do fastText (padrão: nº de colunas; 300 = sem redução)")
         p.add_argument("--outdir", default=os.path.join(ROOT, "outputs"))
