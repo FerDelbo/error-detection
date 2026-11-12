@@ -1,0 +1,2 @@
+dataset,modelo,precisao,recall,f1,configuracao,avaliacao,tp,fp,fn,erros_reais,detectadas,tempo_s,status,pred
+imdb,raha,,,,"{""budget"": 2, ""seed"": 0}",todas,,,,,,304.6,erro (código 1; ver outputs/imdb/bench/raha/budget2_seed0/run.log),outputs/imdb/bench/raha/budget2_seed0/imdb/raha_s0/pred.csv

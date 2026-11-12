@@ -98,7 +98,10 @@ from collections import Counter
             if clean_code:
                 result = self.execute_function(clean_code, attr_name)
                 if result is not None:
-                    results += f"\n\n=== Data Distribution Analysis {i} ===\n"
+                    # LLM-generated functions may return list/dict/etc. instead of str
+                    if not isinstance(result, str):
+                        result = str(result)
+                    results +=f"\n\n=== Data Distribution Analysis {i} ===\n"
                     if isinstance(result, str) and len(result.split('\n')) > 30:
                         result = '\n'.join(result.split('\n')[:30]) + "\n... Too long, only sample some examples."
                     results = results + '\n' + result

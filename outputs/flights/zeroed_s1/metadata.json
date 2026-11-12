@@ -1,0 +1,29 @@
+{
+ "method": "zeroed_s1",
+ "dataset": "flights",
+ "run_time_s": 570.6,
+ "uses_llm": true,
+ "prompt_tokens": 281270,
+ "completion_tokens": 644202,
+ "config": {
+  "n_method": "5%",
+  "cluster": "RANDOM",
+  "rel_top": 2,
+  "batch": 20,
+  "temperature": 1.0,
+  "ft_dim": 7,
+  "runs": 1,
+  "procs": "2",
+  "llm_model": "gpt-5-nano",
+  "set": 1
+ },
+ "extra": {
+  "origem": "/home/a2482126/error-detection/methods/zeroed/result/pipeline/11-11 flights01-5%-set1",
+  "fora_dos_limites": 0,
+  "tokens_media_de_n_sets": 1,
+  "tokens_total": {
+   "prompt_tokens": 281270,
+   "completion_tokens": 644202
+  }
+ }
+}

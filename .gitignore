@@ -1,3 +1,17 @@
+# ZeroED: gerado a cada execução
+methods/zeroed/result/
+methods/zeroed/data/
+methods/zeroed/configs/
+methods/zeroed/config_pipeline.yaml
+methods/zeroed/llm_usage.jsonl
+
+# pesos e caches
+*.bin
+*.pkl
+
+# logs
+logs/
+
 .env
 # Byte-compiled / optimized / DLL files
 __pycache__/
