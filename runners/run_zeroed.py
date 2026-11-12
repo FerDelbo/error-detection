@@ -3,6 +3,7 @@
 ZeroED no formato comum do pipeline: dirty/clean entram por caminho e a saída é
 outputs/<name>/zeroed_s<N>/pred.csv (matriz 0/1 do tamanho do dirty).
 Com --ft-dim 300 (variante sem redução do fastText): outputs/<name>/zeroed_ft300_s<N>/.
+Com --cluster KMeans (amostragem por cluster do artigo): outputs/<name>/zeroed_kmeans_s<N>/.
 
 Subcomandos (todos usam --name, --dirty, --clean):
   prepare : copia dirty/clean para methods/zeroed/data/, gera config_pipeline.yaml e aplica os patches
@@ -13,8 +14,9 @@ Subcomandos (todos usam --name, --dirty, --clean):
 
 Padrões = parâmetros do artigo: 5% de rótulos do LLM, 2 atributos correlacionados, lotes de
 20 valores, temperatura 0 (ZEROED_TEMPERATURE). O artigo reporta a média de 3 execuções
-(--runs 3). O código em methods/zeroed NÃO é alterado por este runner; a amostragem usada
-é a que está fixa no main.py do método e é só registrada no metadata.json.
+(--runs 3). A amostragem das linhas rotuladas pelo LLM é escolhida com --cluster (o main.py
+lê ZEROED_CLUSTER): RANDOM é o que vem fixo no código publicado e é o padrão aqui; KMeans é
+a técnica descrita no artigo. Fora do padrão, o método ganha sufixo (_kmeans, ...).
 
 Execute com o Python do ambiente conda do ZeroED, a partir de qualquer pasta.
 Pré-requisito: methods/zeroed com o código do ZeroED e cc.en.300.bin (pode ser link simbólico).
@@ -55,6 +57,10 @@ PATCHES = {
             "            measure_detect(clean_path, dirty_path, list(det_wrong_list), det_res_path)\n"
             "            with open(os.path.join(resp_path, 'detected.json'), 'w') as _f:  # PATCH\n"
             "                json.dump(sorted([int(i), all_attrs.index(a)] for i, a in det_wrong_list), _f)\n",
+        ),
+        (
+            "args=(dataset, 'RANDOM', n_method,",
+            "args=(dataset, os.environ.get('ZEROED_CLUSTER', 'RANDOM'), n_method,",
         ),
         (
             "feat_pool = mp.Pool()",
@@ -164,8 +170,14 @@ def apply_patches():
 
 
 # ---------------------------------------------------------------- utilidades do pipeline
+DEFAULT_CLUSTER = "RANDOM"
+
+
 def suffix(a):
-    return f"_ft{a.ft_dim}" if a.ft_dim else ""
+    s = f"_ft{a.ft_dim}" if a.ft_dim else ""
+    if a.cluster != DEFAULT_CLUSTER:
+        s += f"_{a.cluster.lower()}"
+    return s
 
 
 def method_of(a):
@@ -188,11 +200,11 @@ def ft_dim_of(a):
     return len(pd.read_csv(a.dirty, nrows=0).columns)
 
 
-def cluster_of_method():
-    """Amostragem fixa no main.py do ZeroED (só leitura, para registrar no metadata)."""
+def check_cluster_support():
+    """Garante que o main.py lê ZEROED_CLUSTER (senão --cluster seria ignorado em silêncio)."""
     src = open(os.path.join(ZDIR, "main.py"), encoding="utf-8").read()
-    m = re.search(r"apply_async\(cluster, args=\(dataset, '(\w+)'", src)
-    return m.group(1) if m else None
+    if "ZEROED_CLUSTER" not in src:
+        sys.exit("ERRO: methods/zeroed/main.py não lê ZEROED_CLUSTER; aplique o patch da amostragem.")
 
 
 def usage_file(a):
@@ -286,6 +298,8 @@ def run(a):
     if os.path.exists(uf):
         os.remove(uf)  # tokens deste dataset começam do zero a cada 'run'
     env = dict(os.environ, ZEROED_USAGE_FILE=uf, ZEROED_PROCS=str(a.procs), PYTHONUNBUFFERED="1")
+    check_cluster_support()
+    env["ZEROED_CLUSTER"] = a.cluster
     env.pop("ZEROED_FT_DIM", None)
     if a.ft_dim:
         env["ZEROED_FT_DIM"] = str(a.ft_dim)
@@ -338,7 +352,7 @@ def export(a):
                     total = round(float(line.split(":")[1]), 1)
         if total is None:
             sys.exit(f"tempo total não encontrado em {tf}; metadata.json não pode ser gerado")
-        cfg = {"n_method": a.n_method, "cluster": cluster_of_method(), "rel_top": 2, "batch": 20,
+        cfg = {"n_method": a.n_method, "cluster": a.cluster, "rel_top": 2, "batch": 20,
                "temperature": float(os.getenv("ZEROED_TEMPERATURE", "0")),
                "ft_dim": ft_dim_of(a), "runs": a.runs, "procs": a.procs,
                "llm_model": os.getenv("OPENAI_MODEL"), "set": int(n)}
@@ -372,6 +386,9 @@ if __name__ == "__main__":
         p.add_argument("--runs", type=int, default=1, help="execuções (sets) por dataset")
         p.add_argument("--procs", default="2", help="ZEROED_PROCS (processos paralelos)")
         p.add_argument("--n-method", default="5%", help="proporção de linhas rotuladas pelo LLM (artigo: 5%%)")
+        p.add_argument("--cluster", default=DEFAULT_CLUSTER,
+                       choices=["RANDOM", "KMeans", "DBSCAN", "Agglomerative"],
+                       help="amostragem das linhas rotuladas (RANDOM = código publicado; KMeans = artigo)")
         p.add_argument("--ft-dim", type=int, default=None,
                        help="dimensão do fastText (padrão: nº de colunas; 300 = sem redução)")
         p.add_argument("--outdir", default=os.path.join(ROOT, "outputs"))

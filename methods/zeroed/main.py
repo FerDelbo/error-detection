@@ -461,7 +461,7 @@ def process_cluster(n_method, CLUSTER_READ, dataset, read_path, resp_path, dirty
     feature_all_dict = defaultdict(default_dict_of_lists)
     if not CLUSTER_READ:
         with multiprocessing.Pool(int(os.environ.get('ZEROED_PROCS', '2'))) as pool:  # PATCH
-            results = [pool.apply_async(cluster, args=(dataset, 'RANDOM', n_method, col, related_attrs_dict, pre_funcs_for_attr, resp_path)) for col in range(len(all_attrs))]
+            results = [pool.apply_async(cluster, args=(dataset, os.environ.get('ZEROED_CLUSTER', 'RANDOM'), n_method, col, related_attrs_dict, pre_funcs_for_attr, resp_path)) for col in range(len(all_attrs))]
             for result in results:
                 col, center_list, cluster_list, val_feat_dict, feature_dict_attr = result.get()
                 cluster_list.insert(0, center_list)

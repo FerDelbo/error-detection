@@ -102,6 +102,9 @@ def cmds_zeroed(a, cfg, out):
     if cfg.get("ft_dim"):
         argv += ["--ft-dim", str(cfg["ft_dim"])]
         method += f"_ft{cfg['ft_dim']}"
+    if cfg.get("cluster") and cfg["cluster"] != "RANDOM":  # ex.: "cluster": ["RANDOM", "KMeans"] na grade
+        argv += ["--cluster", cfg["cluster"]]
+        method += f"_{cfg['cluster'].lower()}"
     return [argv], [("todas", os.path.join(out, a.name, f"{method}_s1", "pred.csv"), [])]
 
 
