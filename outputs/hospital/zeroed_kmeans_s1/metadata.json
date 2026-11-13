@@ -1,0 +1,29 @@
+{
+ "method": "zeroed_kmeans_s1",
+ "dataset": "hospital",
+ "run_time_s": 781.8,
+ "uses_llm": true,
+ "prompt_tokens": 420314,
+ "completion_tokens": 1273263,
+ "config": {
+  "n_method": "5%",
+  "cluster": "KMeans",
+  "rel_top": 2,
+  "batch": 20,
+  "temperature": 1.0,
+  "ft_dim": 20,
+  "runs": 1,
+  "procs": "2",
+  "llm_model": "gpt-5-nano",
+  "set": 1
+ },
+ "extra": {
+  "origem": "/home/a2482126/error-detection/methods/zeroed/result/pipeline/11-12 hospital_kmeans01-5%-set1",
+  "fora_dos_limites": 0,
+  "tokens_media_de_n_sets": 1,
+  "tokens_total": {
+   "prompt_tokens": 420314,
+   "completion_tokens": 1273263
+  }
+ }
+}
