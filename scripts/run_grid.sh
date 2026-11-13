@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Roda todas as combinações de parâmetros de um algoritmo (raha ou dboost) numa base:
+# Roda todas as combinações de parâmetros de um algoritmo (raha, dboost ou tabreformer) numa base:
 # para cada combinação chama o scripts/run_<algoritmo>.sh (runner + evaluate.py).
 #
-# uso: bash scripts/run_grid.sh <raha|dboost> <nome> <dirty.csv> <clean.csv> <results.csv>
+# uso: bash scripts/run_grid.sh <raha|dboost|tabreformer> <nome> <dirty.csv> <clean.csv> <results.csv>
 #   ex.: bash scripts/run_grid.sh dboost hospital dataset/hospital/dirty.csv \
 #             dataset/hospital/clean.csv outputs/results.csv
 #
@@ -11,6 +11,7 @@
 #   DRY_RUN=1               só mostra os comandos, não executa
 #   CONTINUE_ON_ERROR=1     se uma combinação falhar, segue para a próxima
 #   PY_ENV=~/miniconda3/envs/raha/bin   python usado pelos runners (se existir, vai para o PATH)
+#   TABREFORMER_PY=...      python do TabReformer (padrão: ~/miniconda3/envs/tabreformer/bin/python)
 set -eo pipefail
 cd "$(dirname "$0")/.."
 
@@ -27,6 +28,11 @@ RAHA_CLASSIFIERS=(GBC)               # padrão do artigo; opções: GBC ABC DTC 
 DBOOST_GAUSSIAN=(1.0 1.3 1.5 1.7 2.0 2.3 2.5 2.7 3.0)            # artigo: 9 estratégias
 DBOOST_HIST_PEAK=(0.8 0.9)                                        # artigo não define o peak
 DBOOST_HIST_OUTLIER=(0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9)         # artigo: θ_tf, 9 estratégias
+
+# --- TabReformer: produto cartesiano budget x augment x seed (protocolo do artigo)
+TABREFORMER_BUDGETS=(5 10 15 20)      # tuplas rotuladas, iguais às do Raha; aceita porcentagem (ex.: 5%)
+TABREFORMER_AUGMENTS=(learned)        # artigo: learned; ablação: none (TabReformer_Supervised), generic
+TABREFORMER_SEEDS=(0 1 2)             # artigo: média de 15 execuções
 # ==============================================================================
 
 usage() { sed -n '5,7p' "$0" | sed 's/^# \{0,1\}//' >&2; exit 1; }
@@ -76,7 +82,16 @@ case $ALGO in
         run "histogram $p $o" bash scripts/run_dboost_sweep.sh "${COMMON[@]}" --config histogram "$p" "$o"
       done
     done ;;
-  *) echo "algoritmo desconhecido: $ALGO (use raha ou dboost)" >&2; usage ;;
+  tabreformer)
+    for b in "${TABREFORMER_BUDGETS[@]}"; do
+      for a in "${TABREFORMER_AUGMENTS[@]}"; do
+        for s in "${TABREFORMER_SEEDS[@]}"; do
+          run "budget=$b augment=$a seed=$s" \
+              bash scripts/run_tabreformer.sh "${COMMON[@]}" --budget "$b" --augment "$a" --seed "$s"
+        done
+      done
+    done ;;
+  *) echo "algoritmo desconhecido: $ALGO (use raha, dboost ou tabreformer)" >&2; usage ;;
 esac
 
 echo "==> fim: $OK/$TOTAL combinações ok -> $RESULTS_CSV"
