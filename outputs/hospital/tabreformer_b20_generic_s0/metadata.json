@@ -1,0 +1,33 @@
+{
+ "method": "tabreformer_b20_generic_s0",
+ "dataset": "hospital",
+ "run_time_s": 7.15,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "protocol": "paper",
+  "seed": 0,
+  "model": "bert-base-uncased",
+  "max_seq_length": 128,
+  "batch_size": 32,
+  "learning_rate": 2e-05,
+  "epochs": 3.0,
+  "warmup": 0.1,
+  "budget": "20",
+  "augment": "generic",
+  "gamma": 1.0
+ },
+ "extra": {
+  "tuplas_rotuladas": 20,
+  "celulas_rotuladas": 400,
+  "erros_rotulados": 12,
+  "alvo_erros": 388,
+  "augment_usado": "generic",
+  "erros_sinteticos": 376,
+  "exemplos_treino": 776,
+  "exemplos_errados": 388,
+  "passos": 72,
+  "device": "cuda"
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "method": "tabreformer_b5pct_s0",
+ "dataset": "rayyan",
+ "run_time_s": 12.21,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "protocol": "paper",
+  "seed": 0,
+  "model": "bert-base-uncased",
+  "max_seq_length": 128,
+  "batch_size": 32,
+  "learning_rate": 2e-05,
+  "epochs": 3.0,
+  "warmup": 0.1,
+  "budget": "5%",
+  "augment": "learned",
+  "gamma": 1.0
+ },
+ "extra": {
+  "tuplas_rotuladas": 50,
+  "celulas_rotuladas": 550,
+  "erros_rotulados": 46,
+  "alvo_erros": 504,
+  "augment_usado": "learned",
+  "transformacoes": 83,
+  "erros_sinteticos": 458,
+  "exemplos_treino": 1008,
+  "exemplos_errados": 504,
+  "passos": 94,
+  "device": "cuda"
+ }
+}

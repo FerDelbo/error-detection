@@ -1,0 +1,34 @@
+{
+ "method": "tabreformer_b5pct_s0",
+ "dataset": "flights",
+ "run_time_s": 8.17,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "protocol": "paper",
+  "seed": 0,
+  "model": "bert-base-uncased",
+  "max_seq_length": 128,
+  "batch_size": 32,
+  "learning_rate": 2e-05,
+  "epochs": 3.0,
+  "warmup": 0.1,
+  "budget": "5%",
+  "augment": "learned",
+  "gamma": 1.0
+ },
+ "extra": {
+  "tuplas_rotuladas": 119,
+  "celulas_rotuladas": 833,
+  "erros_rotulados": 244,
+  "alvo_erros": 589,
+  "augment_usado": "learned",
+  "transformacoes": 452,
+  "erros_sinteticos": 345,
+  "exemplos_treino": 1178,
+  "exemplos_errados": 589,
+  "passos": 110,
+  "device": "cuda"
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "method": "tabreformer_b20_generic_s0",
+ "dataset": "beers",
+ "run_time_s": 4.48,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "protocol": "paper",
+  "seed": 0,
+  "model": "bert-base-uncased",
+  "max_seq_length": 128,
+  "batch_size": 32,
+  "learning_rate": 2e-05,
+  "epochs": 3.0,
+  "warmup": 0.1,
+  "budget": "20",
+  "augment": "generic",
+  "gamma": 1.0
+ },
+ "extra": {
+  "tuplas_rotuladas": 20,
+  "celulas_rotuladas": 220,
+  "erros_rotulados": 38,
+  "alvo_erros": 182,
+  "augment_usado": "generic",
+  "erros_sinteticos": 144,
+  "exemplos_treino": 364,
+  "exemplos_errados": 182,
+  "passos": 34,
+  "device": "cuda"
+ }
+}
