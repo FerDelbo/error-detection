@@ -1,51 +1,68 @@
 #!/usr/bin/env bash
-# GIDCL (detecção) completo: seleção das tuplas -> criador-crítico (GPU) -> avaliação
-# uso: [RESULTS=results.csv] GIDCL_PY=/caminho/python bash scripts/run_gidcl.sh <nome> <dirty.csv> <clean.csv> ["0 1 2"]
-# opções: GIDCL_K=20  GIDCL_CLUSTERS=20  GIDCL_GPU=0  GIDCL_EMBED=sbert|tfidf
-#         GIDCL_EXTRA="--rounds 3 --epochs 8"   (repassado ao gidcl_detect.py)
-#         GIDCL_FILE=.../detector.npy  -> modo antigo: converte o detector pronto do artigo
-#           (exige GIDCL_RUNTIME, GIDCL_PROMPT_TOKENS e GIDCL_COMPLETION_TOKENS da execução original)
+# GIDCL (detecção) completo: runners/run_gidcl.py -> evaluate.py (tabela toda e, com HELDOUT=1, sem as tuplas rotuladas)
+# uso: bash scripts/run_gidcl.sh --name <nome> --dirty <dirty.csv> --clean <clean.csv>
+#        [--seed "0 1"] [--budget 20] [--clusters 20] [--select cluster|random] [--embed sbert|tfidf]
+#        [--tau 0.85] [--iter-max 4] [--rounds 3] [--epochs 8] [--lm roberta-base]
+#        [--outdir outputs] [--overwrite] [--results results.csv]
+# (os parâmetros são os mesmos do runners/run_gidcl.py; --seed aceita várias sementes entre aspas;
+#  o artigo usa budget 20, tau 0.85, 2 execuções e clusters: Hospital 20, Flights 20, Beers 10, Rayyan 10, Tax 30, IMDB 50)
+# ambiente: GIDCL_PY=/caminho/do/python (padrão: ~/miniconda3/envs/gidcl/bin/python)   GIDCL_GPU=0
+#           GIDCL_EXTRA="--batch 64 --lr 3e-5 --max-len 128"   (demais opções do runner, repassadas como estão)
+#           .env com OPENAI_API_KEY, OPENAI_BASE_URL e OPENAI_MODEL (artigo: gpt-4-turbo)
+#           GIDCL_FILE=.../detector.npy -> só converte a detecção pronta dos autores (gidcl_released); exige
+#             GIDCL_RUNTIME, GIDCL_PROMPT_TOKENS e GIDCL_COMPLETION_TOKENS; opcionais GIDCL_ORDER e GIDCL_SKIP
 set -eo pipefail
 cd "$(dirname "$0")/.."
 source scripts/common.sh
 
-PY=${GIDCL_PY:-python}
+usage() { sed -n '3,7p' "$0" | sed 's/^# \{0,1\}//' >&2; exit 1; }
+
+PY=${GIDCL_PY:-$HOME/miniconda3/envs/gidcl/bin/python}
+[ -x "$PY" ] || PY=python
+NAME= DIRTY= CLEAN= SEEDS=0 OUTDIR=outputs OVERWRITE=
+OPTS=()   # opções repassadas ao runner só quando informadas (os padrões ficam no runner)
+while [ $# -gt 0 ]; do
+  case $1 in
+    --name)        NAME=${2:?}; shift 2 ;;
+    --dirty)       DIRTY=${2:?}; shift 2 ;;
+    --clean)       CLEAN=${2:?}; shift 2 ;;
+    --seed|--seeds) SEEDS=${2:?}; shift 2 ;;
+    --budget|--clusters|--select|--embed|--tau|--iter-max|--rounds|--epochs|--lm)
+                   OPTS+=("$1" "${2:?}"); shift 2 ;;
+    --outdir)      OUTDIR=${2:?}; shift 2 ;;
+    --overwrite)   OVERWRITE=--overwrite; shift ;;
+    --results)     RESULTS=${2:?}; shift 2 ;;
+    -h|--help)     usage ;;
+    *) echo "parâmetro desconhecido: $1" >&2; usage ;;
+  esac
+done
+[ -n "$NAME" ] && [ -n "$DIRTY" ] && [ -n "$CLEAN" ] || usage
 source scripts/load_env.sh && load_env "$PY"
 
-NAME=${1:?uso: run_gidcl.sh <nome> <dirty.csv> <clean.csv> [sementes]}
-DIRTY=${2:?}; CLEAN=${3:?}; SEEDS=${4:-0}
-K=${GIDCL_K:-20}; CL=${GIDCL_CLUSTERS:-$K}; GPU=${GIDCL_GPU:-0}; EMBED=${GIDCL_EMBED:-sbert}
-EXTRA=${GIDCL_EXTRA:-}
 mkdir -p logs
 GT=$(ensure_gt "$DIRTY" "$CLEAN" "$PY")
+LOG="logs/gidcl_${NAME}.log"
 
 if [ -n "${GIDCL_FILE:-}" ]; then
-  for s in $SEEDS; do
-    "$PY" runners/run_gidcl.py --name "$NAME" --dirty "$DIRTY" --clean "$CLEAN" --seed "$s" \
-          --from-file "$GIDCL_FILE" --order "${GIDCL_ORDER:-auto}" ${GIDCL_SKIP:+--skip-cols $GIDCL_SKIP} \
-          --run-time "${GIDCL_RUNTIME:?defina GIDCL_RUNTIME}" \
-          --prompt-tokens "${GIDCL_PROMPT_TOKENS:?defina GIDCL_PROMPT_TOKENS}" \
-          --completion-tokens "${GIDCL_COMPLETION_TOKENS:?defina GIDCL_COMPLETION_TOKENS}"
-    evaluate "$PY" "outputs/$NAME/gidcl_s${s}" "$GT"
-  done
+  "$PY" runners/run_gidcl.py --name "$NAME" --dirty "$DIRTY" --clean "$CLEAN" --outdir "$OUTDIR" $OVERWRITE \
+        --from-file "$GIDCL_FILE" --order "${GIDCL_ORDER:-auto}" ${GIDCL_SKIP:+--skip-cols $GIDCL_SKIP} \
+        --run-time "${GIDCL_RUNTIME:?defina GIDCL_RUNTIME}" \
+        --prompt-tokens "${GIDCL_PROMPT_TOKENS:?defina GIDCL_PROMPT_TOKENS}" \
+        --completion-tokens "${GIDCL_COMPLETION_TOKENS:?defina GIDCL_COMPLETION_TOKENS}" 2>&1 | tee -a "$LOG"
+  evaluate "$PY" "$OUTDIR/$NAME/gidcl_released" "$GT"
   exit 0
 fi
 
 for s in $SEEDS; do
-  SPLIT=outputs/$NAME/gidcl_split_s$s
-  D=outputs/$NAME/gidcl_s${s}
-
-  # 1) o método só enxerga a tabela suja + as K tuplas rotuladas (o clean completo fica de fora)
-  "$PY" scripts/make_labeled_split.py --dirty "$DIRTY" --clean "$CLEAN" --k "$K" --clusters "$CL" \
-        --seed "$s" --select cluster --embed "$EMBED" --outdir "$SPLIT"
-
-  # 2) criador-crítico na GPU
-  "$PY" runners/run_gidcl.py --name "$NAME" --dirty "$DIRTY" --clean "$CLEAN" --seed "$s" --gpu "$GPU" \
-        --split-dir "$SPLIT" --python "$PY" --gidcl-dir methods/gidcl_det \
-        --cmd "gidcl_detect.py --dirty {dirty} --labeled {labeled_csv} --clusters {split}/clusters.csv --outdir {outdir} --seed {seed} $EXTRA" \
-        --output "{outdir}/pred_matrix.npy" 2>&1 | tee -a "logs/gidcl_${NAME}.log"
-
-  # 3) avaliação: tabela toda e sem as K tuplas rotuladas
+  "$PY" runners/run_gidcl.py --name "$NAME" --dirty "$DIRTY" --clean "$CLEAN" --seed "$s" \
+        "${OPTS[@]}" ${GIDCL_GPU:+--gpu "$GIDCL_GPU"} ${GIDCL_EXTRA:-} \
+        --outdir "$OUTDIR" $OVERWRITE 2>&1 | tee -a "$LOG"
+  # o nome da pasta é montado pelo runner: lê da última linha "... -> <pasta>/pred.csv"
+  D=$(grep -o ' -> .*/pred\.csv$' "$LOG" | tail -1 | sed 's/^ -> //; s/\/pred\.csv$//')
+  [ -f "$D/pred.csv" ] || { echo "saída do runner não encontrada" >&2; exit 1; }
   evaluate "$PY" "$D" "$GT"
-  evaluate "$PY" "$D" "$GT" --method "gidcl_s${s}_heldout" --exclude-rows "$SPLIT/labeled_rows.csv"
+  # opcional (HELDOUT=1): avalia também sem as tuplas rotuladas
+  if [ -n "${HELDOUT:-}" ]; then
+    evaluate "$PY" "$D" "$GT" --method "$(basename "$D")_heldout" --exclude-rows "$D/labeled_rows.csv"
+  fi
 done

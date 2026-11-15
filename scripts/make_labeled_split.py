@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Separa o que o GIDCL pode ver: tabela suja, tuplas rotuladas e clusters.
-A escolha das tuplas usa SÓ a tabela suja; o clean só é lido nas tuplas escolhidas."""
+"""Separa o que o GIDCL pode ver além da tabela suja: tuplas rotuladas e clusters (artigo, Seção 4).
+A escolha das tuplas usa SÓ a tabela suja; o clean só é lido nas tuplas escolhidas.
+Chamado pelo runners/run_gidcl.py; grava labeled_cells.csv, labeled_rows.csv, clusters.csv e split_info.json."""
 import argparse
 import json
 import os
@@ -83,10 +84,6 @@ clean = load(args.clean)
 assert clean.shape == dirty.shape, f"tamanhos diferentes: {dirty.shape} vs {clean.shape}"
 clean.columns = dirty.columns
 os.makedirs(args.outdir, exist_ok=True)
-masked = dirty.copy()
-masked.loc[rows] = clean.loc[rows]
-dirty.to_csv(os.path.join(args.outdir, "dirty.csv"), index=False)
-masked.to_csv(os.path.join(args.outdir, "clean_masked.csv"), index=False)
 pd.DataFrame({"row": rows}).to_csv(os.path.join(args.outdir, "labeled_rows.csv"), index=False)
 pd.DataFrame({"row": range(n), "cluster": labels}).to_csv(os.path.join(args.outdir, "clusters.csv"), index=False)
 cells = [(i, c, dirty.at[i, c], clean.at[i, c]) for i in rows for c in dirty.columns]

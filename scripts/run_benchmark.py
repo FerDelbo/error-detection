@@ -41,7 +41,7 @@ DEFAULT_GRID = {
         {"model": ["histogram"], "peak": [0.1, 0.5, 0.9], "outlier": [0.1, 0.5, 0.9]},
     ],
     "zeroed": {"n_method": ["5%", "10%"], "ft_dim": [None]},
-    "gidcl": {"k": [10, 20], "embed": ["tfidf", "sbert"], "rounds": [3], "epochs": [8], "seed": [0]},
+    "gidcl": {"budget": [20], "embed": ["sbert"], "seed": [0, 1]},  # artigo: θ=20, 2 execuções
 }
 
 # run_time_s e tokens vêm do metadata.json do método; tempo_parede_s inclui preparação e conversões
@@ -109,24 +109,19 @@ def cmds_zeroed(a, cfg, out):
 
 
 def cmds_gidcl(a, cfg, out):
-    s, split = cfg["seed"], os.path.join(out, "split")
-    split_cmd = [a.py_gidcl, "scripts/make_labeled_split.py", "--dirty", a.dirty, "--clean", a.clean,
-                 "--k", str(cfg["k"]), "--clusters", str(cfg.get("clusters") or cfg["k"]), "--seed", str(s),
-                 "--select", "cluster", "--embed", cfg["embed"], "--outdir", split]
-    extra = " ".join(f"--{k.replace('_', '-')} {v}" for k, v in cfg.items()
-                     if k not in ("k", "clusters", "embed", "seed") and v is not None)
-    # chaves {…} são preenchidas pelo runners/run_gidcl.py
-    det = ("gidcl_detect.py --dirty {dirty} --labeled {labeled_csv} --clusters {split}/clusters.csv "
-           "--outdir {outdir} --seed {seed} " + extra)
-    run_cmd = [a.py_gidcl, "runners/run_gidcl.py", "--name", a.name, "--dirty", a.dirty, "--clean", a.clean,
-               "--seed", str(s), "--gpu", str(a.gpu), "--split-dir", split, "--python", a.py_gidcl,
-               "--gidcl-dir", "methods/gidcl_det", "--cmd", det, "--output", "{outdir}/pred_matrix.npy",
-               "--outdir", out]
-    pred = os.path.join(out, a.name, f"gidcl_s{s}", "pred.csv")
+    # mesmas opções do runners/run_gidcl.py (ex.: budget, clusters, embed, select, tau, rounds, epochs, seed)
+    argv = [a.py_gidcl, "runners/run_gidcl.py", "--name", a.name, "--dirty", a.dirty, "--clean", a.clean,
+            "--gpu", str(a.gpu), "--outdir", out]
+    for k, v in cfg.items():
+        if v is not None:
+            argv += ["--" + k.replace("_", "-"), str(v)]
+    # o nome da pasta é montado pelo runner (gidcl_b<budget>_k<clusters>..._s<seed>): uma por configuração
+    pred = os.path.join(out, a.name, "gidcl_*", "pred.csv")
+    rows = os.path.join(out, a.name, "gidcl_*", "labeled_rows.csv")
     evals = [("todas", pred, []),
-             # sem as K tuplas rotuladas (que o método viu com o valor limpo)
-             ("sem_rotuladas", pred, ["--exclude-rows", os.path.join(split, "labeled_rows.csv")])]
-    return [split_cmd, run_cmd], evals
+             # sem as tuplas rotuladas (que o método viu com o valor limpo)
+             ("sem_rotuladas", pred, ["--exclude-rows", rows])]
+    return [argv], evals
 
 
 BUILDERS = {"raha": cmds_raha, "dboost": cmds_dboost, "zeroed": cmds_zeroed, "gidcl": cmds_gidcl}
@@ -142,6 +137,13 @@ def run_cmd(argv, log, env, timeout):
 
 def evaluate(a, pred, extra, env):
     """Roda o evaluate.py (pred + GROUND_TRUTH + metadata.json) e devolve a linha produzida."""
+    def one(pattern):  # caminhos com * (pasta nomeada pelo runner) -> o único arquivo que casa
+        hits = glob.glob(pattern)
+        if len(hits) != 1:
+            raise RuntimeError(f"esperado 1 arquivo para {pattern}, há {len(hits)}")
+        return hits[0]
+    pred = one(pred)
+    extra = [one(x) if "*" in x else x for x in extra]
     tmp = pred + ".eval.csv"
     if os.path.exists(tmp):
         os.remove(tmp)
@@ -266,13 +268,14 @@ def main():
                 if status == "ok":
                     try:
                         r = evaluate(a, pred, extra, env)
-                        row.update(precisao=r["precision"], recall=r["recall"], f1=r["f1"], tp=r["tp"],
-                                   fp=r["fp"], fn=r["fn"], erros_reais=r["erros_reais"],
-                                   detectadas=r["detectadas"], run_time_s=r["run_time_s"],
+                        # tp/fp/fn/erros_reais/detectadas só existem se o evaluate.py as gravar
+                        row.update(precisao=r["precision"], recall=r["recall"], f1=r["f1"], tp=r.get("tp"),
+                                   fp=r.get("fp"), fn=r.get("fn"), erros_reais=r.get("erros_reais"),
+                                   detectadas=r.get("detectadas"), run_time_s=r["run_time_s"],
                                    uses_llm=r["uses_llm"], prompt_tokens=r["prompt_tokens"],
                                    completion_tokens=r["completion_tokens"])
                     except Exception as e:  # noqa: BLE001 — registra e segue para a próxima configuração
-                        row["status"] = f"erro na avaliação: {str(e).splitlines()[-1][:200]}"
+                        row["status"] = f"erro na avaliação: {(str(e).splitlines() or [repr(e)])[-1][:200]}"
                 writer.writerow(row)
                 fcsv.flush()
                 if label == "todas":

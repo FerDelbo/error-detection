@@ -8,7 +8,11 @@ Saídas em --outdir:
   pred_matrix.npy     detecção do M_det (a oficial)         pred_functions.npy  só as funções F_det
   pred_union.npy      M_det OU F_det                         probs.npy           probabilidade de erro por célula
   functions.json      funções geradas pelo LLM               report.json         log das rodadas, tempo, tokens
-Requer no ambiente: OPENAI_MODEL, OPENAI_BASE_URL, OPENAI_KEY.
+Requer no ambiente: OPENAI_MODEL, OPENAI_BASE_URL, OPENAI_API_KEY.
+
+Do artigo: τ=0.85 (--tau), M_det=RoBERTa (--lm), θ=20 tuplas rotuladas e k clusters (definidos em
+scripts/make_labeled_split.py). O artigo não informa Iter_max, épocas, lr, batch, tamanho do coreset nem
+o teto de rodadas: os padrões abaixo são escolhas desta reimplementação (ver runners/run_gidcl.py --help).
 """
 import argparse
 import json
@@ -34,9 +38,12 @@ ap.add_argument("--labeled", required=True, help="labeled_cells.csv (row,column,
 ap.add_argument("--clusters", help="clusters.csv (row,cluster)")
 ap.add_argument("--outdir", required=True)
 ap.add_argument("--lm", default="roberta-base")
-ap.add_argument("--theta", type=float, default=0.85, help="F1 mínimo para aceitar uma função (artigo: 0.85)")
-ap.add_argument("--iter-max", type=int, default=4, help="refinamentos por função (artigo: 4)")
-ap.add_argument("--rounds", type=int, default=3, help="máximo de rodadas criador-crítico")
+ap.add_argument("--tau", "--theta", dest="tau", type=float, default=0.85,
+                help="τ: F1 mínimo em T_label para aceitar uma função (artigo: 0.85)")
+ap.add_argument("--iter-max", type=int, default=4,
+                help="Iter_max: refinamentos por função (o artigo não informa o valor)")
+ap.add_argument("--rounds", type=int, default=3,
+                help="teto de rodadas criador-crítico (o artigo para quando F_det não muda)")
 ap.add_argument("--epochs", type=int, default=8)
 ap.add_argument("--batch", type=int, default=16)
 ap.add_argument("--infer-batch", type=int, default=128)
@@ -44,6 +51,7 @@ ap.add_argument("--lr", type=float, default=2e-5)
 ap.add_argument("--max-len", type=int, default=256)
 ap.add_argument("--pseudo-per-col", type=int, default=20)
 ap.add_argument("--coreset-n", type=int, default=200, help="células limpas confiáveis adicionadas por rodada")
+ap.add_argument("--coreset-conf", type=float, default=0.9, help="confiança mínima do M_det para entrar no coreset")
 ap.add_argument("--col-ctx-max", type=int, default=20, help="valores distintos do cluster no contexto de coluna")
 ap.add_argument("--seed", type=int, default=0)
 args = ap.parse_args()
@@ -321,11 +329,11 @@ def main():
             reply = llm(messages)
             code = extract_code(reply)
             score, detail = eval_detect(code, cells)
-            if score >= args.theta or it == args.iter_max:
+            if score >= args.tau or it == args.iter_max:
                 break
             messages += [{"role": "assistant", "content": reply},
                          {"role": "user", "content": prompt_refine(detail["wrong"], detail["error"])}]
-        res = {"column": col, "detect": code, "score": round(score, 3), "accepted": score >= args.theta,
+        res = {"column": col, "detect": code, "score": round(score, 3), "accepted": score >= args.tau,
                "refinements": it, "gen": None}
         if res["accepted"]:
             messages += [{"role": "assistant", "content": reply}, {"role": "user", "content": PROMPT_GEN}]
@@ -385,7 +393,7 @@ def main():
             conf = 1.0 - P[:, j] + 1e-6 * np.random.rand(n)
             k = 0
             for i in np.argsort(-conf):
-                if conf[i] < 0.9 or k >= per_col:
+                if conf[i] < args.coreset_conf or k >= per_col:
                     break
                 if int(i) in lab_set or (int(i), j) in extra_set:
                     continue
@@ -398,7 +406,10 @@ def main():
                            "novas_celulas_coreset": len(new), "fracao_erros_treino": round(pos, 3),
                            "perda": losses, "marcadas_pelo_modelo": int((P >= 0.5).sum()),
                            "segundos": round(time.time() - t0)})
-        if sig == prev_sig:
+        if not sig:                                          # término (1) do artigo: nenhuma f_det atinge τ
+            print("nenhuma função aceita: fim do laço (a detecção fica só com o M_det)", flush=True)
+            break
+        if sig == prev_sig:                                  # término (2): F_det igual ao da rodada anterior
             print("funções inalteradas: fim do laço", flush=True)
             break
         prev_sig = sig

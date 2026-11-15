@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Roda todas as combinações de parâmetros de um algoritmo (raha, dboost ou tabreformer) numa base:
+# Roda todas as combinações de parâmetros de um algoritmo (raha, dboost, tabreformer ou gidcl) numa base:
 # para cada combinação chama o scripts/run_<algoritmo>.sh (runner + evaluate.py).
 #
-# uso: bash scripts/run_grid.sh <raha|dboost|tabreformer> <nome> <dirty.csv> <clean.csv> <results.csv>
+# uso: bash scripts/run_grid.sh <raha|dboost|tabreformer|gidcl> <nome> <dirty.csv> <clean.csv> <results.csv>
 #   ex.: bash scripts/run_grid.sh dboost hospital dataset/hospital/dirty.csv \
 #             dataset/hospital/clean.csv outputs/results.csv
 #
@@ -12,6 +12,7 @@
 #   CONTINUE_ON_ERROR=1     se uma combinação falhar, segue para a próxima
 #   PY_ENV=~/miniconda3/envs/raha/bin   python usado pelos runners (se existir, vai para o PATH)
 #   TABREFORMER_PY=...      python do TabReformer (padrão: ~/miniconda3/envs/tabreformer/bin/python)
+#   GIDCL_PY=...            python do GIDCL (padrão: ~/miniconda3/envs/gidcl/bin/python); GIDCL_GPU, GIDCL_EXTRA
 set -eo pipefail
 cd "$(dirname "$0")/.."
 
@@ -33,6 +34,12 @@ DBOOST_HIST_OUTLIER=(0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9)         # artigo: θ_t
 TABREFORMER_BUDGETS=(5 10 15 20)      # tuplas rotuladas, iguais às do Raha; aceita porcentagem (ex.: 5%)
 TABREFORMER_AUGMENTS=(learned)        # artigo: learned; ablação: none (TabReformer_Supervised), generic
 TABREFORMER_SEEDS=(0 1 2)             # artigo: média de 15 execuções
+
+# --- GIDCL: produto cartesiano budget x clusters x seed (cada combinação custa tokens do LLM do .env)
+GIDCL_BUDGETS=(20)                    # artigo: θ = 20 tuplas rotuladas
+GIDCL_CLUSTERS=(paper)                # paper = valor do artigo para a base (Hospital 20, Flights 20, Beers 10,
+                                      # Rayyan 10, Tax 30, IMDB 50; outras bases: = budget); ou números, ex.: 5 10 20 30 50 (Fig. 6)
+GIDCL_SEEDS=(0 1)                     # artigo: média de 2 execuções
 # ==============================================================================
 
 usage() { sed -n '5,7p' "$0" | sed 's/^# \{0,1\}//' >&2; exit 1; }
@@ -91,7 +98,17 @@ case $ALGO in
         done
       done
     done ;;
-  *) echo "algoritmo desconhecido: $ALGO (use raha, dboost ou tabreformer)" >&2; usage ;;
+  gidcl)
+    for b in "${GIDCL_BUDGETS[@]}"; do
+      for k in "${GIDCL_CLUSTERS[@]}"; do
+        K=(); [ "$k" = paper ] || K=(--clusters "$k")
+        for s in "${GIDCL_SEEDS[@]}"; do
+          run "budget=$b clusters=$k seed=$s" \
+              bash scripts/run_gidcl.sh "${COMMON[@]}" --budget "$b" "${K[@]}" --seed "$s"
+        done
+      done
+    done ;;
+  *) echo "algoritmo desconhecido: $ALGO (use raha, dboost, tabreformer ou gidcl)" >&2; usage ;;
 esac
 
 echo "==> fim: $OK/$TOTAL combinações ok -> $RESULTS_CSV"
