@@ -9,6 +9,10 @@ Protocolo do artigo (Yan et al., SIGMOD 2024, Seções 4 e 5), em duas etapas:
 O detector nunca recebe o clean completo: só as células das θ tuplas escolhidas.
 O tempo gravado no metadata.json cobre as duas etapas.
 
+LLM do criador (--llm, padrão: GIDCL_LLM ou gpt): gpt usa OPENAI_API_KEY/OPENAI_BASE_URL/OPENAI_MODEL do .env;
+qwen usa, sem configuração, o LLM local do ZeroED (Qwen2.5-72B-Instruct por vLLM em http://localhost:8000/v1;
+QWEN_MODEL/QWEN_BASE_URL/QWEN_API_KEY trocam modelo e servidor) e grava em gidcl_..._qwen_s<seed>.
+
 Parâmetros do artigo (Seção 7): θ=20 (--budget), τ=0.85 (--tau), M_det=RoBERTa (--lm), LLM=gpt-4-turbo
 (OPENAI_MODEL no .env) e clusters por base: Hospital 20, Flights 20, Beers 10, Rayyan 10, Tax 30, IMDB 50
 (--clusters; sem a opção, usa esse valor quando --name é uma dessas bases e o próprio budget nas demais).
@@ -42,7 +46,9 @@ from pipeline_meta import guard_output, write_metadata  # noqa: E402
 
 # número de clusters usado no artigo (Seção 7, "Configuration")
 PAPER_CLUSTERS = {"hospital": 20, "flights": 20, "beers": 10, "rayyan": 10, "tax": 30, "imdb": 50}
-LLM_VARS = ("OPENAI_API_KEY", "OPENAI_BASE_URL", "OPENAI_MODEL")
+# variáveis exigidas por --llm; o qwen tem padrões (os mesmos de methods/gidcl_det/gidcl_detect.py)
+LLM_VARS = {"gpt": ("OPENAI_API_KEY", "OPENAI_BASE_URL", "OPENAI_MODEL"), "qwen": ()}
+QWEN_MODEL = "Qwen/Qwen2.5-72B-Instruct"   # LLM local do ZeroED
 
 ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 ap.add_argument("--name", required=True, help="rótulo do dataset (usado só nos nomes de saída)")
@@ -66,6 +72,9 @@ g.add_argument("--embed", choices=["sbert", "tfidf"], default="sbert",
 g.add_argument("--embed-model", default="BAAI/bge-large-en", help="modelo do SentenceBert (artigo: bge-large-en)")
 
 g = ap.add_argument_group("criador: funções geradas pelo LLM (artigo, Seção 5)")
+g.add_argument("--llm", choices=["gpt", "qwen"], default=os.environ.get("GIDCL_LLM") or "gpt",
+               help="gpt: variáveis OPENAI_* do .env (artigo: gpt-4-turbo); qwen: Qwen2.5-72B-Instruct por vLLM em "
+                    "localhost:8000 (LLM local do ZeroED), ou o que QWEN_MODEL/QWEN_BASE_URL/QWEN_API_KEY indicarem")
 g.add_argument("--tau", type=float, default=0.85, help="τ: F1 mínimo em T_label para aceitar f_det (artigo: 0.85)")
 g.add_argument("--iter-max", type=int, default=4, help="Iter_max: refinamentos por função (valor não informado no artigo)")
 g.add_argument("--rounds", type=int, default=3,
@@ -234,7 +243,7 @@ def step(argv, env):
 
 
 def run_pipeline():
-    miss = [v for v in LLM_VARS if not os.environ.get(v)]
+    miss = [v for v in LLM_VARS[args.llm] if not os.environ.get(v)]
     if miss:
         sys.exit("Defina no .env: " + ", ".join(miss))
     if args.budget < 1:
@@ -250,6 +259,8 @@ def run_pipeline():
         method += "_" + args.embed
     if args.lm != "roberta-base":
         method += "_" + os.path.basename(args.lm.rstrip("/"))
+    if args.llm != "gpt":
+        method += "_" + args.llm
     method += f"_s{args.seed}"
     out = os.path.join(args.outdir, args.name, method)
     detect_cfg = {"lm": args.lm, "tau": args.tau, "iter_max": args.iter_max, "rounds": args.rounds,
@@ -258,7 +269,7 @@ def run_pipeline():
                   "coreset_conf": args.coreset_conf, "col_ctx_max": args.col_ctx_max}
     config = {"budget": args.budget, "clusters": clusters, "select": args.select, "embed": args.embed,
               "embed_model": args.embed_model if args.embed == "sbert" else None, "seed": args.seed,
-              **detect_cfg, "llm_model": os.environ["OPENAI_MODEL"]}
+              **detect_cfg, "llm_model": os.environ.get("QWEN_MODEL") or QWEN_MODEL if args.llm == "qwen" else os.environ["OPENAI_MODEL"]}
     guard_output(out, config, args.overwrite)
     os.makedirs(out, exist_ok=True)
     split = os.path.join(out, "split")
@@ -277,7 +288,7 @@ def run_pipeline():
     detect = [py, os.path.join("methods", "gidcl_det", "gidcl_detect.py"), "--dirty", dirty_path,
               "--labeled", os.path.join(split, "labeled_cells.csv"),
               "--clusters", os.path.join(split, "clusters.csv"), "--outdir", out, "--seed", str(args.seed),
-              "--infer-batch", str(args.infer_batch)]
+              "--infer-batch", str(args.infer_batch), "--llm", args.llm]
     for k, v in detect_cfg.items():
         detect += ["--" + k.replace("_", "-"), str(v)]
     step(detect, env)

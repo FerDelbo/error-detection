@@ -8,7 +8,11 @@ Saídas em --outdir:
   pred_matrix.npy     detecção do M_det (a oficial)         pred_functions.npy  só as funções F_det
   pred_union.npy      M_det OU F_det                         probs.npy           probabilidade de erro por célula
   functions.json      funções geradas pelo LLM               report.json         log das rodadas, tempo, tokens
-Requer no ambiente: OPENAI_MODEL, OPENAI_BASE_URL, OPENAI_API_KEY.
+LLM (--llm, padrão: variável GIDCL_LLM ou gpt), sempre por API compatível com a da OpenAI:
+  gpt   OPENAI_MODEL, OPENAI_BASE_URL, OPENAI_API_KEY                      (artigo: gpt-4-turbo)
+  qwen  sem variáveis: Qwen2.5-72B-Instruct servido por vLLM em http://localhost:8000/v1 (o mesmo LLM local do ZeroED);
+        QWEN_MODEL, QWEN_BASE_URL e QWEN_API_KEY trocam modelo/servidor (Ollama, DashScope, OpenRouter...)
+        opcional: QWEN_EXTRA_BODY com um JSON repassado ao servidor, ex.: {"enable_thinking": false}
 
 Do artigo: τ=0.85 (--tau), M_det=RoBERTa (--lm), θ=20 tuplas rotuladas e k clusters (definidos em
 scripts/make_labeled_split.py). O artigo não informa Iter_max, épocas, lr, batch, tamanho do coreset nem
@@ -54,11 +58,21 @@ ap.add_argument("--coreset-n", type=int, default=200, help="células limpas conf
 ap.add_argument("--coreset-conf", type=float, default=0.9, help="confiança mínima do M_det para entrar no coreset")
 ap.add_argument("--col-ctx-max", type=int, default=20, help="valores distintos do cluster no contexto de coluna")
 ap.add_argument("--seed", type=int, default=0)
+ap.add_argument("--llm", choices=["gpt", "qwen"], default=os.environ.get("GIDCL_LLM") or "gpt",
+                help="LLM do criador: gpt (variáveis OPENAI_*) ou qwen (variáveis QWEN_*)")
 args = ap.parse_args()
 
 TABLE = "table"
 USAGE = {"calls": 0, "prompt_tokens": 0, "completion_tokens": 0}
 _client = None
+# provedor -> prefixo das variáveis de ambiente (<PREFIXO>_MODEL, _BASE_URL, _API_KEY)
+LLM_PREFIX = {"gpt": "OPENAI", "qwen": "QWEN"}[args.llm]
+# padrões do qwen: o LLM local do ZeroED (methods/zeroed/utility.py), servido por vLLM; chave não é exigida
+LLM_DEFAULTS = {"QWEN_MODEL": "Qwen/Qwen2.5-72B-Instruct", "QWEN_BASE_URL": "http://localhost:8000/v1",
+                "QWEN_API_KEY": "EMPTY"} if args.llm == "qwen" else {}
+LLM_CFG = {k: os.environ.get(f"{LLM_PREFIX}_{k}") or LLM_DEFAULTS.get(f"{LLM_PREFIX}_{k}", "")
+           for k in ("MODEL", "BASE_URL", "API_KEY")}
+LLM_MODEL = LLM_CFG["MODEL"]
 
 
 # ------------------------------------------------------------------ LLM
@@ -66,15 +80,19 @@ def llm(messages):
     global _client
     from openai import OpenAI
     if _client is None:
-        _client = OpenAI(api_key=os.environ["OPENAI_API_KEY"], base_url=os.environ["OPENAI_BASE_URL"])
+        _client = OpenAI(api_key=LLM_CFG["API_KEY"], base_url=LLM_CFG["BASE_URL"])
+    extra = {}
+    if args.llm == "qwen" and os.environ.get("QWEN_EXTRA_BODY"):
+        extra["extra_body"] = json.loads(os.environ["QWEN_EXTRA_BODY"])
     for attempt in range(6):
         try:
-            r = _client.chat.completions.create(model=os.environ["OPENAI_MODEL"], messages=messages)
+            r = _client.chat.completions.create(model=LLM_MODEL, messages=messages, **extra)
             USAGE["calls"] += 1
             if r.usage:
                 USAGE["prompt_tokens"] += r.usage.prompt_tokens
                 USAGE["completion_tokens"] += r.usage.completion_tokens
-            return r.choices[0].message.content or ""
+            # modelos Qwen com raciocínio devolvem <think>...</think> antes da resposta em alguns servidores
+            return re.sub(r"<think>.*?</think>", "", r.choices[0].message.content or "", flags=re.S)
         except Exception as e:
             wait = 2 ** attempt
             print(f"erro do LLM ({e.__class__.__name__}); nova tentativa em {wait}s", file=sys.stderr, flush=True)
@@ -191,7 +209,7 @@ PROMPT_GEN = ("Now write a function `corrupt(cell)` that receives a CLEAN value 
 
 # ------------------------------------------------------------------ dados
 def main():
-    miss = [v for v in ("OPENAI_MODEL", "OPENAI_BASE_URL", "OPENAI_API_KEY") if not os.environ.get(v)]
+    miss = [f"{LLM_PREFIX}_{k}" for k, v in LLM_CFG.items() if not v]
     if miss:
         sys.exit("Defina no .env: " + ", ".join(miss))
     import torch
@@ -432,7 +450,7 @@ def main():
     np.save(os.path.join(args.outdir, "probs.npy"), P)
     json.dump({cols[j]: f for j, f in funcs.items()}, open(os.path.join(args.outdir, "functions.json"), "w"),
               indent=1, ensure_ascii=False)
-    json.dump({"modelo_llm": os.environ["OPENAI_MODEL"], "lm": args.lm, "args": vars(args), "uso_llm": USAGE,
+    json.dump({"llm": args.llm, "modelo_llm": LLM_MODEL, "lm": args.lm, "args": vars(args), "uso_llm": USAGE,
                "rodadas": rounds_log, "marcadas": int(pred.sum()), "marcadas_funcoes": int(fm.sum()),
                "total_s": round(time.time() - t_start)},
               open(os.path.join(args.outdir, "report.json"), "w"), indent=1, ensure_ascii=False)
