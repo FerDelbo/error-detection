@@ -1,0 +1,121 @@
+{
+ "llm": "qwen",
+ "modelo_llm": "qwen2.5:14b",
+ "lm": "roberta-base",
+ "args": {
+  "dirty": "/home/a2482126/error-detection/dataset/rayyan/dirty.csv",
+  "labeled": "/home/a2482126/error-detection/outputs/rayyan/gidcl_b20_k10_qwen_s0/split/labeled_cells.csv",
+  "clusters": "/home/a2482126/error-detection/outputs/rayyan/gidcl_b20_k10_qwen_s0/split/clusters.csv",
+  "outdir": "/home/a2482126/error-detection/outputs/rayyan/gidcl_b20_k10_qwen_s0",
+  "lm": "roberta-base",
+  "tau": 0.85,
+  "iter_max": 4,
+  "rounds": 3,
+  "epochs": 8,
+  "batch": 16,
+  "infer_batch": 128,
+  "lr": 2e-05,
+  "max_len": 256,
+  "pseudo_per_col": 20,
+  "coreset_n": 200,
+  "coreset_conf": 0.9,
+  "col_ctx_max": 20,
+  "seed": 0,
+  "llm": "qwen"
+ },
+ "uso_llm": {
+  "calls": 120,
+  "prompt_tokens": 145614,
+  "completion_tokens": 18593
+ },
+ "rodadas": [
+  {
+   "round": 1,
+   "accepted": [
+    "article_jissue",
+    "article_jvolumn",
+    "article_language",
+    "article_pagination",
+    "article_title",
+    "author_list",
+    "id",
+    "jounral_abbreviation",
+    "journal_issn",
+    "journal_title"
+   ],
+   "pseudo": 63,
+   "novas_celulas_coreset": 151,
+   "fracao_erros_treino": 0.279,
+   "perda": [
+    0.6124,
+    0.5948,
+    0.5894,
+    0.5677,
+    0.5213,
+    0.4532,
+    0.3989,
+    0.3592
+   ],
+   "marcadas_pelo_modelo": 1060,
+   "segundos": 70
+  },
+  {
+   "round": 2,
+   "accepted": [
+    "article_jcreated_at",
+    "article_jissue",
+    "article_language",
+    "article_pagination",
+    "id",
+    "journal_issn",
+    "journal_title"
+   ],
+   "pseudo": 132,
+   "novas_celulas_coreset": 198,
+   "fracao_erros_treino": 0.293,
+   "perda": [
+    0.4048,
+    0.3157,
+    0.2184,
+    0.1564,
+    0.1348,
+    0.1171,
+    0.0897,
+    0.0685
+   ],
+   "marcadas_pelo_modelo": 1002,
+   "segundos": 63
+  },
+  {
+   "round": 3,
+   "accepted": [
+    "article_jcreated_at",
+    "article_jissue",
+    "article_jvolumn",
+    "article_language",
+    "article_pagination",
+    "id",
+    "jounral_abbreviation",
+    "journal_issn"
+   ],
+   "pseudo": 208,
+   "novas_celulas_coreset": 198,
+   "fracao_erros_treino": 0.288,
+   "perda": [
+    0.2269,
+    0.1632,
+    0.1008,
+    0.0834,
+    0.0759,
+    0.054,
+    0.0283,
+    0.0172
+   ],
+   "marcadas_pelo_modelo": 1220,
+   "segundos": 86
+  }
+ ],
+ "marcadas": 1220,
+ "marcadas_funcoes": 1317,
+ "total_s": 222
+}

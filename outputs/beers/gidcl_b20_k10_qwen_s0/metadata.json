@@ -1,0 +1,48 @@
+{
+ "method": "gidcl_b20_k10_qwen_s0",
+ "dataset": "beers",
+ "run_time_s": 197.88,
+ "uses_llm": true,
+ "prompt_tokens": 77347,
+ "completion_tokens": 15079,
+ "config": {
+  "budget": 20,
+  "clusters": 10,
+  "select": "cluster",
+  "embed": "sbert",
+  "embed_model": "BAAI/bge-large-en",
+  "seed": 0,
+  "lm": "roberta-base",
+  "tau": 0.85,
+  "iter_max": 4,
+  "rounds": 3,
+  "epochs": 8,
+  "batch": 16,
+  "lr": 2e-05,
+  "max_len": 256,
+  "pseudo_per_col": 20,
+  "coreset_n": 200,
+  "coreset_conf": 0.9,
+  "col_ctx_max": 20,
+  "llm_model": "qwen2.5:14b"
+ },
+ "extra": {
+  "llm_calls": 103,
+  "rodadas": 3,
+  "funcoes_aceitas": [
+   "abv",
+   "beer_name",
+   "brewery_id",
+   "brewery_name",
+   "city",
+   "ibu",
+   "id",
+   "ounces",
+   "state",
+   "style"
+  ],
+  "pseudo": 167,
+  "detectadas_funcoes": 3967,
+  "segundos_deteccao": 188
+ }
+}

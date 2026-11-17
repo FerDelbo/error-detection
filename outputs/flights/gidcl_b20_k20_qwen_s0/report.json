@@ -1,0 +1,108 @@
+{
+ "llm": "qwen",
+ "modelo_llm": "qwen2.5:14b",
+ "lm": "roberta-base",
+ "args": {
+  "dirty": "/home/a2482126/error-detection/dataset/flights/dirty.csv",
+  "labeled": "/home/a2482126/error-detection/outputs/flights/gidcl_b20_k20_qwen_s0/split/labeled_cells.csv",
+  "clusters": "/home/a2482126/error-detection/outputs/flights/gidcl_b20_k20_qwen_s0/split/clusters.csv",
+  "outdir": "/home/a2482126/error-detection/outputs/flights/gidcl_b20_k20_qwen_s0",
+  "lm": "roberta-base",
+  "tau": 0.85,
+  "iter_max": 4,
+  "rounds": 3,
+  "epochs": 8,
+  "batch": 16,
+  "infer_batch": 128,
+  "lr": 2e-05,
+  "max_len": 256,
+  "pseudo_per_col": 20,
+  "coreset_n": 200,
+  "coreset_conf": 0.9,
+  "col_ctx_max": 20,
+  "seed": 0,
+  "llm": "qwen"
+ },
+ "uso_llm": {
+  "calls": 79,
+  "prompt_tokens": 81729,
+  "completion_tokens": 9856
+ },
+ "rodadas": [
+  {
+   "round": 1,
+   "accepted": [
+    "act_dep_time",
+    "flight",
+    "src",
+    "tuple_id"
+   ],
+   "pseudo": 6,
+   "novas_celulas_coreset": 196,
+   "fracao_erros_treino": 0.278,
+   "perda": [
+    0.6295,
+    0.5888,
+    0.5243,
+    0.4699,
+    0.454,
+    0.4088,
+    0.3529,
+    0.3097
+   ],
+   "marcadas_pelo_modelo": 2533,
+   "segundos": 39
+  },
+  {
+   "round": 2,
+   "accepted": [
+    "flight",
+    "sched_arr_time",
+    "src",
+    "tuple_id"
+   ],
+   "pseudo": 10,
+   "novas_celulas_coreset": 196,
+   "fracao_erros_treino": 0.147,
+   "perda": [
+    0.2154,
+    0.1826,
+    0.1765,
+    0.1239,
+    0.1434,
+    0.1186,
+    0.1089,
+    0.1243
+   ],
+   "marcadas_pelo_modelo": 4000,
+   "segundos": 38
+  },
+  {
+   "round": 3,
+   "accepted": [
+    "act_arr_time",
+    "flight",
+    "src",
+    "tuple_id"
+   ],
+   "pseudo": 17,
+   "novas_celulas_coreset": 196,
+   "fracao_erros_treino": 0.109,
+   "perda": [
+    0.1195,
+    0.1159,
+    0.1166,
+    0.0814,
+    0.0813,
+    0.0556,
+    0.055,
+    0.0388
+   ],
+   "marcadas_pelo_modelo": 3756,
+   "segundos": 56
+  }
+ ],
+ "marcadas": 3756,
+ "marcadas_funcoes": 1721,
+ "total_s": 136
+}

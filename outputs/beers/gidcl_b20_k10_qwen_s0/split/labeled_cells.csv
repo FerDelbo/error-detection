@@ -1,0 +1,221 @@
+row,column,dirty,clean
+121,index,122,122
+121,id,409,409
+121,beer_name,Oaky's Oatmeal Stout,Oaky's Oatmeal Stout
+121,style,Oatmeal Stout,Oatmeal Stout
+121,ounces,16.0 oz.,16
+121,abv,0.047%,0.047
+121,ibu,N/A,
+121,brewery_id,542,542
+121,brewery_name,Angry Minnow Brewing Company,Angry Minnow Brewing Company
+121,city,Hayward WI,Hayward
+121,state,,WI
+230,index,231,231
+230,id,1261,1261
+230,beer_name,Bent Paddle Black Ale,Bent Paddle Black Ale
+230,style,American Black Ale,American Black Ale
+230,ounces,12.0 oz.,12
+230,abv,0.06%,0.06
+230,ibu,34,34
+230,brewery_id,75,75
+230,brewery_name,Bent Paddle Brewing Company,Bent Paddle Brewing Company
+230,city,Duluth MN,Duluth
+230,state,,MN
+542,index,543,543
+542,id,784,784
+542,beer_name,Carolina Lighthouse (2007),Carolina Lighthouse (2007)
+542,style,American Blonde Ale,American Blonde Ale
+542,ounces,12.0 ounce,12
+542,abv,0.04,0.04
+542,ibu,N/A,
+542,brewery_id,504,504
+542,brewery_name,Carolina Beer & Beverage,Carolina Beer & Beverage
+542,city,Mooresville NC,Mooresville
+542,state,,NC
+592,index,593,593
+592,id,2379,2379
+592,beer_name,Blood Orange Honey,Blood Orange Honey
+592,style,Fruit / Vegetable Beer,Fruit / Vegetable Beer
+592,ounces,16.0 oz.,16
+592,abv,0.057%,0.057
+592,ibu,10,10
+592,brewery_id,121,121
+592,brewery_name,Cheboygan Brewing Company,Cheboygan Brewing Company
+592,city,Cheboygan,Cheboygan
+592,state,MI,MI
+639,index,640,640
+639,id,2061,2061
+639,beer_name,Big Blue Van,Big Blue Van
+639,style,Fruit / Vegetable Beer,Fruit / Vegetable Beer
+639,ounces,16.0 OZ.,16
+639,abv,0.058,0.058
+639,ibu,N/A,
+639,brewery_id,232,232
+639,brewery_name,College Street Brewhouse and Pub,College Street Brewhouse and Pub
+639,city,Lake Havasu City,Lake Havasu City
+639,state,AZ,AZ
+646,index,647,647
+646,id,1336,1336
+646,beer_name,Core ESB,Core ESB
+646,style,Extra Special / Strong Bitter (ESB),Extra Special / Strong Bitter (ESB)
+646,ounces,12.0 oz.,12
+646,abv,0.061,0.061
+646,ibu,N/A,
+646,brewery_id,139,139
+646,brewery_name,Core Brewing & Distilling Company,Core Brewing & Distilling Company
+646,city,Springdale AR,Springdale
+646,state,,AR
+723,index,724,724
+723,id,731,731
+723,beer_name,Kaleidoscope Collaboration 2012,Kaleidoscope Collaboration 2012
+723,style,American Black Ale,American Black Ale
+723,ounces,16.0 OZ.,16
+723,abv,,
+723,ibu,N/A,
+723,brewery_id,491,491
+723,brewery_name,Devil's Canyon Brewery,Devil's Canyon Brewery
+723,city,Belmont CA,Belmont
+723,state,,CA
+886,index,887,887
+886,id,2077,2077
+886,beer_name,No Wake IPA,No Wake IPA
+886,style,American IPA,American IPA
+886,ounces,12.0 oz.,12
+886,abv,0.072,0.072
+886,ibu,50,50
+886,brewery_id,228,228
+886,brewery_name,Geneva Lake Brewing Company,Geneva Lake Brewing Company
+886,city,Lake Geneva WI,Lake Geneva
+886,state,,WI
+1039,index,1040,1040
+1039,id,1893,1893
+1039,beer_name,Hill 88 Double IPA,Hill 88 Double IPA
+1039,style,American Double / Imperial IPA,American Double / Imperial IPA
+1039,ounces,16.0 ounce,16
+1039,abv,0.088,0.088
+1039,ibu,77,77
+1039,brewery_id,280,280
+1039,brewery_name,Headlands Brewing Company,Headlands Brewing Company
+1039,city,Mill Valley CA,Mill Valley
+1039,state,,CA
+1053,index,1054,1054
+1053,id,724,724
+1053,beer_name,Hilliard's Blonde,Hilliard's Blonde
+1053,style,American Blonde Ale,American Blonde Ale
+1053,ounces,16.0 oz.,16
+1053,abv,0.049,0.049
+1053,ibu,20,20
+1053,brewery_id,362,362
+1053,brewery_name,Hilliard's Beer,Hilliard's Beer
+1053,city,Seattle,Seattle
+1053,state,WA,WA
+1186,index,1187,1187
+1186,id,1637,1637
+1186,beer_name,Bellingham Beer Week 2013 Collaboration,Bellingham Beer Week 2013 Collaboration
+1186,style,Belgian Strong Dark Ale,Belgian Strong Dark Ale
+1186,ounces,16.0 oz.,16
+1186,abv,0.08,0.08
+1186,ibu,N/A,
+1186,brewery_id,354,354
+1186,brewery_name,Kulshan Brewery,Kulshan Brewery
+1186,city,Bellingham,Bellingham
+1186,state,WA,WA
+1316,index,1317,1317
+1316,id,1986,1986
+1316,beer_name,Bushwhacker Cider,Bushwhacker Cider
+1316,style,Cider,Cider
+1316,ounces,16.0 OZ.,16
+1316,abv,0.069%,0.069
+1316,ibu,N/A,
+1316,brewery_id,254,254
+1316,brewery_name,Meckley's Cidery,Meckley's Cidery
+1316,city,Somerset Center,Somerset Center
+1316,state,MI,MI
+1691,index,1692,1692
+1691,id,938,938
+1691,beer_name,Gangway IPA,Gangway IPA
+1691,style,American IPA,American IPA
+1691,ounces,12.0 oz.,12
+1691,abv,0.062%,0.062
+1691,ibu,55,55
+1691,brewery_id,475,475
+1691,brewery_name,Red Hare Brewing Company,Red Hare Brewing Company
+1691,city,Marietta GA,Marietta
+1691,state,,GA
+1714,index,1715,1715
+1714,id,710,710
+1714,beer_name,Rye Porter,Rye Porter
+1714,style,American Porter,American Porter
+1714,ounces,16.0 oz.,16
+1714,abv,,
+1714,ibu,N/A,
+1714,brewery_id,386,386
+1714,brewery_name,Revolution Brewing,Revolution Brewing
+1714,city,Paonia CO,Paonia
+1714,state,,CO
+1772,index,1773,1773
+1772,id,2053,2053
+1772,beer_name,Fear of a Brett Planet,Fear of a Brett Planet
+1772,style,American Pale Ale (APA),American Pale Ale (APA)
+1772,ounces,12.0 oz.,12
+1772,abv,0.051,0.051
+1772,ibu,N/A,
+1772,brewery_id,164,164
+1772,brewery_name,Round Guys Brewing,Round Guys Brewing
+1772,city,Lansdale PA,Lansdale
+1772,state,,PA
+1979,index,1980,1980
+1979,id,1634,1634
+1979,beer_name,Alley Time,Alley Time
+1979,style,American Pale Ale (APA),American Pale Ale (APA)
+1979,ounces,12.0 oz.,12
+1979,abv,0.06,0.06
+1979,ibu,N/A,
+1979,brewery_id,175,175
+1979,brewery_name,Spiteful Brewing Company,Spiteful Brewing Company
+1979,city,Chicago IL,Chicago
+1979,state,,IL
+2143,index,2144,2144
+2143,id,1810,1810
+2143,beer_name,Focal Banger,Focal Banger
+2143,style,American IPA,American IPA
+2143,ounces,16.0 oz.,16
+2143,abv,0.07,0.07
+2143,ibu,N/A,
+2143,brewery_id,272,272
+2143,brewery_name,The Alchemist,The Alchemist
+2143,city,Waterbury VT,Waterbury
+2143,state,,VT
+2246,index,2247,2247
+2246,id,1285,1285
+2246,beer_name,No Limits Hefeweizen,No Limits Hefeweizen
+2246,style,Hefeweizen,Hefeweizen
+2246,ounces,16.0 oz.,16
+2246,abv,0.05,0.05
+2246,ibu,N/A,
+2246,brewery_id,435,435
+2246,brewery_name,Two Roads Brewing Company,Two Roads Brewing Company
+2246,city,Stratford,Stratford
+2246,state,CT,CT
+2281,index,2282,2282
+2281,id,2562,2562
+2281,beer_name,Lee Hill Series Vol. 3 - Barrel Aged Imperial Stout,Lee Hill Series Vol. 3 - Barrel Aged Imperial Stout
+2281,style,American Double / Imperial Stout,American Double / Imperial Stout
+2281,ounces,19.2 OZ.,19.2
+2281,abv,0.099,0.099
+2281,ibu,51,51
+2281,brewery_id,51,51
+2281,brewery_name,Upslope Brewing Company,Upslope Brewing Company
+2281,city,Boulder,Boulder
+2281,state,CO,CO
+2370,index,2371,2371
+2370,id,2253,2253
+2370,beer_name,Blonde Hunny,Blonde Hunny
+2370,style,Belgian Pale Ale,Belgian Pale Ale
+2370,ounces,12.0 oz,12
+2370,abv,0.068%,0.068
+2370,ibu,21,21
+2370,brewery_id,181,181
+2370,brewery_name,Wild Wolf Brewing Company,Wild Wolf Brewing Company
+2370,city,Nellysford VA,Nellysford
+2370,state,,VA

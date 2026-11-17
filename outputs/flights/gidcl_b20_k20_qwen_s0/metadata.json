@@ -1,0 +1,42 @@
+{
+ "method": "gidcl_b20_k20_qwen_s0",
+ "dataset": "flights",
+ "run_time_s": 146.59,
+ "uses_llm": true,
+ "prompt_tokens": 81729,
+ "completion_tokens": 9856,
+ "config": {
+  "budget": 20,
+  "clusters": 20,
+  "select": "cluster",
+  "embed": "sbert",
+  "embed_model": "BAAI/bge-large-en",
+  "seed": 0,
+  "lm": "roberta-base",
+  "tau": 0.85,
+  "iter_max": 4,
+  "rounds": 3,
+  "epochs": 8,
+  "batch": 16,
+  "lr": 2e-05,
+  "max_len": 256,
+  "pseudo_per_col": 20,
+  "coreset_n": 200,
+  "coreset_conf": 0.9,
+  "col_ctx_max": 20,
+  "llm_model": "qwen2.5:14b"
+ },
+ "extra": {
+  "llm_calls": 79,
+  "rodadas": 3,
+  "funcoes_aceitas": [
+   "act_arr_time",
+   "flight",
+   "src",
+   "tuple_id"
+  ],
+  "pseudo": 17,
+  "detectadas_funcoes": 1721,
+  "segundos_deteccao": 136
+ }
+}

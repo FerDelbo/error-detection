@@ -1,0 +1,141 @@
+row,column,dirty,clean
+201,tuple_id,202,202
+201,src,boston,boston
+201,flight,UA-2906-PHL-MCO,UA-2906-PHL-MCO
+201,sched_dep_time,3:50 p.m.,3:50 p.m.
+201,act_dep_time,4:46 p.m.,4:28 p.m.
+201,sched_arr_time,6:23 p.m.,6:23 p.m.
+201,act_arr_time,6:36 p.m.,6:38 p.m.
+320,tuple_id,321,321
+320,src,weather,weather
+320,flight,UA-2314-ATL-PHL,UA-2314-ATL-PHL
+320,sched_dep_time,2:55 p.m.,2:55 p.m.
+320,act_dep_time,,2:55 p.m.
+320,sched_arr_time,5:00 p.m.,5:00 p.m.
+320,act_arr_time,,4:47 p.m.
+324,tuple_id,325,325
+324,src,weather,weather
+324,flight,AA-789-ORD-DEN,AA-789-ORD-DEN
+324,sched_dep_time,1:05 p.m.,1:05 p.m.
+324,act_dep_time,1:20 p.m.,1:19 p.m.
+324,sched_arr_time,2:35 p.m.,2:35 p.m.
+324,act_arr_time,2:49 p.m.,3:13 p.m.
+509,tuple_id,510,510
+509,src,flightview,flightview
+509,flight,UA-858-PVG-SFO,UA-858-PVG-SFO
+509,sched_dep_time,,1:45 p.m.
+509,act_dep_time,1:45 p.m.,1:32 p.m.
+509,sched_arr_time,,8:27 a.m.
+509,act_arr_time,8:02 a.m.,8:02 a.m.
+579,tuple_id,580,580
+579,src,flightstats,flightstats
+579,flight,CO-1561-PHX-IAH,CO-1561-PHX-IAH
+579,sched_dep_time,8:05 a.m.,8:05 a.m.
+579,act_dep_time,8:00 a.m.,8:00 a.m.
+579,sched_arr_time,11:35 a.m.,11:35 a.m.
+579,act_arr_time,11:32 a.m.,11:32 a.m.
+597,tuple_id,598,598
+597,src,flightstats,flightstats
+597,flight,AA-1522-SFO-ORD,AA-1522-SFO-ORD
+597,sched_dep_time,11:55 p.m.,11:55 p.m.
+597,act_dep_time,12:10 a.m. (Estimated runway),11:55 p.m.
+597,sched_arr_time,5:50 a.m.,5:50 a.m.
+597,act_arr_time,5:42 a.m. (Estimated runway),5:50 a.m.
+690,tuple_id,691,691
+690,src,panynj,panynj
+690,flight,UA-233-LAX-JFK,UA-233-LAX-JFK
+690,sched_dep_time,4:25 p.m.,4:25 p.m.
+690,act_dep_time,,4:25 p.m.
+690,sched_arr_time,12:29 a.m. Dec 02,12:29 a.m.
+690,act_arr_time,,12:29 a.m.
+746,tuple_id,747,747
+746,src,flightexplorer,flightexplorer
+746,flight,AA-466-IAH-MIA,AA-466-IAH-MIA
+746,sched_dep_time,,6:00 a.m.
+746,act_dep_time,6:09 a.m.,6:08 a.m.
+746,sched_arr_time,,9:20 a.m.
+746,act_arr_time,8:50 a.m.,9:05 a.m.
+1041,tuple_id,1042,1042
+1041,src,travelocity,travelocity
+1041,flight,UA-257-JFK-SFO,UA-257-JFK-SFO
+1041,sched_dep_time,Not Available,2:30 p.m.
+1041,act_dep_time,2:42 p.m.,2:26 p.m.
+1041,sched_arr_time,Not Available,6:15 p.m.
+1041,act_arr_time,5:42 p.m.,5:42 p.m.
+1105,tuple_id,1106,1106
+1105,src,foxbusiness,foxbusiness
+1105,flight,UA-257-JFK-SFO,UA-257-JFK-SFO
+1105,sched_dep_time,2:30 p.m.,2:30 p.m.
+1105,act_dep_time,2:43 p.m.,2:26 p.m.
+1105,sched_arr_time,6:15 p.m.,6:15 p.m.
+1105,act_arr_time,5:42 p.m.,5:42 p.m.
+1401,tuple_id,1402,1402
+1401,src,orbitz,orbitz
+1401,flight,AA-1917-JFK-MCO,AA-1917-JFK-MCO
+1401,sched_dep_time,2:55 p.m.,2:55 p.m.
+1401,act_dep_time,3:00 p.m.,3:27 p.m.
+1401,sched_arr_time,5:55 p.m.,5:55 p.m.
+1401,act_arr_time,5:43 p.m.,5:43 p.m.
+1514,tuple_id,1515,1515
+1514,src,flytecomm,flytecomm
+1514,flight,UA-3050-PHX-CLT,UA-3050-PHX-CLT
+1514,sched_dep_time,,11:05 a.m.
+1514,act_dep_time,11:45 a.m.,11:30 a.m.
+1514,sched_arr_time,,4:57 p.m.
+1514,act_arr_time,5:00 p.m.,5:05 p.m.
+1819,tuple_id,1820,1820
+1819,src,flylouisville,flylouisville
+1819,flight,UA-233-LAX-JFK,UA-233-LAX-JFK
+1819,sched_dep_time,4:25 p.m.,4:25 p.m.
+1819,act_dep_time,,4:25 p.m.
+1819,sched_arr_time,12:29 a.m.  Fri 02-Dec-2011,12:29 a.m.
+1819,act_arr_time,,12:29 a.m.
+2011,tuple_id,2012,2012
+2011,src,allegiantair,allegiantair
+2011,flight,UA-233-LAX-JFK,UA-233-LAX-JFK
+2011,sched_dep_time,4:25 p.m.,4:25 p.m.
+2011,act_dep_time,,4:25 p.m.
+2011,sched_arr_time,12:29 a.m. Dec 02,12:29 a.m.
+2011,act_arr_time,,12:29 a.m.
+2060,tuple_id,2061,2061
+2060,src,businesstravellogue,businesstravellogue
+2060,flight,AA-204-LAX-MCO,AA-204-LAX-MCO
+2060,sched_dep_time,11:25 p.m.,11:25 p.m.
+2060,act_dep_time,,11:25 p.m.
+2060,sched_arr_time,6:55 a.m.  Fri 02-Dec-2011,6:55 a.m.
+2060,act_arr_time,,6:55 a.m.
+2105,tuple_id,2106,2106
+2105,src,businesstravellogue,businesstravellogue
+2105,flight,UA-2515-DFW-CLT,UA-2515-DFW-CLT
+2105,sched_dep_time,,7:05 a.m.
+2105,act_dep_time,7:07 a.m.,7:05 a.m.
+2105,sched_arr_time,,10:31 a.m.
+2105,act_arr_time,10:47 a.m.,10:47 a.m.
+2110,tuple_id,2111,2111
+2110,src,businesstravellogue,businesstravellogue
+2110,flight,AA-1522-SFO-ORD,AA-1522-SFO-ORD
+2110,sched_dep_time,11:55 p.m.,11:55 p.m.
+2110,act_dep_time,,11:55 p.m.
+2110,sched_arr_time,5:50 a.m.  Fri 02-Dec-2011,5:50 a.m.
+2110,act_arr_time,,5:50 a.m.
+2111,tuple_id,2112,2112
+2111,src,businesstravellogue,businesstravellogue
+2111,flight,UA-233-LAX-JFK,UA-233-LAX-JFK
+2111,sched_dep_time,4:25 p.m.,4:25 p.m.
+2111,act_dep_time,,4:25 p.m.
+2111,sched_arr_time,12:29 a.m.  Fri 02-Dec-2011,12:29 a.m.
+2111,act_arr_time,,12:29 a.m.
+2216,tuple_id,2217,2217
+2216,src,gofox,gofox
+2216,flight,UA-233-LAX-JFK,UA-233-LAX-JFK
+2216,sched_dep_time,4:25 p.m.,4:25 p.m.
+2216,act_dep_time,,4:25 p.m.
+2216,sched_arr_time,12:29 a.m. Dec 02,12:29 a.m.
+2216,act_arr_time,,12:29 a.m.
+2373,tuple_id,2374,2374
+2373,src,world-flight-tracker,world-flight-tracker
+2373,flight,CO-45-EWR-MIA,CO-45-EWR-MIA
+2373,sched_dep_time,4:00 p.m.,4:00 p.m.
+2373,act_dep_time,3:58 p.m.,3:58 p.m.
+2373,sched_arr_time,7:05 p.m.,7:05 p.m.
+2373,act_arr_time,6:36 p.m.,6:36 p.m.

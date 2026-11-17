@@ -1,0 +1,138 @@
+{
+ "id": {
+  "column": "id",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = r'^tt\\d{0,7}(?:(?![_0-9a-z\\-]+).*|$)'\n    return not re.match(pattern, cell)",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    # Introduce potential errors based on observed patterns\n    errors = [\n        lambda s: s + '_' + str(random.randint(0, 99999999)),  # Add an underscore and digits\n        lambda s: s + '-' + str(random.randint(0, 99999999)),  # Add a dash and digits\n        lambda s: s + '_' + random.choice(['a', 'b', 'c', 'x', 'y', 'z']).lower(),  # Add underscore and letter\n        lambda s: s + '-' + random.choice(['a', 'b', 'c', 'x', 'y', 'z']).lower(),  # Add dash and letter\n        lambda s: s + '_2',  # Add _2 at the end\n        lambda s: s[:5] + '_test' + s[5:],  # Add a test string at a random position\n    ]\n    \n    # Apply a random error\n    error_func = random.choice(errors)\n    return error_func(cell)\n\n# The detect function remains as previously defined\ndef detect(cell):\n    pattern = r'^tt\\d{0,7}(?:(?![_0-9a-z\\-]+).*|$)'\n    return not re.match(pattern, cell)"
+ },
+ "name": {
+  "column": "name",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = re.compile(r'^[A-Z][a-zA-Z\\s\\(\\)]+(?=,|$)')\n    return not bool(pattern.match(cell))",
+  "score": 0.976,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    patterns = [\n        (r'(?i)\\b[A-Z][a-z]+', lambda m: m.group(0)[:1] + '_' + m.group(0)[1:]),\n        (r'\\s', ' ' * random.randint(2, 5)),\n        (r'$', ' X'),\n        (r'\\(', r'\\['),\n        (r'\\)', r'\\]')\n    ]\n    \n    for pattern, replacement in patterns:\n        cell = re.sub(pattern, replacement, cell)\n    \n    return cell\n\ndef detect(cell):\n    pattern = re.compile(r'^[A-Z][a-zA-Z\\s\\(\\)]+(?=,|$)')\n    return not bool(pattern.match(cell))"
+ },
+ "year": {
+  "column": "year",
+  "detect": "import re\n\ndef detect(cell):\n    return bool(re.search(r'\\d{4}\\s\\d{4}(?:\\s\\d{4})?', cell)) or not cell.isdigit()",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    return bool(re.search(r'\\d{4}\\s\\d{4}(?:\\s\\d{4})?', cell)) or not cell.isdigit()\n\ndef corrupt(cell):\n    years = cell.split()\n    if len(years) > 1:\n        return cell  # Already dirty according to the pattern, no corruption needed.\n    year = int(years[0])\n    if random.choice([True, False]):\n        year += random.choice([-1, 1])\n    else:\n        year = str(year - 1) + \" \" + cell + \" \" + str(year + 1)\n    return str(year)"
+ },
+ "release_date": {
+  "column": "release_date",
+  "detect": "import re\n\ndef detect(cell):\n    if cell == '':\n        return True\n    elif re.match(r'\\d{1,2}\\s+\\w+\\s+\\d{4}\\s+\\(\\w+\\)', cell):\n        return False\n    elif re.match(r'\\d{4}\\s+\\(USA\\)', cell):\n        return False\n    elif re.match(r'\\d{1,2}\\w+\\s+\\d{4}\\s+\\(\\w+\\)', cell):\n        return True\n    elif re.match(r'\\d{4}\\s+\\(\\w+\\)', cell):\n        return True if cell != '2011 (USA)' else False\n    else:\n        return True",
+  "score": 0.933,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    if random.choice([True, False]):\n        # Remove day or month or both\n        parts = re.split(r'(\\d{1,2}\\s+\\w+\\s+)', cell)\n        if len(parts) > 1:\n            cell = re.sub(r'(\\d{1,2}\\s+\\w+\\s+)', '', cell)\n    if random.choice([True, False]):\n        # Change to a more generalized release year (e.g., 2015 (USA) -> 2015 (USA), 2014 (Japan))\n        cell = re.sub(r'\\s+\\(\\w+\\)', ' (USA)', cell)\n    if random.choice([True, False]):\n        # Add random text like 'Wide' at the end\n        cell += ' Wide'\n    # Ensure the cell is not recognized as clean\n    if cell and not re.match(r'\\d{1,2}\\s+\\w+\\s+\\d{4}\\s+\\(\\w+\\)', cell) and not re.match(r'\\d{4}\\s+\\(USA\\)', cell):\n        return cell\n    return cell.strip()[:-5]  # This will make it less clean by truncating the string\n\ndef detect(cell):\n    if cell == '':\n        return True\n    elif re.match(r'\\d{1,2}\\s+\\w+\\s+\\d{4}\\s+\\(\\w+\\)', cell):\n        return False\n    elif re.match(r'\\d{4}\\s+\\(USA\\)', cell):\n        return False\n    elif re.match(r'\\d{1,2}\\w+\\s+\\d{4}\\s+\\(\\w+\\)', cell):\n        return True\n    elif re.match(r'\\d{4}\\s+\\(\\w+\\)', cell):\n        return True if cell != '2011 (USA)' else False\n    else:\n        return True"
+ },
+ "director": {
+  "column": "director",
+  "detect": "import re\n\ndef detect(cell):\n    # Clean cells consist of a single director name or comma-separated names with exactly one space after the comma\n    # Dirty cells contain names from known dirty examples or inconsistent comma usage\n    dirty_examples = ['John Whitesell', 'Mark L. Lester', 'Dermot Mulroney', 'Robert Scheerer', 'Jenée LaMarque']\n    dirty_pattern = re.compile(r'\\b(' + '|'.join(re.escape(ex) for ex in dirty_examples) + r')\\b|,\\s+|\\s+,')\n    \n    if dirty_pattern.search(cell):\n        return True\n    elif ',' in cell and ' , ' in cell or ', ' in cell:\n        return True\n    else:\n        return False",
+  "score": 0.5,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "creator": {
+  "column": "creator",
+  "detect": "import re\n\ndef detect(cell):\n    if not cell.strip():  # Check if the cell is empty\n        return False\n    if re.match(r'^[A-Z][^\\s,]+', cell):  # Starts with full name format but with improper formatting\n        return True\n    if re.match(r'^[A-Z][a-z]+(?: [A-Z][a-z]+)*(?:,[A-Z][a-z]+ [A-Z][a-z]+)*$', cell):\n        return False\n    if re.match(r'^[A-Z][a-z]+(?: [A-Z][a-z]+)*$', cell):  # Single person format\n        return False\n    if re.match(r'^[A-Z][a-z]+(?: [A-Z][a-z]+)*(?:,[A-Z][a-z]+ [A-Z][a-z]+)*$', cell):\n        return False\n    if re.match(r'^[A-Z][a-z]+(?: [A-Z][a-z]+)*$', cell):\n        return False\n    if re.match(r'^[A-Z][a-z]+(?: [A-Z][a-z]+)*(?:,[A-Z][a-z]+ [A-Z][a-z]+)*(?: [A-Z][a-z]+)*$', cell):\n        return False\n    return True",
+  "score": 0.227,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "actors": {
+  "column": "actors",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = r'^([A-Za-z\\s\\,\\.\\-\\']+\\,?\\s?){2,3}$'\n    match = re.match(pattern, cell.strip())\n    if match and len(cell.split(',')) >= 2 and len(cell.split(',')) <= 3:\n        return False\n    else:\n        return True",
+  "score": 0.905,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    # Split the clean cell into individual actor names\n    actors = cell.strip().split(',')\n    random.seed()\n\n    # Function to add extra space\n    def add_extra_space(name):\n        return name[0] + ' ' * random.randint(1, 3) + name[1:]\n\n    # Function to swap names\n    def swap_names(name_list):\n        if len(name_list) > 1:\n            index_a = random.randint(0, len(name_list) - 1)\n            index_b = random.randint(0, len(name_list) - 1)\n            name_list[index_a], name_list[index_b] = name_list[index_b], name_list[index_a]\n            return ','.join(name_list)\n        return ','.join(name_list)\n\n    # Function to add noise\n    def add_noise(name):\n        noise = random.choice(['-', \"'\", ' ', '.'])\n        return noise + name[0] + noise\n\n    # Randomly corrupt the cell\n    if random.random() < 0.33:\n        actors = [add_extra_space(actor) for actor in actors]\n    if random.random() < 0.33:\n        actors = [add_noise(actor) for actor in actors]\n    if random.random() < 0.33:\n        actors = [swap_names(actors)]\n\n    # Introduce a missing comma error\n    if random.random() < 0.5 and len(actors) > 1:\n        del_index = random.randint(0, len(actors) - 1)\n        if del_index != 0:\n            actors[del_index - 1] += ',' + actors[del_index]\n            del actors[del_index]\n\n    # Append an extra clean name to the list to make the cell dirty\n    if len(actors) < 4 and random.random() < 0.70:\n        actors.append(random.choice(['Actor Z', 'Jane Doe', 'John Smith']))\n\n    # Create the dirty cell\n    dirty_cell = ', '.join(actors)\n    \n    return dirty_cell\n\n# Example of use with a clean cell\nclean_cell = \"Daniel Radcliffe,Emma Watson,Rupert Grint\"\nprint(corrupt(clean_cell))"
+ },
+ "full_cast": {
+  "column": "full_cast",
+  "detect": "import re\n\ndef detect(cell):\n    # Clean cells contain a list of names separated by commas, possibly including single quotes, periods, and hyphens.\n    # A dirty cell might not follow the strict formatting of professional names or may contain extra characters.\n    return not re.match(r'^[A-Z][a-zA-Z\\s,\\-\\'\\.]+$', cell.replace(' ', '').replace(',', '').isalnum())",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 2,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    # Clean cells have professional names separated by commas\n    # Introduce errors such as: extra spaces, missing spaces, incorrect capitalization, extra commas, incorrect characters\n    choices = ['add_space', 'remove_space', 'incorrect_capitalization', 'extra_comma', 'incorrect_char']\n    cell = cell.strip()\n    for _ in range(random.randint(1, 3)):\n        if random.choice(choices) == 'add_space':\n            cell = random.choice(re.split(',', cell))\n            cell = cell[:random.randint(0, len(cell))] + ' ' + cell[random.randint(0, len(cell)):]\n        elif random.choice(choices) == 'remove_space':\n            cell = cell.replace(' ', '')\n        elif random.choice(choices) == 'incorrect_capitalization':\n            cell = random.choice(re.split(',', cell))\n            index = random.randint(0, len(cell) - 1)\n            if cell[index].islower():\n                cell = cell[:index] + cell[index].upper() + cell[index + 1:]\n            else:\n                cell = cell[:index] + cell[index].lower() + cell[index + 1:]\n        elif random.choice(choices) == 'extra_comma':\n            cell = cell[:random.randint(0, len(cell))] + ',' + cell[random.randint(0, len(cell)):]\n        elif random.choice(choices) == 'incorrect_char':\n            char = random.choice(string.punctuation)\n            index = random.randint(0, len(cell))\n            cell = cell[:index] + char + cell[index:]\n    return cell\n\n# The detect function from the previous correct solution should be used here\ndef detect(cell):\n    return not re.match(r'^[A-Z][a-zA-Z\\s,\\-\\'\\.]+$', cell.replace(' ', '').replace(',', '').isalnum())"
+ },
+ "language": {
+  "column": "language",
+  "detect": "import re\n\ndef detect(cell):\n    # A clean cell pattern is either just \"English\", or \"English\" followed by one or more languages separated by commas\n    # but also allows for \"Russian,English\" to be considered clean\n    clean_cell_pattern = re.compile(r'^(English(,(?!English\\b)\\w+(,\\w+)*)?$|^(Russian,English)$)')\n    if clean_cell_pattern.search(cell):\n        return False\n    else:\n        return True",
+  "score": 0.952,
+  "accepted": true,
+  "refinements": 1,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    # A clean cell pattern is either just \"English\", or \"English\" followed by one or more languages separated by commas\n    # but also allows for \"Russian,English\" to be considered clean\n    clean_cell_pattern = re.compile(r'^(English(,(?!English\\b)\\w+(,\\w+)*)?$|^(Russian,English)$)')\n    if clean_cell_pattern.search(cell):\n        return False\n    else:\n        return True\n\ndef corrupt(cell):\n    if detect(cell):\n        # The cell is already dirty, so return it as is\n        return cell\n\n    # List of languages and common errors\n    languages = ['Spanish', 'French', 'German', 'Italian', 'Russian', 'Japanese', 'Mandarin', 'Arabic', 'Latin', 'Portuguese', 'Cantonese', 'American Sign Language', 'Scottish Gaelic', 'Scots', 'Hindi', 'Somali', 'Vietnamese', 'Chinese', 'Albanian', 'Bulgarian', 'Danish', 'Czech', 'Dutch', 'Slovak', 'Icelandic', 'Korean', 'Indonesian']\n    errors = ['Unknown', '']\n\n    # Split the cell into parts\n    parts = cell.split(',')\n\n    # If the cell is just 'English', add an incorrect language\n    if len(parts) == 1 and parts[0] == 'English':\n        parts.append(random.choice(languages))\n        return ','.join(parts)\n\n    # If the cell is 'Russian,English', shuffle the languages or add an incorrect language\n    if parts == ['Russian', 'English']:\n        if random.choice([True, False]):\n            parts.append(random.choice(languages))\n        else:\n            random.shuffle(parts)\n        return ','.join(parts)\n\n    # For other clean cells, duplicate a random part or add an error\n    if random.choice([True, False]):\n        parts.append(random.choice(errors))\n    else:\n        parts.append(random.choice(parts))\n    \n    return ','.join(parts)"
+ },
+ "country": {
+  "column": "country",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = r'^(?!.*(?<!\\bUSA),\\s*(?=USA\\b))(?!.*,USA,.*USA\\b)(?!.*,USA,.*$)'\n    return bool(re.search(pattern, cell))",
+  "score": 0.19,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "duration": {
+  "column": "duration",
+  "detect": "import re\n\ndef detect(cell):\n    if re.match(r'^[1-9][0-9]? min$', cell) or re.match(r'^[1-9][0-9]?$ min$', cell):\n        return False\n    if re.match(r'^[1-9][0-9]?$ hr\\.$', cell) or re.match(r'^[1-2][0-9]? hr\\.$', cell) or re.match(r'^[1-2][0-9]? hr\\.[ ]?[0-5]?[0-9] min\\.$', cell):\n        return True\n    if cell == '':\n        return True\n    return False",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    if re.match(r'^[1-9][0-9]? min$', cell) or re.match(r'^[1-9][0-9]?$ min$', cell):\n        return False\n    if re.match(r'^[1-9][0-9]?$ hr\\.$', cell) or re.match(r'^[1-2][0-9]? hr\\.$', cell) or re.match(r'^[1-2][0-9]? hr\\.[ ]?[0-5]?[0-9] min\\.$', cell):\n        return True\n    if cell == '':\n        return True\n    return False\n\ndef corrupt(cell):\n    if random.choice([True, False]):\n        # Convert clean cell to a dirty format that includes hours and minutes\n        minutes = int(cell[:-3])\n        hours = minutes // 60\n        remaining_minutes = minutes % 60\n        if hours == 0:\n            hours = 1  # Ensure there is at least 1 hour in the dirty format\n        if remaining_minutes == 0:\n            return f\"{hours} hr.\"\n        return f\"{hours} hr. {remaining_minutes} min.\"\n    else:\n        # Introduce missing values or leading/trailing spaces\n        if random.choice([True, False]):\n            return ''\n        else:\n            return f\" {cell} \"\n\n# Examples\nprint(corrupt('95 min'))  # Should produce a dirty version like \"1 hr.\" or \"1 hr. 35 min\" or an empty string\nprint(corrupt('106 min')) # Should produce a dirty version like \"1 hr. 46 min.\" or an empty string"
+ },
+ "rating_value": {
+  "column": "rating_value",
+  "detect": "import re\n\ndef detect(cell):\n    if not cell:\n        return False\n    dirty_pattern = re.compile(r'^\\d+\\/10$|^(\\d+\\.\\d+)\\/10$|^(\\d|(\\d+\\.\\d+))/10,(\\d|(\\d+\\.\\d+))\\/10$')\n    return dirty_pattern.search(cell) is not None",
+  "score": 0.857,
+  "accepted": true,
+  "refinements": 3,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    if not cell:\n        return ''\n    # Formats that make a cell dirty\n    dirty_formats = [\n        lambda x: f\"{random.choice([str(int(x)), str(round(float(x), 1))])}/{random.choice(['10', str(random.randint(1, 10))])}\",\n        lambda x: f\"{random.choice([str(int(x)), str(round(float(x), 1))])}/{random.choice(['10', str(random.randint(1, 10))])},{random.choice([str(int(x)), str(round(float(x), 1))])}/{random.choice(['10', str(random.randint(1, 10))])}\",\n    ]\n    return dirty_formats[random.randint(0, 1)](cell)\n\ndef detect(cell):\n    if not cell:\n        return False\n    dirty_pattern = re.compile(r'^\\d+\\/10$|^(\\d+\\.\\d+)\\/10$|^(\\d|(\\d+\\.\\d+))/10,(\\d|(\\d+\\.\\d+))\\/10$')\n    return dirty_pattern.search(cell) is not None"
+ },
+ "rating_count": {
+  "column": "rating_count",
+  "detect": "import re\n\ndef detect(cell):\n    if cell == \"\":\n        return False\n    # Clean cells are numbers without commas or with commas up to a certain point\n    clean_pattern = re.compile(r'^\\d{1,7}(,\\d{3})*$')\n    # Dirty cells are numbers that are significantly large and contain commas beyond the clean range\n    dirty_pattern = re.compile(r'^\\d{8,}(,\\d{3})*$')\n    \n    if dirty_pattern.match(cell):\n        return True\n    elif clean_pattern.match(cell):\n        return False\n    else:\n        return False",
+  "score": 0.0,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "review_count": {
+  "column": "review_count",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = re.compile(r'^(\\d+[\\s]?user)?(,\\s?(\\d+[\\s]?critic)?)?$')\n    return not bool(pattern.fullmatch(cell))",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    pattern = re.compile(r'^(\\d+[\\s]?user)?(,\\s?(\\d+[\\s]?critic)?)?$')\n    return not bool(pattern.fullmatch(cell))\n\ndef corrupt(cell):\n    if not detect(cell):\n        methods = [\n            lambda c: re.sub(r'(\\d+)', lambda m: str(int(m.group(0)) + random.randint(-2, 2)), c),  # Add random noise to numbers\n            lambda c: re.sub(r'(user|critic)', lambda m: m.group(0).capitalize(), c),  # Capitalize randomly\n            lambda c: re.sub(r'\\d+', '', cell),  # Remove numbers\n            lambda c: re.sub(r'(user|critic)', '', cell),  # Remove the units\n            lambda c: re.sub(r',', '', cell),  # Remove commas\n            lambda c: re.sub(r' ', '', cell)  # Remove spaces\n        ]\n        cell = random.choice(methods)(cell)\n    return cell"
+ },
+ "genre": {
+  "column": "genre",
+  "detect": "import re\n\ndef detect(cell):\n    if re.search(r'\\bArt House & International\\b', cell) or re.search(r'\\bSpecial Interest\\b', cell) or re.search(r'\\bMystery & Suspense\\b', cell) or re.search(r'\\bClassics\\b', cell) or re.search(r'\\bMusical & Performing Arts\\b', cell):\n        return True\n    if ',' in cell and any(substring in cell for substring in ['Comedy,Romance', 'Comedy,Drama,Romance', 'Action & Adventure']):\n        return True\n    if ',' in cell and len(cell.split(',')) > 3:\n        return True\n    return False",
+  "score": 0.909,
+  "accepted": true,
+  "refinements": 3,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    clean_patterns = [r'\\bDrama\\b', r'\\bComedy\\b', r'\\bBiography\\b', r'\\bCrime\\b', r'\\bHorror\\b', r'\\bAction\\b', r'\\bAnimation\\b', r'\\bDocumentary\\b', r'\\bAdventure\\b', r'\\bFamily\\b', r'\\bFantasy\\b', r'\\bSci-Fi\\b', r'\\bThriller\\b', r'\\bRomance\\b', r'\\bWestern\\b']\n    dirty_patterns = {\n        r'\\bDrama\\b': ['Drama,Art House & International', 'Drama,Special Interest', 'Drama,Mystery & Suspense', 'Drama,Classics'],\n        r'\\bComedy\\b': ['Comedy,Romance', 'Comedy,Crime', 'Comedy,Horror'],\n        r'\\bBiography\\b': ['Biography,Comedy,Drama', 'Documentary,Biography', 'Biography,Western'],\n        r'\\bCrime\\b': ['Crime,Film-Noir,Mystery'],\n        r'\\bHorror\\b': ['Horror,Mystery,Thriller', 'Horror,Comedy'],\n        r'\\bAction\\b': ['Action,Adventure,Crime'],\n        r'\\bAnimation\\b': ['Animation,Adventure,Comedy'],\n        r'\\bDocumentary\\b': ['Documentary,Musical & Performing Arts'],\n        r'\\bAdventure\\b': ['Adventure,Fantasy'],\n        r'\\bFamily\\b': ['Family,Animation'],\n        r'\\bFantasy\\b': ['Drama,Fantasy,Musical'],\n        r'\\bSci-Fi\\b': ['Drama,Sci-Fi,Thriller'],\n        r'\\bThriller\\b': ['Drama,Thriller', 'Horror,Thriller'],\n        r'\\bRomance\\b': ['Drama,Romance', 'Comedy,Romance'],\n        r'\\bWestern\\b': ['Biography,Western']\n    }\n    \n    matches = [(m.group(), mregs) for mregs in dirty_patterns.values() for m in (re.finditer('|'.join(mregs[0]), cell) if isinstance(mregs[0], str) else mregs[0])]\n    \n    if matches:\n        replacement_patterns = matches[0][1]\n        replacement = random.choice(replacement_patterns)\n        # Replace randomly selected matched patterns\n        cell = re.sub('|'.join(matches[0][0]), replacement, cell)\n    else:\n        if ',' in cell:\n            genres = cell.split(',')\n            if len(genres) < 3:\n                genres.append(random.choice(list(set(dirty_patterns.keys()) - set(genres))))\n            cell = ', '.join(genres)\n        else:\n            genres = [cell, random.choice(list(dirty_patterns.keys()))]\n            cell = ', '.join(genres)\n    \n    return cell"
+ },
+ "filming_locations": {
+  "column": "filming_locations",
+  "detect": "import re\n\ndef detect(cell):\n    if not cell:\n        return False\n    pattern = re.compile(r'^[A-Za-z\\s,.\\'-]+(?:, USA)?(?:, UK)?(?:, Canada)?(?:, Mexico)?(?:, Italy)?(?:, Scotland)?(?:, Wales)?(?:, France)?(?:, Germany)?(?:, Japan)?(?:, Switzerland)?(?:, Monaco)?$')\n    return not bool(pattern.fullmatch(cell))",
+  "score": 0.952,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    if not cell:\n        return cell\n    # Split the cell into parts separated by commas\n    parts = cell.split(', ')\n    # Possible alterations\n    alterations = [' ', '.', \"'\", '-']\n    \n    # Introduce randomness in alterations\n    if random.choice([0, 1]):  # Add or remove a space or punctuation\n        if random.choice([0, 1]):\n            parts[random.randint(0, len(parts) - 1)] += random.choice(alterations)\n        else:\n            parts[random.randint(0, len(parts) - 1)] = parts[random.randint(0, len(parts) - 1)].rstrip(random.choice(alterations))\n    \n    # Possibly add an extra comma at the end\n    if random.choice([0, 1]):\n        parts.append('')\n    \n    # Join parts back and return the potentially corrupted cell\n    return ', '.join(parts)\n\ndef detect(cell):\n    if not cell:\n        return False\n    pattern = re.compile(r'^[A-Za-z\\s,.\\'-\\(\\)]+$')\n    return bool(pattern.fullmatch(cell))"
+ },
+ "description": {
+  "column": "description",
+  "detect": "import re\n\ndef detect(cell):\n    # Patterns that indicate dirty cells\n    dirty_patterns = [\n        r'\\b\\d{4}\\b',  # years like 2002 or 1990s\n        r'\\bpremiered\\b',  # premiered at events or places\n        r'\\bfrom director\\b',  # mentioning directors\n        r'\\bintroduced the\\b',  # introducing characters or scenes\n        r'\\bif anyone abandons\\b',  # conditional clauses about rules or restrictions\n        r'\\bpicks up where\\b',  # starting a summary in this way\n        r'\\n\\bintroducing\\b',  # introducing characters or scenes with new lines\n        r'\\b\\.\\.\\b',  # elipsis indicating continuation\n        r'\\bcrossing\\b',  # narrative elements like crossing over or lines\n        r'\\bHitchhiker\\b',  # detailed narrative events\n        r'\\bplot is unknown\\b',  # generic dirty patterns\n        r'\\bHuckleberry Finn',  # specific narrative descriptions\n        r'\\bPeaceable Kingdom',  # detailed plot description with theme\n        r'\\bA 35 year old\\b',  # specific age or demographic descriptions\n        r'\\bA 12-year-old boy\\b',  # specific demographic\n        r'\\bmystery woman\\b',  # detailed narrative description\n        r'\\bmurders\\b',  # intense narrative actions\n        r'\\bkill\\b',  # violent events\n        r'\\bmurder\\b',  # violent events\n        r'\\bmakes his American splendor\\b',  # detailed narrative description\n        r'\\bfounded by the\\b',  # detailed narrative description\n        r'\\bthe search\\b',  # narrative events\n        r'\\bmotivated by his\\b',  # detailed narrative actions\n        r'\\bsubject\\s+to\\b',  # involving detailed narrative descriptions\n        r'\\bchaotic personal life stole headlines\\b',  # detailed narrative descriptions\n        r'\\bbegins murdering\\b',  # violent narrative description\n        r'\\bentire judicial system is put to the test\\b',  # detailed narrative descriptions\n    ]\n    \n    # Patterns that indicate clean cells\n    clean_patterns = [\n        r'\\bhappy ending\\b',  # typical clean movie descriptions\n        r'\\ba happy family\\b',  # focusing on character relationships or lifestyles\n        r'\\na chance encounter\\b',  # clean, predictable storyline introductions\n        r'\\ba group of friends\\b',  # character groupings\n        r'\\ralmost idyllic\\b',  # positive descriptive words or phrases\n        r'\\bregarded as\\b',  # clean descriptions without detailed plots\n        r'\\bwho grew up in\\b',  # clean, but focusing on the background of the subject\n        r'\\bshowcasing the\\b',  # thematic or general descriptions\n        r'\\bthe story of\\b',  # general story description without narrative events\n        r'\\bshowing us the\\b',  # illustrating without detailed events\n        r'\\bshowing the history\\b',  # historical without detailed narrative\n        r'\\bthe world of\\b',  # thematic world description\n        r'\\bsurviving in\\b',  # survival or challenge in a thematic way\n        r'\\babandoned\\b',  # thematic without detailed narrative events\n        r'\\balso starred\\b',  # indicating an artistic or cinematic work\n        r'\\bregarded as one of\\b',  # thematic without detailed narrative\n        r'\\bredempting feature\\b',  # general positive commentary on a work\n        r'\\ban anti-social private eye\\b',  # thematic roles without detailed events\n        r'\\bAmerican showgirl\\b',  # thematic without detailed plot\n        r'\\bteenager from a political family\\b',  # thematic without detailed plot\n    ]\n    \n    # Check if cell matches any of the dirty patterns\n    if any(re.search(pattern, cell) for pattern in dirty_patterns):\n        return True\n    \n    # Check if cell matches any of the clean patterns\n    if any(re.search(pattern, cell) for pattern in clean_patterns):\n        return False\n    \n    # If cannot be classified, return False to assume it's clean\n    return False",
+  "score": 0.737,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ }
+}

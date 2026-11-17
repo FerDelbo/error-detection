@@ -1,0 +1,134 @@
+{
+ "llm": "qwen",
+ "modelo_llm": "qwen2.5:14b",
+ "lm": "roberta-base",
+ "args": {
+  "dirty": "/home/a2482126/error-detection/dataset/movies_1/dirty.csv",
+  "labeled": "/home/a2482126/error-detection/outputs/movies/gidcl_b20_k20_qwen_s0/split/labeled_cells.csv",
+  "clusters": "/home/a2482126/error-detection/outputs/movies/gidcl_b20_k20_qwen_s0/split/clusters.csv",
+  "outdir": "/home/a2482126/error-detection/outputs/movies/gidcl_b20_k20_qwen_s0",
+  "lm": "roberta-base",
+  "tau": 0.85,
+  "iter_max": 4,
+  "rounds": 3,
+  "epochs": 8,
+  "batch": 16,
+  "infer_batch": 128,
+  "lr": 2e-05,
+  "max_len": 256,
+  "pseudo_per_col": 20,
+  "coreset_n": 200,
+  "coreset_conf": 0.9,
+  "col_ctx_max": 20,
+  "seed": 0,
+  "llm": "qwen"
+ },
+ "uso_llm": {
+  "calls": 169,
+  "prompt_tokens": 230001,
+  "completion_tokens": 29714
+ },
+ "rodadas": [
+  {
+   "round": 1,
+   "accepted": [
+    "actors",
+    "country",
+    "description",
+    "full_cast",
+    "genre",
+    "id",
+    "language",
+    "name",
+    "rating_count",
+    "rating_value",
+    "release_date",
+    "review_count",
+    "year"
+   ],
+   "pseudo": 97,
+   "novas_celulas_coreset": 187,
+   "fracao_erros_treino": 0.331,
+   "perda": [
+    0.6348,
+    0.5755,
+    0.4188,
+    0.2611,
+    0.1979,
+    0.1428,
+    0.1105,
+    0.0833
+   ],
+   "marcadas_pelo_modelo": 7175,
+   "segundos": 177
+  },
+  {
+   "round": 2,
+   "accepted": [
+    "actors",
+    "country",
+    "duration",
+    "full_cast",
+    "genre",
+    "id",
+    "language",
+    "name",
+    "rating_count",
+    "rating_value",
+    "release_date",
+    "review_count",
+    "year"
+   ],
+   "pseudo": 211,
+   "novas_celulas_coreset": 187,
+   "fracao_erros_treino": 0.349,
+   "perda": [
+    0.2828,
+    0.1853,
+    0.1475,
+    0.1096,
+    0.0808,
+    0.0519,
+    0.0331,
+    0.0218
+   ],
+   "marcadas_pelo_modelo": 7514,
+   "segundos": 219
+  },
+  {
+   "round": 3,
+   "accepted": [
+    "actors",
+    "duration",
+    "filming_locations",
+    "full_cast",
+    "genre",
+    "id",
+    "language",
+    "name",
+    "rating_value",
+    "release_date",
+    "review_count",
+    "year"
+   ],
+   "pseudo": 288,
+   "novas_celulas_coreset": 187,
+   "fracao_erros_treino": 0.335,
+   "perda": [
+    0.1022,
+    0.1132,
+    0.0632,
+    0.0387,
+    0.0316,
+    0.0238,
+    0.0127,
+    0.0117
+   ],
+   "marcadas_pelo_modelo": 7652,
+   "segundos": 254
+  }
+ ],
+ "marcadas": 7652,
+ "marcadas_funcoes": 6264,
+ "total_s": 653
+}

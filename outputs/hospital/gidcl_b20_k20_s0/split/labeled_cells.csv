@@ -1,0 +1,401 @@
+row,column,dirty,clean
+5,index,6,6
+5,provider_number,10018,10018
+5,name,callahan eye foundation hospital,callahan eye foundation hospital
+5,address_1,1720 university blvd,1720 university blvd
+5,address_2,empty,empty
+5,address_3,empty,empty
+5,city,birmingham,birmingham
+5,state,al,al
+5,zip,35233,35233
+5,county,jefferson,jefferson
+5,phone,2053258100,2053258100
+5,type,acute care hospitals,acute care hospitals
+5,owner,voluntary non-profit - private,voluntary non-profit - private
+5,emergency_service,yes,yes
+5,condition,surgical infection prevention,surgical infection prevention
+5,measure_code,scip-inf-6,scip-inf-6
+5,measure_name,surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor),surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+5,score,empty,empty
+5,sample,empty,empty
+5,state_average,al_scip-inf-6,al_scip-inf-6
+56,index,57,57
+56,provider_number,10005,10005
+56,name,marshall medical center south,marshall medical center south
+56,address_1,2505 u s highway 431 north,2505 u s highway 431 north
+56,address_2,empty,empty
+56,address_3,empty,empty
+56,city,boxz,boaz
+56,state,al,al
+56,zip,35957,35957
+56,county,marshall,marshall
+56,phone,2565938310,2565938310
+56,type,acute care hospitals,acute care hospitals
+56,owner,government - hospital district or authority,government - hospital district or authority
+56,emergency_service,yes,yes
+56,condition,pneumonia,pneumonia
+56,measure_code,pn-3b,pn-3b
+56,measure_name,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics
+56,score,97%,97%
+56,sample,120 patients,120 patients
+56,state_average,al_pn-xb,al_pn-3b
+116,index,117,117
+116,provider_number,10007,10007
+116,name,mizell memorial hospital,mizell memorial hospital
+116,address_1,702 n main st,702 n main st
+116,address_2,empty,empty
+116,address_3,empty,empty
+116,city,opp,opp
+116,state,al,al
+116,zip,36467,36467
+116,county,covington,covington
+116,phone,3344933541,3344933541
+116,type,acute care hospitals,acute care hospitals
+116,owner,voluntary non-profit - private,voluntary non-profit - private
+116,emergency_service,no,no
+116,condition,surgical infection prevention,surgical infection prevention
+116,measure_code,scip-inf-6,scip-inf-6
+116,measure_name,surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor),surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+116,score,100%,100%
+116,sample,123 patients,123 patients
+116,state_average,al_scip-inf-6,al_scip-inf-6
+216,index,217,217
+216,provider_number,10011,10011
+216,name,st vincents east,st vincents east
+216,address_1,50 medical park east drive,50 medical park east drive
+216,address_2,empty,empty
+216,address_3,empty,empty
+216,city,birmingham,birmingham
+216,state,al,al
+216,zip,35235,35235
+216,county,jeffersxn,jefferson
+216,phone,2058383122,2058383122
+216,type,acute care hospitals,acute care hospitals
+216,owner,volunxary non-profix - privaxe,voluntary non-profit - private
+216,emergency_service,yes,yes
+216,condition,surgical infection prevention,surgical infection prevention
+216,measure_code,scip-inf-6,scip-inf-6
+216,measure_name,surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor),surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+216,score,100%,100%
+216,sample,601 patients,601 patients
+216,state_average,al_scip-inf-6,al_scip-inf-6
+256,index,257,257
+256,provider_number,10015,10015
+256,name,southwest alabama medical center,southwest alabama medical center
+256,address_1,33700 highway 43,33700 highway 43
+256,address_2,empty,empty
+256,address_3,empty,empty
+256,city,thomasville,thomasville
+256,state,al,al
+256,zip,36784,36784
+256,county,clarke,clarke
+256,phone,3346366221,3346366221
+256,type,acute care hospitals,acute care hospitals
+256,owner,government - federal,government - federal
+256,emergency_service,yes,yes
+256,condition,xneumonia,pneumonia
+256,measure_code,pn-3b,pn-3b
+256,measure_name,pneumonxa patxents whose inxtxal emergency room blood culture was performed prxor to the admxnxstratxon of the fxrst hospxtal dose of antxbxotxcs,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics
+256,score,x6%,96%
+256,sample,24 patients,24 patients
+256,state_average,al_pn-3b,al_pn-3b
+332,index,333,333
+332,provider_number,10055,10055
+332,name,flowers hospital,flowers hospital
+332,address_1,4370 west main street,4370 west main street
+332,address_2,empty,empty
+332,address_3,empty,empty
+332,city,dothan,dothan
+332,state,al,al
+332,zip,3x305,36305
+332,county,houston,houston
+332,phone,3347935000,3347935000
+332,type,acute care hospitals,acute care hospitals
+332,owner,proxrietary,proprietary
+332,emergency_service,yex,yes
+332,condition,heart failure,heart failure
+332,measure_code,hf-3,hf-3
+332,measure_name,heart failure patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd),heart failure patients given ace inhibitor or arb for left ventricular systolic dysfunction (lvsd)
+332,score,100%,100%
+332,sample,94 patients,94 patients
+332,state_average,al_hf-3,al_hf-3
+367,index,368,368
+367,provider_number,10086,10086
+367,name,northwest medical center,northwest medical center
+367,address_1,1530 u s highway 43,1530 u s highway 43
+367,address_2,empty,empty
+367,address_3,empty,empty
+367,city,winfielx,winfield
+367,state,al,al
+367,zip,35594,35594
+367,county,marion,marion
+367,phone,2054877736,2054877736
+367,type,acute care hospitals,acute care hospitals
+367,owner,proprietary,proprietary
+367,emergency_service,yes,yes
+367,condition,pneumonia,pneumonia
+367,measure_code,pn-4,pn-4
+367,measure_name,pneumonia patients given smoking cessation advice/counseling,pneumonia patients given smoking cessation advice/counseling
+367,score,98%,98%
+367,sample,40 patients,40 patients
+367,state_average,al_pn-4,al_pn-4
+431,index,432,432
+431,provider_number,10164,10164
+431,name,coosa valley medical center,coosa valley medical center
+431,address_1,315xwxhickoryxst,315 w hickory st
+431,address_2,empty,empty
+431,address_3,empty,empty
+431,city,sylacauga,sylacauga
+431,state,al,al
+431,zip,35150,35150
+431,county,talladega,talladega
+431,phone,2562495000,2562495000
+431,type,acute care hospitals,acute care hospitals
+431,owner,voluntary non-profit - other,voluntary non-profit - other
+431,emergency_service,no,no
+431,condition,surgical infection prevention,surgical infection prevention
+431,measure_code,scip-card-2,scip-card-2
+431,measure_name,surgery patients who were taking heart drugs called beta blockers before coming to the hospital who were kept on the beta blockers during the period just before and after their surgery,surgery patients who were taking heart drugs called beta blockers before coming to the hospital who were kept on the beta blockers during the period just before and after their surgery
+431,score,82%,82%
+431,sample,22 patients,22 patients
+431,state_average,al_scip-card-2,al_scip-card-2
+435,index,436,436
+435,provider_number,20017,20017
+435,name,alaska regional hospital,alaska regional hospital
+435,address_1,2801 debarr road,2801 debarr road
+435,address_2,empty,empty
+435,address_3,empty,empty
+435,city,anchorage,anchorage
+435,state,ak,ak
+435,zip,99508,99508
+435,county,anchorage,anchorage
+435,phone,9072761131,9072761131
+435,type,acute care hospitals,acute care hospitals
+435,owner,proprietary,proprietary
+435,emergency_service,yes,yes
+435,condition,heart failure,heart failure
+435,measure_code,hf-4,hf-4
+435,measure_name,heart failure patients given smoking cessation advice/counseling,heart failure patients given smoking cessation advice/counseling
+435,score,100%,100%
+435,sample,13 patients,13 patients
+435,state_average,ak_hf-4,ak_hf-4
+437,index,438,438
+437,provider_number,20017,20017
+437,name,alaska regional hospital,alaska regional hospital
+437,address_1,2801 debarr road,2801 debarr road
+437,address_2,empty,empty
+437,address_3,empty,empty
+437,city,anchoraxe,anchorage
+437,state,ak,ak
+437,zip,99508,99508
+437,county,anchorage,anchorage
+437,phone,9072761131,9072761131
+437,type,acute care hospitals,acute care hospitals
+437,owner,proprietary,proprietary
+437,emergency_service,yes,yes
+437,condition,pneumonia,pneumonia
+437,measure_code,pn-3b,pn-3b
+437,measure_name,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics,pneumonia patients whose initial emergency room blood culture was performed prior to the administration of the first hospital dose of antibiotics
+437,score,100%,100%
+437,sample,47 patients,47 patients
+437,state_average,ak_pn-3b,ak_pn-3b
+447,index,448,448
+447,provider_number,20017,20017
+447,name,alaska regional hospital,alaska regional hospital
+447,address_1,2801 debarr road,2801 debarr road
+447,address_2,empty,empty
+447,address_3,empty,empty
+447,city,anchorage,anchorage
+447,state,ak,ak
+447,zip,99508,99508
+447,county,anchorage,anchorage
+447,phone,9072761131,9072761131
+447,type,acute care hospitals,acute care hospitals
+447,owner,proprietary,proprietary
+447,emergency_service,yes,yes
+447,condition,surgical infection prevention,surgical infection prevention
+447,measure_code,scip-inf-6,scip-inf-6
+447,measure_name,surgeryxpatientsxneedingxhairxremovedxfromxthexsurgicalxareaxbeforexsurgery& xwhoxhadxhairxremovedxusingxaxsaferxmethodx(electricxclippersxorxhairxremovalxcreamxï¿½cxnotxaxrazor),surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+447,score,100%,100%
+447,sample,690 patients,690 patients
+447,state_average,ak_scip-inf-6,ak_scip-inf-6
+450,index,451,451
+450,provider_number,20018,20018
+450,name,yukon kuskokwim delta reg hospital,yukon kuskokwim delta reg hospital
+450,address_1,po box 287,po box 287
+450,address_2,empty,empty
+450,address_3,empty,empty
+450,city,bethel,bethel
+450,state,ak,ak
+450,zip,99559,99559
+450,county,bethel,bethel
+450,phone,9075436300,9075436300
+450,type,acute care hospitals,acute care hospitals
+450,owner,government - federal,government - federal
+450,emergency_service,no,no
+450,condition,heart attack,heart attack
+450,measure_code,ami-1,ami-1
+450,measure_name,heart attack patients given aspirin at arrival,heart attack patients given aspirin at arrival
+450,score,empty,empty
+450,sample,empty,empty
+450,state_average,ak_ami-1,ak_ami-1
+485,index,486,486
+485,provider_number,10021,10021
+485,name,dale medical center,dale medical center
+485,address_1,126 hospital ave,126 hospital ave
+485,address_2,empty,empty
+485,address_3,empty,empty
+485,city,xzark,ozark
+485,state,al,al
+485,zip,36360,36360
+485,county,dale,dale
+485,phone,3347742601,3347742601
+485,type,acute care hospitals,acute care hospitals
+485,owner,government - hospital district or authority,government - hospital district or authority
+485,emergency_service,yes,yes
+485,condition,surgical infection prevention,surgical infection prevention
+485,measure_code,scip-inf-2,scip-inf-2
+485,measure_name,surgery patients who were given the  right kind  of antibiotic to help prevent infection,surgery patients who were given the  right kind  of antibiotic to help prevent infection
+485,score,96%,96%
+485,sample,52 patients,52 patients
+485,state_average,al_scip-inf-2,al_scip-inf-2
+613,index,614,614
+613,provider_number,10027,10027
+613,name,elba general hospital,elba general hospital
+613,address_1,987 drayton street,987 drayton street
+613,address_2,empty,empty
+613,address_3,empty,empty
+613,city,elba,elba
+613,state,al,al
+613,zip,36323,36323
+613,county,coffee,coffee
+613,phone,3348972257,3348972257
+613,type,acute care hospitals,acute care hospitals
+613,owner,voluntary non-profit - other,voluntary non-profit - other
+613,emergency_service,yes,yes
+613,condition,surgical infection prevention,surgical infection prevention
+613,measure_code,scip-inf-6,scip-inf-6
+613,measure_name,surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor),surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+613,score,empty,empty
+613,sample,empty,empty
+613,state_average,al_scip-inf-6,al_scip-inf-6
+638,index,639,639
+638,provider_number,10029,10029
+638,name,east alabama medical center and snf,east alabama medical center and snf
+638,address_1,2000 pepperell parkway,2000 pepperell parkway
+638,address_2,empty,empty
+638,address_3,empty,empty
+638,city,opelika,opelika
+638,state,al,al
+638,zip,36801,36801
+638,county,lee,lee
+638,phone,3347493411,3347493411
+638,type,acute care hospitals,acute care hospitals
+638,owner,government - hospital district or authority,government - hospital district or authority
+638,emergency_service,yes,yes
+638,condition,surgical infection prevention,surgical infection prevention
+638,measure_code,scip-inf-6,scip-inf-6
+638,measure_name,surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor),surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+638,score,100%,100%
+638,sample,1421 patients,1421 patients
+638,state_average,al_scip-inf-6,al_scip-inf-6
+654,index,655,655
+654,provider_number,10032,10032
+654,name,wedowee hosxital,wedowee hospital
+654,address_1,209 north main street,209 north main street
+654,address_2,empty,empty
+654,address_3,empty,empty
+654,city,wxdowxx,wedowee
+654,state,al,al
+654,zip,36278,36278
+654,county,randolph,randolph
+654,phone,2563572111,2563572111
+654,type,acute care hospitals,acute care hospitals
+654,owner,government - local,government - local
+654,emergency_service,no,no
+654,condition,pneumonia,pneumonia
+654,measure_code,pn-4,pn-4
+654,measure_name,pneumonia patients given smoking cessation advice/counseling,pneumonia patients given smoking cessation advice/counseling
+654,score,67%,67%
+654,sample,6 patients,6 patients
+654,state_average,al_pn-4,al_pn-4
+777,index,778,778
+777,provider_number,10039,10039
+777,name,huntsvxlle hospxtal,huntsville hospital
+777,address_1,101 sivley rd,101 sivley rd
+777,address_2,empty,empty
+777,address_3,empty,empty
+777,city,huntsville,huntsville
+777,state,al,al
+777,zip,35801,35801
+777,county,madison,madison
+777,phone,2562651000,2562651000
+777,type,acute care hospitals,acute care hospitals
+777,owner,government - hospital district or authority,government - hospital district or authority
+777,emergency_service,yes,yes
+777,condition,heart attack,heart attack
+777,measure_code,ami-1,ami-1
+777,measure_name,heart attack patients given aspirin at arrival,heart attack patients given aspirin at arrival
+777,score,98%,98%
+777,sample,155 patients,155 patients
+777,state_average,al_ami-1,al_ami-1
+874,index,875,875
+874,provider_number,10044,10044
+874,name,marion regional medical center,marion regional medical center
+874,address_1,1256 military street south,1256 military street south
+874,address_2,empty,empty
+874,address_3,empty,empty
+874,city,hamilton,hamilton
+874,state,al,al
+874,zip,35570,35570
+874,county,marion,marion
+874,phone,2059216200,2059216200
+874,type,acute care hospitals,acute care hospitals
+874,owner,voluntary non-profit - private,voluntary non-profit - private
+874,emergency_service,yes,yes
+874,condition,surgical infection prevention,surgical infection prevention
+874,measure_code,scip-inf-6,scip-inf-6
+874,measure_name,surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor),surgery patients needing hair removed from the surgical area before surgery who had hair removed using a safer method (electric clippers or hair removal cream c not a razor)
+874,score,100%,100%
+874,sample,19 patients,19 patients
+874,state_average,al_scip-inf-6,al_scip-inf-6
+921,index,922,922
+921,provider_number,10046,10046
+921,name,xivexview xegional medical centex,riverview regional medical center
+921,address_1,600 south third street,600 south third street
+921,address_2,empty,empty
+921,address_3,empty,empty
+921,city,gadsden,gadsden
+921,state,al,al
+921,zip,35901,35901
+921,county,etowah,etowah
+921,phone,2565435200,2565435200
+921,type,acute care hospitals,acute care hospitals
+921,owner,proprietary,proprietary
+921,emergency_service,yxs,yes
+921,condition,pneumonia,pneumonia
+921,measure_code,pn-7,pn-7
+921,measure_name,pneumonia patients assessed and given influenza vaccination,pneumonia patients assessed and given influenza vaccination
+921,score,99%,99%
+921,sample,178 patients,178 patients
+921,state_average,al_pn-7,al_pn-7
+962,index,963,963
+962,provider_number,10049,10049
+962,name,medxcal center enterprxse,medical center enterprise
+962,address_1,400 n edwards street,400 n edwards street
+962,address_2,empty,empty
+962,address_3,empty,empty
+962,city,enterprise,enterprise
+962,state,al,al
+962,zip,36330,36330
+962,county,coffee,coffee
+962,phone,3343470584,3343470584
+962,type,acute care hospitals,acute care hospitals
+962,owner,proprietary,proprietary
+962,emergency_service,yes,yes
+962,condition,heart failure,heart failure
+962,measure_code,hf-1,hf-1
+962,measure_name,heart failure patients given discharge instructions,heart failure patients given discharge instructions
+962,score,96%,96%
+962,sample,70 patients,70 patients
+962,state_average,al_hf-1,al_hf-1

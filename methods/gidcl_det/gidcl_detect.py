@@ -68,7 +68,7 @@ _client = None
 # provedor -> prefixo das variáveis de ambiente (<PREFIXO>_MODEL, _BASE_URL, _API_KEY)
 LLM_PREFIX = {"gpt": "OPENAI", "qwen": "QWEN"}[args.llm]
 # padrões do qwen: o LLM local do ZeroED (methods/zeroed/utility.py), servido por vLLM; chave não é exigida
-LLM_DEFAULTS = {"QWEN_MODEL": "Qwen/Qwen2.5-72B-Instruct", "QWEN_BASE_URL": "http://localhost:8000/v1",
+LLM_DEFAULTS = {"QWEN_MODEL": "Qwen/Qwen2.5-14B-Instruct", "QWEN_BASE_URL": "http://localhost:8000/v1",
                 "QWEN_API_KEY": "EMPTY"} if args.llm == "qwen" else {}
 LLM_CFG = {k: os.environ.get(f"{LLM_PREFIX}_{k}") or LLM_DEFAULTS.get(f"{LLM_PREFIX}_{k}", "")
            for k in ("MODEL", "BASE_URL", "API_KEY")}

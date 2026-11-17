@@ -1,0 +1,162 @@
+{
+ "index": {
+  "column": "index",
+  "detect": "import re\n\ndef detect(cell):\n    pattern_clean = r'^(?:[1-9][0-9]{0,2}|[4-9][0-9]{3})$'\n    return not re.match(pattern_clean, cell)",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    pattern_clean = r'^(?:[1-9][0-9]{0,2}|[4-9][0-9]{3})$'\n    return not re.match(pattern_clean, cell)\n\ndef corrupt(cell):\n    if re.match(r'^[1-9][0-9]{0,2}$', cell):\n        choices = [f'{cell}0', f'0{cell}', cell[0], cell[1:], str(int(cell) + 1)]\n    elif re.match(r'^[4-9][0-9]{3}$', cell):\n        choices = [f'{cell}-', f'{cell}0', f'0{cell}', cell[0:2], cell[2:], str(int(cell) + 1)]\n    return random.choice(choices)"
+ },
+ "provider_number": {
+  "column": "provider_number",
+  "detect": "import re\n\ndef detect(cell):\n    return bool(re.search(r'[^0-9]', cell))",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    return bool(re.search(r'[^0-9]', cell))\n\ndef corrupt(cell):\n    if random.choice([True, False]):\n        # Insert a non-digit character at a random position\n        return cell[:random.randint(0, len(cell))] + 'x' + cell[random.randint(0, len(cell)):]\n    else:\n        # Replace a random digit with a non-digit character\n        idx = random.randint(0, len(cell) - 1)\n        return cell[:idx] + 'x' + cell[idx+1:]"
+ },
+ "name": {
+  "column": "name",
+  "detect": "import re\n\ndef detect(cell):\n    # Patterns to identify dirty cells: presence of 'x' in non-standard positions, incorrect spellings, or extra characters\n    pattern = re.compile(r'(?:x|[^a-zA-Z ])')\n    # Patterns to identify clean cells: known suffixes or prefixes that are consistently spelled correctly\n    clean_patterns = [\n        r'callahan eye foundation hospital$',\n        r'marshall medical center south$',\n        r'mizell memorial hospital$',\n        r'st vincents east$',\n        r'southwest alabama medical center$',\n        r'flowers hospital$',\n        r'northwest medical center$',\n        r'coosa valley medical center$',\n        r'alaska regional hospital$',\n        r'yukon kuskokwim delta reg hospital$',\n        r'dale medical center$',\n        r'elba general hospital$',\n        r'east alabama medical center and snf$'\n    ]\n    \n    if any(re.search(pattern, cell) for pattern in clean_patterns):\n        return False  # Clean cells with 'x' but are known to be correct\n    if pattern.search(cell):\n        return True  # Dirty cells with 'x' and not in the clean patterns\n    return False  # Cells without 'x' are considered clean unless proven otherwise\n\n# Test cases to validate the function\ncells = ['wedowee hospital', 'wedowee hosxital', 'huntsville hospital', 'huntsvxlle hospxtal', 'riverview regional medical center', 'xivexview xegional medical centex', 'medical center enterprise', 'medxcal center enterprxse', 'stringfellow memorial hospital', 'helen keller memorial hospital', 'callahan eye foundation hospital', 'gadsden regional medical center', 'chilton medical center', 'st vincents east', 'eliza coffee memorial hospital', 'shelby baptist medical center', 'southwest alabama medical center', 'hartselle medical center', 'mizell memorial hospital', 'dale medical center', 'cherokee medical center', 'prattville baptist hospital', 'northwest medical center', 'st vincents hospital', 'communitx hospital inc', 'decatur general hospital', 'marshall medical center north', 'andaluxia regionax hospitax', 'baptist medical center south', 'southeast alabama medxcal center', 'andaluxia regional hoxpital', 'callahan eye foundation hospital', 'marshall medical center south', 'mizell memorial hospital', 'st vincents east', 'southwest alabama medical center', 'flowers hospital', 'northwest medical center', 'coosa valley medical center', 'alaska regional hospital', 'alaska regional hospital', 'alaska regional hospital', 'yukon kuskokwim delta reg hospital', 'dale medical center', 'elba general hospital', 'east alabama medical center and snf']\n\n# Uncomment the line below to test the function\n# for cell in cells:\n#     print(f\"{cell}: {detect(cell)}\")",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 3,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    # Patterns to identify dirty cells: presence of 'x' in non-standard positions, incorrect spellings, or extra characters\n    dirty_pattern = re.compile(r'(?:x|[^a-zA-Z ])')\n    # Patterns to identify clean cells: known suffixes or prefixes that are consistently spelled correctly\n    clean_patterns = [\n        r'callahan eye foundation hospital$',\n        r'marshall medical center south$',\n        r'mizell memorial hospital$',\n        r'st vincents east$',\n        r'southwest alabama medical center$',\n        r'flowers hospital$',\n        r'northwest medical center$',\n        r'coosa valley medical center$',\n        r'alaska regional hospital$',\n        r'yukon kuskokwim delta reg hospital$',\n        r'dale medical center$',\n        r'elba general hospital$',\n        r'east alabama medical center and snf$'\n    ]\n    \n    if any(re.search(pattern, cell) for pattern in clean_patterns):\n        return False  # Clean cells with 'x' but are known to be correct\n    if dirty_pattern.search(cell):\n        return True  # Dirty cells with 'x' and not in the clean patterns\n    return False  # Cells without 'x' are considered clean unless proven otherwise\n\ndef corrupt(cell):\n    # List of replacement characters\n    replacements = {'s': 'x', 'v': 'x', 'h': 'x', 't': 'x', 'p': 'x'}\n    # Split the cell into words\n    words = cell.split()\n    # Corrupt each word in the cell\n    corrupted_words = [corrupt_word(word, replacements) for word in words]\n    # Join the corrupted words back into a cell\n    return ' '.join(corrupted_words)\n\ndef corrupt_word(word, replacements):\n    # Corrupt the word by randomly replacing characters\n    corrupted_word = ''\n    for char in word:\n        corrupted_word += replacements.get(char, char) if random.random() < 0.1 else char\n    return corrupted_word\n\n# Test cases to validate the function\nclean_cells = ['callahan eye foundation hospital', 'marshall medical center south', 'mizell memorial hospital', 'st vincents east', 'southwest alabama medical center', 'flowers hospital', 'northwest medical center', 'coosa valley medical center', 'alaska regional hospital', 'yukon kuskokwim delta reg hospital', 'dale medical center', 'elba general hospital', 'east alabama medical center and snf']\ndirty_cells = [corrupt(cell) for cell in clean_cells]\n\n# Uncomment the lines below to test the function\n# for clean, dirty in zip(clean_cells, dirty_cells):\n#     print(f\"Clean: {clean}\")\n#     print(f\"Dirty: {dirty}\")\n#     print(f\"Detection: {detect(dirty)}\\n\")"
+ },
+ "address_1": {
+  "column": "address_1",
+  "detect": "import re\n\ndef detect(cell):\n    # Detect incorrect separators or special characters\n    if re.search(r'[xw s]', cell):\n        return True\n    # Detect incorrect abbreviation handling\n    if re.search(r'\\bU\\s+S\\b', cell) and not re.search(r'\\bU\\.S\\.\\b', cell):\n        return True\n    # Detect incorrect capitalization or formatting in addresses\n    if re.search(r'\\b[A-Z]{2,}\\b', cell) and not re.search(r'\\b[A-Z][a-z]*\\b', cell):\n        return True\n    # Detect missing spaces around street types\n    if re.search(r'\\b(St|Rd|Blvd|Ave|Way|Ct|S|N|E|W)\\b', cell) and not re.search(r'\\b(Street|Road|Boulevard|Avenue|Way|Court|Drive|South|North|East|West)\\b', cell):\n        return True\n    # Detect incorrect number formatting\n    if re.search(r'\\b\\d+\\b', cell) and re.search(r'\\b\\d+\\d+\\b', cell):\n        return True\n    return False",
+  "score": 0.049,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "address_2": {
+  "column": "address_2",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = re.compile(r'^[a-zA-Z0-9\\s]+$')\n    return not bool(pattern.search(cell))",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    pattern = re.compile(r'^[a-zA-Z0-9\\s]+$')\n    return not bool(pattern.search(cell))\n\ndef corrupt(cell):\n    if not detect(cell):\n        return cell  # Return the original cell if it's already dirty/corrupt\n    \n    # Choose a random type of corruption\n    corruption_type = random.choice([None, 'extra_char', 'space_replacement', 'number_replacement'])\n    \n    # Implement the corruption\n    if corruption_type == 'extra_char':\n        index = random.randint(0, len(cell))\n        return cell[:index] + random.choice(\"!@#$%^&*,.\") + cell[index:]\n    elif corruption_type == 'space_replacement':\n        return cell.replace(' ', random.choice(\"!@#$%^&*,.\"))\n    elif corruption_type == 'number_replacement':\n        return re.sub(r'\\d', lambda x: random.choice(\"abcdef\"), cell)\n    else:\n        return cell  # Return original, since None was randomly chosen"
+ },
+ "address_3": {
+  "column": "address_3",
+  "detect": "import re\n\ndef detect(cell):\n    return not cell == 'empty'",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    return not cell == 'empty'\n\ndef corrupt(cell):\n    corruption_types = [\n        lambda s: s[:-1] + random.choice(['a', 'A', '1']),  # Append random character\n        lambda s: s + random.choice(['a', 'A', '1']),       # Prepend random character\n        lambda s: re.sub('empty', 'empta', s),              # Substituting characters\n        lambda s: re.sub('empty', 'empt', s),               # Removing characters\n        lambda s: re.sub('empty', 'emppppppt', s),          # Adding extra characters\n    ]\n    return random.choice(corruption_types)(cell)"
+ },
+ "city": {
+  "column": "city",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = re.compile(r'x+')\n    return bool(pattern.search(cell))",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    # Introduce 'x' at random positions within the cell\n    def introduce_x(s):\n        positions = sorted(random.sample(range(len(s) + 1), random.randint(1, 3)))\n        return ''.join(['x' if i in positions else c for i, c in enumerate(s + 'x')])\n    \n    # Replace random characters with 'x'\n    def replace_chars_with_x(s):\n        positions = sorted(random.sample(range(len(s)), random.randint(1, 3)))\n        return ''.join(['x' if i in positions else c for i, c in enumerate(s)])\n    \n    # Choose a method to corrupt the cell\n    corruption_methods = [introduce_x, replace_chars_with_x]\n    corrupted_cell = random.choice(corruption_methods)(cell)\n    return corrupted_cell\n\ndef detect(cell):\n    pattern = re.compile(r'x+')\n    return bool(pattern.search(cell))"
+ },
+ "state": {
+  "column": "state",
+  "detect": "import re\n\ndef detect(cell):\n    # Clean cells follow a pattern where they start with 'a' and may optionally be followed by 'l' or 'k' but only in two-character combinations\n    clean_pattern = re.compile(r'^a(l|k)?$')\n    return not bool(clean_pattern.match(cell))",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import random\n\ndef corrupt(cell):\n    # Introduce randomness to simulate errors\n    error_types = [\n        lambda x: x[:-1] if x.endswith('l') or x.endswith('k') else x,  # Remove last character if it ends with 'l' or 'k'\n        lambda x: x + 'x' if random.random() < 0.5 else x + 'a',         # Add 'x' or 'a' to the end\n        lambda x: x[:-1] if len(x) == 2 else x,                          # Remove last character if length is 2\n    ]\n    \n    # Choose an error randomly and apply it\n    corrupted_cell = random.choice(error_types)(cell)\n    return corrupted_cell"
+ },
+ "zip": {
+  "column": "zip",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = r'[xX]'\n    return bool(re.search(pattern, cell))",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    pattern = r'[xX]'\n    return bool(re.search(pattern, cell))\n\ndef corrupt(cell):\n    if not detect(cell):\n        position = random.randint(0, len(cell) - 1)\n        corrupted_cell = cell[:position] + 'x' + cell[position+1:]\n        return corrupted_cell\n    return cell"
+ },
+ "county": {
+  "column": "county",
+  "detect": "import re\n\ndef detect(cell):\n    clean_pattern = r'^(jefferson|etowah|marion|covington|marshall|coffee|montgomery|houston|calhoun|madison|morgan|chilton|randolph|shelby|talladega|anchorage|bethel|dale|coffee|lee|randolph|clarke)$'\n    dirty_pattern = r'(xefferson|housxon|madisxn|jexxerson|franklin|x kalb|elmoxe|jeffersxn|x?)'\n    \n    if re.search(dirty_pattern, cell):\n        return True\n    elif re.fullmatch(clean_pattern, cell):\n        return False\n    else:\n        return False",
+  "score": 0.049,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "phone": {
+  "column": "phone",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = r'^\\d{3}[xX]\\d{4}[xX]\\d+$|^\\d{3}[xX]\\d{7}$|^[xX]\\d{6}[xX]\\d{3}$'\n    return bool(re.match(pattern, cell))",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    pattern = r'^\\d{3}[xX]\\d{4}[xX]\\d+$|^\\d{3}[xX]\\d{7}$|^[xX]\\d{6}[xX]\\d{3}$'\n    return bool(re.match(pattern, cell))\n\ndef corrupt(cell):\n    patterns = [\n        lambda c: re.sub(r'(\\d{3})(\\d{4})(\\d{3})', r'\\1x\\2x\\3', c),\n        lambda c: re.sub(r'(\\d{3})', r'x', c),\n        lambda c: re.sub(r'^(\\d{3})', r'x\\1', c),\n        lambda c: re.sub(r'(\\d{3})$', r'\\1x', c),\n        lambda c: re.sub(r'(\\d{3})(\\d{7})', r'\\1x\\2', c)\n    ]\n    return random.choice(patterns)(cell)\n\n# Example usage\nclean_cells = ['2053258100', '3344933541', '2054877736', '2562495000', '9072761131', '3347742601']\nfor cell in clean_cells:\n    dirty = corrupt(cell)\n    print(f\"Clean: {cell} -> Dirty: {dirty} -> Detect: {detect(dirty)}\")"
+ },
+ "type": {
+  "column": "type",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = r'^acute\\s+(care)\\s+hospitals$'\n    return not bool(re.fullmatch(pattern, cell))",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    pattern = r'^acute\\s+care\\s+hospitals$'\n    return not bool(re.fullmatch(pattern, cell))\n\ndef corrupt(cell):\n    if cell != 'acute care hospitals':\n        return cell\n    \n    parts = cell.split(' ')\n    errors = ['insert', 'delete', 'substitute']\n    \n    # Define possible characters to substitute or insert\n    substitutes = {'c': 'x', 'x': 'c', 's': 'x', 'x': 's'}\n    positions = [0, 2, 7]  # positions in indexes of parts to corrupt\n    \n    error_type = random.choice(errors)\n    if error_type == 'substitute':\n        pos = random.choice(positions)\n        if pos == 7:\n            parts[2] = parts[2][:-1] + random.choice(list(substitutes.keys())) + parts[2][-1]\n        else:\n            parts[pos] = parts[pos].replace(parts[pos][pos], substitutes[parts[pos][pos]], 1)\n    elif error_type == 'insert':\n        pos = random.choice(positions)\n        if pos == 7:\n            parts[2] = parts[2][:-1] + random.choice(list(substitutes.keys())) + parts[2][-1:]\n        else:\n            parts[pos] = parts[pos][:pos] + random.choice(list(substitutes.keys())) + parts[pos][pos:]\n    else:  # delete\n        pos = random.choice(positions[:2])\n        parts[pos] = parts[pos][:-1] if pos == 1 else parts[pos][1:]\n    \n    return ' '.join(parts)\n\n# Example usage\nprint(corrupt('acute care hospitals'))"
+ },
+ "owner": {
+  "column": "owner",
+  "detect": "import re\n\ndef detect(cell):\n    pattern_clean = re.compile(r'^(voluntary non-profit - private|government - hospital district or authority|voluntary non-profit - other|government - federal|proprietary|government - state|government - local|voluntary non-profit - church)$')\n    pattern_dirty = re.compile(r'(volunxary|voluntaxy|voluxtary)\\W(non-profix|- privaxe|xroprietary|governmenx - hospixal district or authxrity|gxvernment - hxspital district or authxrity|xroprietary|prxprietary|proxrietary|proprietary)$')\n    if pattern_clean.match(cell):\n        return False\n    if pattern_dirty.match(cell):\n        return True\n    return False",
+  "score": 0.0,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "emergency_service": {
+  "column": "emergency_service",
+  "detect": "import re\n\ndef detect(cell):\n    return bool(re.search(r'^(?!yes$)(?!no$)[yxnoesx0]+$', cell))",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 2,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    if cell == \"yes\":\n        corrupted_cell = random.choice([\"yex\", \"yxs\"])\n    elif cell == \"no\":\n        return cell  # No corruption for 'no'\n    else:\n        corrupted_cell = cell  # Assuming the only clean cells are 'yes' and 'no'\n    return corrupted_cell\n\ndef detect(cell):\n    return bool(re.search(r'^(?!yes$)(?!no$)[yxnoesx0]+$', cell))"
+ },
+ "condition": {
+  "column": "condition",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = r'^(pneumonia|surgical infection prevention|heart failure|heart attack)$'\n    return not re.fullmatch(pattern, cell, re.IGNORECASE) and 'children s asthma care' not in cell.lower()",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 1,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    patterns = [\n        (r'(\\w)(\\w)', r'\\1x\\2'),  # Introduce x between characters\n        (r'(\\w)', r'?\\1'),        # Add ? before character\n        (r'(\\w)', r'\\1x'),        # Add x after character\n        (r'(\\w)', r''),           # Remove random character\n        (r'(pneumonia)', r'x\\1'), # Add x prefix for pneumonia\n        (r'(heart failure)', r'xeart \\1'), # Introduce specific error for heart failure\n        (r'(surgical infection prevention)', r'suxgical ixfectiox prevextiox') # Specific error for surgical infection prevention\n    ]\n    \n    clean_cell = cell.lower()\n    if re.match(r'^pneumonia$', clean_cell):\n        cell = random.choice(patterns)[0].format(cell) + cell + 'a'  # Specific corruption for pneumonia\n    elif re.match(r'^heart failure$', clean_cell):\n        cell = random.choice(['xeart', 'hearx']) + ' ' + cell  # Specific corruption for heart failure\n    elif re.match(r'^surgical infection prevention$', clean_cell):\n        cell = random.choice(['suxgical', 'surgical']) + ' ' + random.choice(['ixfectiox', 'infection']) + ' ' + random.choice(['prevextiox', 'prevention'])  # Specific corruption for surgical infection prevention\n    else:\n        transformations = [re.compile(pattern) for pattern, _ in patterns]\n        cell = transformations[random.randint(0, len(transformations) - 1)].sub(patterns[random.randint(0, len(patterns) - 1)][1], cell)\n    \n    return cell"
+ },
+ "measure_code": {
+  "column": "measure_code",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = re.compile(r'^(scip-inf-\\d+|pn-\\d+[bc]?|am[iy]-\\d+a?|hf-\\d|scip-card-\\d+|scip-vte-\\d+|cac-\\d+)$')\n    return not bool(pattern.match(cell))",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 2,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    if random.choice([True, False]):\n        # Randomly change characters to lowercase or uppercase\n        if random.choice([True, False]):\n            cell = cell.lower()\n        else:\n            cell = cell.upper()\n    else:\n        # Append or remove a random digit or letter\n        if random.choice([True, False]):\n            cell += random.choice([\"a\", \"1\", \"x\"])\n        else:\n            cell = cell[:-1]\n    return cell\n\ndef detect(cell):\n    pattern = re.compile(r'^(scip-inf-\\d+|pn-\\d+[bc]?|am[iy]-\\d+a?|hf-\\d|scip-card-\\d+|scip-vte-\\d+|cac-\\d+)$')\n    return not bool(pattern.match(cell))"
+ },
+ "measure_name": {
+  "column": "measure_name",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = r'(surgeryxpatientsxneedingxhairxremovedxfromxthexsurgicalxareaxbeforexsurgery& xwhoxhadxhairxremovedxusingxaxsaferxmethodx\\(electrichclippersxorxhairxremovalxcreamxï¿½cxnotxaxrazor\\)|hxrt|attxck|pnxumonia|xassessed|xandxgivenxfluenzaxvaccination|xpatientsxneedingxhairxremovedxfromxthexsurgicalxareaxbeforexsurgeryxhadxhairxremovedxusingxsaferxmethodx\\(electrichclippersxorxhairxremovalxcreamxnotxrazor\\)|lvsd|c not a|fxrst|surgexry|antxbxotxcs|hxcattack|xgivenxpcixwithinx90xminutesxofxarrival|pnxuma|xfailure|xpatixnts|xgivenxsmokxngxcessationxadvicexcounsexing|heartxattackxpatientsxgivenxpcixwithinx90xminutesxofxarrival|heaxt|xfailure|xpatixnts|xgivenxsmokxngxcessationxadvicexcounsexing)'\n    return bool(re.search(pattern, cell))",
+  "score": 0.2,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "score": {
+  "column": "score",
+  "detect": "import re\n\ndef detect(cell):\n    # Clean cells have only digits followed by a percentage sign or are 'empty'\n    # Dirty cells may include letters (e.g., 'x') or have other irregularities\n    pattern = re.compile(r'^100%$|^\\d{1,2}%$|^empty$')\n    return not bool(pattern.fullmatch(cell))",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    # Clean cells have only digits followed by a percentage sign or are 'empty'\n    # Dirty cells may include letters (e.g., 'x') or have other irregularities\n    pattern = re.compile(r'^100%$|^\\d{1,2}%$|^empty$')\n    return not bool(pattern.fullmatch(cell))\n\ndef corrupt(cell):\n    if cell == 'empty':\n        return ' ' * random.randint(1, 5)  # Return 1 to 5 spaces\n    \n    percentage = int(cell.rstrip('%'))\n    if percentage == 100:\n        corrupted_digit = random.choice(['x', 'X', 'O', str(percentage - random.randint(1, 3))])\n    else:\n        corrupted_digit = random.choice([str(percentage + random.randint(1, 3)), str(percentage - random.randint(1, 3))])\n    \n    return corrupted_digit + '%' if percentage >= 100 or percentage <= 97 else random.choice([corrupted_digit + '%', corrupted_digit + random.choice(['x', 'X']) + '%'])"
+ },
+ "sample": {
+  "column": "sample",
+  "detect": "import re\n\ndef detect(cell):\n    if cell == 'empty':\n        return False\n    pattern = r'(\\d+)(?<!\\dx) patients$'\n    return not re.match(pattern, cell)",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    if cell == 'empty':\n        return False\n    pattern = r'(\\d+)(?<!\\dx) patients$'\n    return not re.match(pattern, cell)\n\ndef corrupt(cell):\n    if cell == 'empty':\n        return cell  # Don't corrupt empty cells\n    \n    number, unit = cell.split(' ')\n    error_types = [\n        (lambda n: n[:-1] + 'x', \"replace the last digit with 'x'\"),\n        (lambda n: ''.join(random.choice([c, '0']) for c in n), \"randomly replace each digit with '0'\"),\n    ]\n    \n    error_applied = random.choice(error_types)\n    corrupted_number = error_applied[0](number)\n    return f\"{corrupted_number} {unit}\""
+ },
+ "state_average": {
+  "column": "state_average",
+  "detect": "import re\n\ndef detect(cell):\n    dirty_pattern = re.compile(r'^al_pn-xb$')\n    return bool(dirty_pattern.match(cell))",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 3,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    # Possible transformations to make a clean cell dirty\n    transformations = [\n        lambda c: re.sub(r'(\\d)$', r'x\\1', c),  # Append x before the number\n        lambda c: re.sub(r'^al_pn-', 'al_pn-x', c)  # Add x in dirty pattern\n    ]\n    # Apply a random transformation\n    dirty_cell = random.choice(transformations)(cell)\n    return dirty_cell\n\ndef detect(cell):\n    dirty_pattern = re.compile(r'^al_pn-xb$|^al_pn-x\\d$')\n    return bool(dirty_pattern.match(cell))"
+ }
+}

@@ -48,7 +48,7 @@ from pipeline_meta import guard_output, write_metadata  # noqa: E402
 PAPER_CLUSTERS = {"hospital": 20, "flights": 20, "beers": 10, "rayyan": 10, "tax": 30, "imdb": 50}
 # variáveis exigidas por --llm; o qwen tem padrões (os mesmos de methods/gidcl_det/gidcl_detect.py)
 LLM_VARS = {"gpt": ("OPENAI_API_KEY", "OPENAI_BASE_URL", "OPENAI_MODEL"), "qwen": ()}
-QWEN_MODEL = "Qwen/Qwen2.5-72B-Instruct"   # LLM local do ZeroED
+QWEN_MODEL = "Qwen/Qwen2.5-14B-Instruct"   # LLM local
 
 ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 ap.add_argument("--name", required=True, help="rótulo do dataset (usado só nos nomes de saída)")

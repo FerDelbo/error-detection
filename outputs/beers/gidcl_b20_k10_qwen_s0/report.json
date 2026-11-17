@@ -1,0 +1,124 @@
+{
+ "llm": "qwen",
+ "modelo_llm": "qwen2.5:14b",
+ "lm": "roberta-base",
+ "args": {
+  "dirty": "/home/a2482126/error-detection/dataset/beers/dirty.csv",
+  "labeled": "/home/a2482126/error-detection/outputs/beers/gidcl_b20_k10_qwen_s0/split/labeled_cells.csv",
+  "clusters": "/home/a2482126/error-detection/outputs/beers/gidcl_b20_k10_qwen_s0/split/clusters.csv",
+  "outdir": "/home/a2482126/error-detection/outputs/beers/gidcl_b20_k10_qwen_s0",
+  "lm": "roberta-base",
+  "tau": 0.85,
+  "iter_max": 4,
+  "rounds": 3,
+  "epochs": 8,
+  "batch": 16,
+  "infer_batch": 128,
+  "lr": 2e-05,
+  "max_len": 256,
+  "pseudo_per_col": 20,
+  "coreset_n": 200,
+  "coreset_conf": 0.9,
+  "col_ctx_max": 20,
+  "seed": 0,
+  "llm": "qwen"
+ },
+ "uso_llm": {
+  "calls": 103,
+  "prompt_tokens": 77347,
+  "completion_tokens": 15079
+ },
+ "rodadas": [
+  {
+   "round": 1,
+   "accepted": [
+    "beer_name",
+    "brewery_id",
+    "brewery_name",
+    "city",
+    "ibu",
+    "id",
+    "index",
+    "ounces",
+    "state"
+   ],
+   "pseudo": 51,
+   "novas_celulas_coreset": 162,
+   "fracao_erros_treino": 0.343,
+   "perda": [
+    0.6612,
+    0.6432,
+    0.6204,
+    0.5969,
+    0.5187,
+    0.3863,
+    0.3217,
+    0.2924
+   ],
+   "marcadas_pelo_modelo": 4492,
+   "segundos": 53
+  },
+  {
+   "round": 2,
+   "accepted": [
+    "abv",
+    "beer_name",
+    "brewery_id",
+    "ibu",
+    "id",
+    "index",
+    "ounces",
+    "state",
+    "style"
+   ],
+   "pseudo": 108,
+   "novas_celulas_coreset": 180,
+   "fracao_erros_treino": 0.31,
+   "perda": [
+    0.2978,
+    0.2283,
+    0.101,
+    0.0474,
+    0.049,
+    0.0252,
+    0.0079,
+    0.0006
+   ],
+   "marcadas_pelo_modelo": 4579,
+   "segundos": 68
+  },
+  {
+   "round": 3,
+   "accepted": [
+    "abv",
+    "beer_name",
+    "brewery_id",
+    "brewery_name",
+    "city",
+    "ibu",
+    "id",
+    "ounces",
+    "state",
+    "style"
+   ],
+   "pseudo": 167,
+   "novas_celulas_coreset": 180,
+   "fracao_erros_treino": 0.291,
+   "perda": [
+    0.0945,
+    0.0603,
+    0.024,
+    0.0288,
+    0.0192,
+    0.0027,
+    0.0001,
+    0.0001
+   ],
+   "marcadas_pelo_modelo": 4591,
+   "segundos": 64
+  }
+ ],
+ "marcadas": 4591,
+ "marcadas_funcoes": 3967,
+ "total_s": 188
+}

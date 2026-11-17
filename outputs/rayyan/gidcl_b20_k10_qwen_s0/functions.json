@@ -1,0 +1,90 @@
+{
+ "id": {
+  "column": "id",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = re.compile(r'^[1-9][0-9]{4,5}$')\n    return not pattern.match(cell)",
+  "score": 0.947,
+  "accepted": true,
+  "refinements": 1,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    pattern = re.compile(r'^[1-9][0-9]{4,5}$')\n    return not pattern.match(cell)\n\ndef corrupt(cell):\n    if len(cell) == 5:\n        cell = list(cell)\n        cell[random.randint(0, 4)] = str(random.randint(0, 9))\n        cell.append(str(random.randint(0, 9)))\n        return ''.join(cell)\n    else:\n        return cell[:-1] + str(random.randint(0, 9))"
+ },
+ "article_title": {
+  "column": "article_title",
+  "detect": "import re\n\ndef detect(cell):\n    return bool(re.search(r'[�_]', cell) and not re.search(r'^Optical turbulence', cell))",
+  "score": 0.8,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "article_language": {
+  "column": "article_language",
+  "detect": "import re\n\ndef detect(cell):\n    if re.search(r'[^\\sa-zA-Z]+|脏', cell):\n        return True\n    else:\n        return False",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 2,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    if random.choice([True, False]):\n        # Add spaces randomly\n        cell = re.sub(r'(\\w)', r'\\1 ', cell)\n    if random.choice([True, False]):\n        # Capitalize some letters randomly\n        cell = re.sub(r'(\\w)', lambda x: x.group(0).upper() if random.choice([True, False]) else x.group(0), cell)\n    if random.choice([True, False]):\n        # Add non-alphabet characters\n        cell = re.sub(r'(\\w)', lambda x: x.group(0) + random.choice(['!', '@', '#', '$', '%', '&', '*']) if random.choice([True, False]) else x.group(0), cell)\n    return cell"
+ },
+ "journal_title": {
+  "column": "journal_title",
+  "detect": "import re\n\ndef detect(cell):\n    # Define the regular expression pattern to identify dirty cells\n    # Criteria: cells containing specific irregular patterns or special characters\n    pattern = r'\\b(?:of|system)\\b|\\[\\]|\\(\\)|:[^:]|;[^;]'\n    result = re.search(pattern, cell, re.IGNORECASE)\n    if result:\n        return True\n    else:\n        # Check for additional patterns that were misclassified\n        if re.search(r'\\boncodevelopmental\\b', cell, re.IGNORECASE):\n            return True\n        if re.search(r'\\b[journal]\\b', cell, re.IGNORECASE) and re.search(r'\\b(journal|of|system)\\b', cell, re.IGNORECASE):\n            return True\n        if re.search(r'\\[.*\\]', cell) and re.search(r'\\bhealth guidance news\\b', cell, re.IGNORECASE):\n            return True\n        return False",
+  "score": 0.62,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "jounral_abbreviation": {
+  "column": "jounral_abbreviation",
+  "detect": "import re\n\ndef detect(cell):\n    if cell == '':\n        return False\n    elif re.match(r'^[A-Za-z]+[. ]?[A-Za-z]*$', cell) or re.match(r'^[A-Za-z]+[. ]+[A-Za-z]+$', cell):\n        return False\n    elif re.match(r'^[A-Za-z]+[. ]?[A-Za-z]+[:\\(]? *[A-Za-z]+\\b.*', cell, re.IGNORECASE):\n        return False\n    return True",
+  "score": 0.96,
+  "accepted": true,
+  "refinements": 4,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    if detect(cell):\n        return cell  # Already dirty, no action needed\n    \n    # Introduce random errors to make it dirty\n    errors = [\n        lambda s: s[:random.randint(0, len(s)-1)] + 'XXXX' + s[random.randint(0, len(s)-1):],  # Add random characters\n        lambda s: s[:-random.randint(1, len(s))],  # Truncate the string\n        lambda s: s[:random.randint(0, len(s))] + ' ' + s[random.randint(0, len(s)):],  # Add space at random position\n        lambda s: ''.join(random.choice([' ', c.upper(), c.lower()]) if random.random() < 0.5 else c for c in s),  # Random case changes and spaces\n    ]\n    \n    # Apply a random error to the cell\n    cell = random.choice(errors)(cell)\n    \n    return cell"
+ },
+ "journal_issn": {
+  "column": "journal_issn",
+  "detect": "import re\n\ndef detect(cell):\n    # Clean cells should only contain patterns of ISSN (8 digits, sometimes with X at the end) and may also include versions with hyphen.\n    # Dirty cells can include additional text, URLs, multiple ISSN separated by spaces or text, and non-standard patterns.\n    clean_patterns = [\n        r'^[0-9Xx]{8}$',  # Straight 8 digit pattern with or without leading zeros.\n        r'^[0-9]{4}-[0-9Xx]{4}$',  # 4 digits - 4 digits pattern.\n    ]\n    \n    dirty_patterns = [\n        r'\\b[DPdp]rint',  # Example of any additional text mixed with ISSN\n        r'\\bDO[- ]?[- \\d\\D]*',  # Variations of DO and related text\n        r'\\d{4}-\\d{1,2}',       # Patterns like '1932-6203' with descriptive text.\n        r'\\bJan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec-\\d{2}\\b',  # Patterns referring to months and years\n        r'[- ]*\\d[Xx][- \\dA-Za-z]+',  # Checks for the presence of an 'X' followed by text or numbers.\n        r'(?:[0-9]{4}-){0,1}[0-9Xx]{3,9}[\\s\\S]*\\b[0-9A-Za-zXx]+\\b',  # Continuation of one ISSN followed by another (dirty)\n    ]\n    \n    # Check if the cell matches any clean patterns.\n    for pattern in clean_patterns:\n        if re.fullmatch(pattern, cell):\n            return False\n    \n    # Check if the cell matches any dirty patterns.\n    for pattern in dirty_patterns:\n        if re.search(pattern, cell):\n            return True\n    \n    # If cell didn't match clean patterns and does not contain dirty patterns, return False (clean).\n    return False",
+  "score": 0.88,
+  "accepted": true,
+  "refinements": 1,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    clean_patterns = [\n        r'^[0-9Xx]{8}$',\n        r'^[0-9]{4}-[0-9Xx]{4}$',\n    ]\n    dirty_patterns = [\n        r'\\b[DPdp]rint',\n        r'\\bDO[- ]?[- \\d\\D]*',\n        r'\\d{4}-\\d{1,2}',\n        r'\\bJan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec-\\d{2}\\b',\n        r'[- ]*\\d[Xx][- \\dA-Za-z]+',\n        r'(?:[0-9]{4}-){0,1}[0-9Xx]{3,9}[\\s\\S]*\\b[0-9A-Za-zXx]+\\b',\n    ]\n    \n    for pattern in clean_patterns:\n        if re.fullmatch(pattern, cell):\n            return False\n    \n    for pattern in dirty_patterns:\n        if re.search(pattern, cell):\n            return True\n    \n    return False\n\ndef corrupt(cell):\n    # Pick a random transformation to apply to the cell to make it dirty.\n    transformations = [\n        lambda x: x.replace('-', ' ') + ' DO - http://example.com',\n        lambda x: x + ' (Print)',\n        lambda x: x[:4] + '-' + x[4:] + ' Mar-65',\n        lambda x: x[:4] + x[4:].replace('-', ' ')[1:] + ' Additional Text',\n        lambda x: x[:4] + '-' + x[4:8].upper() + ' ' + x[-3:].upper(),\n        lambda x: x + ' and ' + cell[:8].replace('X', '0'),\n        lambda x: x[:8] + ' ' + random.choice(['Jan-19', 'Feb-22', 'Mar-05']),\n        lambda x: x + ' ' + random.choice(['1557-170X', '0964-4563']),\n        lambda x: x + ' ' + 'Publication Information DO - www.example.com',\n        lambda x: x + ' Extended Information'\n    ]\n    \n    # Choose a random transformation and apply it to the clean cell.\n    transformed_cell = random.choice(transformations)(cell)\n    \n    # Ensure the result is marked as dirty by the `detect` function.\n    if not detect(transformed_cell):\n        return corrupt(cell)  # Retry if the transformation did not make it dirty.\n    return transformed_cell"
+ },
+ "article_jvolumn": {
+  "column": "article_jvolumn",
+  "detect": "import re\n\ndef detect(cell):\n    # Based on the samples, the clean cells can be described as:\n    # - One or more digits ('[0-9]+') or\n    # - Starting with a digit, followed by a comma and ending with a digit ('[0-9]+,[0-9]+')\n    # Here we define a pattern for clean cells then use the negative lookahead to detect dirty cells.\n    clean_pattern = re.compile(r'^[0-9]+$|^([0-9]+,[0-9]+)$')\n    if not clean_pattern.search(cell):\n        return True  # The cell is dirty if it does not match the clean pattern\n    return False",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    clean_pattern = re.compile(r'^[0-9]+$|^([0-9]+,[0-9]+)$')\n    return not clean_pattern.search(cell)\n\ndef corrupt(cell):\n    # Introduce variations that make the cell dirty\n    variations = [\n        # Insert a random character in a random position\n        lambda x: x[:random.randint(0, len(x))] + random.choice('!@#') + x[random.randint(0, len(x)):],\n        # Replace a random digit with another random digit\n        lambda x: x[:random.randint(0, len(x)-1)] + str(random.randint(0, 9)) + x[random.randint(0, len(x)):] if re.match(r'^[0-9]+$', x) else cell,\n        # Add a comma at a random position\n        lambda x: x[:random.randint(0, len(x))] + ',' + x[random.randint(0, len(x)):],\n        # Remove a random character\n        lambda x: x[:random.randint(0, len(x)-1)] + x[random.randint(0, len(x)):] if len(x) > 1 else cell,\n        # Add a space at the beginning or end\n        lambda x: ' ' + x,\n        lambda x: x + ' '\n    ]\n    \n    # Apply a random variation to the clean cell\n    dirty_cell = random.choice(variations)(cell)\n    return dirty_cell"
+ },
+ "article_jissue": {
+  "column": "article_jissue",
+  "detect": "import re\n\ndef detect(cell):\n    # Clean cells are typically standard digits (0-9) or a subset of provided clean cell values\n    clean_pattern = r'^[0-9]{1,4}|^[478]$'\n    return not re.match(clean_pattern, cell)",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    # Clean cells are typically standard digits (0-9) or a subset of provided clean cell values\n    clean_pattern = r'^[0-9]{1,4}|^[478]$'\n    return not re.match(clean_pattern, cell)\n\ndef corrupt(cell):\n    # Choose a type of corruption\n    corruption_type = random.choice(['prepend', 'append', 'middle_char', 'non_numeric_char'])\n    \n    if corruption_type == 'prepend':\n        return ''.join(random.choice('0123') + cell)\n    elif corruption_type == 'append':\n        return cell + random.choice('56789')\n    elif corruption_type == 'middle_char':\n        if len(cell) > 1:\n            middle_index = len(cell) // 2\n            return cell[:middle_index] + random.choice('abc') + cell[middle_index:]\n        else:\n            return cell + random.choice('abc')\n    elif corruption_type == 'non_numeric_char':\n        return random.choice([cell[1:]+'-', '-'+cell, cell+'-', cell[0]+'-'+cell[1:]])\n    \n    return cell  # Return the original cell if no corruption type is chosen"
+ },
+ "article_jcreated_at": {
+  "column": "article_jcreated_at",
+  "detect": "import re\n\ndef detect(cell):\n    if not cell:\n        return True\n    # Clean cell pattern: MM/DD/YYYY or MM/DD/YY where DD is not 1 or MM/DD/YYYY where DD > 1\n    clean_pattern = re.compile(r'^(\\d{1,2}|[01]?\\d|1[012])/(2[0-9]|3[01]|1[3-9]|[2-9])/(19|20)\\d\\d$|^(\\d{1,2}|[01]?\\d|1[012])/(2[0-9]|3[01]|1[3-9]|[2-9])/\\d{2}$')\n    match = clean_pattern.match(cell)\n    if match:\n        return False  # Clean cell\n    else:\n        return True  # Dirty cell",
+  "score": 0.941,
+  "accepted": true,
+  "refinements": 3,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    if not cell:\n        return True\n    clean_pattern = re.compile(r'^(\\d{1,2}|[01]?\\d|1[012])/(2[0-9]|3[01]|1[3-9]|[2-9])/(19|20)\\d\\d$|^(\\d{1,2}|[01]?\\d|1[012])/(2[0-9]|3[01]|1[3-9]|[2-9])/\\d{2}$')\n    match = clean_pattern.match(cell)\n    if match:\n        return False  # Clean cell\n    else:\n        return True  # Dirty cell\n\ndef corrupt(cell):\n    if not cell:\n        return cell  # Return as is if empty\n    \n    months, days, years = cell.split('/')\n    month = months.zfill(2)\n    day = days.zfill(2)\n    year = years.zfill(4) if len(years) == 2 else years.zfill(2)\n\n    # Introduce errors similar to those seen\n    if random.choice([True, False]):\n        day = '01'  # Force day to 1\n    if random.choice([True, False]):\n        if len(year) == 4:\n            if random.choice([True, False]):\n                year = '19' + year[2:]  # Change from 4-digit to 2-digit year\n            else:\n                year = '20' + year[2:]  # Change from 2-digit to 4-digit year\n        else:\n            year = year.zfill(4)  # Fully convert 2-digit year to 4-digit year\n    \n    return f'{month}/{day}/{year}'"
+ },
+ "article_pagination": {
+  "column": "article_pagination",
+  "detect": "import re\n\ndef detect(cell):\n    if cell == '':\n        return False\n    # Define patterns for clean cells\n    # Clean cells can be single digits, numbers, or ranges of numbers\n    clean_pattern = re.compile(r'^\\d+-\\d+$|^(\\d+|-)+\\d*$')\n    # Define patterns for dirty cells\n    # Dirty cells typically contain irregular formats such as numbers with letters or special characters\n    pattern_dirty = re.compile(r'^[A-Za-z]+-[0-9]+|[0-9]+-[A-Za-z]+|[A-Za-z0-9]+-[A-Za-z0-9]+|[A-Za-z-]+|^[0-9]+-[A-Za-z-]+$')\n    is_clean = bool(clean_pattern.match(cell))\n    is_dirty = bool(pattern_dirty.match(cell))\n    return not is_clean and is_dirty",
+  "score": 0.9,
+  "accepted": true,
+  "refinements": 3,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    if cell == '':\n        return False\n    # Define patterns for clean cells\n    clean_pattern = re.compile(r'^\\d+-\\d+$|^(\\d+|-)+\\d*$')\n    # Define patterns for dirty cells\n    pattern_dirty = re.compile(r'^[A-Za-z]+-[0-9]+|[0-9]+-[A-Za-z]+|[A-Za-z0-9]+-[A-Za-z0-9]+|[A-Za-z-]+|^[0-9]+-[A-Za-z-]+$')\n    is_clean = bool(clean_pattern.match(cell))\n    is_dirty = bool(pattern_dirty.match(cell))\n    return not is_clean and is_dirty\n\ndef corrupt(cell):\n    if not detect(cell):\n        # Introduce random dirtiness\n        if '-' in cell:\n            parts = cell.split('-')\n            if random.choice([True, False]):\n                parts[0] = ''.join([parts[0], random.choice(['A', 'B', 'C', 'D', 'E']), random.choice([str(i) for i in range(10)])])\n            else:\n                parts[-1] = ''.join([random.choice(['A', 'B', 'C', 'D', 'E']), random.choice([str(i) for i in range(10)]), parts[-1]])\n            cell = '-'.join(parts)\n        else:\n            if random.choice([True, False]):\n                cell = ''.join([random.choice(['A', 'B', 'C', 'D', 'E']), cell])\n            else:\n                cell = ''.join([cell, random.choice(['A', 'B', 'C', 'D', 'E'])])\n    return cell"
+ },
+ "author_list": {
+  "column": "author_list",
+  "detect": "import re\n\ndef detect(cell):\n    # Clean cells should not contain non-ASCII or special characters unless they are part of a proper email or abbreviation.\n    pattern = re.compile(r'[^\\w\\s,\".\\-\\(\\)\\'@/]+')\n    # Further refine the detection by checking for specific patterns that are known to be dirty\n    if re.search(r'[^\\x00-\\x7F]+', cell):  # This checks for any non-ASCII characters\n        return True\n    if re.search(r'[\\x80-\\xFF]', cell):  # This checks for extended ASCII characters which might be incorrectly encoded\n        return True\n    return False",
+  "score": 0.8,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ }
+}
