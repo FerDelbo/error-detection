@@ -5105,7 +5105,7 @@ Capaware	latestReleaseVersion	rc2
 Padre	latestReleaseVersion	1
 TweetDeck	latestReleaseVersion	3.9
 CAMeL-View TestRig	latestReleaseVersion	7
-Resource Hacker	latestReleaseVersion	4.4
+Resource Hacker or Resource Cracker (https://www.pelock.com/products/resource-cracker)	latestReleaseVersion	4.4
 Orfeo toolbox	latestReleaseVersion	5.2
 Genie Workbench	latestReleaseVersion	v0.1
 Oracle WebLogic Server	latestReleaseVersion	12

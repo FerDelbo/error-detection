@@ -4911,7 +4911,7 @@ Army of the Coasts of La Rochelle	size	Six divisions
 8th Jäger Division	size	Division
 42nd Jäger Division	size	Division
 97th Jäger Division	size	Division
-Resource Hacker	size	3.1 MB
+Resource Hacker or Resource Cracker (https://www.pelock.com/products/resource-cracker)	size	3.1 MB
 101st Jäger Division	size	Division
 104th Jäger Division	size	Division
 114th Jäger Division	size	Division
