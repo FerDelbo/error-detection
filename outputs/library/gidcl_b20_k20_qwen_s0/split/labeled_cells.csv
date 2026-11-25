@@ -1,0 +1,161 @@
+row,column,dirty,clean
+0,name,New Economy GmbH,New Economy GmbH
+0,house_number,32,32
+0,road,Grotzenmühlestrasse,Grotzenmühlestrasse
+0,postcode,,8840
+0,locality,Einsiedeln,Einsiedeln
+0,region,CH,Schwyz
+0,country,,Schweiz/Suisse/Svizzera/Svizra
+0,country_code,,ch
+8,name,Jake Epp Public Library,Jake Epp Public Library
+8,house_number,255,255
+8,road,Elmdale Street,Elmdale Street
+8,postcode,R5G 0C9,R5G 0C9
+8,locality,Steinbach,Steinbach
+8,region,Manitoba,Manitoba
+8,country,Canada,Canada
+8,country_code,,ca
+70,name,"Универзитетска библиотека ""Светозар Марковић""",Универзитетска библиотека „Светозар Марковић”
+70,house_number,71,71
+70,road,Булевар Краља Александра,Булевар краља Александра
+70,postcode,11000,11120
+70,locality,Београд,Београд
+70,region,,Централна Србија
+70,country,Србија,Србија
+70,country_code,,rs
+74,name, Collegium Mazovia,Collegium Mazovia Innowacyjna Szkoła Wyższa
+74,house_number,161,161
+74,road,Sokołowska,Sokołowska
+74,postcode,08-110,08-110
+74,locality,Siedlce,Siedlce
+74,region,,województwo mazowieckie
+74,country,,Polska
+74,country_code,,pl
+107,name,Archives municipales,Archives municipales de Meylan
+107,house_number,,12
+107,road,,Avenue du Granier
+107,postcode,38240,38240
+107,locality,Meylan,Meylan
+107,region,,France métropolitaine
+107,country,,France
+107,country_code,,fr
+364,name,Musée Paysan - Ecomusée Paysalp,Écomusée Paysalp
+364,house_number,,628
+364,road,,Avenue de Savoie
+364,postcode,74250,74250
+364,locality,Viuz-en-Sallaz,Viuz-en-Sallaz
+364,region,,France métropolitaine
+364,country,,France
+364,country_code,,fr
+440,name,Greater Grand Crossing,Greater Grand Crossing Branch Library
+440,house_number,1000,1000
+440,road,E. 73Rd Street,East 73rd Street
+440,postcode,60619,60619
+440,locality,Chicago,Chicago
+440,region,IL,Illinois
+440,country,US,United States
+440,country_code,us,us
+691,name,Ecole maternelle Pablo Picasso,École maternelle Pablo Picasso
+691,house_number,,78
+691,road,,Rue Victor Hugo
+691,postcode,59264,59264
+691,locality,Onnaing,Onnaing
+691,region,,France métropolitaine
+691,country,,France
+691,country_code,,fr
+802,name,Liverpool Indie/Rock Bar,Liverpool Indie/Rock Bar
+802,house_number,14,14
+802,road,Gynėjų,Gynėjų g.
+802,postcode,,01109
+802,locality,Vilnius,Vilnius
+802,region,,Vilniaus apskritis
+802,country,,Lietuva
+802,country_code,,lt
+806,name,Centre Médico Psychologique,Centre médico-psychologique pour adulte - CMPA Saint-Exupéry
+806,house_number,,5
+806,road,,Square Saint-Exupéry
+806,postcode,78310,35700
+806,locality,Maurepas,Rennes
+806,region,,France métropolitaine
+806,country,,France
+806,country_code,,fr
+816,name,Institut catholique d'arts et métiers - ICAM apprentissage,Institut catholique d'arts et métiers- site de Bretagne - ICAM apprentissage
+816,house_number,,9
+816,road,,Rue du Commandant Charcot
+816,postcode,56000,56000
+816,locality,Vannes,Vannes
+816,region,,France métropolitaine
+816,country,,France
+816,country_code,,fr
+937,name,Edgewater Gallery,Edgewater Gallery
+937,house_number,1,1
+937,road,Mill St,Mill Street
+937,postcode,,05753
+937,locality,Middlebury,Middlebury
+937,region,VT,Vermont
+937,country,,United States
+937,country_code,,us
+1030,name,Ecole élémentaire Les Plants Catelaine,École élémentaire Les Plants de Catelaine
+1030,house_number,,9
+1030,road,,Rue Éric Tabarly
+1030,postcode,78420,78420
+1030,locality,Carrières-sur-Seine,Carrières-sur-Seine
+1030,region,,France métropolitaine
+1030,country,,France
+1030,country_code,,fr
+1096,name,DECO FACADE 62,Déco façade 62
+1096,house_number,,410
+1096,road,,Rue Alfred Leroy
+1096,postcode,62700,62700
+1096,locality,Bruay-la-Buissière,Bruay-la-Buissière
+1096,region,,France métropolitaine
+1096,country,,France
+1096,country_code,,fr
+1107,name,Prairie Winds Golf Club,Prairie Winds Golf Club
+1107,house_number,555,555
+1107,road,S Lake Dr,South Lake Drive
+1107,postcode,,57201
+1107,locality,Watertown,Watertown
+1107,region,SD,South Dakota
+1107,country,,United States
+1107,country_code,,us
+1147,name,Archeologinė ekspozicija,Archeologinė ekspozicija Kai sieloms neliko medžių
+1147,house_number,2,2
+1147,road,Jiezno G.,Jiezno g.
+1147,postcode,,62212
+1147,locality,Alytus,Alytus
+1147,region,,Alytaus apskritis
+1147,country,,Lietuva
+1147,country_code,,lt
+1173,name,Isla Garena,Isla de la Garena
+1173,house_number,18,18
+1173,road,Galileo Galilei,Calle de Galileo Galilei
+1173,postcode,28806,28802
+1173,locality,Alcalá de Henares,Alcalá de Henares
+1173,region,,Comunidad de Madrid
+1173,country,,España
+1173,country_code,,es
+1367,name,Lotus Healing Arts Center,Lotus Healing Arts Center
+1367,house_number,1812,1812
+1367,road,J St,J Street
+1367,postcode,,95811
+1367,locality,Sacramento,Sacramento
+1367,region,CA,California
+1367,country,,United States
+1367,country_code,,us
+1408,name,INSTITUT HENRI POINCARE,Institut Henri Poincaré
+1408,house_number,11,11
+1408,road,Rue Pierre Et Marie Curie,Rue Pierre et Marie Curie
+1408,postcode,75005,75005
+1408,locality,Paris,Paris
+1408,region,,France métropolitaine
+1408,country,,France
+1408,country_code,,fr
+1596,name,Lone Star College-Tomball Community Library,Lone Star College-Tomball Community Library
+1596,house_number,30555,30555
+1596,road,Tomball Parkway,Tomball Parkway
+1596,postcode,77375,77375
+1596,locality,Tomball,Tomball
+1596,region,TX,Texas
+1596,country,US,United States
+1596,country_code,us,us

@@ -1,0 +1,32 @@
+{
+ "method": "tabreformer_b20_s0",
+ "dataset": "shoppingCenter",
+ "run_time_s": 4.81,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "protocol": "paper",
+  "seed": 0,
+  "model": "bert-base-uncased",
+  "max_seq_length": 128,
+  "batch_size": 32,
+  "learning_rate": 2e-05,
+  "epochs": 3.0,
+  "warmup": 0.1,
+  "budget": "20",
+  "augment": "learned",
+  "gamma": 1.0
+ },
+ "extra": {
+  "tuplas_rotuladas": 20,
+  "celulas_rotuladas": 160,
+  "erros_rotulados": 113,
+  "alvo_erros": 47,
+  "augment_usado": "learned",
+  "exemplos_treino": 160,
+  "exemplos_errados": 113,
+  "passos": 15,
+  "device": "cuda"
+ }
+}

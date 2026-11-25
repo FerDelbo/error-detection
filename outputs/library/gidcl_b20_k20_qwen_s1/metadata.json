@@ -1,0 +1,44 @@
+{
+ "method": "gidcl_b20_k20_qwen_s1",
+ "dataset": "library",
+ "run_time_s": 239.7,
+ "uses_llm": true,
+ "prompt_tokens": 87686,
+ "completion_tokens": 22304,
+ "config": {
+  "budget": 20,
+  "clusters": 20,
+  "select": "cluster",
+  "embed": "sbert",
+  "embed_model": "BAAI/bge-large-en",
+  "seed": 1,
+  "lm": "roberta-base",
+  "tau": 0.85,
+  "iter_max": 4,
+  "rounds": 3,
+  "epochs": 8,
+  "batch": 16,
+  "lr": 2e-05,
+  "max_len": 256,
+  "pseudo_per_col": 20,
+  "coreset_n": 200,
+  "coreset_conf": 0.9,
+  "col_ctx_max": 20,
+  "llm_model": "qwen2.5:14b"
+ },
+ "extra": {
+  "llm_calls": 80,
+  "rodadas": 3,
+  "funcoes_aceitas": [
+   "country",
+   "country_code",
+   "house_number",
+   "postcode",
+   "region",
+   "road"
+  ],
+  "pseudo": 154,
+  "detectadas_funcoes": 6318,
+  "segundos_deteccao": 230
+ }
+}

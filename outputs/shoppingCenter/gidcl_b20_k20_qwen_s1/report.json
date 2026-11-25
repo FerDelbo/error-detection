@@ -1,0 +1,112 @@
+{
+ "llm": "qwen",
+ "modelo_llm": "qwen2.5:14b",
+ "lm": "roberta-base",
+ "args": {
+  "dirty": "/home/a2482126/error-detection/dataset/shoppingCenter/dirty.csv",
+  "labeled": "outputs/shoppingCenter/gidcl_b20_k20_qwen_s1/split/labeled_cells.csv",
+  "clusters": "outputs/shoppingCenter/gidcl_b20_k20_qwen_s1/split/clusters.csv",
+  "outdir": "outputs/shoppingCenter/gidcl_b20_k20_qwen_s1",
+  "lm": "roberta-base",
+  "tau": 0.85,
+  "iter_max": 4,
+  "rounds": 3,
+  "epochs": 8,
+  "batch": 16,
+  "infer_batch": 128,
+  "lr": 2e-05,
+  "max_len": 256,
+  "pseudo_per_col": 20,
+  "coreset_n": 200,
+  "coreset_conf": 0.9,
+  "col_ctx_max": 20,
+  "seed": 1,
+  "llm": "qwen"
+ },
+ "uso_llm": {
+  "calls": 86,
+  "prompt_tokens": 78779,
+  "completion_tokens": 16837
+ },
+ "rodadas": [
+  {
+   "round": 1,
+   "accepted": [
+    "country",
+    "country_code",
+    "house_number",
+    "name",
+    "postcode",
+    "region"
+   ],
+   "pseudo": 56,
+   "novas_celulas_coreset": 200,
+   "fracao_erros_treino": 0.508,
+   "perda": [
+    0.6893,
+    0.6284,
+    0.5355,
+    0.4249,
+    0.3069,
+    0.2505,
+    0.2149,
+    0.166
+   ],
+   "marcadas_pelo_modelo": 3105,
+   "segundos": 52
+  },
+  {
+   "round": 2,
+   "accepted": [
+    "country",
+    "country_code",
+    "house_number",
+    "postcode",
+    "road"
+   ],
+   "pseudo": 118,
+   "novas_celulas_coreset": 200,
+   "fracao_erros_treino": 0.387,
+   "perda": [
+    0.1917,
+    0.1923,
+    0.1178,
+    0.1076,
+    0.076,
+    0.0545,
+    0.0483,
+    0.0132
+   ],
+   "marcadas_pelo_modelo": 3685,
+   "segundos": 55
+  },
+  {
+   "round": 3,
+   "accepted": [
+    "country",
+    "house_number",
+    "name",
+    "postcode",
+    "region"
+   ],
+   "pseudo": 159,
+   "novas_celulas_coreset": 200,
+   "fracao_erros_treino": 0.324,
+   "perda": [
+    0.1056,
+    0.0795,
+    0.0616,
+    0.0335,
+    0.0239,
+    0.0077,
+    0.0117,
+    0.0101
+   ],
+   "marcadas_pelo_modelo": 3738,
+   "segundos": 77
+  }
+ ],
+ "marcadas": 3738,
+ "marcadas_funcoes": 2125,
+ "total_s": 185
+}

@@ -1,0 +1,66 @@
+{
+ "name": {
+  "column": "name",
+  "detect": "import re\n\ndef detect(cell):\n    # Define patterns for dirty cells\n    dirty_patterns = [\n        r\"\\|\",  # Contains specific separators like '|'\n        r\"\\s+#\\d+\",  # Contains specific separators like '#'\n        r\"&\",  # Contains '&'\n        r\"\\.\",  # Contains '.'\n        r\"\\bKoprivnica\\b\",  # Contains 'Koprivnica'\n        r\"\\bVilkaviškio\\b\",  # Contains 'Vilkaviškio'\n        r\"\\bGlens Falls Elks Lodge\\b\",  # Contains 'Glens Falls Elks Lodge'\n        r\"\\bTaberna\\b\",  # Contains 'Taberna'\n        r\"\\bMix\\b\",  # Contains 'Mix'\n        r\"\\bЧитай\\b\"  # Contains 'Читай'\n    ]\n    \n    # Define patterns for clean cells to override the dirty patterns\n    clean_patterns = [\n        r\"O'Stin\",  # Clean pattern for 'O\\'Stan'\n        r\"Rendez-vous\",  # Clean pattern for 'Rendez-vous'\n        r\"Snakes\\s&?\\sLattes\",  # Clean pattern for 'Snakes & Lattes'\n        r\"Mt\\.\\s?Ommaney\\sCentre\",  # Clean pattern for 'Mt. Ommaney Centre'\n        r\"^(?:Natur\\sCamp|Intimissimi|Askona|Liverpool\\sIndie/Rock\\sBar|Deichmann|El\\sMercado|Green\\sMountain\\sCannabis\\sWorks|Janinos\\sMonkutės-Marks\\sMuziejus-Galerija|Canadian\\sTire|Genutės\\sSodyba|DEZ|Narellan\\sTown\\sCentre|Outlets\\sat\\sCastle\\sRock|Westfield\\sManukau\\sCity)$\",  # Extended pattern for additional clean examples\n    ]\n    \n    # Check if cell matches any dirty patterns\n    if any(re.search(pattern, cell) for pattern in dirty_patterns):\n        if any(re.match(pattern, cell) for pattern in clean_patterns):\n            return False  # Overriding dirty detection for clean cells\n        return True  # Cell is dirty\n\n    return False  # Cell is clean",
+  "score": 0.857,
+  "accepted": true,
+  "refinements": 3,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    # Define patterns for dirty cells\n    dirty_patterns = [\n        r\"\\|\",  # Contains specific separators like '|'\n        r\"\\s+#\\d+\",  # Contains specific separators like '#'\n        r\"&\",  # Contains '&'\n        r\"\\.\",  # Contains '.'\n        r\"\\bKoprivnica\\b\",  # Contains 'Koprivnica'\n        r\"\\bVilkaviškio\\b\",  # Contains 'Vilkaviškio'\n        r\"\\bGlens Falls Elks Lodge\\b\",  # Contains 'Glens Falls Elks Lodge'\n        r\"\\bTaberna\\b\",  # Contains 'Taberna'\n        r\"\\bMix\\b\",  # Contains 'Mix'\n        r\"\\bЧитай\\b\"  # Contains 'Читай'\n    ]\n    \n    # Define patterns for clean cells to override the dirty patterns\n    clean_patterns = [\n        r\"O'Stin\",  # Clean pattern for 'O\\'Stan'\n        r\"Rendez-vous\",  # Clean pattern for 'Rendez-vous'\n        r\"Snakes\\s&?\\sLattes\",  # Clean pattern for 'Snakes & Lattes'\n        r\"Mt\\.\\s?Ommaney\\sCentre\",  # Clean pattern for 'Mt. Ommaney Centre'\n        r\"^(?:Natur\\sCamp|Intimissimi|Askona|Liverpool\\sIndie/Rock\\sBar|Deichmann|El\\sMercado|Green\\sMountain\\sCannabis\\sWorks|Janinos\\sMonkutės-Marks\\sMuziejus-Galerija|Canadian\\sTire|Genutės\\sSodyba|DEZ|Narellan\\sTown\\sCentre|Outlets\\sat\\sCastle\\sRock|Westfield\\sManukau\\sCity)$\",  # Extended pattern for additional clean examples\n    ]\n    \n    # Check if cell matches any dirty patterns\n    if any(re.search(pattern, cell) for pattern in dirty_patterns):\n        if any(re.match(pattern, cell) for pattern in clean_patterns):\n            return False  # Overriding dirty detection for clean cells\n        return True  # Cell is dirty\n\n    return False  # Cell is clean\n\ndef corrupt(cell):\n    # List of possible transformations to corrupt the clean cell\n    transformations = [\n        lambda x: x.replace(' ', '|'),  # Replace spaces with '|'\n        lambda x: x.replace(' ', ' #'),  # Add '#'\n        lambda x: x + '.',  # Add '.'\n        lambda x: x.replace(' ', '& '),  # Add '&'\n        lambda x: 'Koprivnica ' + x,  # Prepend 'Koprivnica'\n        lambda x: 'Vilkaviškio ' + x,  # Prepend 'Vilkaviškio'\n        lambda x: x.replace(' ', ' Elks Lodge '),  # Insert 'Elks Lodge'\n        lambda x: x.replace(' ', ' Taberna '),  # Insert 'Taberna'\n        lambda x: x.replace(' ', ' Mix '),  # Insert 'Mix'\n        lambda x: 'Читай ' + x,  # Prepend 'Читай'\n    ]\n    return random.choice(transformations)(cell)"
+ },
+ "house_number": {
+  "column": "house_number",
+  "detect": "import re\n\ndef detect(cell):\n    if cell == '':\n        return True\n    if re.match(r'^[A-Za-z].*$', cell) or re.match(r'^Д\\..*$', cell):\n        return True\n    if int(cell) > 5085 or int(cell) < 1:\n        return True\n    return False",
+  "score": 0.909,
+  "accepted": true,
+  "refinements": 3,
+  "gen": "import re\nimport random\n\ndef corrupt(cell):\n    if random.choice([True, False]):\n        # Add a letter in the middle\n        pos = random.randint(0, len(cell))\n        corrupt_cell = cell[:pos] + random.choice('abcdefghijklmnopqrstuvwxyz') + cell[pos:]\n    else:\n        # Prefix it with 'Д. ' or append a letter\n        if random.choice([True, False]):\n            corrupt_cell = 'Д. ' + cell\n        else:\n            pos = random.randint(0, len(cell))\n            corrupt_cell = cell[:pos] + random.choice('abcdefghijklmnopqrstuvwxyz') + cell[pos:]\n    return corrupt_cell"
+ },
+ "road": {
+  "column": "road",
+  "detect": "import re\n\ndef detect(cell):\n    # Clean cell patterns\n    clean_patterns = [\n        r'^[A-Za-z\\s]+\\.$',  # Single word with optional leading/trailing whitespace and dot\n        r'^[A-Za-z\\s]+\\s[A-Za-z\\s]+\\.$',  # Two words with optional leading/trailing whitespace and dot\n        r'^[A-Za-z\\s]+$',  # Single word with optional leading/trailing whitespace\n        r'^[A-Za-z\\s]+\\s[A-Za-z\\s]+$',  # Two words with optional leading/trailing whitespace\n        r'^\\w+,\\s\\w+$',  # Two words separated by comma and space\n        r'^[A-Za-z\\s]+\\s[A-Za-z\\s]+\\s\\w+\\s?\\d+$',  # Address with name, number, and optional suffix\n        r'^[A-Za-z-]+\\s[NS]?[EW]?\\.?\\s[0-9]*\\s[stStNdNtThThRdRd]\\s?([A-Za-z]{1,2})?$',  # English road name format\n        r'^[\\w\\s]+,\\s\\w+\\s\\w+$', \n        r'^[A-Za-z\\s]+\\s\\w+\\s\\w+$',  # Three words separated by spaces\n        r'^\\d+\\s[A-Za-z]+',  # Number followed by word (like '955')\n        r'^(Mr|Mrs|Miss|Dr)\\.\\s\\w+$',  # Title followed by a full name\n    ]\n    for pattern in clean Patterns:\n        if re.match(pattern, cell):\n            return False\n    # Patterns that indicate dirty cells (non-English or non-standard formats)\n    if re.match(r'^[^\\w\\s]+[\\w\\s]+\\.', cell) or re.match(r'^\\S+\\s\\w+\\.', cell) or re.match(r'^[А-Яа-я]+\\s\\w+\\.', cell):\n        return True\n    non_english_patterns = [\n        r'^[A-Za-z]+\\s+[A-Za-z]+[^\\w\\s]+',  # Mixed character set indicating non-English or dirty formatting\n        r'^[^\\w\\s]+[\\w\\s]+[^\\w\\s]+',  # Mixed character set indicating non-English or dirty formatting\n    ]\n    for pattern in non_english_patterns:\n        if re.match(pattern, cell):\n            return True\n    return False",
+  "score": 0.0,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "postcode": {
+  "column": "postcode",
+  "detect": "import re\n\ndef detect(cell):\n    if re.match(r'^\\d{5}(-?\\d{0,4})?$', cell) or re.match(r'^[A-Z]\\d [A-Z]\\d \\d$', cell):\n        return False\n    return True",
+  "score": 0.875,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    if re.match(r'^\\d{5}(-?\\d{0,4})?$', cell) or re.match(r'^[A-Z]\\d [A-Z]\\d \\d$', cell):\n        return False\n    return True\n\ndef corrupt(cell):\n    if re.match(r'^\\d{5}(-?\\d{0,4})?$', cell):\n        if random.choice([0, 1]):  # 50% chance to add random characters before or after\n            return cell + random.choice(['AB12', '1234'])\n        else:\n            return random.choice(['123X', 'ABCD']) + cell\n    elif re.match(r'^[A-Z]\\d [A-Z]\\d \\d$', cell):\n        components = cell.split(' ')\n        random_position = random.randint(0, 2)\n        if random_position == 0:  # Change first component\n            components[0] = ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=1)) + random.choice('0123456789')\n        elif random_position == 1:  # Change second component\n            components[1] = random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ') + random.choice('0123456789')\n        else:  # Change third component\n            components[2] = random.choice('0123456789')\n        return ' '.join(components)\n    else:\n        return cell + random.choice(['AB12', '1234'])"
+ },
+ "locality": {
+  "column": "locality",
+  "detect": "import re\n\ndef detect(cell):\n    dirty_cells = ['Town of Queensbury', 'Grad Koprivnica', 'Grad Sisak', 'Town of Glens Falls', 'Town of Fort Edward', 'Alovė', 'Воронеж', 'Тюмень', 'Нижний Новгород', 'Саратов', 'Саратов']\n    cell = re.sub(r'^\\s+|\\s+$', '', cell)\n    if cell in dirty_cells:\n        return True\n    return not cell.startswith(('Town of', 'Grad', 'Vilkaviškis', 'Town of')) and not any(c.isalpha() and ord(c) < 128 for c in cell) and cell",
+  "score": 0.0,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "region": {
+  "column": "region",
+  "detect": "import re\n\ndef detect(cell):\n    clean_pattern = re.compile(r'^[A-Za-z\\s\\-\\']+$')\n    if clean_pattern.match(cell):\n        return False\n    else:\n        return True",
+  "score": 0.973,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    clean_pattern = re.compile(r'^[A-Za-z\\s\\-\\']+$')\n    return not bool(clean_pattern.match(cell))\n\ndef corrupt(cell):\n    if not detect(cell):\n        corruption_methods = [\n            lambda c: c[:random.randint(0, len(c))] + random.choice(['1234567890!@#$%^&*()_+-=[]{}|;:<>,./?']) + c[random.randint(0, len(c)):] if random.randint(0, 1) else c,\n            lambda c: c + ' ' * random.randint(1, 3),\n            lambda c: ''.join(random.choice([c[i], random.choice('1234567890!@#$%^&*()_+-=[]{}|;:<>,./?')]) for i in range(len(c))),\n            lambda c: ''.join(random.sample(c, len(c)) if random.randint(0, 2) == 0 else c)\n        ]\n        cell = random.choice(corruption_methods)(cell)\n    return cell"
+ },
+ "country": {
+  "column": "country",
+  "detect": "import re\n\ndef detect(cell):\n    clean_countries = ['United States', 'Australia', 'Canada']\n    clean_codes = ['US', 'AU', 'CA']\n    clean_variant = r'^(United States|Australia|Canada)$'\n    clean_code_pattern = re.compile(r'^[A-Z]{2}$')\n    \n    if cell in clean_countries or clean_code_pattern.match(cell) and cell in clean_codes:\n        return False\n    if cell in clean_countries or re.match(clean_variant, cell, re.IGNORECASE):\n        return False\n    if re.match(r'^(Россия|Литва|Hrvatska|Lietuva)$', cell, re.IGNORECASE | re.UNICODE):\n        return False\n    return True",
+  "score": 0.973,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    clean_countries = ['United States', 'Australia', 'Canada']\n    clean_codes = ['US', 'AU', 'CA']\n    clean_variant = r'^(United States|Australia|Canada)$'\n    clean_code_pattern = re.compile(r'^[A-Z]{2}$')\n    \n    if cell in clean_countries or clean_code_pattern.match(cell) and cell in clean_codes:\n        return False\n    if cell in clean_countries or re.match(clean_variant, cell, re.IGNORECASE):\n        return False\n    if re.match(r'^(Россия|Литва|Hrvatska|Lietuva)$', cell, re.IGNORECASE | re.UNICODE):\n        return False\n    return True\n\ndef corrupt(cell):\n    if cell in ['United States', 'Australia', 'Canada']:\n        # Corrupt countries\n        country_variants = {\n            'United States': ['USA', 'US', 'United state', 'United states', 'Unite States', 'United STAte'],\n            'Australia': ['Autralia', 'Australai', 'Australiaaa'],\n            'Canada': ['Canad', 'Canade', 'Canaba', 'Canana'],\n        }\n        return random.choice(country_variants[cell])\n    if cell in ['US', 'AU', 'CA']:\n        # Corrupt country codes\n        code_variants = {\n            'US': ['USt', 'Usa', 'US ', 'UnSt'],\n            'AU': ['AUs', 'Aa', 'A', 'Auc'],\n            'CA': ['Ca', 'CAa', 'Caa', 'cA'],\n        }\n        return random.choice(code_variants[cell])\n    if re.match(r'^\\p{Cyrillic}+$', cell, re.UNICODE):\n        # Corrupt Cyrillic text\n        cyrillic_variants = {\n            'Россия': ['россия', 'Россияая', 'rОссия'],\n            'Литва': ['литва', 'лИтв'],\n            'Литва': ['литв', 'Литв'],\n        }\n        return cyrillic_variants[cell]\n    return cell\n\n# Test the function\nclean_cells = ['United States', 'Australia', 'Canada', 'US', 'AU', 'CA']\nfor cell in clean_cells:\n    print(f\"Clean: {cell}, Dirty: {corrupt(cell)}\")"
+ },
+ "country_code": {
+  "column": "country_code",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = re.compile(r'^(ru|lt|ca|es)$')\n    clean_codes = ['hr', 'us']\n    return cell not in clean_codes and pattern.search(cell) is not None",
+  "score": 0.0,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ }
+}

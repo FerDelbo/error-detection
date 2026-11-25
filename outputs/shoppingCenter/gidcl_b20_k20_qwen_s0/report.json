@@ -1,0 +1,107 @@
+{
+ "llm": "qwen",
+ "modelo_llm": "qwen2.5:14b",
+ "lm": "roberta-base",
+ "args": {
+  "dirty": "/home/a2482126/error-detection/dataset/shoppingCenter/dirty.csv",
+  "labeled": "outputs/shoppingCenter/gidcl_b20_k20_qwen_s0/split/labeled_cells.csv",
+  "clusters": "outputs/shoppingCenter/gidcl_b20_k20_qwen_s0/split/clusters.csv",
+  "outdir": "outputs/shoppingCenter/gidcl_b20_k20_qwen_s0",
+  "lm": "roberta-base",
+  "tau": 0.85,
+  "iter_max": 4,
+  "rounds": 3,
+  "epochs": 8,
+  "batch": 16,
+  "infer_batch": 128,
+  "lr": 2e-05,
+  "max_len": 256,
+  "pseudo_per_col": 20,
+  "coreset_n": 200,
+  "coreset_conf": 0.9,
+  "col_ctx_max": 20,
+  "seed": 0,
+  "llm": "qwen"
+ },
+ "uso_llm": {
+  "calls": 96,
+  "prompt_tokens": 93967,
+  "completion_tokens": 18633
+ },
+ "rodadas": [
+  {
+   "round": 1,
+   "accepted": [
+    "country",
+    "country_code",
+    "house_number",
+    "postcode",
+    "region"
+   ],
+   "pseudo": 51,
+   "novas_celulas_coreset": 200,
+   "fracao_erros_treino": 0.481,
+   "perda": [
+    0.6938,
+    0.6416,
+    0.4969,
+    0.3776,
+    0.285,
+    0.21,
+    0.1437,
+    0.1159
+   ],
+   "marcadas_pelo_modelo": 3476,
+   "segundos": 60
+  },
+  {
+   "round": 2,
+   "accepted": [
+    "country",
+    "country_code",
+    "postcode",
+    "region"
+   ],
+   "pseudo": 112,
+   "novas_celulas_coreset": 200,
+   "fracao_erros_treino": 0.367,
+   "perda": [
+    0.2186,
+    0.182,
+    0.1119,
+    0.1063,
+    0.0678,
+    0.0434,
+    0.0322,
+    0.0122
+   ],
+   "marcadas_pelo_modelo": 3624,
+   "segundos": 64
+  },
+  {
+   "round": 3,
+   "accepted": [
+    "country",
+    "country_code"
+   ],
+   "pseudo": 141,
+   "novas_celulas_coreset": 199,
+   "fracao_erros_treino": 0.298,
+   "perda": [
+    0.0839,
+    0.0936,
+    0.0469,
+    0.0232,
+    0.0183,
+    0.0117,
+    0.0078,
+    0.0001
+   ],
+   "marcadas_pelo_modelo": 3712,
+   "segundos": 69
+  }
+ ],
+ "marcadas": 3712,
+ "marcadas_funcoes": 1428,
+ "total_s": 196
+}

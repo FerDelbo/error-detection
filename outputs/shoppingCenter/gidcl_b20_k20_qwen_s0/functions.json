@@ -1,0 +1,66 @@
+{
+ "name": {
+  "column": "name",
+  "detect": "import re\n\ndef detect(cell):\n    # Detect if a cell is dirty based on the given patterns and corrected rules\n    if re.search(r'^[A-Z]+(?: [A-Z]+)+$', cell) or re.search(r'[^\\w\\s]', cell, re.UNICODE) or re.search(r'^\\w+ \\w+ [A-Z]+$', cell) or re.search(r'^[А-ЯЁ]+-[А-ЯЁ]+$', cell):\n        return True\n    else:\n        return False",
+  "score": 0.222,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "house_number": {
+  "column": "house_number",
+  "detect": "import re\n\ndef detect(cell):\n    pattern = r'^[0-9]{1,4}(a|b|d)?$'\n    if re.match(pattern, cell):\n        return True\n    pattern_clean = r'^[0-9]{1,4}(А)?$'\n    return not re.match(pattern_clean, cell)",
+  "score": 0.218,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "road": {
+  "column": "road",
+  "detect": "import re\n\ndef detect(cell):\n    return bool(re.search(r'[,;\\'\"]|(?<!\\S)[A-Z]{2,}(?![a-z])|(?<!\\S)[A-Z][a-z]+(?![a-z])', cell)) or cell.startswith(('Ulc', 'Ul.', 'Pr.', 'Al.', 'G.', 'G', 'St', 'Str')) or cell.endswith(('G.', 'St.', 'Str.')) or re.search(r'\\s-\\s|\\s\\d|(?<=\\.\\s)\\S', cell)",
+  "score": 0.361,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "postcode": {
+  "column": "postcode",
+  "detect": "import re\n\ndef detect(cell):\n    # Updated pattern to accurately differentiate between dirty and clean postal codes\n    # Dirty patterns:\n    # - Contains letters at the beginning and any digits in the middle or end but does not follow any structured format\n    # Clean patterns:\n    # - 5-digit US ZIP codes: \\d{5}\n    # - Alphanumeric Canadian format: [A-Z]\\d[A-Z]\\s?\\d[A-Z]\\d\n    # - Australian 4-digit codes followed by a 2-letter state abbreviation: \\d{4}\\s?[A-Z]{2}\n    # - Australian format including spaces within numbers or letters: \\d{4}\\s?\\d{3}|\\d{4}\\s?[A-Z]{2,3}\n    # - NSW, VIC, and other state abbreviations followed by 4 digits: [A-Z]{3}\\s?\\d{4}\n    # - Special format including dash: \\d{4}-\\d{3}\n    clean_pattern = re.compile(r'^(?:(\\d{5})|([A-Z]\\d[A-Z]\\s?\\d[A-Z]\\d)|(\\d{4}\\s?[A-Z]{2})|(\\d{4}\\s?\\d{3})|([A-Z]{3}\\s?\\d{4})|(\\d{4}-\\d{3}))$')\n    \n    # If the cell matches the clean pattern, it's not dirty\n    if clean_pattern.match(cell):\n        return False\n    else:\n        return True",
+  "score": 0.706,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "locality": {
+  "column": "locality",
+  "detect": "import re\n\ndef detect(cell):\n    clean_patterns = [\n        r'^[A-Z][a-zA-ZöäëüÖÄËÜ]+$',  # Matches Birštonas, Kėdainiai, Málaga\n        r'^[A-Z][a-zA-ZöäëüÖÄËÜ]+(?: [A-Z][a-zA-ZöäëüÖÄËÜ]+)+$',  # Matches Reggio di Calabria\n        r'^[A-Z][a-zA-Z]*$',  # Matches general clean pattern\n        r'^[A-Z][а-я]+$',  # Cyrillic with initial uppercase\n        r'^[А-Я][а-я]+$'  # Cyrillic lowercase after uppercase\n    ]\n    \n    dirty_patterns = [\n        r'^$',  # Empty string\n        r'^[а-я]+$|[а-я][а-я ]*[а-я]$',  # Cyrillic only or pattern with spaces\n        r'^[A-Z][A-Z]+$|[A-Z]+$',  # All uppercase or special dirty patterns\n        r'^[А-Я][а-я]+$'  # Russian clean pattern but needs dirty differentiation\n    ]\n    \n    for pattern in clean_patterns:\n        if re.match(pattern, cell):\n            return False\n    for pattern in dirty_patterns:\n        if re.match(pattern, cell):\n            return True\n    return False  # If doesn't fit any of the above patterns, consider it clean",
+  "score": 0.667,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "region": {
+  "column": "region",
+  "detect": "import re\n\ndef detect(cell):\n    if not cell:\n        return False\n    # Check for two uppercase letters or a name consisting of words starting with uppercase letters\n    dirty_pattern = re.compile(r'^[A-Z]{2}$|^([A-Z]{2,}\\s)?[A-Z]{2,}(\\s[A-Z]{2,})?$')\n    # Check for names in a format other than abbreviation or two uppercase letters\n    clean_pattern = re.compile(r'^([A-Z]?[a-z]+(\\s[A-Z]?[a-z]+)+)$')\n    if dirty_pattern.match(cell):\n        return True\n    elif clean_pattern.match(cell):\n        return False\n    else:\n        return False\n\n# Additional check for cells that are clean but not matched by the pattern\ndef is_clean(cell):\n    if not cell:\n        return True\n    if dirty_pattern.match(cell):\n        return False\n    return True\n\n# Integrate the additional logic into the main function\ndef detect(cell):\n    if not cell:\n        return False\n    dirty_pattern = re.compile(r'^[A-Z]{2}$|^([A-Z]{2,}\\s)?[A-Z]{2,}(\\s[A-Z]{2,})?$')\n    if dirty_pattern.match(cell):\n        return True\n    return False",
+  "score": 0.3,
+  "accepted": false,
+  "refinements": 4,
+  "gen": null
+ },
+ "country": {
+  "column": "country",
+  "detect": "import re\n\ndef detect(cell):\n    clean_patterns = [\n        r'United States(, US)?',  # Matches \"United States\" with or without \", US\"\n        r'Italia',                # Matches \"Italia\"\n        r'New Zealand',           # Matches \"New Zealand\"\n        r'Switzerland',           # Matches \"Switzerland\"\n    ]\n    for pattern in clean_patterns:\n        if re.search(pattern, cell, re.IGNORECASE):\n            return False  # The cell is considered clean\n    return True  # The cell is considered dirty",
+  "score": 0.905,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import random\nimport re\n\ndef corrupt(cell):\n    if re.search(r'United States', cell, re.IGNORECASE):\n        return random.choice(['US', 'United States of America', 'USA', 'United States', 'US, US'])\n    if re.search(r'Italia', cell, re.IGNORECASE):\n        return random.choice(['Italy', 'ITALIA', 'Italia', 'Itlay'])\n    if re.search(r'New Zealand', cell, re.IGNORECASE):\n        return 'NZ'\n    if re.search(r'Switzerland', cell, re.IGNORECASE):\n        return random.choice(['Swiss', 'Schweiz'])\n    return cell.upper()  # If the pattern doesn't match, return the cell in uppercase, treating it as dirty\n\ndef detect(cell):\n    clean_patterns = [\n        r'United States(, US)?',  # Matches \"United States\" with or without \", US\"\n        r'Italia',                # Matches \"Italia\"\n        r'New Zealand',           # Matches \"New Zealand\"\n        r'Switzerland',           # Matches \"Switzerland\"\n    ]\n    for pattern in clean_patterns:\n        if re.search(pattern, cell, re.IGNORECASE):\n            return False  # The cell is considered clean\n    return True  # The cell is considered dirty"
+ },
+ "country_code": {
+  "column": "country_code",
+  "detect": "import re\n\ndef detect(cell):\n    clean_country_codes = ['us', 'hr', 'se', 'fr', 'rs', 'ca', 'pt', 'in', 'my', 'be', 'au', 'pe', 'de', 'br', 'ph', 'uk']\n    if cell in clean_country_codes:\n        return False\n    else:\n        return True",
+  "score": 1.0,
+  "accepted": true,
+  "refinements": 0,
+  "gen": "import re\nimport random\n\ndef detect(cell):\n    clean_country_codes = ['us', 'hr', 'se', 'fr', 'rs', 'ca', 'pt', 'in', 'my', 'be', 'au', 'pe', 'de', 'br', 'ph', 'uk']\n    if cell in clean_country_codes:\n        return False\n    else:\n        return True\n\ndef corrupt(cell):\n    if cell not in ['us', 'hr', 'se', 'fr', 'rs', 'ca', 'pt', 'in', 'my', 'be', 'au', 'pe', 'de', 'br', 'ph', 'uk']:\n        return cell\n\n    alterations = [\n        lambda s: s + random.choice(['', random.choice('1-'), random.choice('a-zA-Z')]),  # Add noise\n        lambda s: s[:-1] if s.endswith(random.choice(['r', 's', 'e', 'n'])) else s,  # Remove noise\n        lambda s: random.choice('a-z') if random.random() < 0.5 else random.choice('0-9'),  # Replace with noise\n    ]\n    \n    alteration = random.choice(alterations)\n    result = alteration(cell)\n    \n    # Ensure the original cell is not returned\n    while result in ['us', 'hr', 'se', 'fr', 'rs', 'ca', 'pt', 'in', 'my', 'be', 'au', 'pe', 'de', 'br', 'ph', 'uk']:\n        result = alteration(cell)\n    \n    return result"
+ }
+}

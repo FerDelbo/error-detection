@@ -1,0 +1,161 @@
+row,column,dirty,clean
+0,name,New Economy GmbH,New Economy GmbH
+0,house_number,32,32
+0,road,Grotzenmühlestrasse,Grotzenmühlestrasse
+0,postcode,,8840
+0,locality,Einsiedeln,Einsiedeln
+0,region,CH,Schwyz
+0,country,,Schweiz/Suisse/Svizzera/Svizra
+0,country_code,,ch
+2,name,Communauté de communes du Pays du Roi-Morvan,Communauté de Communes du Pays du Roi Morvan
+2,house_number,,13
+2,road,,Rue Jacques Rodallec
+2,postcode,56110,56110
+2,locality,Gourin,Gourin
+2,region,,France métropolitaine
+2,country,,France
+2,country_code,,fr
+70,name,"Универзитетска библиотека ""Светозар Марковић""",Универзитетска библиотека „Светозар Марковић”
+70,house_number,71,71
+70,road,Булевар Краља Александра,Булевар краља Александра
+70,postcode,11000,11120
+70,locality,Београд,Београд
+70,region,,Централна Србија
+70,country,Србија,Србија
+70,country_code,,rs
+74,name, Collegium Mazovia,Collegium Mazovia Innowacyjna Szkoła Wyższa
+74,house_number,161,161
+74,road,Sokołowska,Sokołowska
+74,postcode,08-110,08-110
+74,locality,Siedlce,Siedlce
+74,region,,województwo mazowieckie
+74,country,,Polska
+74,country_code,,pl
+253,name,Saint-Aubin-le-Monial,Mairie de Saint-Aubin-le-Monial
+253,house_number,,7
+253,road,,Rue des Écoles
+253,postcode,03160,03160
+253,locality,Saint-Aubin-le-Monial,Saint-Aubin-le-Monial
+253,region,Auvergne-Rhône-Alpes,Auvergne-Rhône-Alpes
+253,country,France,France
+253,country_code,,fr
+296,name,Norton Library,Norton Library
+296,house_number,87,87
+296,road,High Street,High Street
+296,postcode,TS20 1AE,TS20 1AE
+296,locality,Stockton,Stockton-on-Tees
+296,region,,England
+296,country,,United Kingdom
+296,country_code,,gb
+453,name,ELIJA EXOTIQUE,Elija Exotique
+453,house_number,,89
+453,road,,Place Robert Schuman
+453,postcode,59500,59500
+453,locality,Douai,Douai
+453,region,,France métropolitaine
+453,country,,France
+453,country_code,,fr
+678,name,Best Western Premier Why Hotel,Why Hotel Best Western Premier
+678,house_number,,7 bis
+678,road,,Square Morisson
+678,postcode,59800,59000
+678,locality,Lille,Lille
+678,region,,France métropolitaine
+678,country,,France
+678,country_code,,fr
+691,name,Ecole maternelle Pablo Picasso,École maternelle Pablo Picasso
+691,house_number,,78
+691,road,,Rue Victor Hugo
+691,postcode,59264,59264
+691,locality,Onnaing,Onnaing
+691,region,,France métropolitaine
+691,country,,France
+691,country_code,,fr
+802,name,Liverpool Indie/Rock Bar,Liverpool Indie/Rock Bar
+802,house_number,14,14
+802,road,Gynėjų,Gynėjų g.
+802,postcode,,01109
+802,locality,Vilnius,Vilnius
+802,region,,Vilniaus apskritis
+802,country,,Lietuva
+802,country_code,,lt
+806,name,Centre Médico Psychologique,Centre médico-psychologique pour adulte - CMPA Saint-Exupéry
+806,house_number,,5
+806,road,,Square Saint-Exupéry
+806,postcode,78310,35700
+806,locality,Maurepas,Rennes
+806,region,,France métropolitaine
+806,country,,France
+806,country_code,,fr
+813,name,Coop ABC,Coop ABC
+813,house_number,1,1
+813,road,Domanovszky Tér,Domanovszky Endre tér
+813,postcode,,2400
+813,locality,Fejér,Dunaújváros
+813,region,Dunaújváros,Közép-Dunántúl
+813,country,,Magyarország
+813,country_code,,hu
+937,name,Edgewater Gallery,Edgewater Gallery
+937,house_number,1,1
+937,road,Mill St,Mill Street
+937,postcode,,05753
+937,locality,Middlebury,Middlebury
+937,region,VT,Vermont
+937,country,,United States
+937,country_code,,us
+939,name,Médiathèque L'Ellipse,Médiathèque l'Ellipse
+939,house_number,,5
+939,road,,Chemin des Blondes
+939,postcode,38360,38360
+939,locality,Sassenage,Sassenage
+939,region,,France métropolitaine
+939,country,,France
+939,country_code,,fr
+1079,name,Auchan,Auchan
+1079,house_number,7,7
+1079,road,Kishatár U.,Kishatár utca
+1079,postcode,,4031
+1079,locality,Hajdú-Bihar,Debrecen
+1079,region,Debrecen,Észak-Alföld
+1079,country,,Magyarország
+1079,country_code,,hu
+1107,name,Prairie Winds Golf Club,Prairie Winds Golf Club
+1107,house_number,555,555
+1107,road,S Lake Dr,South Lake Drive
+1107,postcode,,57201
+1107,locality,Watertown,Watertown
+1107,region,SD,South Dakota
+1107,country,,United States
+1107,country_code,,us
+1147,name,Archeologinė ekspozicija,Archeologinė ekspozicija Kai sieloms neliko medžių
+1147,house_number,2,2
+1147,road,Jiezno G.,Jiezno g.
+1147,postcode,,62212
+1147,locality,Alytus,Alytus
+1147,region,,Alytaus apskritis
+1147,country,,Lietuva
+1147,country_code,,lt
+1309,name,Amsterdam Plaza,Amsterdam Plaza
+1309,house_number,,79
+1309,road,Vytauto G.79,Vytauto g.
+1309,postcode,,00134
+1309,locality,Palanga,Palanga
+1309,region,,Klaipėdos apskritis
+1309,country,,Lietuva
+1309,country_code,,lt
+1367,name,Lotus Healing Arts Center,Lotus Healing Arts Center
+1367,house_number,1812,1812
+1367,road,J St,J Street
+1367,postcode,,95811
+1367,locality,Sacramento,Sacramento
+1367,region,CA,California
+1367,country,,United States
+1367,country_code,,us
+1596,name,Lone Star College-Tomball Community Library,Lone Star College-Tomball Community Library
+1596,house_number,30555,30555
+1596,road,Tomball Parkway,Tomball Parkway
+1596,postcode,77375,77375
+1596,locality,Tomball,Tomball
+1596,region,TX,Texas
+1596,country,US,United States
+1596,country_code,us,us

@@ -1,0 +1,161 @@
+row,column,dirty,clean
+149,name,Hyatt Conference Center,Hyatt Regency Coralville Hotel & Conference Center
+149,house_number,300,300
+149,road,E 9Th St,East 9th Street
+149,postcode,52241,52241
+149,locality,Coralville,Coralville
+149,region,IA,Iowa
+149,country,United States,United States
+149,country_code,,us
+216,name,Natur Camp,Natur Camp
+216,house_number,1,1
+216,road,Karalienės Barboros Al.,Karalienės Barboros al.
+216,postcode,,59208
+216,locality,Birštonas,Birštonas
+216,region,,Kauno apskritis
+216,country,,Lietuva
+216,country_code,,lt
+234,name,Crystal Show Club,Crystal Show Club
+234,house_number,10,10
+234,road,Žvejų G.,Žvejų g.
+234,postcode,,91248
+234,locality,Klaipėda,Klaipėda
+234,region,,Klaipėdos apskritis
+234,country,,Lietuva
+234,country_code,,lt
+355,name,Plaza Square,Plaza Square
+355,house_number,,625-709
+355,road,,Paterson-Hamburg Turnpike
+355,postcode,,07470
+355,locality,Wayne,Wayne
+355,region,New Jersey,New Jersey
+355,country,,United States
+355,country_code,,us
+419,name,Okemo Mountain Resort,Okemo Mountain Resort
+419,house_number,77,77
+419,road,Okemo Ridge Road,Okemo Ridge Road
+419,postcode,05149,05140
+419,locality,Ludlow,Ludlow
+419,region,VT,Vermont
+419,country,US,United States
+419,country_code,us,us
+423,name,Snakes & Lattes,Snakes & Lattes
+423,house_number,600,600
+423,road,Bloor Street West,Bloor Street West
+423,postcode,,M6G 1K4
+423,locality,Toronto,Toronto
+423,region,,Ontario
+423,country,,Canada
+423,country_code,,ca
+431,name,Forum Cinemas Vingis,Forum Cinemas Vingis
+431,house_number,7,7
+431,road,Savanorių Pr.,Savanorių pr.
+431,postcode,,03116
+431,locality,Vilnius,Vilnius
+431,region,,Vilniaus apskritis
+431,country,,Lietuva
+431,country_code,,lt
+438,name,Parioli,doc* Parioli
+438,house_number,,15b
+438,road,Via Vittorio Locchi,Via Vittorio Locchi
+438,postcode,00197,00197
+438,locality,Rome,Roma
+438,region,,Lazio
+438,country,Italy,Italia
+438,country_code,,it
+439,name,Janinos Monkutės-Marks muziejus-galerija,Janinos Monkutės-Marks muziejus-galerija
+439,house_number,45,45
+439,road,J. Basanavičiaus G.,J. Basanavičiaus g.
+439,postcode,,57191
+439,locality,Kėdainiai,Kėdainiai
+439,region,,Kauno apskritis
+439,country,,Lietuva
+439,country_code,,lt
+522,name,Taberna el Piyayo,Taberna El Piyayo
+522,house_number,36,36
+522,road,Calle Granada,Calle Granada
+522,postcode,29010,29015
+522,locality,Málaga,Málaga
+522,region,,Andalucía
+522,country,,España
+522,country_code,,es
+607,name,Inovatyvios medicinos centras,Inovatyvios medicinos centras
+607,house_number,5,5
+607,road,Santariškių G.,Santariškių g.
+607,postcode,,08408
+607,locality,Vilnius,Vilnius
+607,region,,Vilniaus apskritis
+607,country,,Lietuva
+607,country_code,,lt
+652,name,Milavitsa,Milavitsa
+652,house_number,Д. 63,63
+652,road,Ул. 50 Лет Влксм,улица 50 лет ВЛКСМ
+652,postcode,,625000
+652,locality,,Тюмень
+652,region,,Уральский федеральный округ
+652,country,,Россия
+652,country_code,,ru
+682,name,Bidwell House Museum,Bidwell House Museum
+682,house_number,100,100
+682,road,Art School Road,Art School Road
+682,postcode,01245,01245
+682,locality,Monterey,Monterey
+682,region,MA,Massachusetts
+682,country,US,United States
+682,country_code,us,us
+684,name,Apple Economy Hotel,Apple Economy Hotel
+684,house_number,19,19
+684,road,M. Valančiaus,M. Valančiaus g.
+684,postcode,,44275
+684,locality,Kaunas,Kaunas
+684,region,,Kauno apskritis
+684,country,,Lietuva
+684,country_code,,lt
+689,name,Pako,Пако
+689,house_number,27,27d
+689,road,Jurija Gagarina,Јурија Гагарина
+689,postcode,,11000
+689,locality,Beograd,Београд
+689,region,,Централна Србија
+689,country,,Србија
+689,country_code,,rs
+715,name,Alice M. Cashmere,Alice M. Cashmere
+715,house_number,23,23
+715,road,Via Ponte Vetero,Via Ponte Vetero
+715,postcode,20121,20121
+715,locality,Milano,Milano
+715,region,Lombardia,Lombardia
+715,country,,Italia
+715,country_code,,it
+724,name,Читай-город,Читай город
+724,house_number,Д. 90,90
+724,road,Ул. 20-Летия Октября,улица 20-летия Октября
+724,postcode,,394006
+724,locality,,Воронеж
+724,region,,Центральный федеральный округ
+724,country,,Россия
+724,country_code,,ru
+746,name,Tele2,Tele2
+746,house_number,8А,8А
+746,road,Московская Обл. Рузский Р-Н П. Дорохово Ул. Невкипелого,улица Невкипелого
+746,postcode,,143160
+746,locality,,Дорохово
+746,region,,Центральный федеральный округ
+746,country,,Россия
+746,country_code,,ru
+750,name,Conad,Conad
+750,house_number,3,3
+750,road,Via Trapezi,Via Trapezi
+750,postcode,89134,89134
+750,locality,Reggio di Calabria,Reggio di Calabria
+750,region,Calabria,Calabria
+750,country,,Italia
+750,country_code,,it
+759,name,DEZ,DEZ
+759,house_number,56A,56a
+759,road,Amraser-See-Straße,Amraser-See-Straße
+759,postcode,6020,6020
+759,locality, Innsbruck,Innsbruck
+759,region,,Tirol
+759,country,,Österreich
+759,country_code,,at

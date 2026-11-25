@@ -1,0 +1,115 @@
+{
+ "llm": "qwen",
+ "modelo_llm": "qwen2.5:14b",
+ "lm": "roberta-base",
+ "args": {
+  "dirty": "/home/a2482126/error-detection/dataset/library/dirty.csv",
+  "labeled": "outputs/library/gidcl_b20_k20_qwen_s1/split/labeled_cells.csv",
+  "clusters": "outputs/library/gidcl_b20_k20_qwen_s1/split/clusters.csv",
+  "outdir": "outputs/library/gidcl_b20_k20_qwen_s1",
+  "lm": "roberta-base",
+  "tau": 0.85,
+  "iter_max": 4,
+  "rounds": 3,
+  "epochs": 8,
+  "batch": 16,
+  "infer_batch": 128,
+  "lr": 2e-05,
+  "max_len": 256,
+  "pseudo_per_col": 20,
+  "coreset_n": 200,
+  "coreset_conf": 0.9,
+  "col_ctx_max": 20,
+  "seed": 1,
+  "llm": "qwen"
+ },
+ "uso_llm": {
+  "calls": 80,
+  "prompt_tokens": 87686,
+  "completion_tokens": 22304
+ },
+ "rodadas": [
+  {
+   "round": 1,
+   "accepted": [
+    "country",
+    "country_code",
+    "house_number",
+    "name",
+    "postcode",
+    "region",
+    "road"
+   ],
+   "pseudo": 48,
+   "novas_celulas_coreset": 177,
+   "fracao_erros_treino": 0.49,
+   "perda": [
+    0.6967,
+    0.643,
+    0.5398,
+    0.48,
+    0.4112,
+    0.3292,
+    0.2724,
+    0.2481
+   ],
+   "marcadas_pelo_modelo": 7747,
+   "segundos": 52
+  },
+  {
+   "round": 2,
+   "accepted": [
+    "country",
+    "country_code",
+    "house_number",
+    "name",
+    "postcode",
+    "region"
+   ],
+   "pseudo": 108,
+   "novas_celulas_coreset": 200,
+   "fracao_erros_treino": 0.388,
+   "perda": [
+    0.291,
+    0.2109,
+    0.1721,
+    0.1133,
+    0.1212,
+    0.0833,
+    0.0494,
+    0.0508
+   ],
+   "marcadas_pelo_modelo": 7987,
+   "segundos": 73
+  },
+  {
+   "round": 3,
+   "accepted": [
+    "country",
+    "country_code",
+    "house_number",
+    "postcode",
+    "region",
+    "road"
+   ],
+   "pseudo": 154,
+   "novas_celulas_coreset": 200,
+   "fracao_erros_treino": 0.326,
+   "perda": [
+    0.1102,
+    0.1345,
+    0.0705,
+    0.0462,
+    0.037,
+    0.0329,
+    0.0194,
+    0.0118
+   ],
+   "marcadas_pelo_modelo": 7982,
+   "segundos": 103
+  }
+ ],
+ "marcadas": 7982,
+ "marcadas_funcoes": 6318,
+ "total_s": 230
+}

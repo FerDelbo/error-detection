@@ -1,0 +1,111 @@
+{
+ "llm": "qwen",
+ "modelo_llm": "qwen2.5:14b",
+ "lm": "roberta-base",
+ "args": {
+  "dirty": "/home/a2482126/error-detection/dataset/library/dirty.csv",
+  "labeled": "outputs/library/gidcl_b20_k20_qwen_s0/split/labeled_cells.csv",
+  "clusters": "outputs/library/gidcl_b20_k20_qwen_s0/split/clusters.csv",
+  "outdir": "outputs/library/gidcl_b20_k20_qwen_s0",
+  "lm": "roberta-base",
+  "tau": 0.85,
+  "iter_max": 4,
+  "rounds": 3,
+  "epochs": 8,
+  "batch": 16,
+  "infer_batch": 128,
+  "lr": 2e-05,
+  "max_len": 256,
+  "pseudo_per_col": 20,
+  "coreset_n": 200,
+  "coreset_conf": 0.9,
+  "col_ctx_max": 20,
+  "seed": 0,
+  "llm": "qwen"
+ },
+ "uso_llm": {
+  "calls": 92,
+  "prompt_tokens": 94839,
+  "completion_tokens": 22450
+ },
+ "rodadas": [
+  {
+   "round": 1,
+   "accepted": [
+    "country",
+    "country_code",
+    "house_number",
+    "name",
+    "region",
+    "road"
+   ],
+   "pseudo": 61,
+   "novas_celulas_coreset": 200,
+   "fracao_erros_treino": 0.503,
+   "perda": [
+    0.6983,
+    0.5891,
+    0.365,
+    0.2493,
+    0.2102,
+    0.159,
+    0.1111,
+    0.095
+   ],
+   "marcadas_pelo_modelo": 7714,
+   "segundos": 73
+  },
+  {
+   "round": 2,
+   "accepted": [
+    "country",
+    "country_code",
+    "house_number",
+    "region"
+   ],
+   "pseudo": 82,
+   "novas_celulas_coreset": 200,
+   "fracao_erros_treino": 0.337,
+   "perda": [
+    0.1618,
+    0.1487,
+    0.1592,
+    0.0857,
+    0.0426,
+    0.0286,
+    0.0228,
+    0.0176
+   ],
+   "marcadas_pelo_modelo": 7640,
+   "segundos": 80
+  },
+  {
+   "round": 3,
+   "accepted": [
+    "country",
+    "country_code",
+    "house_number",
+    "locality",
+    "postcode"
+   ],
+   "pseudo": 127,
+   "novas_celulas_coreset": 200,
+   "fracao_erros_treino": 0.289,
+   "perda": [
+    0.1306,
+    0.0845,
+    0.0637,
+    0.0265,
+    0.0153,
+    0.0098,
+    0.012,
+    0.006
+   ],
+   "marcadas_pelo_modelo": 7575,
+   "segundos": 79
+  }
+ ],
+ "marcadas": 7575,
+ "marcadas_funcoes": 4178,
+ "total_s": 234
+}
