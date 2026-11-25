@@ -1,0 +1,14 @@
+{
+ "method": "dboost_gaussian_3.0",
+ "dataset": "shoppingCenter",
+ "run_time_s": 0.49,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "model": "gaussian",
+  "statistical": 0.5,
+  "threshold": 3.0
+ },
+ "extra": {}
+}

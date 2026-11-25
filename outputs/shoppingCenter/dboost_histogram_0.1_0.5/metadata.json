@@ -1,0 +1,15 @@
+{
+ "method": "dboost_histogram_0.1_0.5",
+ "dataset": "shoppingCenter",
+ "run_time_s": 0.59,
+ "uses_llm": false,
+ "prompt_tokens": null,
+ "completion_tokens": null,
+ "config": {
+  "model": "histogram",
+  "statistical": 0.5,
+  "peak": 0.1,
+  "outlier": 0.5
+ },
+ "extra": {}
+}
