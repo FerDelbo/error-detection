@@ -5,6 +5,14 @@ methods/zeroed/configs/
 methods/zeroed/config_pipeline.yaml
 methods/zeroed/llm_usage.jsonl
 
+# ZeroED+Jev (methods/zeroed_jev): gerado a cada execução; cache = respostas pagas do Jev
+methods/zeroed_jev/result/
+methods/zeroed_jev/data/
+methods/zeroed_jev/configs/
+methods/zeroed_jev/cache/
+methods/zeroed_jev/jev_usage.jsonl
+methods/zeroed_jev/llm_usage.jsonl
+
 # pesos e caches
 *.bin
 *.pkl
